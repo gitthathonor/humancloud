@@ -11,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.domain.category.CategoryDao;
 import site.metacoding.humancloud.domain.company.Company;
-import site.metacoding.humancloud.domain.resume.ResumeDao;
 import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.domain.user.UserDao;
 import site.metacoding.humancloud.web.dto.user.JoinDto;
