@@ -12,4 +12,9 @@ public class Category {
 	private Integer categoryUserId;
 	private Integer categoryCompanyId;
 	private String categoryName;
+
+	public Category(Integer categoryUserId, String categoryName){
+		this.categoryUserId=categoryUserId;
+		this.categoryName=categoryName;
+	}
 }

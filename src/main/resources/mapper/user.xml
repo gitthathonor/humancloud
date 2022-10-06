@@ -3,9 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.user.UserDao">
-	<insert id="save"></insert>
-	<select id="findById" resultType="site.metacoding.humancloud.domain.user.User"></select>
-	<select id="findAll" resultType="site.metacoding.humancloud.domain.user.User"></select>
-	<update id="update"></update>
-	<delete id="deleteById"></delete>
+
+	<select id="findByUsername" resultType="site.metacoding.humancloud.domain.user.User">
+        select * from user where username=#{username}
+	</select>
+	
+	<insert id="save" useGeneratedKeys="true" keyProperty="userId">
+        insert into user(username, password, name, email, phone_number, created_at)
+        values (#{username}, #{password}, #{name}, #{email}, #{phoneNumber}, now())
+	</insert>
+
+	<select id="findById" resultType="site.metacoding.humancloud.domain.user.User">
+        select * from user where user_id=#{userId}
+	</select>
+	
+	<select id="findAll" resultType="site.metacoding.humancloud.domain.user.User">
+        select * from user
+	</select>
+	
+	<delete id="deleteById">
+        delete from user where user_id=#{userId}
+	</delete>
+
+	<update id ="update">
+        update user set username=#{username}, password=#{password}, email= #{email}, phone_number=#{phoneNumber}
+        where user_id=#{userId}
+	</update>
 </mapper>

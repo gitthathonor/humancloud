@@ -3,9 +3,37 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.category.CategoryDao">
-	<insert id="save"></insert>
-	<select id="findById" resultType="site.metacoding.humancloud.domain.category.Category"></select>
-	<select id="findAll" resultType="site.metacoding.humancloud.domain.category.Category"></select>
-	<update id="update"></update>
-	<delete id="deleteById"></delete>
+
+	<select id="findByCompanyCategory" resultType="site.metacoding.humancloud.domain.company.Company">
+		select company.* from company
+		left join category
+		on company.company_id=category.category_company_id
+		where category_name=#{categoryName}
+	</select>
+
+	<select id="findByUserId" resultType="site.metacoding.humancloud.domain.category.Category">
+ 		select * from category where category_user_id=#{userId};
+	</select>
+
+	<insert id="save">     
+		insert into category(category_user_id, category_company_id, category_name)
+		values (#{categoryUserId}, #{categoryCompanyId}, #{categoryName});
+	</insert>
+
+	<select id="findById" resultType="site.metacoding.humancloud.domain.category.Category">
+        select * from category where category_id=#{categoryId}
+	</select>
+	
+	<select id="findAll" resultType="site.metacoding.humancloud.domain.category.Category">
+        select * from category
+	</select>
+	
+	<delete id="deleteById">
+        delete from category where category_id=#{categoryId}
+	</delete>
+
+	<update id ="update">
+        update category set category_user_id=#{userId}, category_company_id#{companyId}, category_name=#{companyName}
+        where category_id=#{categoryId}
+	</update>
 </mapper>
