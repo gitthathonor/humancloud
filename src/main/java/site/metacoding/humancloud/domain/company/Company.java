@@ -18,4 +18,15 @@ public class Company {
 	private String companyPhoneNumber;
 	private String companyAddress;
 	private Timestamp companyCreatedAt;
+	
+	
+	public Company(String companyUsername, String companyPassword, String companyName, String companyEmail,
+			String companyPhoneNumber, String companyAddress) {
+		this.companyUsername = companyUsername;
+		this.companyPassword = companyPassword;
+		this.companyName = companyName;
+		this.companyEmail = companyEmail;
+		this.companyPhoneNumber = companyPhoneNumber;
+		this.companyAddress = companyAddress;
+	}
 }
