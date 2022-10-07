@@ -1,6 +1,5 @@
 package site.metacoding.humancloud.service;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +12,6 @@ import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.company.CompanyDao;
 import site.metacoding.humancloud.domain.recruit.Recruit;
 import site.metacoding.humancloud.domain.recruit.RecruitDao;
-=======
-import org.springframework.stereotype.Service;
-
-import lombok.RequiredArgsConstructor;
->>>>>>> ed8e1bfe7d301fe2549a65da44dc33efc814dd6c
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.domain.resume.ResumeDao;
 
@@ -25,11 +19,14 @@ import site.metacoding.humancloud.domain.resume.ResumeDao;
 @Service
 public class ResumeService {
 
-<<<<<<< HEAD
     private final ResumeDao resumeDao;
     private final RecruitDao recruitDao;
     private final CompanyDao companyDao;
     private final CategoryDao categoryDao;
+
+    public void 이력서저장(Resume resume) {
+        resumeDao.save(resume);
+      }
 
     // 페이지 맨 위 추천 기업 리스트 : 매개변수-세션값
     public void 추천기업리스트보기(Integer userId){
@@ -86,16 +83,13 @@ public class ResumeService {
         return categories;
     }
     public void 학력순보기(){}
-    public void 추천순보기(){
-
+    public void 추천순보기(Integer companyId){
+        // 1. 로그인 하지 않으면 최신순?
+        // 2. 로그인시 category에 해당하는 걸로
+        List<Category> categories = categoryDao.findByCompanyId(companyId);
+        List<Category> categoryUser = new ArrayList<>();
+        for (Category category : categories) {
+            
+        }
     }
-
-
-=======
-  private final ResumeDao resumeDao;
-
-  public void 이력서저장(Resume resume) {
-    resumeDao.save(resume);
-  }
->>>>>>> ed8e1bfe7d301fe2549a65da44dc33efc814dd6c
 }
