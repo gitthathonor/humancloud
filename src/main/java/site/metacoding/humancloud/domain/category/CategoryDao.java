@@ -4,6 +4,7 @@ import java.util.List;
 
 import site.metacoding.humancloud.domain.company.Company;
 
+
 public interface CategoryDao {
 	public void save(Category category);
 	public Category findById(Integer id);
@@ -11,6 +12,10 @@ public interface CategoryDao {
 	public void update(Category category);
 	public void deleteById(Integer id);
 
+	public List<Category> findByName(String name);
 	public List<Category> findByUserId(Integer userId);
-	public Company findByCompanyCategory(String categoryName);
+	public List<Category> findByCompanyId(Integer companyId);
+	public Company findByCompanyCategory(String categories);
+
+	// public List<Map<String, Object>> findCompanyByName(@Param("categories")List<Category> categories);
 }

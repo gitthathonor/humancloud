@@ -14,7 +14,7 @@ public class Resume {
 	private String resumeTitle;
 	private String resumePhoto;
 	private String resumeEducation;
-	private String resumeCareer;
+	private String resumeCareer; 
 	private String resumeLink;
 	private Integer resumeReadCount;
 	private Integer resumeUserId;

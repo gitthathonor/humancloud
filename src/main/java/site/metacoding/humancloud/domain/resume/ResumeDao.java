@@ -1,6 +1,7 @@
 package site.metacoding.humancloud.domain.resume;
 
 import java.util.List;
+import java.util.Locale.Category;
 
 public interface ResumeDao {
 	public void save(Resume resume);
@@ -8,4 +9,7 @@ public interface ResumeDao {
 	public List<Resume> findAll();
 	public void update(Resume resume);
 	public void deleteById(Integer id);
+
+	public int sumReadCount(Integer userId);
+	public List<Category> orderByCareer();
 }
