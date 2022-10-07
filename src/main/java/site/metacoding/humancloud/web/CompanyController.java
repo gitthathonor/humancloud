@@ -23,7 +23,7 @@ public class CompanyController {
 		return "company/saveForm";
 	}
 	
-	@PostMapping("/api/company/save")
+	@PostMapping("/company/save")
 	public @ResponseBody CMRespDto<?> save(@RequestBody SaveDto saveDto) {
 		companyService.saveCompany(saveDto);
 		return new CMRespDto<>(1, "회원 가입 완료", null);
