@@ -30,7 +30,7 @@ public class ResumeController {
     return "resume/saveForm";
   }
 
-  @PutMapping(value = "/imgtest/img", consumes = { MediaType.APPLICATION_JSON_VALUE,
+  @PutMapping(value = "/resume/save", consumes = { MediaType.APPLICATION_JSON_VALUE,
       MediaType.MULTIPART_FORM_DATA_VALUE })
   public @ResponseBody CMRespDto<?> create(@RequestPart("file") MultipartFile file,
       @RequestPart("writeDto") WriteDto writeDto) throws Exception {
