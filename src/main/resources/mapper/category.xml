@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.category.CategoryDao">
-<!-- 
-	<select id="findCategoryCompany" resultType="map">
-		select *
-		from category
-        <foreach collection="category" item="c" close="" separator=", ">
-		where category_name=#{c.category_name}
-		</foreach>
-	</select> -->
-
-	
 
 	<select id="findByCompanyCategory" resultType="site.metacoding.humancloud.domain.company.Company">
 		select company.* from company
@@ -54,4 +42,5 @@
         update category set category_user_id=#{userId}, category_company_id#{companyId}, category_name=#{companyName}
         where category_id=#{categoryId}
 	</update>
+
 </mapper>
