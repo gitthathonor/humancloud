@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.resume.ResumeDao">
-<<<<<<< HEAD
-	
-   <select id="orderByCareer" resultType="site.metacoding.humancloud.domain.resume.Resume">
+    <select id="orderByEducation" resultType="site.metacoding.humancloud.domain.resume.Resume">
+        select * from resume
+        order by FIELD(resume_education, '고졸', '초대졸', '대졸'),
+                 resume_education ASC
+    </select>
+
+    <select id="orderByCareer" resultType="site.metacoding.humancloud.domain.resume.Resume">
       select * from resume order by
       (
          CASE WHEN ASCII(SUBSTRING(resume_career,1)) BETWEEN 48 AND 57 THEN 3
@@ -22,7 +26,7 @@
    <insert id="save">
       INSERT INTO resume(
       resume_title, resume_education, resume_career, resume_photo, 
-      resume_link, resume_user_id, resume_readcount, resume_created_at
+      resume_link, resume_user_id, resume_read_count, resume_created_at
       )
       VALUES(
       #{resumeTitle}, #{resumeEducation}, #{resumeCareer}, #{resumePhoto},
@@ -35,43 +39,12 @@
    </select>
 
    <update id="update">
-=======
-
-	<select id="findAll" resultType="site.metacoding.humancloud.domain.resume.Resume">
-		SELECT * FROM resume
-	</select>
-
-	<insert id="save">
-		INSERT INTO resume(
-      resume_title, resume_education, resume_career, resume_photo, 
-      resume_link, resume_user_id, resume_readcount, resume_created_at
-      )
-		VALUES(
-      #{resumeTitle}, #{resumeEducation}, #{resumeCareer}, #{resumePhoto},
-      #{resumeLink},  #{resumeUserId},0, now()
-      )
-	</insert>
-
-	<select id="findById" resultType="site.metacoding.humancloud.domain.resume.Resume">
-		SELECT * FROM resume WHERE resume_id=#{resumeId}
-	</select>
-
-	<update id="update">
->>>>>>> ed8e1bfe7d301fe2549a65da44dc33efc814dd6c
     UPDATE resume SET 
     resume_title = #{resumeTitle}, resume_education =#{resumeEducation}, 
     resume_career = #{resumeCareer}, resume_photo = #{resumePhoto}, resume_link = #{resumeLink}
     WHERE resume_id = ${resumeId}
   </update>
-
-<<<<<<< HEAD
-   <delete id="deleteById">
-      DELETE FROM resume WHERE resume_id=#{resumeId}
-   </delete>
-
-=======
 	<delete id="deleteById">
 		DELETE FROM resume WHERE resume_id=#{resumeId}
 	</delete>
->>>>>>> ed8e1bfe7d301fe2549a65da44dc33efc814dd6c
 </mapper>
