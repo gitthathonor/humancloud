@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -24,6 +25,13 @@ import site.metacoding.humancloud.web.dto.request.resume.WriteDto;
 public class ResumeController {
 
   private final ResumeService resumeService;
+
+  @GetMapping("/resume/list")
+  public String viewList(Model model){
+    model.addAttribute("resumes", resumeService.이력서목록보기());
+    return "resumelist";
+  }
+
 
   @GetMapping("/resume/saveForm")
   public String saveResumeForm(WriteDto writeDto) {
