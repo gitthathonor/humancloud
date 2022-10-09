@@ -5,20 +5,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.service.UserService;
 
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
 @RequiredArgsConstructor
-@RestController
+@Controller
 public class UserAPIController {
 
     private final UserService userService;
 
-    @GetMapping("test/login")
-    public void testlogin(){
+    private final HttpSession session;
 
+    @GetMapping("test/login")
+    public String testlogin(Model model){
+        // Session userId = (Session) session.getAttribute("principal");
+        model.addAttribute("user", userService.유저정보보기(1));
+        return "mypageSample";
     }
 }
