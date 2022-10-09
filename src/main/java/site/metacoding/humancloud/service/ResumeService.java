@@ -1,7 +1,9 @@
 package site.metacoding.humancloud.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -32,8 +34,13 @@ public class ResumeService {
             Category categoryElement = new Category(1,category);
             categoryDao.save(categoryElement);
         }
+    }
 
-
+    public Map<String,Object> 이력서상세보기(Integer resumeId, Integer userId){
+        Map<String,Object> resumeDetail = new HashMap<>();
+        resumeDetail.put("resume", resumeDao.findById(resumeId));
+        resumeDetail.put("category", categoryDao.findByUserId(1));
+        return resumeDetail;
     }
 
     // 페이지 맨 위 추천 기업 리스트 : 매개변수-세션값
