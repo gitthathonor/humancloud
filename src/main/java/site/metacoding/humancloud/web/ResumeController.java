@@ -8,13 +8,11 @@ import java.util.UUID;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.service.ResumeService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
@@ -24,14 +22,34 @@ import site.metacoding.humancloud.web.dto.request.resume.WriteDto;
 @Controller
 public class ResumeController {
 
+  @GetMapping("/test")
+  public void test(){
+    resumeService.추천순보기(1);
+  }
+
   private final ResumeService resumeService;
 
-  @GetMapping("/resume/list")
+//  @GetMapping("/test")
+//  public @ResponseBody CMRespDto<?> test(){
+//    return new CMRespDto<>(1, "OK", resumeService.추천순보기(1));
+//  }
+
+  @GetMapping("/resume")
   public String viewList(Model model){
-    model.addAttribute("resumes", resumeService.이력서목록보기());
+    model.addAttribute("resumes", resumeService.이력서목록보기().get("resume"));
+    model.addAttribute("categories", resumeService.이력서목록보기().get("category"));
     return "resumelist";
   }
 
+  @PostMapping("/resume")
+  public @ResponseBody CMRespDto<?> viewCategory(@RequestBody Category category){
+    return new CMRespDto<>(1, "OK", resumeService.분류별이력서목록보기(category.getCategoryName()));
+  }
+
+  @GetMapping("/resume/list")
+  public @ResponseBody CMRespDto<?> orderList(@RequestParam("order") String order){
+    return new CMRespDto<>(1, "ok", resumeService.정렬하기(order, 1));
+  }
 
   @GetMapping("/resume/saveForm")
   public String saveResumeForm(WriteDto writeDto) {

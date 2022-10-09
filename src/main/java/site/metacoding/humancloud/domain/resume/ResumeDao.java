@@ -13,5 +13,6 @@ public interface ResumeDao {
 	public int sumReadCount(Integer userId);
 	public List<Resume> orderByCareer();
 	public List<Resume> orderByEducation();
+	public List<Resume> orderByCreatedAt();
 
 }

@@ -40,17 +40,17 @@ public class RecruitService {
         // return companies;
     }
     public void 추천순기업리스트(Integer userId){
-        List<Category> categoryPS = categoryDao.findByUserId(userId);
-        List<String> categoryName = new ArrayList<>();
-
-        for(Category c : categoryPS){
-            categoryName.add( c.getCategoryName());
-        }
-        List<Company> companyList = new ArrayList<>();
-        for(String c : categoryName){
-            Company companies = categoryDao.findByCompanyCategory(c);
-            companyList.add(companies);
-        }
+//        List<Category> categoryPS = categoryDao.findByUserId(userId);
+//        List<String> categoryName = new ArrayList<>();
+//
+//        for(Category c : categoryPS){
+//            categoryName.add( c.getCategoryName());
+//        }
+//        List<Company> companyList = new ArrayList<>();
+//        for(String c : categoryName){
+//            Company companies = categoryDao.findByCompanyCategory(c);
+//            companyList.add(companies);
+//        }
         // return companyList;
     }
 }

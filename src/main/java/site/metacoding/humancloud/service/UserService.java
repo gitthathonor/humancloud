@@ -94,21 +94,21 @@ public class UserService {
         return resumePS;
     }
 
-    public List<String> 관심분야목록(Integer userId){
-        List<Category> categoryPS = categoryDao.findByUserId(userId);
-        List<String> categoryName = new ArrayList<>();
-        for(Category c : categoryPS){
-            categoryName.add( c.getCategoryName());
-        }
-        return categoryName;
-    }
+//    public List<String> 관심분야목록(Integer userId){
+//        List<Category> categoryPS = categoryDao.findByUserId(userId);
+//        List<String> categoryName = new ArrayList<>();
+//        for(Category c : categoryPS){
+//            categoryName.add( c.getCategoryName());
+//        }
+//        return categoryName;
+//    }
 
-    public List<Company> 기업매칭리스트(List<String> categories){ // userid에 해당하는 category name 리스트
-        List<Company> companyList = new ArrayList<>();
-        for(String c : categories){
-            Company companies = categoryDao.findByCompanyCategory(c);
-            companyList.add(companies);
-        }
-        return companyList;
-    }
+//    public List<Company> 기업매칭리스트(List<String> categories){ // userid에 해당하는 category name 리스트
+//        List<Company> companyList = new ArrayList<>();
+//        for(String c : categories){
+//            Company companies = categoryDao.findByCompanyCategory(c);
+//            companyList.add(companies);
+//        }
+//        return companyList;
+//    }
 }
