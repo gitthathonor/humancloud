@@ -24,8 +24,8 @@ CREATE TABLE user (
 -- 분야
 CREATE TABLE category (
 	category_id INT auto_increment PRIMARY KEY,
-	category_user_id INT,
-	category_company_id INT,
+	category_resume_id INT,
+	category_recruit_id INT,
 	category_name VARCHAR(50)
 );
 
@@ -38,6 +38,7 @@ CREATE TABLE company (
 	company_email VARCHAR(120) UNIQUE NOT null,
 	company_phone_number VARCHAR(100) UNIQUE,
 	company_address VARCHAR(150) NOT null,
+	company_logo VARCHAR(500),
 	company_created_at TimeStamp
 );
 
@@ -54,13 +55,6 @@ CREATE TABLE resume(
 	resume_created_at TIMESTAMP
 );
 
--- 직무
-CREATE TABLE job(
-	job_id INT AUTO_INCREMENT PRIMARY KEY,
-	job_resume_id INT,
-	job_recruit_id INT,
-	job_name VARCHAR(50) NOT NULL
-);
 
 -- 채용 공고 
 CREATE TABLE recruit(

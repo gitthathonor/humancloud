@@ -17,5 +17,6 @@ public class Company {
 	private String companyEmail;
 	private String companyPhoneNumber;
 	private String companyAddress;
+	private String companyLogo;
 	private Timestamp companyCreatedAt;
 }
