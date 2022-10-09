@@ -14,7 +14,7 @@
 	<select id="findById" resultType="site.metacoding.humancloud.domain.company.Company">
 		SELECT *
 		FROM company
-		WHERE companyId = #{companyId}
+		WHERE company_id = #{companyId}
 	</select>
 	<select id="findAll"
 		resultType="site.metacoding.humancloud.domain.company.Company"></select>

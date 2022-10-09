@@ -27,6 +27,11 @@ public class CompanyService {
 	public void saveCompany(Company company) {
 		companyDao.save(company);
 	}
+	
+	// 기업 정보 상세보기
+	public Company showCompanyDetail(Integer companyId) {
+		return companyDao.findById(companyId);
+	}
 
 	
 	

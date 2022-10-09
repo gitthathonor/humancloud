@@ -4,34 +4,34 @@
     <div>
         <div class="row">
             <div class="col-sm-9">
-                <h3>이력서 제목</h3>
+	            <div class="row"> 
+		            <h3>기업 정보</h3>
+		            <div style="margin: 0 100px 0 0;"></div>
+		            <button><i></i><span>관심기업등록</span></button>
+	            </div>
                 <div style="margin: 20px 0 0 0;"></div>
                 <div style="border-bottom: 1px solid #aaa"></div>
                 <div style="margin: 30px 0 0 0;"></div>
                 <div class="row">
                     <div class="col-xs-3 col-sm-3">
-                        <img src="https://via.placeholder.com/150x200" class="img-thumbnail"/>
+                        <img src="/img/${company.companyLogo}" style="width: 150px; height: 200px;" class="img-thumbnail"/>
                     </div>
                     <div class="col-xs-4 col-sm-6">
                         <ul class="list-unstyled">
                             <li style="font-size : 22px; font-weight:bold;">
-                                이름
+                                ${company.companyName }
                             </li>
                             <div style="margin: 20px 0 0 0;"></div>
                             <li style="font-size : 16px;">
-                                <i class="ti-mobile"></i> 전화번호
+                                <i class="ti-mobile"></i> ${company.companyPhoneNumber}
                             </li>
                             <div style="margin: 10px 0 0 0;"></div>
                             <li style="font-size : 16px;">
-                               <i class="ti-email"></i> 이메일
+                               <i class="ti-email"></i> ${company.companyEmail}
                             </li>
                             <div style="margin: 10px 0 0 0;"></div>
                             <li style="font-size : 16px;">
-                                <i class="ti-desktop"></i> 블로그주소
-                            </li>
-                            <div style="margin: 10px 0 0 0;"></div>
-                            <li style="font-size : 16px;">
-                                <i class="ti-home"></i> 집주소
+                                <i class="ti-desktop"></i> ${company.companyAddress}
                             </li>
                         </ul>
                     </div><%-- col-xs-4 col-sm-6 --%>
@@ -72,13 +72,13 @@
                 <div class="mr-2">
                     <button type="button" class="btn btn-primary btn-icon-text">
                         <i class="ti-file btn-icon-prepend"></i>
-                        이력서 수정하기
+                        기업 정보 수정하기
                     </button>
                 </div><%-- mr-2 --%>
                 <div class="mr-2">
                     <button type="button" class="btn btn-outline-info btn-icon-text">
                         <i class="ti-trash btn-icon-prepend"></i>
-                        이력서 삭제하기
+                        기업 정보 삭제하기
                     </button>
                 </div><%-- mr-2 --%>
             </div><%-- d-flex --%>

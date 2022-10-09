@@ -7,7 +7,9 @@ import java.util.UUID;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -74,8 +76,9 @@ public class CompanyController {
 	    return new CMRespDto<>(1, "기업 등록 성공", logo);
 	  }
 	
-	@GetMapping("/company/info")
-	public String showCompanyInfo() {
+	@GetMapping("/company/detail/{id}")
+	public String showCompanyInfo(@PathVariable Integer id, Model model) {
+		model.addAttribute("company", companyService.showCompanyDetail(id));
 		return "page/company/companyDetail";
 	}
 	
