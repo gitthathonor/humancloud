@@ -11,15 +11,24 @@
 		VALUES(#{companyUsername}, #{companyPassword}, #{companyName}, #{companyEmail},
 		#{companyPhoneNumber}, #{companyAddress}, #{companyLogo}, now())
 	</insert>
+	
 	<select id="findById" resultType="site.metacoding.humancloud.domain.company.Company">
 		SELECT *
 		FROM company
 		WHERE company_id = #{companyId}
 	</select>
-	<select id="findAll"
-		resultType="site.metacoding.humancloud.domain.company.Company"></select>
+	
+	<select id="findAll" resultType="site.metacoding.humancloud.domain.company.Company">
+		SELECT *
+		FROM company
+	</select>
+	
 	<update id="update"></update>
-	<delete id="deleteById"></delete>
+	<delete id="deleteById">
+		DELETE 
+		FROM company
+		WHERE company_id = #{companyId}
+	</delete>
 	
 	
 	<select id="findByUsername" resultType="site.metacoding.humancloud.domain.company.Company">

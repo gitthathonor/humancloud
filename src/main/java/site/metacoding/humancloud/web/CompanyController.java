@@ -3,6 +3,7 @@ package site.metacoding.humancloud.web;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.MediaType;
@@ -27,7 +28,7 @@ public class CompanyController {
 
 	private final CompanyService companyService;
 
-	// 임시 main
+	// main
 	@GetMapping("/")
 	public String main() {
 		return "page/main";
@@ -77,20 +78,17 @@ public class CompanyController {
 	  }
 	
 	@GetMapping("/company/detail/{id}")
-	public String showCompanyInfo(@PathVariable Integer id, Model model) {
-		model.addAttribute("company", companyService.showCompanyDetail(id));
+	public String getCompanyDetail(@PathVariable Integer id, Model model) {
+		model.addAttribute("company", companyService.getCompanyDetail(id));
 		return "page/company/companyDetail";
 	}
 	
-	
-	
+	@GetMapping("/company")
+	public String getCompanyList(Model model) {
+		List<Company> companyList = companyService.getCompanyList();
+		model.addAttribute("companyList", companyList);
+		return "page/company/companyList";
+	}
 
-//	// form양식 테스트
-//	@PostMapping("/company/save")
-//	public String save(SaveDto saveDto) {
-//		System.out.println("controller 실행됨");
-//		companyService.saveCompany(saveDto);
-//		return "redirect:/";
-//	}
 
 }

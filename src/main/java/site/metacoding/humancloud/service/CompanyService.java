@@ -1,5 +1,7 @@
 package site.metacoding.humancloud.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -29,17 +31,14 @@ public class CompanyService {
 	}
 	
 	// 기업 정보 상세보기
-	public Company showCompanyDetail(Integer companyId) {
+	public Company getCompanyDetail(Integer companyId) {
 		return companyDao.findById(companyId);
 	}
-
 	
-	
-	
-	
-	
-	
-	
+	// 기업 리스트 보기
+	public List<Company> getCompanyList() {
+		return companyDao.findAll();
+	}
 	
 	
 	
@@ -52,12 +51,6 @@ public class CompanyService {
 //			return false;
 //		}
 //		return true;
-//	}
-
-//	// form 테스트
-//	public void saveCompany(SaveDto saveDto) {
-//		System.out.println("service 실행됨");
-//		companyDao.save(saveDto.toEntity());
 //	}
 
 }
