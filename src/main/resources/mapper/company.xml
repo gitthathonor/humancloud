@@ -4,17 +4,28 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
 	namespace="site.metacoding.humancloud.domain.company.CompanyDao">
-	<insert id="save">
+	<insert id="save" useGeneratedKeys="true" keyProperty="companyId">
 		INSERT INTO company(company_username, company_password,
-		company_name, company_email, company_phone_number, company_address,
+		company_name, company_email, company_phone_number, company_address, company_logo,
 		company_created_at)
 		VALUES(#{companyUsername}, #{companyPassword}, #{companyName}, #{companyEmail},
-		#{companyPhoneNumber}, #{companyAddress}, now())
+		#{companyPhoneNumber}, #{companyAddress}, #{companyLogo}, now())
 	</insert>
-	<select id="findById"
-		resultType="site.metacoding.humancloud.domain.company.Company"></select>
+	<select id="findById" resultType="site.metacoding.humancloud.domain.company.Company">
+		SELECT *
+		FROM company
+		WHERE companyId = #{companyId}
+	</select>
 	<select id="findAll"
 		resultType="site.metacoding.humancloud.domain.company.Company"></select>
 	<update id="update"></update>
 	<delete id="deleteById"></delete>
+	
+	
+	<select id="findByUsername" resultType="site.metacoding.humancloud.domain.company.Company">
+		SELECT *
+		FROM company
+		WHERE company_username = #{companyUsername}
+	</select>
+	
 </mapper>

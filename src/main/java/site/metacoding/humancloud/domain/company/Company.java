@@ -17,16 +17,19 @@ public class Company {
 	private String companyEmail;
 	private String companyPhoneNumber;
 	private String companyAddress;
+	private String companyLogo;
 	private Timestamp companyCreatedAt;
 	
 	
 	public Company(String companyUsername, String companyPassword, String companyName, String companyEmail,
-			String companyPhoneNumber, String companyAddress) {
+			String companyPhoneNumber, String companyAddress, String companyLogo) {
 		this.companyUsername = companyUsername;
 		this.companyPassword = companyPassword;
 		this.companyName = companyName;
 		this.companyEmail = companyEmail;
 		this.companyPhoneNumber = companyPhoneNumber;
 		this.companyAddress = companyAddress;
+		this.companyLogo = companyLogo;
 	}
+	
 }
