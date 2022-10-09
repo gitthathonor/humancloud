@@ -74,6 +74,11 @@ public class CompanyController {
 	    return new CMRespDto<>(1, "기업 등록 성공", logo);
 	  }
 	
+	@GetMapping("/company/info")
+	public String showCompanyInfo() {
+		return "page/company/companyDetail";
+	}
+	
 	
 	
 
