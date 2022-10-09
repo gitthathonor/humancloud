@@ -15,8 +15,8 @@ import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.domain.resume.ResumeDao;
 import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.domain.user.UserDao;
-import site.metacoding.humancloud.web.dto.user.JoinDto;
-import site.metacoding.humancloud.web.dto.user.LoginDto;
+import site.metacoding.humancloud.web.dto.request.user.JoinDto;
+import site.metacoding.humancloud.web.dto.request.user.LoginDto;
 
 @RequiredArgsConstructor
 @Service

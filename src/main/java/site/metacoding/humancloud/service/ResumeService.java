@@ -14,6 +14,8 @@ import site.metacoding.humancloud.domain.recruit.Recruit;
 import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.domain.resume.ResumeDao;
+import site.metacoding.humancloud.web.dto.request.resume.SaveDto;
+
 
 @RequiredArgsConstructor
 @Service
@@ -24,9 +26,15 @@ public class ResumeService {
     private final CompanyDao companyDao;
     private final CategoryDao categoryDao;
 
-    public void 이력서저장(Resume resume) {
-        resumeDao.save(resume);
-      }
+    public void 이력서저장(SaveDto saveDto) {
+        resumeDao.save(saveDto);
+        for (String category : saveDto.getCategoryList()) {
+            Category categoryElement = new Category(1,category);
+            categoryDao.save(categoryElement);
+        }
+
+
+    }
 
     // 페이지 맨 위 추천 기업 리스트 : 매개변수-세션값
     public void 추천기업리스트보기(Integer userId){

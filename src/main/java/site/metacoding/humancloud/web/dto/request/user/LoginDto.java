@@ -1,4 +1,4 @@
-package site.metacoding.humancloud.web.dto.user;
+package site.metacoding.humancloud.web.dto.request.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

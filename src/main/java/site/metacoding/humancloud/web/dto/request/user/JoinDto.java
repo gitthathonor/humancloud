@@ -1,8 +1,6 @@
-package site.metacoding.humancloud.web.dto.user;
+package site.metacoding.humancloud.web.dto.request.user;
 
 import java.util.List;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

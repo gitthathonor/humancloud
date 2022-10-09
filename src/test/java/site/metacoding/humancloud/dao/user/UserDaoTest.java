@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Import;
 import site.metacoding.humancloud.config.MyBatisConfig;
 import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.domain.user.UserDao;
-import site.metacoding.humancloud.web.dto.user.JoinDto;
+import site.metacoding.humancloud.web.dto.request.user.JoinDto;
 
 
 @Import(MyBatisConfig.class) // MyBatisTest가 MyBatisConfig를 못읽음
@@ -97,6 +97,7 @@ public class UserDaoTest {
 
         // verify
         User userPS = userDao.findById(userId);
+        
 
         // when
         int result = userDao.deleteById(userId);

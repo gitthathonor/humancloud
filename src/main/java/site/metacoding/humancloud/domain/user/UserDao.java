@@ -2,7 +2,7 @@ package site.metacoding.humancloud.domain.user;
 
 import java.util.List;
 
-import site.metacoding.humancloud.web.dto.user.JoinDto;
+import site.metacoding.humancloud.web.dto.request.user.JoinDto;
 
 public interface UserDao {
 	public int save(JoinDto joinDto);
