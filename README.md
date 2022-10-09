@@ -20,7 +20,6 @@ CREATE TABLE user (
 	created_at TIMESTAMP
 );
 
-
 -- 분야
 CREATE TABLE category (
 	category_id INT auto_increment PRIMARY KEY,
@@ -61,7 +60,6 @@ CREATE TABLE recruit(
 	recruit_id int auto_increment PRIMARY KEY,
 	recruit_title VARCHAR(50) NOT NULL,
 	recruit_career VARCHAR(50),
-	recruit_pattern VARCHAR(50),
 	recruit_salary INT,
 	recruit_location VARCHAR(120),
 	recruit_content LONGTEXT,
