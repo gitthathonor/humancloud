@@ -22,6 +22,13 @@
         <h3>이력서 정보</h3>
         <li>이력서 열람 횟수 : ${resume.readCount}</li>
 
+        <c:forEach var="x" items="${resume.resume}">
+            <li>
+                <p>${x.resumeTitle}</p>
+                <p>${x.resumeCreatedAt}</p>
+            </li>
+        </c:forEach>
+
     </ul>
 </div>
 </body>
