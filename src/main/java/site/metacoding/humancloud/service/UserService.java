@@ -17,18 +17,20 @@ import site.metacoding.humancloud.domain.user.UserDao;
 import site.metacoding.humancloud.web.dto.request.resume.user.JoinDto;
 import site.metacoding.humancloud.web.dto.request.resume.user.LoginDto;
 
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Service
 public class UserService {
     private final UserDao userDao;
-    private final CategoryDao categoryDao;
     private final ResumeDao resumeDao;
+
+    private final HttpSession session;
 
     public int 회원가입(JoinDto joinDto){
         boolean checkUsername = 유저네임중복체크(joinDto.getUsername());
         if(checkUsername==true){
             userDao.save(joinDto);
-
             return 1;
         }
         return 0;
@@ -41,15 +43,16 @@ public class UserService {
             return false;
         }
     }
-
     public boolean 로그인(Integer userId, LoginDto loginDto){
         User userPS = userDao.findById(userId);
-        if(loginDto.getUsername()!=userPS.getUsername()){
-            return false;
-        } else if (loginDto.getPassword()!=userPS.getPassword()){
+        if(userPS==null){
             return false;
         }
-        return true;
+        if(loginDto.getPassword()==userPS.getPassword()){
+            session.setAttribute("principal", userPS);
+            return true;
+        }
+        return false;
     }
 
     public void 메인페이지구성(Integer userId){ // 깔끔하게 구현되면 컨트룰러로 옮길거

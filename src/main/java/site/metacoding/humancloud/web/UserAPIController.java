@@ -17,20 +17,8 @@ public class UserAPIController {
 
     private final UserService userService;
 
-    @GetMapping("/user/api/mypage")
-    public void viewMypage(){
-//        System.out.println("------------------------");
-//        System.out.println(userService.유저정보보기(1).getPhoneNumber());
-//        System.out.println(userService.관심분야목록(1).get(1));
-//
-//        userService.메인페이지구성(1);
-        // List<Map<String, Object>> categoryPS = new ArrayList<>();
-        // Map sample = new HashMap<>();
-        // sample.put("key", "data");
-        // sample.put("key2", "data2");
+    @GetMapping("test/login")
+    public void testlogin(){
 
-
-        // categoryPS.add(sample);
-        // System.out.println(categoryPS.get(0).get("key"));
     }
 }
