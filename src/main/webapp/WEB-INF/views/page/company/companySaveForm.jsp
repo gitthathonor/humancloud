@@ -153,6 +153,7 @@
 				}).done((res)=>{
 					if(res.code == 1) {
 						alert("파일 등록 성공");
+						location.href="/company"
 					}
 				});
 			}
