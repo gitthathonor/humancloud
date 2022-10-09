@@ -13,9 +13,15 @@
 <div>
     <h1>프로필(왼쪽 카드)</h1>
     <ul>
+        <h3>유저정보</h3>
         <li>사진 : 어떻게 할 거임</li>
         <li>이메일 : ${user.email}</li>
         <li>전화번호 : ${user.phoneNumber}</li>
+    </ul>
+    <ul>
+        <h3>이력서 정보</h3>
+        <li>이력서 열람 횟수 : ${resume.readCount}</li>
+
     </ul>
 </div>
 </body>

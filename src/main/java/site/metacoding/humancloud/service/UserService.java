@@ -1,7 +1,9 @@
 package site.metacoding.humancloud.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
@@ -86,15 +88,22 @@ public class UserService {
             userPS.toPhoneNumber(result);
         }
         return userPS;
+        // 이력서보기
+//        int Count
     }
 
-    public Resume 이력서보기(Integer userId){
+    public Map<String, Object> 이력서보기(Integer userId){
         // 열람 횟수 보기(리절트 타입 인트면 좋음)
-        int CountResume = resumeDao.sumReadCount(userId);
+        int countResume = resumeDao.sumReadCount(userId).getResumeReadCount();
+
         // 이력서 목록보기 (제목, 등록카테고리, 날짜 정도 필요)
-        Resume resumePS = resumeDao.findById(userId); // 리절트 타입 : resume
-        resumePS.setResumeReadCount(CountResume);
-        return resumePS;
+        List<Resume> resumePS = resumeDao.findByUserId(userId); // 리절트 타입 : resume
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("readCount", countResume);
+        result.put("resume", resumePS);
+
+        return result;
     }
 
 //    public List<String> 관심분야목록(Integer userId){

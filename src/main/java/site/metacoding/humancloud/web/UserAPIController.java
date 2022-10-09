@@ -28,6 +28,7 @@ public class UserAPIController {
     public String testlogin(Model model){
         // Session userId = (Session) session.getAttribute("principal");
         model.addAttribute("user", userService.유저정보보기(1));
+        model.addAttribute("resume", userService.이력서보기(1));
         return "mypageSample";
     }
 }
