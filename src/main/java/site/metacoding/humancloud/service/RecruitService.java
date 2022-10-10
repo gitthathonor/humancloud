@@ -26,7 +26,7 @@ public class RecruitService {
 
         for (String i : saveDto.getRecruitCategoryList()) {
             category.setCategoryName(i);
-            //categoryDao.save(category);
+            categoryDao.save(category);
         }
 
         return;
