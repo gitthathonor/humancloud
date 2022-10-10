@@ -44,20 +44,11 @@ public class CompanyService {
 	
 	// 기업정보
 	public void updateCompany(Integer id, UpdateDto updateDto) {
-		System.out.println("service 시작");
-		System.out.println("============================================");
-		System.out.println(updateDto.getCompanyLogo());
-		System.out.println("============================================");
-		
 		// 1. 영속화
 		Company companyPS = companyDao.findById(id);
 		
 		// 2. updateDto를 companyPS에 업데이트
 		companyPS.update(updateDto);
-		
-		System.out.println("============================================");
-		System.out.println(companyPS.getCompanyLogo());
-		System.out.println("============================================");
 		
 		// 3. update
 		companyDao.update(companyPS);

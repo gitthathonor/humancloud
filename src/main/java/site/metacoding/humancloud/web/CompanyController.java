@@ -128,10 +128,7 @@ public class CompanyController {
 	      e.printStackTrace();
 	    }
 	    
-	    System.out.println("============================================");
-		System.out.println(updateDto.getCompanyLogo());
-		System.out.println("============================================");
-	    
+	    updateDto.setCompanyLogo(logo);
 	    companyService.updateCompany(id, updateDto);
 	    return new CMRespDto<>(1, "기업정보 수정완료", logo);
 	  }
