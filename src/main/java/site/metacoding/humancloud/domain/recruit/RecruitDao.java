@@ -2,8 +2,10 @@ package site.metacoding.humancloud.domain.recruit;
 
 import java.util.List;
 
+import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
+
 public interface RecruitDao {
-	public int save(Recruit recruit);
+	public void save(SaveDto saveDto);
 	public Recruit findById(Integer id);
 	public List<Recruit> findAll();
 	public void update(Recruit recruit);

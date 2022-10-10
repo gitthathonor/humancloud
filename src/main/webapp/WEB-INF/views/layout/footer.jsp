@@ -16,6 +16,6 @@
 </div>
 </div>
 </div>
-
+<script src="js/template.js"></script>
 </body>
 </html>
