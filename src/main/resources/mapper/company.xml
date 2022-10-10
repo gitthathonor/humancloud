@@ -32,7 +32,7 @@
 		UPDATE company SET company_password =
 		#{companyPassword}, company_name = #{companyName}, company_email =
 		#{companyEmail},
-		company_phone_number = #{companyPhnoeNumber},
+		company_phone_number = #{companyPhoneNumber},
 		company_address = #{companyAddress}, company_logo = #{companyLogo}
 		WHERE company_id = #{companyId}
 	</update>

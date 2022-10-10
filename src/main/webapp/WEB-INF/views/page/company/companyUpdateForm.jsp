@@ -4,8 +4,9 @@
 	<div class="card">
 		<div class="card-body">
 			<h4 class="card-title">기업 정보 수정</h4>
-
+				
 			<form enctype="multipart/form-data" id="fileUploadForm" class="forms-sample">
+			<input id="companyId" type="hidden" value="${company.companyId}">
 				<label for="companyUsername">Username</label>
 				<div class="form-group row">
 					<div class="col-9">
@@ -36,12 +37,14 @@
 				</div>
 				<div class="form-group">
 					<label for="companyLogo">logo</label>
-					<img id="companyLogoImg" src="/img/${company.companyLogo}">
+					<div id="image_container">
+						<img id="companyLogoImg" src="/img/${company.companyLogo}">
+					</div>
 					<input id="companyLogo" type="file" class="form-control" onchange="setThumbnail(event)">
 				</div>
 
-				<button id="btnSave" type="button" class="btn btn-primary mr-2">회원가입</button>
-				<button class="btn btn-light">Cancel</button>
+				<button id="btnUpdate" type="button" class="btn btn-primary mr-2">기업정보 수정</button>
+				<button id="btnCancel" class="btn btn-light">취소</button>
 			</form>
 		</div>
 	</div>
@@ -56,21 +59,21 @@
 			});
 			
 			
-			$("#btnSave").click(()=>{
-				save();				
+			$("#btnUpdate").click(()=>{
+				update();				
 			});
+			
 			
 			// 원래 이미지 지웠다가 파일 재업로드 시 다시 보여주기
 			function setThumbnail(event) {
-				
-				if(document.getElementById("previewImg")) {
-					document.getElementById("previewImg").remove();
-				}
 				
         		let reader = new FileReader();
         		
         		reader.onload = function(event) {
         			
+       			if(document.getElementById("previewImg")) {
+   					document.getElementById("previewImg").remove();
+   				}	
             	let img = document.createElement("img");
 	            let companyLogoImg = $("#companyLogoImg");
 	            companyLogoImg.remove();
@@ -80,24 +83,7 @@
         		};
         		
         	reader.readAsDataURL(event.target.files[0]);
-        	
     		}
-			
-			// 파일 변경 시 미리보기 2
-			function setThumbnail2(input) {
-				 if(input.files && input.files[0]) {
-				        const reader = new FileReader();
-				        reader.onload = function(e){
-				            const previewImage = document.getElementById("companyLogoImg");
-				            previewImage.src = e.target.result;
-				        }
-				        // reader가 이미지 읽도록 하기
-				        reader.readAsDataURL(input.files[0]);
-				    }
-			}
-			
-			
-			
 			
 			
 			// 주소 API
@@ -140,9 +126,10 @@
 			        }).open();
 			    }
 				
-				// 기업 회원 등록
+				// 기업 정보 수정
 				function update() {
 					let formData = new FormData();
+					let companyId = $("#companyId").val();
 					
 					let data = {
 						companyUsername:$("#companyUsername").val(),
@@ -155,18 +142,22 @@
 					
 					formData.append("file",$("#companyLogo")[0].files[0]);
 					
-					formData.append("saveDto", new Blob([JSON.stringify(data)], {type:"application/json"}));
+					formData.append("updateDto", new Blob([JSON.stringify(data)], {type:"application/json"}));
 					
-					$.ajax("/company/save",{
-						type:"post",
+					console.log(formData);
+					console.log(data);
+					
+					$.ajax("/company/update/"+companyId,{
+						type:"PUT",
 						data:formData,
 						processData:false,
 						contentType:false,
 						enctype:'multipart/form-data'
 					}).done((res)=>{
 						if(res.code == 1) {
+							alert(res.data);
 							alert("파일 등록 성공");
-							location.href="/company"
+							location.href="/company/"+companyId;
 						}
 					});
 				}
