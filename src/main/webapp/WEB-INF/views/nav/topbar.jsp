@@ -26,11 +26,14 @@
 
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item dropdown">
-          <!---------로그인 전--------->
-          <div style="margin: 0 10px;">
-            <button type="button" class="btn btn-primary">로그인</button>
-            <button type="button" class="btn btn-outline-primary">회원가입</button>
-          </div>
+          <c:choose>
+          <c:when test="${empty principal}">
+            <div style="margin: 0 10px;">
+              <button type="button" class="btn btn-primary"><a class="text-white" href="/login">로그인</a> </button>
+              <button type="button" class="btn btn-outline-primary">회원가입</button>
+            </div>
+          </c:when>
+          <c:otherwise>
           <!---------로그인 후--------->
           <!-----------알림창------------>
           <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
@@ -97,6 +100,8 @@
               Logout
             </a>
           </div>
+          </c:otherwise>
+          </c:choose>
         </li>
       </ul>
     </div>

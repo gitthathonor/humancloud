@@ -1,6 +1,5 @@
 package site.metacoding.humancloud.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,9 +8,6 @@ import java.util.regex.Pattern;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import site.metacoding.humancloud.domain.category.Category;
-import site.metacoding.humancloud.domain.category.CategoryDao;
-import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.domain.resume.ResumeDao;
 import site.metacoding.humancloud.domain.user.User;
@@ -29,6 +25,12 @@ public class UserService {
 
     private final HttpSession session;
 
+    public void 회원업데이트(Integer id, JoinDto joinDto){
+        User userPS = userDao.findById(id);
+        userPS.updateToEntity(joinDto.getPassword(), joinDto.getName(), joinDto.getEmail(), joinDto.getPhoneNumber());
+        userDao.update(id, userPS);
+    }
+
     public void 회원가입(JoinDto joinDto){
         boolean checkUsername = 유저네임중복체크(joinDto.getUsername());
         if(checkUsername==true){
@@ -43,13 +45,12 @@ public class UserService {
             return false;
         }
     }
-    public boolean 로그인(Integer userId, LoginDto loginDto){
-        User userPS = userDao.findById(userId);
+    public Boolean 로그인(LoginDto loginDto){
+        User userPS = userDao.findByUsername(loginDto.getUsername());
         if(userPS==null){
             return false;
         }
-        if(loginDto.getPassword()==userPS.getPassword()){
-            session.setAttribute("principal", userPS);
+        if(loginDto.getPassword().equals(userPS.getPassword())){
             return true;
         }
         return false;

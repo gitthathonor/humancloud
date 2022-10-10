@@ -25,7 +25,7 @@ public class User {
 		this.phoneNumber=phoneNumber;
 	}
 
-	public void UserUpdate(String password, String name, String email, String phoneNumber){
+	public void updateToEntity(String password, String name, String email, String phoneNumber){
 		this.password=password;
 		this.name=name;
 		this.email=email;

@@ -8,7 +8,7 @@ public interface UserDao {
 	public int save(JoinDto joinDto);
 	public User findById(Integer id);
 	public List<User> findAll();
-	public int update(User user);
+	public int update(Integer id, User user);
 	public int deleteById(Integer id);
 
 	public User findByUsername(String username);
