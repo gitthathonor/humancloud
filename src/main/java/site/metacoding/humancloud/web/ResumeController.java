@@ -90,9 +90,9 @@ public class ResumeController {
     return "page/resume/detail";
   }
 
-  @GetMapping("/resume/saveForm")
+  @GetMapping("/resume/saveForm/{userId}")
   public String saveResumeForm(Integer userId, Model model) {
-    model.addAttribute("user", userService.유저정보보기(1));
+    model.addAttribute("user", userService.유저정보보기(userId));
     return "page/resume/saveForm";
   }
 
