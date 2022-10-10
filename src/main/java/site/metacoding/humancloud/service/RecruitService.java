@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.domain.category.CategoryDao;
-import site.metacoding.humancloud.domain.recruit.Recruit;
 import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
 
@@ -20,7 +19,7 @@ public class RecruitService {
     @Transactional
     public void 구인공고작성(SaveDto saveDto) {
 
-        //recruitDao.save(saveDto);
+        recruitDao.save(saveDto);
 
         System.out.println(saveDto.getRecruitId());
         Category category = new Category(saveDto.getRecruitId(), null);
