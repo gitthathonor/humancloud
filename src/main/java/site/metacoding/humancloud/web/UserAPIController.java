@@ -24,6 +24,12 @@ public class UserAPIController {
 
     private final HttpSession session;
 
+    @GetMapping("/user")
+    public String userSaveForm(){
+        return "page/user/userSaveForm";
+    }
+
+
     @GetMapping("test/login")
     public String testlogin(Model model){
         // Session userId = (Session) session.getAttribute("principal");
