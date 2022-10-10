@@ -12,7 +12,7 @@
 							<th>로고</th>
 							<th>기업명</th>
 							<th>email</th>
-							<th>주소</th>
+							<th>전화번호</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -21,7 +21,7 @@
 								<td><img src="/img/${company.companyLogo}" style="width: 184px; height: 56px; border-radius: 0" class="img-thumbnail"></td>
 								<td class="font-weight-bold"><a href="/company/${company.companyId}">${company.companyName}</a></td>
 								<td>${company.companyEmail}</td>
-								<td class="font-weight-medium">${company.companyAddress}</td>
+								<td class="font-weight-medium">${company.companyPhoneNumber}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -35,16 +35,6 @@
 
 
 <div class="d-flex justify-content-center m-5">
-
-	<div class="w-75 d-flex justify-content-between">
-		<div class="btn-group">
-			<button type="button" class="btn btn-primary">Apple</button>
-			<button type="button" class="btn btn-primary">Samsung</button>
-			<button type="button" class="btn btn-primary">Sony</button>
-			<button type="button" class="btn btn-primary">Sony</button>
-			<button type="button" class="btn btn-primary">Sony</button>
-			<button type="button" class="btn btn-primary">Sony</button>
-		</div>
 		<div class="dropdown">
 			<button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuSizeButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton2">
