@@ -19,9 +19,9 @@
 						<div style="margin: 20px 0 0 0;"></div>
 						<div style="border-bottom: 1px solid #aaa"></div>
 						<div style="margin: 30px 0 0 0;"></div>
-						<div class="row">
+						<div class="row d-flex align-items-center">
 							<div class="col-xs-3 col-sm-3">
-								<img src="/img/${company.companyLogo}" style="width: 184px; height: 56px;" class="img-thumbnail" />
+								<img src="/img/${company.companyLogo}" style="width: 120px; height: 44px;"  />
 							</div>
 							<div class="col-xs-4 col-sm-6">
 								<ul class="list-unstyled">
