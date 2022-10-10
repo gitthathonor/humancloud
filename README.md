@@ -1,5 +1,10 @@
 # 미니프로젝트 humancloud - 이력서 관리 웹 사이트
 
+### 부트스트랩 로드 오류
+부트스트랩 Font 로드 오류가 있어 수정함
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7bb2671f-32b2-430c-89fb-f25f1fca8569/Untitled.png)
+
+
 ### DB - user생성 및 권한 부여
 ```sql
 CREATE USER 'human'@'%' IDENTIFIED BY 'human1234';
