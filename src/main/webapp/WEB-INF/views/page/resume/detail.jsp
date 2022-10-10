@@ -4,34 +4,31 @@
     <div>
         <div class="row">
             <div class="col-sm-9">
-                <h3>이력서 제목</h3>
+                <h3>${resume.resumeTitle}</h3>
                 <div style="margin: 20px 0 0 0;"></div>
                 <div style="border-bottom: 1px solid #aaa"></div>
                 <div style="margin: 30px 0 0 0;"></div>
                 <div class="row">
-                    <div class="col-xs-3 col-sm-3">
+                    <div class="col-xs-1 col-sm-3">
                         <img src="/img/${resume.resumePhoto}" class="img-thumbnail"/>
                     </div>
-                    <div class="col-xs-4 col-sm-6">
+                    <div class="col-xs-3 col-sm-5">
                         <ul class="list-unstyled">
                             <li style="font-size : 22px; font-weight:bold;">
-                                이름
+                                ${user.name}
                             </li>
                             <div style="margin: 20px 0 0 0;"></div>
                             <li style="font-size : 16px;">
-                                <i class="ti-mobile"></i> 전화번호
+                                <i class="ti-mobile"></i> ${user.phoneNumber}
                             </li>
                             <div style="margin: 10px 0 0 0;"></div>
                             <li style="font-size : 16px;">
-                               <i class="ti-email"></i> 이메일
+                               <i class="ti-email"></i> ${user.email}
                             </li>
                             <div style="margin: 10px 0 0 0;"></div>
                             <li style="font-size : 16px;">
-                                <i class="ti-desktop"></i> 블로그주소
-                            </li>
-                            <div style="margin: 10px 0 0 0;"></div>
-                            <li style="font-size : 16px;">
-                                <i class="ti-home"></i> 집주소
+                                <i class="ti-desktop"></i> 
+                                <a href="${resume.resumeLink}">${resume.resumeLink}</a>
                             </li>
                         </ul>
                     </div><%-- col-xs-4 col-sm-6 --%>
@@ -72,13 +69,13 @@
         <div class="row">
             <div class="d-flex">
                 <div class="mr-2">
-                    <button type="button" class="btn btn-primary btn-icon-text">
+                    <a href="/resume/updateForm/${resumeId}"class="btn btn-primary btn-icon-text">
                         <i class="ti-file btn-icon-prepend"></i>
                         이력서 수정하기
-                    </button>
+                    </a>
                 </div><%-- mr-2 --%>
                 <div class="mr-2">
-                    <button type="button" class="btn btn-outline-info btn-icon-text">
+                    <button type="button" id="btnDelete" class="btn btn-outline-info btn-icon-text">
                         <i class="ti-trash btn-icon-prepend"></i>
                         이력서 삭제하기
                     </button>
@@ -86,5 +83,27 @@
             </div><%-- d-flex --%>
         </div><%-- row --%>
     </div><%-- row --%>
-</div>
+<script>
+$("#btnDelete").click(() => {
+	deleteById();
+});
+
+function deleteById() {
+    let resumeId = ${resume.resumeId}
+
+	$.ajax("/resume/deleteById/" + resumeId, {
+		type: "DELETE",
+		dataType: "json" // 응답 데이터
+	}).done((res) => {
+		if (res.code == 1) {
+			location.href = document.referrer;
+            alert("글삭제 성공");
+		} else {
+			alert("글삭제 실패");
+		}
+	});
+}
+
+</script>
+
 <%@ include file="../../layout/footer.jsp" %>

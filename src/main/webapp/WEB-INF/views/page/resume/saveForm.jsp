@@ -11,15 +11,15 @@
         </div>
         <div class="form-group">
             <label for="name">이름</label>
-            <input type="text" class="form-control" id="name" placeholder="이름 입력">
+            <input type="text" class="form-control" id="name" placeholder="이름 입력" value="${user.name}">
         </div>
         <div class="form-group">
             <label for="email">이메일</label>
-            <input type="email" class="form-control" id="email" placeholder="이메일 입력">
+            <input type="email" class="form-control" id="email" placeholder="이메일 입력" value="${user.email}">
         </div>
         <div class="form-group">
             <label for="phoneNumber">전화번호</label>
-            <input type="password" class="form-control" id="phoneNumber" placeholder="Password">
+            <input type="tel" class="form-control" id="phoneNumber" placeholder="전화번호 입력" value="${user.phoneNumber}" >
         </div>
         <div class="form-group">
             <input type="file" id="file">

@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SaveDto {
+  private Integer resumeId;
   private Integer resumeUserId;
   private String resumeTitle;
   private String resumeEducation;
