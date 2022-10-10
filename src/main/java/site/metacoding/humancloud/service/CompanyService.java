@@ -41,6 +41,11 @@ public class CompanyService {
 	}
 	
 	
+	// 기업정보
+	public void update() {
+		
+	}
+	
 	
 
 //	public boolean 로그인(Integer id, LoginDto loginDto) {

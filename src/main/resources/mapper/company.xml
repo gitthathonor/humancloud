@@ -36,6 +36,8 @@
 		company_address = #{companyAddress}, company_logo = #{companyLogo}
 		WHERE company_id = #{companyId}
 	</update>
+	
+	
 	<delete id="deleteById">
 		DELETE
 		FROM company

@@ -19,7 +19,7 @@
 						<c:forEach var="company" items="${companyList}">
 							<tr>
 								<td><img src="/img/${company.companyLogo}" style="width: 184px; height: 56px; border-radius: 0" class="img-thumbnail"></td>
-								<td class="font-weight-bold">${company.companyName}</td>
+								<td class="font-weight-bold"><a href="/company/detail/${company.companyId}">${company.companyName}</a></td>
 								<td>${company.companyEmail}</td>
 								<td class="font-weight-medium">${company.companyAddress}</td>
 							</tr>

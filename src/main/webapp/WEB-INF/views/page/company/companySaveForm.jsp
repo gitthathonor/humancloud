@@ -13,7 +13,7 @@
                       <label for="companyUsername">Username</label>
                     <div class="form-group row">
                       <div class="col-9"><input type="text" class="form-control" id="companyUsername" placeholder="companyUsername" name="companyUsername"></div>
-                    <div class="col-3"><button id="btnCheckSameUsername" class="btn btn-light">중복확인</button></div>
+                    <div class="col-3"><button id="btnCheckSameUsername" type="button" class="btn btn-light">중복확인</button></div>
                     </div>
                     <div class="form-group">
                       <label for="companyPassword">Password</label>
@@ -57,7 +57,7 @@
 			<script>
 			
 			$("#btnCheckSameUsername").click(()=>{
-				 checkSameUsername();
+				checkSameUsername();
 			});
 			
 			
@@ -81,7 +81,7 @@
 							alert("가입이 가능한 username입니다.");
 						} else {
 							alert("이미 가입된 username 입니다.");
-							$("#username").val("");
+							$("#companyUsername").val('');
 						}
 					}
 				});

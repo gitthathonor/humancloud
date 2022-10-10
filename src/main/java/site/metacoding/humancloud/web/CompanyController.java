@@ -77,17 +77,27 @@ public class CompanyController {
 	    return new CMRespDto<>(1, "기업 등록 성공", logo);
 	  }
 	
+	// 기업 정보 상세보기
 	@GetMapping("/company/detail/{id}")
 	public String getCompanyDetail(@PathVariable Integer id, Model model) {
 		model.addAttribute("company", companyService.getCompanyDetail(id));
 		return "page/company/companyDetail";
 	}
 	
+	
+	// 기업 리스트 보기
 	@GetMapping("/company")
 	public String getCompanyList(Model model) {
 		List<Company> companyList = companyService.getCompanyList();
 		model.addAttribute("companyList", companyList);
 		return "page/company/companyList";
+	}
+	
+	// 기업 정보 수정하기 페이지
+	@GetMapping("/company/updateForm/{id}")
+	public String updateForm(@PathVariable Integer id, Model model) {
+		model.addAttribute("company", companyService.getCompanyDetail(id));
+		return "page/company/companyUpdateForm";
 	}
 
 

@@ -86,9 +86,9 @@
 	<div class="row">
 		<div class="d-flex">
 			<div class="mr-2">
-				<button type="button" class="btn btn-primary btn-icon-text">
+				<a href="/company/updateForm/${company.companyId}"><button type="button" class="btn btn-outline-info btn-icon-text">
 					<i class="ti-file btn-icon-prepend"></i> 기업 정보 수정하기
-				</button>
+				</button></a>
 			</div>
 			<%-- mr-2 --%>
 			<div class="mr-2">
