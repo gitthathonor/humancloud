@@ -45,6 +45,7 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         }).done((res) => {
+            console.log(res.data);
             $("#listContent").empty();
             $("#listContent").append(makeList(res.data));
         }).fail(function(error){

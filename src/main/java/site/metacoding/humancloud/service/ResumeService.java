@@ -50,11 +50,12 @@ public class ResumeService {
     }
 
     public List<Resume> 정렬하기(String orderList, Integer companyId){
-        if(orderList=="recent"){
+        if(orderList.equals("recent")){
+            최신순보기();
             return 최신순보기();
-        } else if (orderList=="career"){
+        } else if (orderList.equals("career")){
             return 경력순보기();
-        } else if (orderList=="education"){
+        } else if (orderList.equals("education")){
             return 학력순보기();
         }
 //        else {

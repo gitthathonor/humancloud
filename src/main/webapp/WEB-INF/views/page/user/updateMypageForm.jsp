@@ -56,7 +56,7 @@
             }
         }).done((res) => {
             if (res.code == 1) {
-                location.href = "/mypage";
+                location.href = "/mypage?id="+id;
             } else {
                 alert("업데이트 실패");
             }

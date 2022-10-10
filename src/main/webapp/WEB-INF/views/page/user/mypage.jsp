@@ -12,7 +12,7 @@
                         <div>지원 완료</div>
                     </div>
                     <div class="col border-right">
-                        <div class="display-2">0</div>
+                        <div class="display-2">${resume.readCount}</div>
                         <div>이력서 열람</div>
                     </div>
                     <div class="col border-right">

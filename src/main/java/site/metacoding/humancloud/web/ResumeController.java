@@ -3,6 +3,7 @@ package site.metacoding.humancloud.web;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.MediaType;
@@ -33,12 +34,18 @@ public class ResumeController {
 //  public @ResponseBody CMRespDto<?> test(){
 //    return new CMRespDto<>(1, "OK", resumeService.추천순보기(1));
 //  }
+//  @GetMapping("/page")
+//  public String testpage(){
+//    System.out.println(resumeService.학력순보기());
+//    List<Resume> test = resumeService.학력순보기();
+//    System.out.println(test.get(0).getResumeTitle());
+//    return "resumelist";
+//  }
 
   @GetMapping("/resume")
   public String viewList(Model model){
-    model.addAttribute("resumes", resumeService.이력서목록보기().get("resume"));
-    model.addAttribute("categories", resumeService.이력서목록보기().get("category"));
-    return "resumelist";
+    model.addAttribute("resumeData", resumeService.이력서목록보기());
+    return "page/resume/resumeList";
   }
 
   @PostMapping("/resume")

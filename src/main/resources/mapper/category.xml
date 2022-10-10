@@ -10,7 +10,7 @@
 	</select>
 
 	<select id="distinctName" resultType="site.metacoding.humancloud.domain.category.Category">
-		select distinct (category_name) from category
+		select distinct (category_name) as categoryName from category
 	</select>
 
 	<select id="findByResumeCategory" resultType="site.metacoding.humancloud.domain.resume.Resume">
