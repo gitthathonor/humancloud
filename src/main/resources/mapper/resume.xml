@@ -55,7 +55,9 @@
     resume_career = #{resumeCareer}, resume_photo = #{resumePhoto}, resume_link = #{resumeLink}
     WHERE resume_id = ${resumeId}
   </update>
+
 	<delete id="deleteById">
 		DELETE FROM resume WHERE resume_id=#{resumeId}
 	</delete>
+
 </mapper>

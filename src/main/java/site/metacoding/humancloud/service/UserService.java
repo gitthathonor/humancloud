@@ -29,13 +29,11 @@ public class UserService {
 
     private final HttpSession session;
 
-    public int 회원가입(JoinDto joinDto){
+    public void 회원가입(JoinDto joinDto){
         boolean checkUsername = 유저네임중복체크(joinDto.getUsername());
         if(checkUsername==true){
             userDao.save(joinDto);
-            return 1;
         }
-        return 0;
     }
     public boolean 유저네임중복체크(String username){
         User userPS = userDao.findByUsername(username);

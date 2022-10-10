@@ -18,7 +18,7 @@
                 <label for="username">Username</label>
                 <div class="form-group row">
                     <div class="col-9"><input type="text" class="form-control" id="username" placeholder="Username"></div>
-                    <div class="col-3"><button class="btn btn-light">중복확인</button></div>
+                    <div class="col-3"><button onclick="checkUsername()" class="btn btn-light" type="button">중복확인</button></div>
                 </div>
 
                 <div class="form-group">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="phoneNumber">Phone number</label>
-                    <input type="email" class="form-control" id="phoneNumber" placeholder="Email">
+                    <input type="tel" class="form-control" id="phoneNumber" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
@@ -42,7 +42,7 @@
                     <input type="password" class="form-control" id="password2" placeholder="Password">
                 </div>
 
-                <button id="btnInsert" type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button id="join" type="submit" class="btn btn-primary mr-2">Submit</button>
                 <button class="btn btn-light">Cancel</button>
             </form>
         </div>
@@ -50,20 +50,58 @@
 </div>
 
 <script>
-    $("#btnInsert").click(()=>{
-        insert();
+    let isUsernameSameCheck = false;
+    let checkPassword = false;
+
+    $("#join").click(()=>{
+        checkSamePassword();
+        if(isUsernameSameCheck==true && checkPassword==true){
+            insert();
+        } else{
+            alert("아이디체크");
+        }
     });
+
+    function checkSamePassword(){
+        let password = $("#password").val();
+        let password2 = $("#password2").val();
+
+        if(password!=password2){
+            alert("비밀번호 노일치");
+        } else {
+            checkPassword=true;
+        }
+    }
+
+    function checkUsername() {
+        let username = $("#username").val();
+
+        $.ajax("/user/usernameSameCheck?username="+username, {
+            type: "GET",
+            dataType: "json",
+        }).done((res) => {
+            if (res.code == 1) { // 통신 성공
+                if (res.data == true) {
+                    alert("사용 가능");
+                    isUsernameSameCheck = true;
+                } else {
+                    alert("아이디 중복");
+                    isUsernameSameCheck = false;
+                }
+            }
+        });
+    }
 
     function insert(){
         let data = {
+            username: $("#username").val(),
             name: $("#name").val(),
-            teamId : $("#team").val(),
-            position : $("#position").val()
+            email : $("#email").val(),
+            phoneNumber : $("#phoneNumber").val(),
+            password : $("#password").val()
         };
 
-        console.log(data.position);
-        console.log(data.name);
-        $.ajax("/player", {
+        $.ajax("/user/join", {
             type: "POST",
             dataType: "json",
             data: JSON.stringify(data),
@@ -72,7 +110,7 @@
             }
         }).done((res) => {
             if (res.code == 1) {
-                location.href = "/player";
+                location.href = "/";
             }
         });
     }

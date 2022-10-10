@@ -73,8 +73,9 @@ public class ResumeService {
         return resumeDao.orderByEducation();
     }
     public void 추천순보기(Integer companyId){
-        // 1. 로그인 하지 않으면 최신순?
-        // 2. 로그인시 category에 해당하는 걸로
+        // 1. 로그인 하지 않으면?
+
+        // 2. 로그인시
 
         // 기업의 이력서 목록에 해당되는 관심 이름 목록 불러오기
         List<Category> recruitList = categoryDao.joinRecruitCategory(companyId);

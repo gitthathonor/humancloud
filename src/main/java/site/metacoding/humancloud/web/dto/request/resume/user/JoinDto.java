@@ -17,14 +17,12 @@ public class JoinDto {
 	private String name;
 	private String email;
 	private String phoneNumber;
-	private List<String> categoryList;
 
-    public JoinDto(String username, String password, String name, String email, String phoneNumber, List<String> categorList){
+    public JoinDto(String username, String password, String name, String email, String phoneNumber){
         this.username=username;
         this.password=password;
         this.name=name;
         this.email=email;
         this.phoneNumber=phoneNumber;
-        this.categoryList=categorList;
     }
 }
