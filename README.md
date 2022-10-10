@@ -2,7 +2,8 @@
 
 ### 부트스트랩 로드 오류
 부트스트랩 Font 로드 오류가 있어 수정함
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7bb2671f-32b2-430c-89fb-f25f1fca8569/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/92712092/194812543-6bf839a5-8397-4b4b-9dba-ac9d8f75e191.png)
+
 
 
 ### DB - user생성 및 권한 부여
