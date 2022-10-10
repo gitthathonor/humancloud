@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.domain.category.CategoryDao;
+import site.metacoding.humancloud.domain.recruit.Recruit;
 import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
 
@@ -15,6 +16,12 @@ public class RecruitService {
 
     private final RecruitDao recruitDao;
     private final CategoryDao categoryDao;
+
+    public Recruit 공고상세페이지(Integer recruitId){
+
+        Recruit recruitPS = recruitDao.findById(recruitId);
+        return recruitPS;
+    }
 
     @Transactional
     public void 구인공고작성(SaveDto saveDto) {
