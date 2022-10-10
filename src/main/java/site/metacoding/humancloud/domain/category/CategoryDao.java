@@ -11,9 +11,9 @@ public interface CategoryDao {
 	public List<Category> findAll();
 	public void update(Category category);
 	public void deleteById(Integer id);
-
+	public void deleteByResumeId(Integer categoryResumeId);
 	public List<Category> findByName(String name);
-	public List<Category> findByUserId(Integer userId);
+	public List<Category> findByResumeId(Integer ResumeId);
 	public List<Category> findByCompanyId(Integer companyId);
 	public Company findByCompanyCategory(String categories);
 

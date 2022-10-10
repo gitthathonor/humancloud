@@ -15,8 +15,8 @@ public class SaveDto {
   private String resumePhoto;
   private String resumeLink;
   private List<String> categoryList;
-  
-  public SaveDto(){
+
+  public SaveDto() {
 
   }
 
@@ -29,8 +29,6 @@ public class SaveDto {
     this.resumePhoto = resumePhoto;
     this.resumeLink = resumeLink;
     this.categoryList = categoryList;
-  } 
-
-
+  }
 
 }

@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.category.CategoryDao">
 
+	<delete id="deleteByResumeId">
+		delete from category where category_resume_id=#{categoryResumeId}
+	</delete>
+
 	<select id="findByCompanyCategory" resultType="site.metacoding.humancloud.domain.company.Company">
 		select company.* from company
 		left join category
@@ -13,8 +17,8 @@
 		select * from category where category_company_id=#{companyId}
 	</select>
 
-	<select id="findByUserId" resultType="site.metacoding.humancloud.domain.category.Category">
-			select * from category where category_user_id=#{userId}
+	<select id="findByResumeId" resultType="site.metacoding.humancloud.domain.category.Category">
+			select * from category where category_resume_id=#{resuemId}
 	</select>
 
 	<select id="findByName" resultType="site.metacoding.humancloud.domain.category.Category">
@@ -22,8 +26,8 @@
 	</select>
 
 	<insert id="save">     
-		insert into category(category_user_id, category_company_id, category_name)
-		values (#{categoryUserId}, #{categoryCompanyId}, #{categoryName})
+		insert into category(category_resume_id, category_company_id, category_name)
+		values (#{categoryResumeId}, #{categoryCompanyId}, #{categoryName})
 	</insert>
 
 	<select id="findById" resultType="site.metacoding.humancloud.domain.category.Category">
@@ -42,5 +46,8 @@
         update category set category_user_id=#{userId}, category_company_id#{companyId}, category_name=#{companyName}
         where category_id=#{categoryId}
 	</update>
+
+
+
 
 </mapper>

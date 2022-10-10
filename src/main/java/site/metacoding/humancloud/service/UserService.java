@@ -96,7 +96,7 @@ public class UserService {
     }
 
     public List<String> 관심분야목록(Integer userId){
-        List<Category> categoryPS = categoryDao.findByUserId(userId);
+        List<Category> categoryPS = categoryDao.findByResumeId(userId);
         List<String> categoryName = new ArrayList<>();
         for(Category c : categoryPS){
             categoryName.add( c.getCategoryName());

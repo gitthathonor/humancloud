@@ -17,6 +17,8 @@ import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.domain.resume.ResumeDao;
 import site.metacoding.humancloud.web.dto.request.resume.SaveDto;
+import site.metacoding.humancloud.web.dto.request.resume.UpdateDto;
+
 
 
 @RequiredArgsConstructor
@@ -28,6 +30,15 @@ public class ResumeService {
     private final CompanyDao companyDao;
     private final CategoryDao categoryDao;
 
+    public void 이력서수정( Integer resumeId, UpdateDto updateDto){
+        resumeDao.update(updateDto);
+        categoryDao.deleteByResumeId(4); //updateDto.getResumeUserId();
+        for (String category : updateDto.getCategoryList()) {
+            Category categoryElement = new Category(4, category);
+            categoryDao.save(categoryElement);
+        }
+    }
+
     public void 이력서저장(SaveDto saveDto) {
         resumeDao.save(saveDto);
         for (String category : saveDto.getCategoryList()) {
@@ -36,10 +47,10 @@ public class ResumeService {
         }
     }
 
-    public Map<String,Object> 이력서상세보기(Integer resumeId, Integer userId){
+    public Map<String,Object> 이력서상세보기(Integer resumeId){
         Map<String,Object> resumeDetail = new HashMap<>();
         resumeDetail.put("resume", resumeDao.findById(resumeId));
-        resumeDetail.put("category", categoryDao.findByUserId(1));
+        resumeDetail.put("category", categoryDao.findByResumeId(4));
         return resumeDetail;
     }
 
@@ -63,7 +74,7 @@ public class ResumeService {
         // return companies;
     }
     public void 추천순기업리스트(Integer userId){
-        List<Category> categoryPS = categoryDao.findByUserId(userId);
+        List<Category> categoryPS = categoryDao.findByResumeId(4);
         List<String> categoryName = new ArrayList<>();   
 
         for(Category c : categoryPS){
