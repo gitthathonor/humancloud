@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -132,6 +133,12 @@ public class CompanyController {
 	    companyService.updateCompany(id, updateDto);
 	    return new CMRespDto<>(1, "기업정보 수정완료", logo);
 	  }
-
+	
+	
+	@DeleteMapping("/company/delete/{id}")
+	public @ResponseBody CMRespDto<?> delete(@PathVariable Integer id) {
+		companyService.deleteCompany(id);
+		return new CMRespDto<>(1, "기업정보 삭제 완료", null);
+	}
 
 }

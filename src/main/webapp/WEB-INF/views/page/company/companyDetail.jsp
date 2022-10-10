@@ -2,6 +2,7 @@
 
 <%@ include file="../../layout/header.jsp"%>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+<input id="id" type="hidden" value="${company.companyId}">
 <div>
 	<div class="row">
 		<div class="col-sm-12">
@@ -103,5 +104,33 @@
 	<%-- row --%>
 </div>
 <%-- row --%>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+	$("#btnDelete").click(()=>{
+		if(!confirm("정말로 삭제하시겠습니까?")) {
+			location.reload();
+		}
+		resign();
+	});
+	
+	function resign() {
+		let id = $("#id").val();
+		console.log(id);
+	
+		$.ajax("/company/delete/"+id, {
+			type: "DELETE",
+			dataType: "json" // 응답 데이터
+		}).done((res) => {
+			if (res.code == 1) {
+				alert("회원탈퇴 완료");
+				location.href = "/company";
+			} else {
+				alert("회원탈퇴 실패");
+			}
+		});
+	}
+</script>
+
 
 <%@ include file="../../layout/footer.jsp"%>

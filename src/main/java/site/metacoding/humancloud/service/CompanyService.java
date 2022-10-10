@@ -42,7 +42,7 @@ public class CompanyService {
 	}
 	
 	
-	// 기업정보
+	// 기업정보 수정
 	public void updateCompany(Integer id, UpdateDto updateDto) {
 		// 1. 영속화
 		Company companyPS = companyDao.findById(id);
@@ -54,7 +54,10 @@ public class CompanyService {
 		companyDao.update(companyPS);
 	}
 	
-	
+	// 기업정보 삭제
+	public void deleteCompany(Integer id) {
+		companyDao.deleteById(id);
+	}
 
 //	public boolean 로그인(Integer id, LoginDto loginDto) {
 //		User userPS = userDao.findById(id);
