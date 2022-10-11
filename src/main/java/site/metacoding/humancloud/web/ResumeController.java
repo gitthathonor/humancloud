@@ -31,10 +31,6 @@ public class ResumeController {
   private final ResumeService resumeService;
   private final UserService userService;
 
-  @GetMapping("/")
-  public String main() {
-    return "page/main";
-  }
 
   @DeleteMapping("/resume/deleteById/{resumeId}")
   public @ResponseBody CMRespDto<?> deleteResume(@PathVariable Integer resumeId) {
