@@ -105,7 +105,7 @@ public class ResumeService {
         List<Category> categories = categoryDao.findByName(category);
         List<Recruit> recruits = new ArrayList<>();
         for (Category c : categories) {
-            recruits.add(recruitDao.findById(c.getCategoryCompanyId()));
+            recruits.add(recruitDao.findById(c.getCategoryRecruitId()));
         }
         return recruits;
     }

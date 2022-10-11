@@ -25,11 +25,6 @@
 		select * from category where category_name=#{name}
 	</select>
 
-	<insert id="save">     
-		insert into category(category_resume_id, category_company_id, category_name)
-		values (#{categoryResumeId}, #{categoryCompanyId}, #{categoryName})
-	</insert>
-
 	<select id="findById" resultType="site.metacoding.humancloud.domain.category.Category">
         select * from category where category_id=#{categoryId}
 	</select>
@@ -50,4 +45,9 @@
 
 
 
+	<insert id="save">     
+		insert into category(category_resume_id, category_recruit_id, category_name)
+		values (#{categoryResumeId}, #{categoryRecruitId}, #{categoryName})
+	 </insert>
+	
 </mapper>
