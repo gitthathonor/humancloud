@@ -2,10 +2,15 @@ package site.metacoding.humancloud.domain.user;
 
 import java.util.List;
 
+import site.metacoding.humancloud.web.dto.request.resume.user.JoinDto;
+
 public interface UserDao {
-	public void save(User user);
+	public int save(JoinDto joinDto);
 	public User findById(Integer id);
 	public List<User> findAll();
-	public void update(User user);
-	public void deleteById(Integer id);
+	public int update(Integer id, User user);
+	public int deleteById(Integer id);
+
+	public User findByUsername(String username);
+
 }
