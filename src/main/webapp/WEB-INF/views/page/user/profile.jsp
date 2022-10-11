@@ -24,8 +24,24 @@
             </div>
             <div class="py-3 px-3 text-center d-flex justify-content-around">
                 <div class="btn btn-inverse-dark btn-fw"><a class="text-black" href="/update/${sessionScope.principal}">회원정보수정</a></div>
-                <div class="btn btn-inverse-dark btn-fw">계정탈퇴</div>
+                <div class="btn btn-inverse-dark btn-fw" onclick='deleteUser("${user.userId}")'>계정탈퇴</div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+function deleteUser(id) {
+	$.ajax("/users/" + id, { 
+		type: "DELETE",
+		dataType: "json"
+	}).done((res) => {
+		if (res.code == 1) {
+			alert("회원탈퇴완료");
+			location.href = "/";
+		} else {
+			alert("회원탈퇴실패");
+		}
+	});
+}
+</script>

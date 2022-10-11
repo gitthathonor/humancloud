@@ -82,10 +82,10 @@
     </div>
 </div>
 
-<div id ="resumeCard" class="d-flex justify-content-center">
+<div id ="resumeCard" class="">
     <div class=" w-75 card">
     <c:forEach var="resume" items="${resumeData.resume}">
-        <div class="card-body row">
+        <div class="card-body row border">
             <div class="bg-danger col-2" style="width:200px">
                 resume.resumeTitle
             </div>
@@ -142,7 +142,7 @@
     function makeList(x){
         let item =`<div class="card px-4">`;
         for(let list of x){
-            item +=`<div class="card-body row"><div class="bg-danger col-2" style="width:200px">`+list.resumePhoto+`</div>`;
+            item +=`<div class="card-body row border"><div class="bg-danger col-2" style="width:200px">`+list.resumePhoto+`</div>`;
             item += `<div class="col-8 px-5">`
             item += `<p class="mb-4">`+list.resumeUserId+`</p>`;
             item += `<p class="fs-30 mb-2">`+list.resumeTitle+`</p>`;

@@ -11,6 +11,7 @@ public interface ResumeDao {
 	public void deleteById(Integer id);
 
 	public List<Resume> findByUserId(Integer userId);
+	public void deleteByUserId(Integer userId);
 
 	public Resume sumReadCount(Integer userId);
 	public List<Resume> orderByCareer();

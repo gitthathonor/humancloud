@@ -27,7 +27,14 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/mypage?id=${sessionScope.principal}">
+          <c:choose>
+          <c:when test="${empty sessionScope.principal}">
+            <a class="nav-link" href="/login">
+          </c:when>
+          <c:otherwise>
+            <a class="nav-link" href="/mypage?id=${sessionScope.principal}">
+          </c:otherwise>
+          </c:choose>
           <i class="icon-grid-2 menu-icon"></i>
           <span class="menu-title">마이페이지</span>
         </a>

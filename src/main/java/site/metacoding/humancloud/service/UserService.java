@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.resume.Resume;
@@ -24,6 +25,15 @@ public class UserService {
     private final ResumeDao resumeDao;
 
     private final HttpSession session;
+
+    @Transactional(rollbackFor = RuntimeException.class) 
+	public void 회원탈퇴(Integer id) {
+		userDao.deleteById(id);
+        List<Resume> resumes = resumeDao.findByUserId(id);
+        if(resumes!=null){
+            resumeDao.deleteByUserId(id);
+        }
+	} 
 
     public void 회원업데이트(Integer id, JoinDto joinDto){
         User userPS = userDao.findById(id);
@@ -56,19 +66,6 @@ public class UserService {
         return null;
     }
 
-    public void 메인페이지구성(Integer userId){ // 깔끔하게 구현되면 컨트룰러로 옮길거
-        //  기본 유저 정보
-        // 관심분야보기
-        // 관심 분야가 겹치는 기업 매칭(추천)
-        // 이력서 내용 필요
-    }
-
-
-
-
-
-
-
 
 
 
@@ -93,16 +90,26 @@ public class UserService {
 
     public Map<String, Object> 이력서보기(Integer userId){
         // 열람 횟수 보기(리절트 타입 인트면 좋음)
-        int countResume = resumeDao.sumReadCount(userId).getResumeReadCount();
 
         // 이력서 목록보기 (제목, 등록카테고리, 날짜 정도 필요)
-        List<Resume> resumePS = resumeDao.findByUserId(userId); // 리절트 타입 : resume
+        try {
+            Integer countResume = resumeDao.sumReadCount(userId).getResumeReadCount();
 
-        Map<String, Object> result = new HashMap<>();
-        result.put("readCount", countResume);
-        result.put("resume", resumePS);
+            List<Resume> resumePS = resumeDao.findByUserId(userId); // 리절트 타입 : resume
 
-        return result;
+            Map<String, Object> result = new HashMap<>();
+            result.put("readCount", countResume);
+            result.put("resume", resumePS);
+
+            return result;
+        } catch (NullPointerException e) {
+            Map<String, Object> result = new HashMap<>();
+            result.put("readCount", 0);
+            result.put("resume", null);
+
+            return result;
+        }
+        
     }
 
 //    public List<String> 관심분야목록(Integer userId){

@@ -10,10 +10,6 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.domain.category.CategoryDao;
-import site.metacoding.humancloud.domain.company.Company;
-import site.metacoding.humancloud.domain.company.CompanyDao;
-import site.metacoding.humancloud.domain.recruit.Recruit;
-import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.domain.resume.ResumeDao;
 

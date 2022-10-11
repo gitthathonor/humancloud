@@ -19,8 +19,14 @@ import javax.servlet.http.HttpSession;
 public class UserAPIController {
 
     private final UserService userService;
-
     private final HttpSession session;
+
+    @DeleteMapping("/user/{id}")
+	public @ResponseBody CMRespDto<?> delete(@PathVariable Integer id) {
+		userService.회원탈퇴(id);
+		session.invalidate();
+		return new CMRespDto<>(1, "회원탈퇴성공", null);
+	}
 
     @PutMapping("/update/{id}")
     public @ResponseBody CMRespDto<?> update(@PathVariable Integer id, @RequestBody JoinDto joinDto){
@@ -42,6 +48,12 @@ public class UserAPIController {
         model.addAttribute("resume", userService.이력서보기(id));
         return "page/user/mypage";
     }
+
+    @GetMapping("/logout")
+	public String logout() {
+		session.invalidate();
+		return "redirect:/";
+	}
 
     @GetMapping("/login")
     public String loginForm(){

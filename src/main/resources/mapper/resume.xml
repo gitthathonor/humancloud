@@ -60,4 +60,8 @@
 		DELETE FROM resume WHERE resume_id=#{resumeId}
 	</delete>
 
+   <delete id="deleteByUserId">
+		DELETE FROM resume WHERE resume_user_id=#{userId}
+	</delete>
+
 </mapper>

@@ -27,13 +27,23 @@
                 <div class="my-5">
                     <h4 class="m-3 text-primary">이력서</h4>
                     <div class="row d-flex justify-content-center">
-                          <c:forEach var="r" items="${resume.resume}">
+                    <c:choose>
+                    <c:when  test="${empty resume.resume}">
+                        <div class="m-3 p-3 col-2 border" onchang='viewResume("${r.resumeId}")'>
+                                <h3>이력서 써</h3>
+                                <p>이력서 작성 페이지로 이동</p>
+                            </div>
+                    </c:when>
+                    <c:otherwise>
+                    <c:forEach var="r" items="${resume.resume}">
                             <div class="m-3 p-3 col-2 border" onchang='viewResume("${r.resumeId}")'>
                                 <h3>${r.resumeTitle}</h3>
                                 <p>${r.resumeReadCount}</p>
                                 <p>${r.resumeCreatedAt}</p>
                             </div>
                         </c:forEach>
+                    </c:otherwise>
+                    </c:choose>
                     </div>
                 </div>
                 <div class="my-5">
