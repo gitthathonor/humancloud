@@ -18,6 +18,7 @@
       <link rel="shortcut icon" href="/images/favicon.png" />
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
 
     </head>
 
@@ -28,7 +29,6 @@
             <%@ include file="../nav/menu.jsp" %>
               <div class="main-panel">
                 <div class="content-wrapper " style="background:#e6eaef">
-                  =======
                   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <!DOCTYPE html>
                     <html lang="en">
@@ -74,4 +74,4 @@
                             <%@ include file="../nav/menu.jsp" %>
                               <div class="main-panel">
                                 <div class="content-wrapper">
-                                  >>>>>>> d4ef018c8208f435d5a7561d6d9af68e24256327
+                                  <div class="content-wrapper " style="background:#e6eaef">

@@ -50,7 +50,6 @@
 	</div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 			
@@ -79,6 +78,7 @@
 	            companyLogoImg.remove();
 	            img.setAttribute("src", event.target.result);
 	            img.setAttribute("id", "previewImg");
+	            img.setAttribute("style", "width: 200px; height: 50px;");
 	            document.querySelector("#image_container").appendChild(img);
         		};
         		
