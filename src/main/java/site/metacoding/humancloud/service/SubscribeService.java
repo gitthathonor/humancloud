@@ -14,6 +14,10 @@ public class SubscribeService {
 
     private final SubscribeDao subscribeDao;
 
+    public void 구독취소(Integer userId, Integer companyId){
+        subscribeDao.deleteByUserCompany(userId, companyId);
+    }
+
     public void 구독하기(Subscribe subscribe){
         Subscribe subscribe1 = new Subscribe(subscribe.getSubscribeUserId(), subscribe.getSubscribeCompanyId());
         subscribeDao.save(subscribe1);

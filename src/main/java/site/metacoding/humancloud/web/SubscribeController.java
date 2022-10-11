@@ -14,8 +14,14 @@ public class SubscribeController {
 
     private final SubscribeService subscribeService;
 
+    @DeleteMapping("/subscribe/{userId}/{companyId}")
+    public @ResponseBody CMRespDto<?> deleteSubscribe(@PathVariable("userId") Integer userId, @PathVariable("companyId") Integer companyId){
+        subscribeService.구독취소(userId, companyId);
+        return new CMRespDto<>(1, "OK", null);
+    }
+
     @GetMapping("/test/{userId}")
-    public String test(@PathVariable Integer userId, Model model){
+    public String test(@PathVariable("userId") Integer userId, Model model){
         model.addAttribute("subscribe", subscribeService.구독기업보기(userId));
         return "page/subscribe";
     }

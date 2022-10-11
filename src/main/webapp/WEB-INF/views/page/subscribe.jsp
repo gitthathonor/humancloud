@@ -24,7 +24,7 @@
                 <c:forEach var="subs" items="${subscribe}">
                     <div class="row d-flex justify-content-between">
                         <div class="m-3 col-7 border">${subs.companyName}</div>
-                        <button onclick="deleteSubscribe("")" class="m-3 col-3 btn btn-outline-danger" type="button">구독취소</button>
+                        <button onclick='deleteSubscribe(${subs.companyId}, ${sessionScope.principal})' class="m-3 col-3 btn btn-outline-danger" type="button">구독취소</button>
                     </div>
                 </c:forEach>
             </div>
@@ -60,16 +60,16 @@
         });
     }
 
-    function deleteSubscribe(){
-        $.ajax("/subscribe/" + id, {
+    function deleteSubscribe(companyId, userId){
+        $.ajax("/subscribe/" + userId + "/" + companyId, {
             type: "DELETE",
             dataType: "json"
         }).done((res) => {
             if (res.code == 1) {
-                alert("회원탈퇴완료");
-                location.href = "/";
+                alert("구독삭제완료");
+                location.reload();
             } else {
-                alert("회원탈퇴실패");
+                alert("오류");
             }
         });
     }

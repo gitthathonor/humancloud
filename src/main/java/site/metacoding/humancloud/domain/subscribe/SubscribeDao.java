@@ -12,4 +12,5 @@ public interface SubscribeDao {
 	public void deleteById(Integer id);
 
 	public List<Company> findCompanyByUserId(Integer userId);
+	public void deleteByUserCompany(Integer userId, Integer companyId);
 }
