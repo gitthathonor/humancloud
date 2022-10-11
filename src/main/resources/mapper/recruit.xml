@@ -5,7 +5,9 @@
 <mapper namespace="site.metacoding.humancloud.domain.recruit.RecruitDao">
 	<insert id="save"></insert>
 	<select id="findById" resultType="site.metacoding.humancloud.domain.recruit.Recruit"></select>
-	<select id="findAll" resultType="site.metacoding.humancloud.domain.recruit.Recruit"></select>
+	<select id="findAll" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
+		select * from recruit
+	</select>
 	<update id="update"></update>
 	<delete id="deleteById"></delete>
 </mapper>

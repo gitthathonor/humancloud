@@ -10,15 +10,26 @@ import site.metacoding.humancloud.domain.recruit.Recruit;
 import site.metacoding.humancloud.domain.recruit.RecruitDao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Service
 public class RecruitService {
 
     private final RecruitDao recruitDao;
-    private final CompanyDao companyDao;
     private final CategoryDao categoryDao;
+    private final CompanyDao companyDao;
+
+    public Map<String, Object> 채용공고목록보기(){
+        Map<String, Object> recruitList = new HashMap<>();
+        recruitList.put("recruit", recruitDao.findAll());
+        recruitList.put("category", categoryDao.distinctName());
+        return recruitList;
+    }
+
+
 
     // 페이지 맨 위 추천 기업 리스트 : 매개변수-세션값
     public void 추천기업리스트보기(Integer userId){

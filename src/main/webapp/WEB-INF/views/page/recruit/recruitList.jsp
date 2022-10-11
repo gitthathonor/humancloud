@@ -67,40 +67,40 @@
 <div class="d-flex justify-content-center my-5">
     <div class="w-75 d-flex justify-content-between">
         <div class="btn-group">
-            <c:forEach var="category" items="${resumeData.category}">
+            <c:forEach var="category" items="${recruits.category}">
                 <button onclick='btnCategory("${category.categoryName}")' class="btn btn-primary">${category.categoryName}</button>
             </c:forEach>
         </div>
         <div class="dropdown">
             <select  id="btnOrder" onchange="orderDo(this.value)" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <option selected>정렬</option>
-              <option value="recent">최신순</option>
-              <option value="career">경력순</option>
-              <option value="education">학력순</option>
+                <option selected>정렬</option>
+                <option value="recent">최신순</option>
+                <option value="career">경력순</option>
+                <option value="education">학력순</option>
             </select>
         </div>
     </div>
 </div>
 
-<div id ="resumeCard" class="">
+<div id ="recruitCard" class="">
     <div class="card px-4">
-    <c:forEach var="resume" items="${resumeData.resume}">
-        <div class="card-body row border">
-            <div class="bg-danger col-2" style="width:200px">
-                resume.resumeTitle
+        <c:forEach var="recruit" items="${recruits.recruit}">
+            <div class="card-body row border">
+                <div class="bg-danger col-2" style="width:200px">
+                    resume.resumeTitle
+                </div>
+                <div class="col-8 px-5">
+                    <p class="mb-4">${recruit.recruitLocation}</p>
+                    <p class="fs-30 mb-2">${recruit.recruitTitle}</p>
+                    <p class="fs-10 mb-2">${recruit.recruitCreatedAt}</p>
+                </div>
+                <div class="col-2 d-flex flex-wrap align-content-center">
+                    <a href="/${recruit.recruitId}">
+                        <button type="button" class="btn btn-outline-danger">상세보기</button>
+                    </a>
+                </div>
             </div>
-            <div class="col-8 px-5">
-                <p class="mb-4">${resume.resumeUserId}</p>
-                <p class="fs-30 mb-2">${resume.resumeTitle}</p>
-                <p class="fs-10 mb-2">${resume.resumeCreatedAt}</p>
-            </div>
-            <div class="col-2 d-flex flex-wrap align-content-center">
-                <a href="resume/detail/${resume.resumeId}">
-                <button type="button" class="btn btn-outline-danger">상세보기</button>
-                </a>
-            </div>
-        </div>
-    </c:forEach>
+        </c:forEach>
     </div>
 </div>
 
@@ -118,11 +118,11 @@
                 "Content-Type": "application/json"
             }
         }).done((res) => {
-            $("#resumeCard").empty();
-            $("#resumeCard").append(makeList(res.data));
+            $("#recruitCard").empty();
+            $("#recruitCard").append(makeList(res.data));
         }).fail(function(error){
             console.log(error);
-            alert("����");
+            alert("오류");
         });
     }
 
@@ -134,24 +134,24 @@
             dataType: "json",
         }).done((res) => {
             console.log(res.data);
-            $("#resumeCard").empty();
-            $("#resumeCard").append(makeList(res.data));
+            $("#recruitCard").empty();
+            $("#recruitCard").append(makeList(res.data));
         }).fail(function(error){
             console.log(error);
             alert("오류");
         });
     }
-    
+
     function makeList(x){
         let item =`<div class="card px-4">`;
         for(let list of x){
-            item +=`<div class="card-body row border"><div class="bg-danger col-2" style="width:200px">`+list.resumePhoto+`</div>`;
+            item +=`<div class="card-body row border"><div class="bg-danger col-2" style="width:200px">`+list.recruitCompanyId+`</div>`;
             item += `<div class="col-8 px-5">`
-            item += `<p class="mb-4">`+list.resumeUserId+`</p>`;
-            item += `<p class="fs-30 mb-2">`+list.resumeTitle+`</p>`;
-            item += `<p>`+list.resumeCreatedAt+`</p>`;
+            item += `<p class="mb-4">`+list.recruitCreatedAt+`</p>`;
+            item += `<p class="fs-30 mb-2">`+list.recruitTitle+`</p>`;
+            item += `<p>`+list.recruitLocation+`</p>`;
             item += `</div><div class="col-2 d-flex flex-wrap align-content-center">`;
-            item += `<a hreaf="resume/detail/`+list.resumeId+`>`;
+            item += `<a hreaf="#`+list.recruitPattern+`>`;
             item += `<button type="button" class="btn btn-outline-danger">`+`상세보기`+`</button></a>`
             item += `</div></div>`
         }
