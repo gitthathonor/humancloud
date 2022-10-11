@@ -3,11 +3,11 @@
 
 
         <!-- 기업사진 명 등-->
-        <div class="row">
-            <div class="col-md-4  stretch-card">
+        <div class="row" style="height: 300;">
+            <div class="col-md-4">
                 <div class="card tale-bg">
-                    <div class="card-people mt-auto">
-                        <img src="images/dashboard/people.svg" alt="people">
+                    <div class="card-people">
+
                     </div>
                 </div>
             </div>
@@ -16,14 +16,15 @@
             <div class="col-md-8  transparent">
                 <div>
 
-                    <p class="card-title">Detailed Reports</p>
-                    <h2 class="text-primary">기업명이 들어오면 되는 곳곳곳곳곳ㄱ속속솏곳곳곳곳</h2>
+
+                    <h2 class="text-primary">${Recruit.recruitTitle}</h2>
 
                 </div>
 
                 <div>
                     <div class="mt-5">
-                        <p>간략한 설명들이 들어서는 곳곳곳곳곳ㄱ속속솏곳곳곳곳</p>
+
+                        <p><span>근무지 : ${Recruit.recruitLocation}</span></p>
                     </div>
                 </div>
             </div>
@@ -36,26 +37,17 @@
                     <h3 class="mt-3 ml-2">지원 자격</h3>
                     <hr class="border-primary" />
 
-                    <p class="m-3 plan-cost text-primary">경력 :${Recruit.recruitId} </p>
-                    <p class="m-3 plan-cost text-primary">경력 : </p>
-
+                    <p class="m-3 plan-cost text-primary">경력 :${Recruit.recruitCareer} </p>
+                    <p class="m-3 plan-cost text-primary">연봉 :${Recruit.recruitSalary} </p>
                 </div>
             </div>
 
-            <div class="col-md-4 col-xl-4  stretch-card pricing-card">
+            <div class="col-md-8 col-xl-8  stretch-card pricing-card">
                 <div class="card border border-success">
-                    <h3 class="mt-3 ml-2">업무 내용</h3>
-                    <hr class="border-success" />
-                    <p class="m-3 plan-cost text-success">업무 소개 내용 존농=ㅇㄴㄹ녀롬ㄴ뎌ㅑ로ㅑㅕㄴㅁㅈㄷ뢔ㅔㅁ 곳곳곳곳곳ㄱ속속솏곳곳곳곳</p>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-xl-4  stretch-card pricing-card">
-                <div class="card border border-primary">
                     <h3 class="mt-3 ml-2">회사 소개</h3>
-                    <hr class="border-primary" />
+                    <hr class="border-success" />
 
-                    <p class="m-3 plan-cost text-primary">회사 소개 내용 존농=ㅇㄴㄹ녀롬ㄴ뎌ㅑ로ㅑㅕㄴㅁㅈㄷ뢔ㅔㅁ 곳곳곳곳곳ㄱ속속솏곳곳곳곳</p>
+                    <p class="m-3 plan-cost text-success">회사 소개 내용 존농=ㅇㄴㄹ녀롬ㄴ뎌ㅑ로ㅑㅕㄴㅁㅈㄷ뢔ㅔㅁ 곳곳곳곳곳ㄱ속속솏곳곳곳곳</p>
 
                 </div>
             </div>
@@ -100,6 +92,14 @@
                         ㄹ더랴ㅐ덜ㄴ댜ㅐ런대ㅑ[러매[ㅑ허ㅗㅁㄷ개ㅑ호ㅜㅁㅇㄱ라;ㅓㅜㅁ대ㅓ먛ㅁㄴㄱ;ㅐ흐ㅓㅜㅁㄵ꺠ㅑㅎㅇㅁㄹ"ㅒㅠㅜㄴㄷ개ㅑㅓㅎㅍㄴㄱ'ㅐㅑ헌ㅁ"해ㅓㄴ'ㅇ먜ㅓㄴ'애ㅑ햐ㅐㄴ'</p>
 
                 </div>
+
+            </div>
+            <div class="mr-2">
+                <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
+                    onclick="goUpdate()">
+                    <i class="ti-file btn-icon-prepend"></i>
+                    수정하기
+                </button>
             </div>
         </div>
 
@@ -155,4 +155,13 @@
                 </div>
             </div>
         </div>
+        <input id="companyData" value="${Recruit.recruitId}" type="hidden">
+        <script>
+            function goUpdate() {
+                alert("갈까요?");
+                let data = $("#companyData").val();
+                location.href = "/recruit/update/" + data;
+            }
+
+        </script>
         <%@ include file="../../layout/footer.jsp" %>
