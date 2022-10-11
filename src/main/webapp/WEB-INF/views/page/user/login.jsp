@@ -55,7 +55,7 @@
                 "Content-Type": "application/json; charset=utf-8"
             }
         }).done((res) => {
-            if (res.data == true) {
+            if (res.data != null) {
                 location.href = "/";
             } else {
                 alert("로그인 실패");

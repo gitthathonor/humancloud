@@ -1,10 +1,5 @@
 package site.metacoding.humancloud.web;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +12,7 @@ import site.metacoding.humancloud.web.dto.request.resume.user.JoinDto;
 import site.metacoding.humancloud.web.dto.request.resume.user.LoginDto;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 @RequiredArgsConstructor
 @Controller
@@ -35,8 +28,8 @@ public class UserAPIController {
         return new CMRespDto<>(1, "ok", null);
     }
 
-    @GetMapping("/update")
-    public String updateMypage(@RequestParam Integer id, Model model){
+    @GetMapping("/update/{id}")
+    public String updateMypage(@PathVariable Integer id, Model model){
         model.addAttribute("user", userService.유저정보보기(id));
         return "page/user/updateMypageForm";
     }
@@ -56,10 +49,11 @@ public class UserAPIController {
     }
 
     @PostMapping("/login")
-    public @ResponseBody CMRespDto<?> login(@RequestBody LoginDto loginDto, HttpSession session){
-        boolean result = userService.로그인(loginDto);
-        if(result==true){
-            session.setAttribute("principal", loginDto.getUsername());
+    public @ResponseBody CMRespDto<?> login(@RequestBody LoginDto loginDto, HttpServletRequest request){
+        User result = userService.로그인(loginDto);
+        if(result!=null){
+            HttpSession session = request.getSession();
+            session.setAttribute("principal", result.getUserId());
         }
         return new CMRespDto<>(1, "1", result);
     }
@@ -79,7 +73,7 @@ public class UserAPIController {
         return new CMRespDto<>(1, "same id", false);
     }
 
-    @GetMapping("/user")
+    @GetMapping("/join")
     public String userSaveForm(){
         return "page/user/userSaveForm";
     }

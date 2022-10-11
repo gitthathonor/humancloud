@@ -26,7 +26,15 @@
                 </div>
                 <div class="my-5">
                     <h4 class="m-3 text-primary">이력서</h4>
-                    <div class="row bg-primary rounded m-2 p-5 text-center text-white"></div>
+                    <div class="row d-flex justify-content-center">
+                          <c:forEach var="r" items="${resume.resume}">
+                            <div class="m-3 p-3 col-2 border" onchang='viewResume("${r.resumeId}")'>
+                                <h3>${r.resumeTitle}</h3>
+                                <p>${r.resumeReadCount}</p>
+                                <p>${r.resumeCreatedAt}</p>
+                            </div>
+                        </c:forEach>
+                    </div>
                 </div>
                 <div class="my-5">
                     <h4 class="m-3 text-primary">추천</h4>
@@ -40,5 +48,22 @@
             </div>
         </div>
     </div>
+
+<script>
+function viewResume(id){
+        $.ajax({
+            type: "GET",
+            // url: 여기다가 이력서 상세보기 연결 (매개변수 id 있음),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+        }).done((res) => {
+            location.href="#";
+        }).fail(function(error){
+            console.log(error);
+            alert("오류");
+        });
+}
+
+</script>
 
 <%@ include file="../../layout/footer.jsp" %>

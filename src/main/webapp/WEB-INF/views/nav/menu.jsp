@@ -27,7 +27,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="/mypage" class="nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="tables">
+        <a href="/mypage?id=${sessionScope.principal}" class="nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="tables">
           <i class="icon-grid-2 menu-icon"></i>
           <span class="menu-title">마이페이지</span>
           <i class="menu-arrow"></i>

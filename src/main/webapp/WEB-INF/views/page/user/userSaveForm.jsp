@@ -110,6 +110,7 @@
             }
         }).done((res) => {
             if (res.code == 1) {
+                alert("회원가입 완료");
                 location.href = "/";
             }
         });

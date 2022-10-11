@@ -45,15 +45,15 @@ public class UserService {
             return false;
         }
     }
-    public Boolean 로그인(LoginDto loginDto){
+    public User 로그인(LoginDto loginDto){
         User userPS = userDao.findByUsername(loginDto.getUsername());
         if(userPS==null){
-            return false;
+            return null;
         }
         if(loginDto.getPassword().equals(userPS.getPassword())){
-            return true;
+            return userPS;
         }
-        return false;
+        return null;
     }
 
     public void 메인페이지구성(Integer userId){ // 깔끔하게 구현되면 컨트룰러로 옮길거
