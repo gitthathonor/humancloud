@@ -14,4 +14,11 @@ public class Apply {
 	private Integer applyRecruitId;
 	private Integer applyResumeId;
 	private Timestamp applyCreatedAt;
+
+	public Apply(Integer applyRecruitId, Integer applyResumeId, Timestamp applyCreatedAt) {
+		this.applyRecruitId = applyRecruitId;
+		this.applyResumeId = applyResumeId;
+		this.applyCreatedAt = applyCreatedAt;
+	}
+
 }

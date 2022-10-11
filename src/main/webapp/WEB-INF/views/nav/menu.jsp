@@ -15,9 +15,11 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/detail/9">
           <i class="icon-paper menu-icon"></i>
-          <span class="menu-title">이력서</span>
+          <span class="menu-title">
+            이력서
+          </span>
         </a>
       </li>
       <li class="nav-item">
