@@ -24,13 +24,7 @@ import site.metacoding.humancloud.web.dto.request.resume.WriteDto;
 public class ResumeController {
 
   private final ResumeService resumeService;
- @GetMapping("/page")
- public String testpage(){
-   System.out.println(resumeService.학력순보기());
-   List<Resume> test = resumeService.학력순보기();
-   System.out.println(test.get(0).getResumeTitle());
-   return "resumelist";
- }
+
 
   @GetMapping("/resume")
   public String viewList(Model model){

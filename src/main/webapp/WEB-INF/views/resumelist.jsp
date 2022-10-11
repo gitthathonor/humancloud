@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="EUC-KR">
+    <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Index Page</title>
 </head>
@@ -21,24 +21,18 @@
     </c:forEach>
 </div>
 <select id="orderList" onchange="orderDo(this.value)">
-    <option value="recent">�ֽż�</option>
-    <option value="education">�з¼�</option>
-    <option value="career">��¼�</option>
-    <option value="recommend">��õ��</option>
+    <option value="recent">최신순</option>
+    <option value="education">학력순</option>
+    <option value="career">경력순</option>
+    <option value="recommend">추천순 미완</option>
 </select>
 <div id="listContent">
-    ���Ⱑ ���� �� ĭ
 </div>
 </body>
 <script>
-    // $('#orderList').change(() => {
-    //     let listOption = $("#orderList option:selected").val();
-    //     console.log(listOption);
-    //     if(listOption)
-    // });
+    
 
     function orderDo(listOption){
-        console.log(listOption)
         $.ajax({
             type: "GET",
             url: "/resume/list?order="+listOption,

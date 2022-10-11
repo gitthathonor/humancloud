@@ -15,7 +15,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/resume">
           <i class="icon-paper menu-icon"></i>
           <span class="menu-title">이력서</span>
         </a>
@@ -27,17 +27,10 @@
         </a>
       </li>
       <li class="nav-item">
-        <a href="/mypage?id=${sessionScope.principal}" class="nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="tables">
+        <a class="nav-link" href="/mypage?id=${sessionScope.principal}">
           <i class="icon-grid-2 menu-icon"></i>
           <span class="menu-title">마이페이지</span>
-          <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="tables">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-          </ul>
-        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">

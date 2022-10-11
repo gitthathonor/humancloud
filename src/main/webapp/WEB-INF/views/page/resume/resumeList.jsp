@@ -84,12 +84,23 @@
 </div>
 
 <div id ="resumeCard" class="">
-<div  class="w-75 stretch-card transparent">
-            포문돌릴ㄹ자리
+        <div class=" w-75 card">
+        <c:forEach var="resume" items="${resumeData.resume}">
+            <div class="card-body row">
+                <div class="bg-danger col-2" style="width:200px">resume.resumeTitle</div>
+                    <div class="col-8 px-5">
+                        <p class="mb-4">${resume.resumeUserId}</p>
+                        <p class="fs-30 mb-2">${resume.resumeCreatedAt}</p>
+                    </div>
+                    <div class="col-2 d-flex flex-wrap align-content-center">
+                    <button type="submit" class="btn btn-outline-danger">지원하기</button>
+            </div>
+        </div>
+        </c:forEach>
 </div>
-<script>
+</div>
 
-    
+<script>
     function btnCategory(title){
         let data = {
             categoryName : title,
