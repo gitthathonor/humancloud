@@ -20,23 +20,20 @@ public class RecruitController {
 
     private final RecruitService recruitService;
 
-    @GetMapping("/detail")
+    @GetMapping("recruit/detail/{id}")
     public String recruit_Detail(@RequestParam Integer id, Model model) {
 
-        System.out.println("=====================");
-        System.out.println("is that woriking" + id);
-        System.out.println("=====================");
         Recruit recruitPS = recruitService.공고상세페이지(id);
         model.addAttribute("Recruit", recruitPS);
         return "page/recruit/detail";
     }
 
-    @GetMapping("/write")
+    @GetMapping("recruit/save")
     public String writeFrom() {
-        return "page/recruit/writeForm";
+        return "page/recruit/saveForm";
     }
 
-    @PostMapping("/write")
+    @PostMapping("recruit/save")
     public @ResponseBody CMRespDto<?> write(@RequestBody SaveDto saveDto) {
 
         recruitService.구인공고작성(saveDto);
