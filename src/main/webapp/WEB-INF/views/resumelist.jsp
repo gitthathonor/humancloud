@@ -21,13 +21,13 @@
     </c:forEach>
 </div>
 <select id="orderList" onchange="orderDo(this.value)">
-    <option value="recent">ÃÖ½Å¼ø</option>
-    <option value="education">ÇĞ·Â¼ø</option>
-    <option value="career">°æ·Â¼ø</option>
-    <option value="recommend">ÃßÃµ¼ø</option>
+    <option value="recent">ï¿½Ö½Å¼ï¿½</option>
+    <option value="education">ï¿½Ğ·Â¼ï¿½</option>
+    <option value="career">ï¿½ï¿½Â¼ï¿½</option>
+    <option value="recommend">ï¿½ï¿½Ãµï¿½ï¿½</option>
 </select>
 <div id="listContent">
-    ¿©±â°¡ ³»¿ë µé¾î°¥ Ä­
+    ï¿½ï¿½ï¿½â°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¥ Ä­
 </div>
 </body>
 <script>
@@ -50,7 +50,7 @@
             $("#listContent").append(makeList(res.data));
         }).fail(function(error){
             console.log(error);
-            alert("½ÇÆĞ");
+            alert("ï¿½ï¿½ï¿½ï¿½");
         });
     }
 
@@ -71,7 +71,7 @@
             $("#listContent").append(makeList(res.data));
         }).fail(function(error){
             console.log(error);
-            alert("½ÇÆĞ");
+            alert("ï¿½ï¿½ï¿½ï¿½");
         });
     }
 
@@ -86,3 +86,17 @@
     }
 </script>
 </html>
+
+
+
+<div class="card-body row">
+                <div class="bg-danger col-2" style="width:200px">ì‚¬ì§„</div>
+                <div class="col-8 px-5">
+                    <p class="mb-4">backend, java, web</p>
+                    <p class="fs-30 mb-2">title</p>
+                    <p>2000.1.1</p>
+                </div>
+                <div class="col-2 d-flex flex-wrap align-content-center">
+                    <button type="submit" class="btn btn-outline-danger">ì§€ì›í•˜ê¸°</button>
+                </div>
+            </div>

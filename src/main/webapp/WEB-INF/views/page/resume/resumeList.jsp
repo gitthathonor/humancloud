@@ -68,44 +68,78 @@
     <div class="w-75 d-flex justify-content-between">
         <div class="btn-group">
             <c:forEach var="category" items="${resumeData.category}">
-                <button type="button" class="btn btn-primary">${category.categoryName}</button>
+                <button onclick='btnCategory("${category.categoryName}")' class="btn btn-primary">${category.categoryName}</button>
             </c:forEach>
-s        </div>
+        </div>
+
         <div class="dropdown">
-            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuSizeButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton2">
-                <h6 class="dropdown-header">Settings</h6>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-            </div>
+            <select  id="btnOrder" onchange="orderDo(this.value)" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <option selected>정렬</option>
+              <option value="recent">최신순</option>
+              <option value="career">경력순</option>
+              <option value="education">학력순</option>
+            </select>
         </div>
     </div>
 </div>
 
-
-<div class="d-flex justify-content-center m-5">
-    <div class="w-75 stretch-card transparent">
-        <div class="card px-4">
-            <div class="card-body row">
-                <div class="bg-danger col-2" style="width:200px">사진</div>
-                <div class="col-8 px-5">
-                    <p class="mb-4">backend, java, web</p>
-                    <p class="fs-30 mb-2">title</p>
-                    <p>2000.1.1</p>
-                </div>
-                <div class="col-2 d-flex flex-wrap align-content-center">
-                    <button type="submit" class="btn btn-outline-danger">지원하기</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div id ="resumeCard" class="">
+<div  class="w-75 stretch-card transparent">
+            포문돌릴ㄹ자리
 </div>
 <script>
 
+    
+    function btnCategory(title){
+        let data = {
+            categoryName : title,
+        };
+
+        $.ajax("/resume", {
+            type: "POST",
+            dataType: "json",
+            data: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).done((res) => {
+            $("#resumeCard").empty();
+            $("#resumeCard").append(makeList(res.data));
+        }).fail(function(error){
+            console.log(error);
+            alert("����");
+        });
+    }
+
+    function orderDo(listOption){
+        $.ajax({
+            type: "GET",
+            url: "/resume/list?order="+listOption,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+        }).done((res) => {
+            console.log(res.data);
+            $("#resumeCard").empty();
+            $("#resumeCard").append(makeList(res.data));
+        }).fail(function(error){
+            console.log(error);
+            alert("오류");
+        });
+    }
+    
+    function makeList(x){
+        let item =`<div class="card px-4">`;
+        for(let list of x){
+            item +=`<div class="card-body row"><div class="bg-danger col-2" style="width:200px">`+list.resumePhoto+`</div>`;
+            item += `<div class="col-8 px-5">`
+            item += `<p class="mb-4">`+list.resumeUserId+`</p>`;
+            item += `<p class="fs-30 mb-2">`+list.resumeTitle+`</p>`;
+            item += `<p>`+list.resumeCreatedAt+`</p>`;
+            item += `</div><div class="col-2 d-flex flex-wrap align-content-center">`;
+            item += `<button type="submit" class="btn btn-outline-danger">`+`지원하기`+`</button>`
+            item += `</div></div>`
+        }
+        return item;
+    }
 </script>
 <%@ include file="../../layout/footer.jsp" %>

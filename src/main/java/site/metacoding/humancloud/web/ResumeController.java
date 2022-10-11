@@ -23,24 +23,26 @@ import site.metacoding.humancloud.web.dto.request.resume.WriteDto;
 @Controller
 public class ResumeController {
 
-  @GetMapping("/test")
-  public void test(){
-    resumeService.추천순보기(1);
-  }
-
   private final ResumeService resumeService;
+
+
+//   @GetMapping("/test")
+//   public void test(){
+//     resumeService.추천순보기(1);
+//   }
+
 
 //  @GetMapping("/test")
 //  public @ResponseBody CMRespDto<?> test(){
 //    return new CMRespDto<>(1, "OK", resumeService.추천순보기(1));
 //  }
-//  @GetMapping("/page")
-//  public String testpage(){
-//    System.out.println(resumeService.학력순보기());
-//    List<Resume> test = resumeService.학력순보기();
-//    System.out.println(test.get(0).getResumeTitle());
-//    return "resumelist";
-//  }
+ @GetMapping("/page")
+ public String testpage(){
+   System.out.println(resumeService.학력순보기());
+   List<Resume> test = resumeService.학력순보기();
+   System.out.println(test.get(0).getResumeTitle());
+   return "resumelist";
+ }
 
   @GetMapping("/resume")
   public String viewList(Model model){
