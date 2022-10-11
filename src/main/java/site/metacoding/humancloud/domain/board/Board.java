@@ -13,7 +13,6 @@ public class Board {
 	private Integer boardId;
 	private String boardTitle;
 	private String boardContent;
-	private String boardFile;
 	private Integer boardReadCount;
 	private Integer boardUserId;
 	private Timestamp boardCreatedAt;
