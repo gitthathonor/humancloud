@@ -26,28 +26,26 @@
 	</select>
 
 	<insert id="save">     
-		insert into category(category_resume_id, category_company_id, category_name)
-		values (#{categoryResumeId}, #{categoryCompanyId}, #{categoryName})
+		insert into category(category_resume_id, category_recruit_id, category_name)
+		values (#{categoryResumeId}, #{categoryRecruitId}, #{categoryName})
 	</insert>
 
 	<select id="findById" resultType="site.metacoding.humancloud.domain.category.Category">
         select * from category where category_id=#{categoryId}
 	</select>
-	
+
 	<select id="findAll" resultType="site.metacoding.humancloud.domain.category.Category">
         select * from category
 	</select>
-	
+
 	<delete id="deleteById">
         delete from category where category_id=#{categoryId}
 	</delete>
 
-	<update id ="update">
+	<update id="update">
         update category set category_user_id=#{userId}, category_company_id#{companyId}, category_name=#{companyName}
         where category_id=#{categoryId}
 	</update>
-
-
 
 
 </mapper>

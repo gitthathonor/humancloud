@@ -78,7 +78,7 @@ public class ResumeController {
   public String updateResumeForm(@PathVariable Integer resumeId, Integer userId, Model model) {
     model.addAttribute("resume", resumeService.이력서상세보기(resumeId, userId).get("resume"));
     model.addAttribute("category", resumeService.이력서상세보기(resumeId, userId).get("category"));
-    model.addAttribute("user", resumeService.이력서상세보기(resumeId, userId).get("user"));
+    model.addAttribute("user", resumeService.이력서상세보기(resumeId, 1).get("user"));
     return "page/resume/updateForm";
   }
 
@@ -91,7 +91,7 @@ public class ResumeController {
   }
 
   @GetMapping("/resume/saveForm/{userId}")
-  public String saveResumeForm(Integer userId, Model model) {
+  public String saveResumeForm(@PathVariable Integer userId, Model model) {
     model.addAttribute("user", userService.유저정보보기(userId));
     return "page/resume/saveForm";
   }

@@ -37,7 +37,7 @@ public class ResumeService {
 
     public void 이력서수정(Integer resumeId, UpdateDto updateDto) {
         resumeDao.update(updateDto);
-        categoryDao.deleteByResumeId(4); // updateDto.getResumeUserId();
+        categoryDao.deleteByResumeId(resumeId); // updateDto.getResumeUserId();
         for (String category : updateDto.getCategoryList()) {
             Category categoryElement = new Category(resumeId, category);
             categoryDao.save(categoryElement);
@@ -105,7 +105,7 @@ public class ResumeService {
         List<Category> categories = categoryDao.findByName(category);
         List<Recruit> recruits = new ArrayList<>();
         for (Category c : categories) {
-            recruits.add(recruitDao.findById(c.getCategoryCompanyId()));
+            recruits.add(recruitDao.findById(c.getCategoryRecruitId()));
         }
         return recruits;
     }

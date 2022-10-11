@@ -91,9 +91,9 @@
         <div class="btn-group m-4" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-primary" id="btnSave">작성완료</button>
         </div><%-- btn-group m-4 --%>
-           <c:forEach var="category" items="${category}">
-        <input id = "asd" name="asd" type ="text" value='${category.categoryName}'/>
-    </c:forEach> 
+        <c:forEach var="category" items="${category}">
+            <input name="asd" type ="hidden" value='${category.categoryName}'/>
+        </c:forEach> 
 
         </form>
     </div>
@@ -101,12 +101,31 @@
 
 <script>
 
+    let edu = '${resume.resumeEducation}';
+    let career = '${resume.resumeCareer}';
     // 라디오 버튼 값 가져오기
-    document.querySelector("#education input[value=${resume.resumeEducation}]").setAttribute('checked' , true);
+    document.querySelector('#education input[value='+edu+']').setAttribute('checked' , true);
    
     // 드롭박스 값 가져오기
-    $("#resumeCareer").val('${resume.resumeCareer}');
+    $("#resumeCareer").val(career);
 
+    // 체크박스 값 가져오기
+    let arr = new Array();
+    let count =$("input[name=asd]").length;
+
+    for(let i = 0; i<count; i++){
+        arr.push(document.getElementsByName("asd")[i].value);
+    }
+
+   let chkbox = $('.form-check-input');
+
+   for (let i = 0; i<arr.length; i++){
+        for(let j = 0; j<chkbox.length; j++){
+            if(arr[i] == chkbox[j].value){
+                chkbox[j].checked = true;
+            }
+        }
+    }
 
     function setThumbnail(event) {
         let reader = new FileReader();
