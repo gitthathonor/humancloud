@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
-	<%@ include file="../../layout/header.jsp" %>
+<%@ include file="../../layout/header.jsp" %>
 
 		<input id="id" type="hidden" value="${company.companyId}">
 		<input id="address" type="hidden" value="${company.companyAddress}">
@@ -107,7 +106,6 @@
 		<%-- row --%>
 			<script type="text/javascript"
 				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20cf6648d61d4bd68efbb7c7c95723f3&libraries=services"></script>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 			<script>
 				let address = $("#address").val();
 

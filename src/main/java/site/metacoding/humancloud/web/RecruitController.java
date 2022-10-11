@@ -44,8 +44,4 @@ public class RecruitController {
         return new CMRespDto<>(1, "성공", null);
     }
 
-    @GetMapping("/")
-    public String main() {
-        return "page/main";
-    }
 }
