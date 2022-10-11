@@ -32,7 +32,7 @@
 
 <script>
 function deleteUser(id) {
-	$.ajax("/users/" + id, { 
+	$.ajax("/user/" + id, { 
 		type: "DELETE",
 		dataType: "json"
 	}).done((res) => {

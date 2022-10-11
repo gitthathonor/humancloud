@@ -29,7 +29,7 @@ public class UserService {
     @Transactional(rollbackFor = RuntimeException.class)
     public void 회원탈퇴(Integer id) {
         List<Resume> resumes = resumeDao.findByUserId(id);
-        if (resumes.size() > 0) {
+        if (resumes != null) {
 
             resumeDao.deleteByUserId(id);
 

@@ -39,7 +39,7 @@
                     <c:otherwise>
                     <c:forEach var="r" items="${resume.resume}">
                             <div class="m-3 p-3 col-2 border" onchang='viewResume("${r.resumeId}")'>
-                                <a href="resume/detail/${r.resumeId}">
+                                <a href="/resume/detail/${r.resumeId}">
                                 <h3>${r.resumeTitle}</h3>
                                 </a>
                                 <p>${r.resumeReadCount}</p>

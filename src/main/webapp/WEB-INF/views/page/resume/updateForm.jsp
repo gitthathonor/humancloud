@@ -23,8 +23,8 @@
             <input type="tel" class="form-control" id="phoneNumber" placeholder="전화번호 입력" value="${user.phoneNumber}" >
         </div>
         <div class="form-group">
-            <input type="file" id="file" onchange="setThumbnail(event)"/>
             <div style="margin:  20px 0 0 0;"></div>
+            <input type="file" id="file" onchange="setThumbnail(event)"/>
             <div id="image_container">
                 <img id ="oldImg" src="/img/${resume.resumePhoto}">
 	        </div>
@@ -131,11 +131,17 @@
         let reader = new FileReader();
 
         reader.onload = function(event) {
+            if(document.getElementById("newImg")){
+                document.getElementById("newImg").remove();
+            }
+
             let img = document.createElement("img");
             let oldImg = $("#oldImg");
             oldImg.remove();
             img.setAttribute("src", event.target.result);
+            img.setAttribute("id", "newImg");
             document.querySelector("#image_container").appendChild(img);
+
         };
         reader.readAsDataURL(event.target.files[0]);
     }
