@@ -1,5 +1,16 @@
 # 미니프로젝트 humancloud - 이력서 관리 웹 사이트
 
+### recruit-detail 특이사항
+PathVarilable 이 해당 프로젝트에서는 동작하지않아, 쿼리스트릥으로
+Get 요청을 받아  findById 메서드 실행을 한 후,
+jstl 로 view 페이지에 로드 했음
+
+### 부트스트랩 로드 오류
+부트스트랩 Font 로드 오류가 있어 수정함
+![Untitled](https://user-images.githubusercontent.com/92712092/194812543-6bf839a5-8397-4b4b-9dba-ac9d8f75e191.png)
+
+
+
 ### DB - user생성 및 권한 부여
 ```sql
 CREATE USER 'human'@'%' IDENTIFIED BY 'human1234';
@@ -20,12 +31,11 @@ CREATE TABLE user (
 	created_at TIMESTAMP
 );
 
-
 -- 분야
 CREATE TABLE category (
 	category_id INT auto_increment PRIMARY KEY,
-	category_user_id INT,
-	category_company_id INT,
+	category_resume_id INT,
+	category_recruit_id INT,
 	category_name VARCHAR(50)
 );
 
@@ -54,20 +64,12 @@ CREATE TABLE resume(
 	resume_created_at TIMESTAMP
 );
 
--- 직무
-CREATE TABLE job(
-	job_id INT AUTO_INCREMENT PRIMARY KEY,
-	job_resume_id INT,
-	job_recruit_id INT,
-	job_name VARCHAR(50) NOT NULL
-);
 
 -- 채용 공고 
 CREATE TABLE recruit(
 	recruit_id int auto_increment PRIMARY KEY,
 	recruit_title VARCHAR(50) NOT NULL,
 	recruit_career VARCHAR(50),
-	recruit_pattern VARCHAR(50),
 	recruit_salary INT,
 	recruit_location VARCHAR(120),
 	recruit_content LONGTEXT,

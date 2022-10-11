@@ -3,9 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.recruit.RecruitDao">
-	<insert id="save"></insert>
-	<select id="findById" resultType="site.metacoding.humancloud.domain.recruit.Recruit"></select>
-	<select id="findAll" resultType="site.metacoding.humancloud.domain.recruit.Recruit"></select>
+	<insert id="save" useGeneratedKeys="true" keyProperty="recruitId">
+		INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_created_at) 
+		VALUES(#{recruitTitle}, #{recruitCareer}, #{recruitSalary},#{recruitLocation}, #{recruitContent}, #{recruitReadCount}, #{recruitCompanyId}, NOW())
+	</insert>
+
+	<select id="findById" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
+	select * from recruit 
+	WHERE recruit_id = #{recruitId}
+	</select>
+	<select id="findAll" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
+	select * from recruit
+	</select>
 	<update id="update"></update>
 	<delete id="deleteById"></delete>
 </mapper>

@@ -9,7 +9,18 @@ import lombok.Setter;
 @Setter
 public class Category {
 	private Integer categoryId;
-	private Integer categoryUserId;
-	private Integer categoryCompanyId;
+	private Integer categoryResumeId;
+	private Integer categoryRecruitId;
 	private String categoryName;
+
+	public Category(Integer categoryRecruitId, String categoryName, Integer categoryResumeId) {
+		this.categoryRecruitId = categoryRecruitId;
+		this.categoryName = categoryName;
+		this.categoryResumeId = categoryResumeId;
+	}
+
+	public Category(Integer categoryResumeId, String categoryName) {
+		this.categoryResumeId = categoryResumeId;
+		this.categoryName = categoryName;
+	}
 }
