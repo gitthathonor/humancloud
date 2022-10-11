@@ -1,9 +1,11 @@
 # 미니프로젝트 humancloud - 이력서 관리 웹 사이트
 
-### recruit-detail 특이사항
+### recruit-detail 수정사항 메모
 PathVarilable 이 해당 프로젝트에서는 동작하지않아, 쿼리스트릥으로
 Get 요청을 받아  findById 메서드 실행을 한 후,
 jstl 로 view 페이지에 로드 했음
+
+layout/header.jsp 에서 충돌나는 헤드 코드 saveForm 에서만 쓰일 수 있도록 코드 옮김. 이 전의 코드를 참고.
 
 ### 부트스트랩 로드 오류
 부트스트랩 Font 로드 오류가 있어 수정함
