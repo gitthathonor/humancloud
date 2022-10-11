@@ -1,5 +1,10 @@
 # 미니프로젝트 humancloud - 이력서 관리 웹 사이트
 
+### recruit-detail 특이사항
+PathVarilable 이 해당 프로젝트에서는 동작하지않아, 쿼리스트릥으로
+Get 요청을 받아  findById 메서드 실행을 한 후,
+jstl 로 view 페이지에 로드 했음
+
 ### 부트스트랩 로드 오류
 부트스트랩 Font 로드 오류가 있어 수정함
 ![Untitled](https://user-images.githubusercontent.com/92712092/194812543-6bf839a5-8397-4b4b-9dba-ac9d8f75e191.png)

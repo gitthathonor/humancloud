@@ -8,8 +8,13 @@
 		VALUES(#{recruitTitle}, #{recruitCareer}, #{recruitSalary},#{recruitLocation}, #{recruitContent}, #{recruitReadCount}, #{recruitCompanyId}, NOW())
 	</insert>
 
-	<select id="findById" resultType="site.metacoding.humancloud.domain.recruit.Recruit"></select>
-	<select id="findAll" resultType="site.metacoding.humancloud.domain.recruit.Recruit"></select>
+	<select id="findById" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
+	select * from recruit 
+	WHERE recruit_id = #{recruitId}
+	</select>
+	<select id="findAll" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
+	select * from recruit
+	</select>
 	<update id="update"></update>
 	<delete id="deleteById"></delete>
 </mapper>
