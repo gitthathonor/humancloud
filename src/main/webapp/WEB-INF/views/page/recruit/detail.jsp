@@ -7,7 +7,7 @@
             <div class="col-md-4">
                 <div class="card tale-bg">
                     <div class="card-people">
-
+                        <img src="/img/${Recruit.company.companyLogo}" alt="people">
                     </div>
                 </div>
             </div>
@@ -16,14 +16,14 @@
             <div class="col-md-8  transparent">
                 <div>
 
-
+                    <p class="card-title"></p>${Recruit.company.companyName}</p>
                     <h2 class="text-primary">${Recruit.recruitTitle}</h2>
 
                 </div>
 
                 <div>
                     <div class="mt-5">
-
+                        <p><span>#${Category.categoryName}</span></p>
                         <p><span>근무지 : ${Recruit.recruitLocation}</span></p>
                     </div>
                 </div>
@@ -155,13 +155,5 @@
                 </div>
             </div>
         </div>
-        <input id="companyData" value="${Recruit.recruitId}" type="hidden">
-        <script>
-            function goUpdate() {
-                alert("갈까요?");
-                let data = $("#companyData").val();
-                location.href = "/recruit/update/" + data;
-            }
 
-        </script>
         <%@ include file="../../layout/footer.jsp" %>
