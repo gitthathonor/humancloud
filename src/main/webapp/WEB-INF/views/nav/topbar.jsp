@@ -2,9 +2,9 @@
 
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-      <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2"
+      <a class="navbar-brand brand-logo mr-5" href="/"><img src="images/logo.svg" class="mr-2"
           alt="logo" /></a>
-      <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>
+      <a class="navbar-brand brand-logo-mini" href="/"><img src="images/logo-mini.svg" alt="logo" /></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 
@@ -26,11 +26,14 @@
 
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item dropdown">
-          <!---------로그인 전--------->
-          <div style="margin: 0 10px;">
-            <button type="button" class="btn btn-primary">로그인</button>
-            <button type="button" class="btn btn-outline-primary">회원가입</button>
-          </div>
+          <c:choose>
+          <c:when test="${empty principal}">
+            <div style="margin: 0 10px;">
+              <button type="button" class="btn btn-primary"><a class="text-white" href="/login">로그인</a> </button>
+              <button type="button" class="btn btn-outline-primary"><a class="text-primary" href="/join">회원가입</a></button>
+            </div>
+          </c:when>
+          <c:otherwise>
           <!---------로그인 후--------->
           <!-----------알림창------------>
           <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
@@ -88,15 +91,17 @@
             <img src="images/faces/face28.jpg" alt="profile" />
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-            <a class="dropdown-item">
+            <a href="/mypage?id=${sessionScope.principal}" class="dropdown-item">
               <i class="ti-settings text-primary"></i>
               MyPage
             </a>
-            <a class="dropdown-item">
+            <a href="/logout" class="dropdown-item">
               <i class="ti-power-off text-primary"></i>
-              Logout
+                Logout
             </a>
           </div>
+          </c:otherwise>
+          </c:choose>
         </li>
       </ul>
     </div>

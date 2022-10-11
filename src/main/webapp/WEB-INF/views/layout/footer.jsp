@@ -18,6 +18,7 @@
 </div>
 <!-- container-scroller -->
 <!-- plugins:js -->
+
 <script src="/vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
@@ -36,6 +37,6 @@
 <!-- Custom js for this page-->
 <script src="/js/dashboard.js"></script>
 <script src="/js/Chart.roundedBarCharts.js"></script>
-<!-- End custom js for this page-->
+
 </body>
 </html>

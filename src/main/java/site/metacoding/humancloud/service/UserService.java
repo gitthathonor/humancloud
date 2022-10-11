@@ -1,37 +1,53 @@
 package site.metacoding.humancloud.service;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import site.metacoding.humancloud.domain.category.Category;
-import site.metacoding.humancloud.domain.category.CategoryDao;
-import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.domain.resume.ResumeDao;
 import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.domain.user.UserDao;
-import site.metacoding.humancloud.web.dto.request.user.JoinDto;
 import site.metacoding.humancloud.web.dto.request.user.LoginDto;
+import site.metacoding.humancloud.web.dto.request.user.JoinDto;
+
+import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Service
 public class UserService {
     private final UserDao userDao;
-    private final CategoryDao categoryDao;
     private final ResumeDao resumeDao;
 
-    public int 회원가입(JoinDto joinDto) {
+    private final HttpSession session;
+
+    @Transactional(rollbackFor = RuntimeException.class)
+    public void 회원탈퇴(Integer id) {
+        List<Resume> resumes = resumeDao.findByUserId(id);
+        if (resumes.size() > 0) {
+
+            resumeDao.deleteByUserId(id);
+
+        }
+        userDao.deleteById(id);
+    }
+
+    public void 회원업데이트(Integer id, JoinDto joinDto) {
+        User userPS = userDao.findById(id);
+        userPS.updateToEntity(joinDto.getPassword(), joinDto.getName(), joinDto.getEmail(), joinDto.getPhoneNumber());
+        userDao.update(id, userPS);
+    }
+
+    public void 회원가입(JoinDto joinDto) {
         boolean checkUsername = 유저네임중복체크(joinDto.getUsername());
         if (checkUsername == true) {
             userDao.save(joinDto);
-
-            return 1;
         }
-        return 0;
     }
 
     public boolean 유저네임중복체크(String username) {
@@ -43,21 +59,15 @@ public class UserService {
         }
     }
 
-    public boolean 로그인(Integer userId, LoginDto loginDto) {
-        User userPS = userDao.findById(userId);
-        if (loginDto.getUsername() != userPS.getUsername()) {
-            return false;
-        } else if (loginDto.getPassword() != userPS.getPassword()) {
-            return false;
+    public User 로그인(LoginDto loginDto) {
+        User userPS = userDao.findByUsername(loginDto.getUsername());
+        if (userPS == null) {
+            return null;
         }
-        return true;
-    }
-
-    public void 메인페이지구성(Integer userId) { // 깔끔하게 구현되면 컨트룰러로 옮길거
-        // 기본 유저 정보
-        // 관심분야보기
-        // 관심 분야가 겹치는 기업 매칭(추천)
-        // 이력서 내용 필요
+        if (loginDto.getPassword().equals(userPS.getPassword())) {
+            return userPS;
+        }
+        return null;
     }
 
     // 서비스 내에서 사용하는 메서드
@@ -73,32 +83,50 @@ public class UserService {
             userPS.toPhoneNumber(result);
         }
         return userPS;
+        // 이력서보기
+        // int Count
     }
 
-    public Resume 이력서보기(Integer userId) {
+    public Map<String, Object> 이력서보기(Integer userId) {
         // 열람 횟수 보기(리절트 타입 인트면 좋음)
-        int CountResume = resumeDao.sumReadCount(userId);
+
         // 이력서 목록보기 (제목, 등록카테고리, 날짜 정도 필요)
-        Resume resumePS = resumeDao.findById(userId); // 리절트 타입 : resume
-        resumePS.setResumeReadCount(CountResume);
-        return resumePS;
+        try {
+            Integer countResume = resumeDao.sumReadCount(userId).getResumeReadCount();
+
+            List<Resume> resumePS = resumeDao.findByUserId(userId); // 리절트 타입 : resume
+
+            Map<String, Object> result = new HashMap<>();
+            result.put("readCount", countResume);
+            result.put("resume", resumePS);
+
+            return result;
+        } catch (NullPointerException e) {
+            Map<String, Object> result = new HashMap<>();
+            result.put("readCount", 0);
+            result.put("resume", null);
+
+            return result;
+        }
+
     }
 
-    public List<String> 관심분야목록(Integer userId) {
-        List<Category> categoryPS = categoryDao.findByResumeId(userId);
-        List<String> categoryName = new ArrayList<>();
-        for (Category c : categoryPS) {
-            categoryName.add(c.getCategoryName());
-        }
-        return categoryName;
-    }
+    // public List<String> 관심분야목록(Integer userId){
+    // List<Category> categoryPS = categoryDao.findByUserId(userId);
+    // List<String> categoryName = new ArrayList<>();
+    // for(Category c : categoryPS){
+    // categoryName.add( c.getCategoryName());
+    // }
+    // return categoryName;
+    // }
 
-    public List<Company> 기업매칭리스트(List<String> categories) { // userid에 해당하는 category name 리스트
-        List<Company> companyList = new ArrayList<>();
-        for (String c : categories) {
-            Company companies = categoryDao.findByCompanyCategory(c);
-            companyList.add(companies);
-        }
-        return companyList;
-    }
+    // public List<Company> 기업매칭리스트(List<String> categories){ // userid에 해당하는
+    // category name 리스트
+    // List<Company> companyList = new ArrayList<>();
+    // for(String c : categories){
+    // Company companies = categoryDao.findByCompanyCategory(c);
+    // companyList.add(companies);
+    // }
+    // return companyList;
+    // }
 }

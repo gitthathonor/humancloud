@@ -89,7 +89,7 @@
             </div>   
         </div>    
         <div class="btn-group m-4" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-primary" id="btnSave">작성완료</button>
+            <button type="button" class="btn btn-primary" id="btnUpdate">작성완료</button>
         </div><%-- btn-group m-4 --%>
         <c:forEach var="category" items="${category}">
             <input name="asd" type ="hidden" value='${category.categoryName}'/>
@@ -140,10 +140,10 @@
         reader.readAsDataURL(event.target.files[0]);
     }
 
-	$("#btnSave").click(()=>{
-		Save();
+	$("#btnUpdate").click(()=>{
+		update();
 	});
-	function Save(){
+	function update(){
         let categoryName = new Array();
         let education = "";
 
@@ -183,6 +183,7 @@
 		}).done((res) => {
 			if (res.code == 1) {
 				alert("이력서 수정 성공");
+                location.href="/resume/detail/"+resumeId;
 				}
 			});
 		}

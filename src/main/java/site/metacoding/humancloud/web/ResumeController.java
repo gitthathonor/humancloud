@@ -3,6 +3,7 @@ package site.metacoding.humancloud.web;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.MediaType;
@@ -13,11 +14,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.humancloud.domain.category.Category;
+import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.service.ResumeService;
 import site.metacoding.humancloud.service.UserService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
@@ -31,9 +36,20 @@ public class ResumeController {
   private final ResumeService resumeService;
   private final UserService userService;
 
-  @GetMapping("/")
-  public String main() {
-    return "page/main";
+  @GetMapping("/resume")
+  public String viewList(Model model) {
+    model.addAttribute("resumeData", resumeService.이력서목록보기());
+    return "page/resume/resumeList";
+  }
+
+  @PostMapping("/resume")
+  public @ResponseBody CMRespDto<?> viewCategory(@RequestBody Category category) {
+    return new CMRespDto<>(1, "OK", resumeService.분류별이력서목록보기(category.getCategoryName()));
+  }
+
+  @GetMapping("/resume/list")
+  public @ResponseBody CMRespDto<?> orderList(@RequestParam("order") String order) {
+    return new CMRespDto<>(1, "ok", resumeService.정렬하기(order, 1));
   }
 
   @DeleteMapping("/resume/deleteById/{resumeId}")
@@ -78,7 +94,7 @@ public class ResumeController {
   public String updateResumeForm(@PathVariable Integer resumeId, Integer userId, Model model) {
     model.addAttribute("resume", resumeService.이력서상세보기(resumeId, userId).get("resume"));
     model.addAttribute("category", resumeService.이력서상세보기(resumeId, userId).get("category"));
-    model.addAttribute("user", resumeService.이력서상세보기(resumeId, 1).get("user"));
+    model.addAttribute("user", resumeService.이력서상세보기(resumeId, userId).get("user"));
     return "page/resume/updateForm";
   }
 
