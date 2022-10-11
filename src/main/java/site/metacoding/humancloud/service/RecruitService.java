@@ -26,8 +26,10 @@ public class RecruitService {
         Recruit recruitPS = recruitDao.findById(recruitId);
         Company companyPS = companyDao.findById(recruitPS.getRecruitCompanyId());
         List<Category> categoryList = categoryDao.findByRecruitId(recruitId);
+        List<Recruit> recruitListByCompanyId = recruitDao.findByCompanyId(recruitPS.getRecruitCompanyId());
         recruitPS.setCategory(categoryList);
         recruitPS.setCompany(companyPS);
+        recruitPS.setRecruitListByCompanyId(recruitListByCompanyId);
         return recruitPS;
     }
 

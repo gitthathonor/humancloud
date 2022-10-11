@@ -47,7 +47,7 @@
                     <h3 class="mt-3 ml-2">회사 소개</h3>
                     <hr class="border-success" />
 
-                    <p class="m-3 plan-cost text-success">회사 소개 내용 존농=ㅇㄴㄹ녀롬ㄴ뎌ㅑ로ㅑㅕㄴㅁㅈㄷ뢔ㅔㅁ 곳곳곳곳곳ㄱ속속솏곳곳곳곳</p>
+                    <p class="m-3 plan-cost text-success">${Recruit.company.companyName} 의 소개 내용</p>
 
                 </div>
             </div>
@@ -88,8 +88,9 @@
                         <p class="card-title"></p>
                         <a href="#" class="text-info">Vist Company</a>
                     </div>
-                    <p class="font-weight-500">회사내용
-                        ㄹ더랴ㅐ덜ㄴ댜ㅐ런대ㅑ[러매[ㅑ허ㅗㅁㄷ개ㅑ호ㅜㅁㅇㄱ라;ㅓㅜㅁ대ㅓ먛ㅁㄴㄱ;ㅐ흐ㅓㅜㅁㄵ꺠ㅑㅎㅇㅁㄹ"ㅒㅠㅜㄴㄷ개ㅑㅓㅎㅍㄴㄱ'ㅐㅑ헌ㅁ"해ㅓㄴ'ㅇ먜ㅓㄴ'애ㅑ햐ㅐㄴ'</p>
+                    <p class="font-weight-500">
+                        ${Recruit.recruitContent}
+                    </p>
 
                 </div>
 
@@ -107,7 +108,7 @@
         <div class="row">
             <div class="card" style="width: 100%;">
                 <div class="card-body">
-                    <p class="card-title">이 기업의 다른 공고</p>
+                    <p class="card-title">${Recruit.company.companyName} 기업의 다른 공고</p>
 
                     <div class="dataTables_wrapper ">
 
@@ -116,7 +117,7 @@
                                 <tr role="row">
                                     <!-- sorting_desc / sorting_asc 으로 해가지고 Ajax 로 ORDER BY 하는거 하면 리스트 정렬 가능-->
                                     <!-- 이름순, 추천순, 작성일자 순 -->
-                                    <th class="select-checkbox sorting_desc" rowspan="1" colspan="1">
+                                    <th onclick="order()" class="select-checkbox sorting_desc" rowspan="1" colspan="1">
                                         No
                                         <!-- recruitId -->
                                     </th>
@@ -124,11 +125,8 @@
                                         공고
                                         <!-- recruitId -->
                                     </th>
-                                    <th class="select-checkbox sorting_desc" rowspan="1" colspan="1">
-                                        회사 이름
-                                        <!-- recruitId -->
-                                    </th>
-                                    <th class="select-checkbox sorting_desc" rowspan="1" colspan="1">
+
+                                    <th class="select-checkbox sorting_desc" rowspan="1" colspan="2">
                                         연봉
                                         <!-- recruitId -->
                                     </th>
@@ -141,13 +139,14 @@
                             </thead>
                             <tbody>
                                 <!-- class = odd / even -->
-                                <tr role="row">
-                                    <td rowspan="1" colspan="1">번호</td>
-                                    <td rowspan="1" colspan="2">그린컴퓨터아카데미 노예 모집 awfawfawfawfaw공고</td>
-                                    <td rowspan="1" colspan="1">Green Academe</td>
-                                    <td rowspan="1" colspan="1">$8888</td>
-                                    <td rowspan="1" colspan="1">25/04/2020</td>
-                                </tr>
+                                <c:forEach var="lists" items="${Recruit.recruitListByCompanyId}">
+                                    <tr role="row">
+                                        <td rowspan="1" colspan="1">추천 수...?</td>
+                                        <td rowspan="1" colspan="2">${lists.recruitTitle}</td>
+                                        <td rowspan="1" colspan="2">${lists.recruitSalary} 만원</td>
+                                        <td rowspan="1" colspan="1">25/04/2020</td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
 
@@ -155,5 +154,18 @@
                 </div>
             </div>
         </div>
+        <input id="companyData" value="${Recruit.recruitId}" type="hidden">
+        <script>
+            function goUpdate() {
+                alert("갈까요?");
+                let data = $("#companyData").val();
+                location.href = "/recruit/update/" + data;
+            }
+
+            function order() {
+                alert("솔트 합니다");
+            }
+
+        </script>
 
         <%@ include file="../../layout/footer.jsp" %>

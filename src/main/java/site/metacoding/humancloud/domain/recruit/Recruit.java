@@ -27,6 +27,7 @@ public class Recruit {
 
 	private Company company;
 	private List<Category> category;
+	private List<Recruit> recruitListByCompanyId;
 
 	public Recruit(String recruitTitle) {
 		this.recruitTitle = recruitTitle;

@@ -21,6 +21,14 @@ public class RecruitController {
 
     private final RecruitService recruitService;
 
+    @GetMapping("recruit/update/{id}")
+    public String updateFrom(@PathVariable(required = false) Integer id, Model model) {
+        Recruit recruitPS = recruitService.공고상세페이지(id);
+        model.addAttribute("Recruit", recruitPS);
+
+        return "page/recruit/updateForm";
+    }
+
     @GetMapping("recruit/detail/{id}")
     public String recruit_Detail(@PathVariable Integer id, Model model) {
 
