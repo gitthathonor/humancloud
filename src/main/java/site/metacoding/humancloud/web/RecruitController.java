@@ -23,7 +23,6 @@ public class RecruitController {
     @GetMapping("/detail")
     public String recruit_Detail(@RequestParam Integer id, Model model) {
 
-
         System.out.println("=====================");
         System.out.println("is that woriking" + id);
         System.out.println("=====================");
@@ -31,8 +30,6 @@ public class RecruitController {
         model.addAttribute("Recruit", recruitPS);
         return "page/recruit/detail";
     }
-
-
 
     @GetMapping("/write")
     public String writeFrom() {

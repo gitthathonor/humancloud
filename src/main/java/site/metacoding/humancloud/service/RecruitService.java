@@ -17,7 +17,7 @@ public class RecruitService {
     private final RecruitDao recruitDao;
     private final CategoryDao categoryDao;
 
-    public Recruit 공고상세페이지(Integer recruitId){
+    public Recruit 공고상세페이지(Integer recruitId) {
 
         Recruit recruitPS = recruitDao.findById(recruitId);
         return recruitPS;

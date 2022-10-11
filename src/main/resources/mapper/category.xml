@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.category.CategoryDao">
+
+	<delete id="deleteByResumeId">
+		delete from category where category_resume_id=#{categoryResumeId}
+	</delete>
+
+	<select id="findByCompanyCategory" resultType="site.metacoding.humancloud.domain.company.Company">
+		select company.* from company
+		left join category
+		on company.company_id=category.category_company_id
+		where category_name=#{categoryName}
+	</select>
+
+	<select id="findByCompanyId" resultType="site.metacoding.humancloud.domain.category.Category">
+		select * from category where category_company_id=#{companyId}
+	</select>
+
+	<select id="findByResumeId" resultType="site.metacoding.humancloud.domain.category.Category">
+			select * from category where category_resume_id=#{resuemId}
+	</select>
+
+	<select id="findByName" resultType="site.metacoding.humancloud.domain.category.Category">
+		select * from category where category_name=#{name}
+	</select>
+
+	<select id="findById" resultType="site.metacoding.humancloud.domain.category.Category">
+        select * from category where category_id=#{categoryId}
+	</select>
+	
+	<select id="findAll" resultType="site.metacoding.humancloud.domain.category.Category">
+        select * from category
+	</select>
+	
+	<delete id="deleteById">
+        delete from category where category_id=#{categoryId}
+	</delete>
+
+	<update id ="update">
+        update category set category_user_id=#{userId}, category_company_id#{companyId}, category_name=#{companyName}
+        where category_id=#{categoryId}
+	</update>
+
+
+
+
 	<insert id="save">     
 		insert into category(category_resume_id, category_recruit_id, category_name)
 		values (#{categoryResumeId}, #{categoryRecruitId}, #{categoryName})
 	 </insert>
-	<select id="findById" resultType="site.metacoding.humancloud.domain.category.Category"></select>
-	<select id="findAll" resultType="site.metacoding.humancloud.domain.category.Category"></select>
-	<update id="update"></update>
-	<delete id="deleteById"></delete>
+	
 </mapper>
