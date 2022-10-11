@@ -7,6 +7,13 @@
 		insert into subscribe(subscribe_user_id, subscribe_company_id, subscribe_created_at)
 		values (#{subscribeUserId}, #{subscribeCompanyId}, now())
 	</insert>
+	<select id="findCompanyByUserId" resultType="site.metacoding.humancloud.domain.company.Company">
+		select company.* from company
+		inner join subscribe
+		on company.company_id=subscribe_company_id
+		where subscribe.subscribe_user_id=#{userId}
+	</select>
+
 	<select id="findById" resultType="site.metacoding.humancloud.domain.subscribe.Subscribe"></select>
 	<select id="findAll" resultType="site.metacoding.humancloud.domain.subscribe.Subscribe"></select>
 	<update id="update"></update>

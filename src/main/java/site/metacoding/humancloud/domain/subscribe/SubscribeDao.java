@@ -1,5 +1,7 @@
 package site.metacoding.humancloud.domain.subscribe;
 
+import site.metacoding.humancloud.domain.company.Company;
+
 import java.util.List;
 
 public interface SubscribeDao {
@@ -8,4 +10,6 @@ public interface SubscribeDao {
 	public List<Subscribe> findAll();
 	public void update(Subscribe subscribe);
 	public void deleteById(Integer id);
+
+	public List<Company> findCompanyByUserId(Integer userId);
 }

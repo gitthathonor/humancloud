@@ -7,6 +7,35 @@
 <input id="companyId" type="hidden" value="1">
 
 
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    구독 목록 보기
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">구독 목록</h5>
+                <button type="button" class=" btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <c:forEach var="subs" items="${subscribe}">
+                    <div class="row d-flex justify-content-between">
+                        <div class="m-3 col-7 border">${subs.companyName}</div>
+                        <button onclick="deleteSubscribe("")" class="m-3 col-3 btn btn-outline-danger" type="button">구독취소</button>
+                    </div>
+                </c:forEach>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     function subscribeCompany(userId){
         let data = {
@@ -27,6 +56,20 @@
                 alert("구독완료");
                 // 나중에는 여기 기업 상세보기로 변경
                 location.href = "/";
+            }
+        });
+    }
+
+    function deleteSubscribe(){
+        $.ajax("/subscribe/" + id, {
+            type: "DELETE",
+            dataType: "json"
+        }).done((res) => {
+            if (res.code == 1) {
+                alert("회원탈퇴완료");
+                location.href = "/";
+            } else {
+                alert("회원탈퇴실패");
             }
         });
     }
