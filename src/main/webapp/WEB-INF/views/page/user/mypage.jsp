@@ -37,16 +37,21 @@
                             </div>
                     </c:when>
                     <c:otherwise>
-                    <c:forEach var="r" items="${resume.resume}">
+                        <c:forEach var="r" items="${resume.resume}">
                             <div class="m-3 p-3 col-2 border" onchang='viewResume("${r.resumeId}")'>
                                 <a href="/resume/detail/${r.resumeId}">
                                 <h3>${r.resumeTitle}</h3>
                                 </a>
                                 <p>${r.resumeReadCount}</p>
                                 <p>${r.resumeCreatedAt}</p>
-                                
                             </div>
                         </c:forEach>
+                        <div class="m-3 p-3 col-2 border" onchang='viewResume("${r.resumeId}")'>
+                            <a href="/resume/saveForm/${sessionScope.principal}">
+                                <h3>이력서 써</h3>
+                                <p>이력서 작성 페이지로 이동</p>
+                            </a>
+                        </div>
                     </c:otherwise>
                     </c:choose>
                     </div>

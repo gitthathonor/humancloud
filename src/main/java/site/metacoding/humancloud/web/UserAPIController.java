@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.humancloud.domain.subscribe.Subscribe;
 import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.service.UserService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
