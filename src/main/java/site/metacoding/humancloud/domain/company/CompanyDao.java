@@ -9,5 +9,10 @@ public interface CompanyDao {
 	public List<Company> findAll();
 	public void update(Company company);
 	public void deleteById(Integer id);
+<<<<<<< HEAD
 
+=======
+	
+	public Company findByUsername(String companyUsername);
+>>>>>>> 7abdc34b24506874c1167a19a88300d18c451ce1
 }
