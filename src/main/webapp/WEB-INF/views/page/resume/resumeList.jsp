@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../../layout/header.jsp" %>
+
 <div class="col grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -63,15 +64,13 @@
 </div>
 
 
-<div class="d-flex justify-content-center m-5">
-
+<div class="d-flex justify-content-center my-5">
     <div class="w-75 d-flex justify-content-between">
         <div class="btn-group">
             <c:forEach var="category" items="${resumeData.category}">
                 <button onclick='btnCategory("${category.categoryName}")' class="btn btn-primary">${category.categoryName}</button>
             </c:forEach>
         </div>
-
         <div class="dropdown">
             <select  id="btnOrder" onchange="orderDo(this.value)" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <option selected>정렬</option>
@@ -83,21 +82,23 @@
     </div>
 </div>
 
-<div id ="resumeCard" class="">
-        <div class=" w-75 card">
-        <c:forEach var="resume" items="${resumeData.resume}">
-            <div class="card-body row">
-                <div class="bg-danger col-2" style="width:200px">resume.resumeTitle</div>
-                    <div class="col-8 px-5">
-                        <p class="mb-4">${resume.resumeUserId}</p>
-                        <p class="fs-30 mb-2">${resume.resumeCreatedAt}</p>
-                    </div>
-                    <div class="col-2 d-flex flex-wrap align-content-center">
-                    <button type="submit" class="btn btn-outline-danger">지원하기</button>
+<div id ="resumeCard" class="d-flex justify-content-center">
+    <div class=" w-75 card">
+    <c:forEach var="resume" items="${resumeData.resume}">
+        <div class="card-body row">
+            <div class="bg-danger col-2" style="width:200px">
+                resume.resumeTitle
+            </div>
+            <div class="col-8 px-5">
+                <p class="mb-4">${resume.resumeUserId}</p>
+                <p class="fs-30 mb-2">${resume.resumeCreatedAt}</p>
+            </div>
+            <div class="col-2 d-flex flex-wrap align-content-center">
+                <button type="submit" class="btn btn-outline-danger">지원하기</button>
             </div>
         </div>
-        </c:forEach>
-</div>
+    </c:forEach>
+    </div>
 </div>
 
 <script>
