@@ -3,27 +3,27 @@
 
 
         <!-- 기업사진 명 등-->
-        <div class="row" style="height: 300;">
+        <div class="row">
             <div class="col-md-4">
-                <div class="card tale-bg">
-                    <div class="card-people">
-                        <img src="/img/${Recruit.company.companyLogo}" alt="people">
-                    </div>
+                <div class="card">
+                    <img class="stretch-card" src="/img/${Recruit.company.companyLogo}" alt="people">
                 </div>
             </div>
 
 
             <div class="col-md-8  transparent">
                 <div>
-
                     <p class="card-title"></p>${Recruit.company.companyName}</p>
                     <h2 class="text-primary">${Recruit.recruitTitle}</h2>
-
                 </div>
 
                 <div>
-                    <div class="mt-5">
-                        <p><span>#${Category.categoryName}</span></p>
+                    <div class="mt-2">
+                        <p class="text-primary">
+                            <c:forEach var="category" items="${Recruit.category}">
+                                <span>#${category.categoryName}</span>
+                            </c:forEach>
+                        </p>
                         <p><span>근무지 : ${Recruit.recruitLocation}</span></p>
                     </div>
                 </div>

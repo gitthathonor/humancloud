@@ -1,5 +1,7 @@
 package site.metacoding.humancloud.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +25,8 @@ public class RecruitService {
     public Recruit 공고상세페이지(Integer recruitId) {
         Recruit recruitPS = recruitDao.findById(recruitId);
         Company companyPS = companyDao.findById(recruitPS.getRecruitCompanyId());
+        List<Category> categoryList = categoryDao.findByRecruitId(recruitId);
+        recruitPS.setCategory(categoryList);
         recruitPS.setCompany(companyPS);
         return recruitPS;
     }
