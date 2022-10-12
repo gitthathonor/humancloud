@@ -22,7 +22,9 @@
             <input type="tel" class="form-control" id="phoneNumber" placeholder="전화번호 입력" value="${user.phoneNumber}" >
         </div>
         <div class="form-group">
-            <input type="file" id="file">
+            <input type="file" id="file" onchange="setThumbnail(event)" >
+            <div id="imageContainer">
+            </div>
         </div>
         <h3 class="card-title">학력 정보</h3>
         <div class="form-check d-flex">
@@ -84,38 +86,31 @@
             </div>   
         </div>    
         <div class="btn-group m-4" role="group" aria-label="Basic example">
-<<<<<<< HEAD
             <button type="button" class="btn btn-primary" id="btnSave" onclick='Save("${sessionScope.principal}")'>작성완료</button>
-=======
-            <button type="button" class="btn btn-primary" id="btnSave">작성완료</button>
->>>>>>> master
         </div><%-- btn-group m-4 --%>
         </form>
     </div>
 </div>
 <script>
-    function setThumbnail(event) {
+ function setThumbnail(event) {
         let reader = new FileReader();
 
         reader.onload = function(event) {
+
+            if(document.getElementById("newImg")){
+                document.getElementById("newImg").remove();
+            }
             let img = document.createElement("img");
             img.setAttribute("src", event.target.result);
-            document.querySelector("#image_container").appendChild(img);
-        };
+            img.setAttribute("id", "newImg");
+            document.querySelector("#imageContainer").appendChild(img);
 
+        };
         reader.readAsDataURL(event.target.files[0]);
     }
 
-
-<<<<<<< HEAD
 	
 	function Save(userId){
-=======
-	$("#btnSave").click(()=>{
-		Save();
-	});
-	function Save(){
->>>>>>> master
         let categoryName = new Array();
         let education = "";
 
@@ -138,17 +133,9 @@
             resumeCareer : $("#resumeCareer option:selected").val(),
             resumeLink : $("#blog").val(),
             categoryList : categoryName,
-<<<<<<< HEAD
             resumeUserId : userId
 		}
 
-        console.log(data);
-
-=======
-            resumeUserId : 1
-		}
-
->>>>>>> master
         formData.append('file', $("#file")[0].files[0]);
 		formData.append('saveDto', new Blob([ JSON.stringify(data) ], {type : "application/json"}));
 		
@@ -161,10 +148,8 @@
 		}).done((res) => {
 			if (res.code == 1) {
 				alert("이력서 등록 성공");
-<<<<<<< HEAD
                 location.href="/mypage/?id="+userId;
-=======
->>>>>>> master
+
 				}
 			});
 		}

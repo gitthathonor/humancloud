@@ -78,14 +78,14 @@
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" id="categoryName" name="categoryName"  value="프론트 개발자">
+                    <input type="checkbox" class="form-check-input" id="#" name="categoryName"  value="프론트 개발자">
                     프론트 개발자
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input"  id="categoryName" name="categoryName"  value="백 개발자"> 
+                    <input type="checkbox" class="form-check-input"  id="!" name="categoryName"  value="백 개발자">
                     백 개발자
                 <i class="input-helper"></i></label>
             </div>   
@@ -106,7 +106,8 @@
     let edu = '${resume.resumeEducation}';
     let career = '${resume.resumeCareer}';
     // 라디오 버튼 값 가져오기
-    $('input[type=radio][name=education value='+edu+']').setAttribute('checked' , true);
+
+    $('input:radio[name = education]:input[value='+edu+']').attr("checked", true);
    
     // 드롭박스 값 가져오기
     $("#resumeCareer").val(career);
