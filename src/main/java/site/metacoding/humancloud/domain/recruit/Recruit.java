@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.domain.company.Company;
+import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
 
 @NoArgsConstructor
 @Getter
@@ -39,6 +40,14 @@ public class Recruit {
 
 	public Recruit(String recruitTitle) {
 		this.recruitTitle = recruitTitle;
+	}
+
+	public void recruitUpdate(SaveDto saveDto) {
+		this.recruitTitle = saveDto.getRecruitTitle();
+		this.recruitCareer = saveDto.getRecruitCareer();
+		this.recruitSalary = saveDto.getRecruitSalary();
+		this.recruitLocation = saveDto.getRecruitLocation();
+		this.recruitContent = saveDto.getRecruitContent();
 	}
 
 }

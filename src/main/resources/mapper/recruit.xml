@@ -13,8 +13,8 @@
 								 (
 									 CASE WHEN ASCII(SUBSTRING(recruit_career,1)) BETWEEN 48 AND 57 THEN 3
 										  WHEN ASCII(SUBSTRING(recruit_career,1))
-      <![CDATA[<]]>
-											   123 THEN 2 ELSE 1 END
+		<![CDATA[<]]>
+		123 THEN 2 ELSE 1 END
 									 ), binary(recruit_career)
 	</select>
 	<insert id="save" useGeneratedKeys="true" keyProperty="recruitId">
@@ -34,6 +34,16 @@
 		select * from recruit
 
 	</select>
-	<update id="update"></update>
-	<delete id="deleteById"></delete>
+	<update id="update">
+		UPDATE recruit SET 
+		recruit_title = #{recruitTitle},
+		recruit_career = #{recruitCareer},
+		recruit_salary = #{recruitSalary},
+		recruit_location = #{recruitLocation},
+		recruit_content = #{recruitContent}
+		WHERE recruit_id = #{recruitId};
+	</update>
+	<delete id="deleteById">
+		DELETE from recruit where recruit_id=#{recruitId}
+	</delete>
 </mapper>
