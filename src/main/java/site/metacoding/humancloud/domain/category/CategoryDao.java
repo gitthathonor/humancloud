@@ -18,6 +18,8 @@ public interface CategoryDao {
 
 	public void deleteByResumeId(Integer resumeId);
 
+	public void deleteByRecruitId(Integer recruitId);
+
 	public List<Category> distinctName();
 
 	public List<Category> findByName(String name);

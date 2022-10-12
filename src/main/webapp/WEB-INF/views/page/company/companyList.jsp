@@ -184,7 +184,7 @@
 												</table>
 											</div>
 										</div>
-										<div class="">
+										<div class="col-md-6 mt-3">
 											<h1>사진</h1>
 										</div>
 									</div>

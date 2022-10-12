@@ -2,10 +2,12 @@ package site.metacoding.humancloud.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,8 +29,15 @@ public class RecruitController {
   public String updateFrom(@PathVariable(required = false) Integer id, Model model) {
     Recruit recruitPS = recruitService.공고상세페이지(id);
     model.addAttribute("Recruit", recruitPS);
-
     return "page/recruit/updateForm";
+  }
+
+  @PutMapping("recruit/update")
+  public @ResponseBody CMRespDto<?> update(@RequestBody SaveDto saveDto) {
+
+    recruitService.구인공고업데이트(saveDto);
+
+    return new CMRespDto<>(1, "성공", null);
   }
 
   @GetMapping("recruit/detail/{id}")
@@ -66,6 +75,12 @@ public class RecruitController {
   @GetMapping("/recruit/order")
   public @ResponseBody CMRespDto<?> orderList(@RequestParam("order") String order) {
     return new CMRespDto<>(1, "ok", recruitService.정렬하기(order));
+  }
+
+  @DeleteMapping("/recruit/delete/{recruitId}")
+  public @ResponseBody CMRespDto<?> recruitDelete(@PathVariable Integer recruitId) {
+    Integer code = recruitService.공고삭제하기(recruitId);
+    return new CMRespDto<>(code, "ok", null);
   }
 
 }
