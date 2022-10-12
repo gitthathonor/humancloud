@@ -141,9 +141,11 @@ public class CompanyController {
 
 	@PostMapping("/company/login")
 	public @ResponseBody CMRespDto<?> login(@RequestBody LoginDto loginDto, HttpServletRequest request) {
-		System.out.println(loginDto.getCompanyUsername());
-		System.out.println(loginDto.getCompanyPassword());
 		Company result = companyService.로그인(loginDto);
+
+		System.out.println("-------------");
+		System.out.println(result.getCompanyName());
+		System.out.println(result.getCompanyPassword());
 
 		if (result != null) {
 			HttpSession session = request.getSession();

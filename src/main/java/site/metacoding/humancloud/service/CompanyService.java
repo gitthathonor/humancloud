@@ -61,12 +61,12 @@ public class CompanyService {
 
 	 public Company 로그인(LoginDto loginDto) {
 	 Company companyPS = companyDao.findByUsername(loginDto.getCompanyUsername());
-	 if (loginDto.getCompanyUsername() != companyPS.getCompanyName()) {
-	 return null;
-	 } else if (loginDto.getCompanyPassword() != companyPS.getCompanyPassword()) {
-	 return null;
-	 }
-	 return companyPS;
+	 	if (companyPS==null) {
+			return null;
+	 	} else if (loginDto.getCompanyPassword().equals(companyPS.getCompanyPassword())) {
+			return companyPS;
+	 	}
+		 return null;
 	 }
 
 }
