@@ -1,6 +1,7 @@
 package site.metacoding.humancloud.domain.recruit;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import lombok.Getter;
@@ -22,6 +23,13 @@ public class Recruit {
 	private Integer recruitReadCount;
 	private Integer recruitCompanyId;
 	private Timestamp recruitCreatedAt;
+	private String recruitStartDay;
+
+	private void setRecruitCreatedAt(Timestamp recruitCreatedAt) {
+		SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd");
+		String t = form.format(recruitCreatedAt);
+		this.recruitStartDay = t;
+	}
 
 	private List<String> recruitCategoryList;
 

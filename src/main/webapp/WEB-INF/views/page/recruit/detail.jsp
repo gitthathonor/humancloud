@@ -123,7 +123,7 @@
                                         No
                                         <!-- recruitId -->
                                     </th>
-                                    <th class="select-checkbox sorting_asc" rowspan="1" colspan="2">
+                                    <th class="select-checkbox sorting_asc" rowspan="1" colspan="3">
                                         공고
                                         <!-- recruitId -->
                                     </th>
@@ -144,9 +144,9 @@
                                 <c:forEach var="lists" items="${Recruit.recruitListByCompanyId}">
                                     <tr role="row">
                                         <td rowspan="1" colspan="1">추천 수...?</td>
-                                        <td rowspan="1" colspan="2">${lists.recruitTitle}</td>
+                                        <td rowspan="1" colspan="3">${lists.recruitTitle}</td>
                                         <td rowspan="1" colspan="2">${lists.recruitSalary} 만원</td>
-                                        <td rowspan="1" colspan="1">${lists.recruitCreatedAt}</td>
+                                        <td rowspan="1" colspan="1">${lists.recruitStartDay}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

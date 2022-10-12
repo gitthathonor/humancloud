@@ -65,4 +65,26 @@ class HumancloudApplicationTests {
 		assertEquals(3, recruitPS.getCategory().size());
 	}
 
+	@Test
+	public void 뭘테스트하는지모르겠다ㅅㅂ_test() {
+		Integer recruitId = 7;
+
+		Recruit recruitPS = recruitDao.findById(recruitId);
+		Company companyPS = companyDao.findById(recruitPS.getRecruitCompanyId());
+		List<Category> categoryList = categoryDao.findByRecruitId(recruitId);
+		List<Recruit> recruitListByCompanyId = recruitDao.findByCompanyId(recruitPS.getRecruitCompanyId());
+		recruitPS.setCategory(categoryList);
+		recruitPS.setCompany(companyPS);
+		recruitPS.setRecruitListByCompanyId(recruitListByCompanyId);
+
+		for (int i = 0; i < recruitListByCompanyId.size(); i++) {
+			System.out.println(recruitListByCompanyId.get(i).getRecruitStartDay());
+		}
+
+		System.out.println("=======================");
+		System.out.println(recruitPS.getRecruitStartDay());
+		System.out.println("=======================");
+
+	}
+
 }
