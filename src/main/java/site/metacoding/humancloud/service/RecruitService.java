@@ -44,27 +44,27 @@ public class RecruitService {
     public void 구인공고업데이트(SaveDto saveDto) {
         // 영속화 : id 로 공고페이지 찾음
         Recruit recruitPS = recruitDao.findById(saveDto.getRecruitId());
+        if (recruitPS != null) {
+            recruitPS.recruitUpdate(saveDto);
+        }
+
+        Category category = new Category(saveDto.getRecruitId(), null, null);
 
         // 기존의 카테고리 없애고
-        Category category = new Category(saveDto.getRecruitId(), null);
         categoryDao.deleteByRecruitId(saveDto.getRecruitId());
-
+        // 새로 수정된 사항대로 체크리스트 INSERT
         for (String i : saveDto.getRecruitCategoryList()) {
             category.setCategoryName(i);
             categoryDao.save(category);
         }
 
-        // recruitDao.update(saveDto);
+        recruitDao.update(recruitPS);
     }
 
     @Transactional
     public void 구인공고작성(SaveDto saveDto) {
 
         recruitDao.save(saveDto);
-
-        System.out.println("===================");
-        System.out.println(saveDto.getRecruitId());
-        System.out.println("===================");
         Category category = new Category(saveDto.getRecruitId(), null, null);
 
         for (String i : saveDto.getRecruitCategoryList()) {

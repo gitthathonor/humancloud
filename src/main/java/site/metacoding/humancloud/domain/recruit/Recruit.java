@@ -42,4 +42,12 @@ public class Recruit {
 		this.recruitTitle = recruitTitle;
 	}
 
+	public void recruitUpdate(SaveDto saveDto) {
+		this.recruitTitle = saveDto.getRecruitTitle();
+		this.recruitCareer = saveDto.getRecruitCareer();
+		this.recruitSalary = saveDto.getRecruitSalary();
+		this.recruitLocation = saveDto.getRecruitLocation();
+		this.recruitContent = saveDto.getRecruitContent();
+	}
+
 }

@@ -200,7 +200,7 @@
                     recruitContent: $('#summernote').val()
                 }
 
-                $.ajax("recruit/update", {
+                $.ajax("/recruit/update", {
                     type: "put",
                     dataType: "json",
                     data: JSON.stringify(data),

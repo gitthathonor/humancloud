@@ -34,6 +34,8 @@ public class RecruitController {
   @PutMapping("recruit/update")
   public @ResponseBody CMRespDto<?> update(@RequestBody SaveDto saveDto) {
 
+    recruitService.구인공고업데이트(saveDto);
+
     return new CMRespDto<>(1, "성공", null);
   }
 
