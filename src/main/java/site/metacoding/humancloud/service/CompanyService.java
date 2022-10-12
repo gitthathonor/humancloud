@@ -59,14 +59,14 @@ public class CompanyService {
 		companyDao.deleteById(id);
 	}
 
-	 public Company 로그인(LoginDto loginDto) {
-	 Company companyPS = companyDao.findByUsername(loginDto.getCompanyUsername());
-	 if (loginDto.getCompanyUsername() != companyPS.getCompanyName()) {
-	 return null;
-	 } else if (loginDto.getCompanyPassword() != companyPS.getCompanyPassword()) {
-	 return null;
-	 }
-	 return companyPS;
-	 }
+	public Company 로그인(LoginDto loginDto) {
+		Company companyPS = companyDao.findByUsername(loginDto.getCompanyUsername());
+		if (companyPS == null) {
+			return null;
+		} else if (loginDto.getCompanyPassword().equals(companyPS.getCompanyPassword())) {
+			return companyPS;
+		}
+		return null;
+	}
 
 }

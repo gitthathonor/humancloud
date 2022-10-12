@@ -5,7 +5,11 @@
                 <div class="card-body">
                   <h4 class="card-title">company register form</h4>
                 <div class="btn-group m-4" role="group" aria-label="Basic example">
+<<<<<<< HEAD
                           <button type="button" class="btn btn-default"><a class="text-black" href="/join">일반</a></button>
+=======
+                  <a class="text-black" href="/join"><button type="button" class="btn btn-default">일반</button></a>
+>>>>>>> 6bae7796cf94180ad4a9ee8d8cd694ce22c5edbc
                           <button type="button" class="btn btn-primary">기업</button>
                 </div>
                   

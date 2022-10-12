@@ -141,13 +141,11 @@ public class CompanyController {
 
 	@PostMapping("/company/login")
 	public @ResponseBody CMRespDto<?> login(@RequestBody LoginDto loginDto, HttpServletRequest request) {
-		System.out.println(loginDto.getCompanyUsername());
-		System.out.println(loginDto.getCompanyPassword());
 		Company result = companyService.로그인(loginDto);
 
 		if (result != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("principal", result.getCompanyId());
+			session.setAttribute("companyPrincipal", result);
 		}
 		return new CMRespDto<>(1, "1", result);
 	}
