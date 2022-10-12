@@ -7,7 +7,7 @@
                 <div class="text-center p-3">${user.email}</div>
                 <div class="text-center px-3">${user.phoneNumber}</div>
                 <div class="text-center py-4 my-3 btn-primary rounded">#백엔드 #자바</div>
-                <div class="text-center py-4 my-3 btn-primary rounded" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">구독한 기업</div>
+                <div class="text-center py-4 my-3 btn-primary rounded" data-bs-toggle="modal" data-bs-target="#exampleModal">구독한 기업</div>
             </div>
             <div class="p-3 border-bottom d-flex justify-content-around">
                 <div class="">
