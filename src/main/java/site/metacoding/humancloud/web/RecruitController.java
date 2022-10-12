@@ -2,6 +2,7 @@ package site.metacoding.humancloud.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -74,6 +75,12 @@ public class RecruitController {
   @GetMapping("/recruit/order")
   public @ResponseBody CMRespDto<?> orderList(@RequestParam("order") String order) {
     return new CMRespDto<>(1, "ok", recruitService.정렬하기(order));
+  }
+
+  @DeleteMapping("/recruit/delete/{recruitId}")
+  public @ResponseBody CMRespDto<?> recruitDelete(@PathVariable Integer recruitId) {
+    Integer code = recruitService.공고삭제하기(recruitId);
+    return new CMRespDto<>(code, "ok", null);
   }
 
 }

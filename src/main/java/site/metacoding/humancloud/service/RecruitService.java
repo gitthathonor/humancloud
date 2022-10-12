@@ -150,4 +150,14 @@ public class RecruitService {
         // }
         // return companyList;
     }
+
+    public Integer 공고삭제하기(Integer recruitId) {
+        Recruit recruitPS = recruitDao.findById(recruitId);
+        if (recruitPS != null) {
+            recruitDao.deleteById(recruitId);
+            return 1;
+        }
+        return 0;
+
+    }
 }

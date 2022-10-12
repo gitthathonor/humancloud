@@ -99,9 +99,14 @@
             </div>
             <div class="mr-2">
                 <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
-                    onclick="goUpdate()">
+                    onclick="location.href='/recruit/update/${Recruit.recruitId}'">
                     <i class="ti-file btn-icon-prepend"></i>
                     수정하기
+                </button>
+                <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
+                    onclick="recruitDelete()">
+                    <i class="ti-file btn-icon-prepend"></i>
+                    삭제하기
                 </button>
             </div>
         </div>
@@ -158,10 +163,20 @@
         </div>
         <input id="recruitId" value="${Recruit.recruitId}" type="hidden">
         <script>
-            function goUpdate() {
-                alert("갈까요?");
-                let data = $("#recruitId").val();
-                location.href = "/recruit/update/" + data;
+            function recruitDelete() {
+                let id = $('#recruitId').val();
+
+                $.ajax("/recruit/delete/" + id, {
+                    type: "DELETE"
+                }).done((res) => {
+                    if (res.code == 1) {
+                        alert("삭제 성공하였습니다");
+                        location.href = "/page/recruit/recruitList";
+                    } else {
+                        alert("삭제에 실패했습니다");
+                    }
+                });
+
             }
 
             function order() {

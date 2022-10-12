@@ -43,5 +43,7 @@
 		recruit_content = #{recruitContent}
 		WHERE recruit_id = #{recruitId};
 	</update>
-	<delete id="deleteById"></delete>
+	<delete id="deleteById">
+		DELETE from recruit where recruit_id=#{recruitId}
+	</delete>
 </mapper>
