@@ -9,11 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.domain.resume.ResumeDao;
-import site.metacoding.humancloud.domain.subscribe.Subscribe;
-import site.metacoding.humancloud.domain.subscribe.SubscribeDao;
 import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.domain.user.UserDao;
 import site.metacoding.humancloud.web.dto.request.user.LoginDto;
@@ -26,7 +23,8 @@ import javax.servlet.http.HttpSession;
 public class UserService {
     private final UserDao userDao;
     private final ResumeDao resumeDao;
-    private final SubscribeDao subscribeDao;
+
+    private final HttpSession session;
 
     @Transactional(rollbackFor = RuntimeException.class)
     public void 회원탈퇴(Integer id) {
@@ -73,10 +71,6 @@ public class UserService {
     }
 
     // 서비스 내에서 사용하는 메서드
-
-    public List<Company> 구독기업보기(Integer userId){
-        return subscribeDao.findCompanyByUserId(userId);
-    }
 
     public User 유저정보보기(Integer userId) {
         // 유저 정보

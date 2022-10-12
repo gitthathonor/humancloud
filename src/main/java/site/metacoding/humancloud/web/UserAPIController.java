@@ -45,7 +45,6 @@ public class UserAPIController {
     public String viewMypage(@RequestParam Integer id, Model model) {
         // Session principal = (Session) session.getAttribute("principal");
         // System.out.println(principal);
-        model.addAttribute("subscribe", userService.구독기업보기(id));
         model.addAttribute("user", userService.유저정보보기(id));
         model.addAttribute("resume", userService.이력서보기(id));
         return "page/user/mypage";

@@ -84,7 +84,11 @@
             </div>   
         </div>    
         <div class="btn-group m-4" role="group" aria-label="Basic example">
+<<<<<<< HEAD
             <button type="button" class="btn btn-primary" id="btnSave" onclick='Save("${sessionScope.principal}")'>작성완료</button>
+=======
+            <button type="button" class="btn btn-primary" id="btnSave">작성완료</button>
+>>>>>>> master
         </div><%-- btn-group m-4 --%>
         </form>
     </div>
@@ -103,8 +107,15 @@
     }
 
 
+<<<<<<< HEAD
 	
 	function Save(userId){
+=======
+	$("#btnSave").click(()=>{
+		Save();
+	});
+	function Save(){
+>>>>>>> master
         let categoryName = new Array();
         let education = "";
 
@@ -127,11 +138,17 @@
             resumeCareer : $("#resumeCareer option:selected").val(),
             resumeLink : $("#blog").val(),
             categoryList : categoryName,
+<<<<<<< HEAD
             resumeUserId : userId
 		}
 
         console.log(data);
 
+=======
+            resumeUserId : 1
+		}
+
+>>>>>>> master
         formData.append('file', $("#file")[0].files[0]);
 		formData.append('saveDto', new Blob([ JSON.stringify(data) ], {type : "application/json"}));
 		
@@ -144,7 +161,10 @@
 		}).done((res) => {
 			if (res.code == 1) {
 				alert("이력서 등록 성공");
+<<<<<<< HEAD
                 location.href="/mypage/?id="+userId;
+=======
+>>>>>>> master
 				}
 			});
 		}
