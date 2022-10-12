@@ -79,9 +79,8 @@ public class ResumeService {
         return resumes;
     }
 
-    public List<Resume> 정렬하기(String orderList, Integer companyId) {
+    public List<Resume> 정렬하기(String orderList) {
         if (orderList.equals("recent")) {
-            최신순보기();
             return 최신순보기();
         } else if (orderList.equals("career")) {
             return 경력순보기();

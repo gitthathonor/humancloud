@@ -87,7 +87,7 @@
         <c:forEach var="recruit" items="${recruits.recruit}">
             <div class="card-body row border">
                 <div class="bg-danger col-2" style="width:200px">
-                    resume.resumeTitle
+                    resume.사진
                 </div>
                 <div class="col-8 px-5">
                     <p class="mb-4">${recruit.recruitLocation}</p>
@@ -110,7 +110,7 @@
             categoryName : title,
         };
 
-        $.ajax("/resume", {
+        $.ajax("/recruit/category", {
             type: "POST",
             dataType: "json",
             data: JSON.stringify(data),
@@ -129,7 +129,7 @@
     function orderDo(listOption){
         $.ajax({
             type: "GET",
-            url: "/resume/list?order="+listOption,
+            url: "/recruit/order?order="+listOption,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         }).done((res) => {
@@ -151,7 +151,7 @@
             item += `<p class="fs-30 mb-2">`+list.recruitTitle+`</p>`;
             item += `<p>`+list.recruitLocation+`</p>`;
             item += `</div><div class="col-2 d-flex flex-wrap align-content-center">`;
-            item += `<a hreaf="#`+list.recruitPattern+`>`;
+            item += `<a hreaf="#`+`여기뭐들어가야됨`+`>`;
             item += `<button type="button" class="btn btn-outline-danger">`+`상세보기`+`</button></a>`
             item += `</div></div>`
         }

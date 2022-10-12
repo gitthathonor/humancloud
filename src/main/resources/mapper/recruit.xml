@@ -3,8 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.recruit.RecruitDao">
+
+	<select id="orderByCreatedAt" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
+		select *
+		from recruit
+		order by recruit_created_at desc
+	</select>
+
+	<select id="orderByCareer" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
+		select * from recruit order by
+								 (
+									 CASE WHEN ASCII(SUBSTRING(recruit_career,1)) BETWEEN 48 AND 57 THEN 3
+										  WHEN ASCII(SUBSTRING(recruit_career,1))
+      <![CDATA[<]]>
+											   123 THEN 2 ELSE 1 END
+									 ), binary(recruit_career)
+	</select>
 	<insert id="save"></insert>
-	<select id="findById" resultType="site.metacoding.humancloud.domain.recruit.Recruit"></select>
+	<select id="findById" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
+		select * from recruit where recruit_id=#{recruitId}
+	</select>
 	<select id="findAll" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
 		select * from recruit
 	</select>

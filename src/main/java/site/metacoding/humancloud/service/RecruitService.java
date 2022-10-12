@@ -8,6 +8,8 @@ import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.company.CompanyDao;
 import site.metacoding.humancloud.domain.recruit.Recruit;
 import site.metacoding.humancloud.domain.recruit.RecruitDao;
+import site.metacoding.humancloud.domain.resume.Resume;
+import site.metacoding.humancloud.web.RecruitController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +30,41 @@ public class RecruitService {
         recruitList.put("category", categoryDao.distinctName());
         return recruitList;
     }
+    public List<Recruit> 분류별채용공고목록보기(String categoryName){
+        List<Category> categories = categoryDao.findByName(categoryName);
+
+        List<Recruit> recruits = new ArrayList<>();
+
+        for (Category c : categories) {
+            if (c.getCategoryResumeId() != null) {
+                recruits.add(recruitDao.findById(c.getCategoryRecruitId()));
+            }
+        }
+        return recruits;
+    }
+
+    public List<Recruit> 정렬하기(String orderList) {
+        if (orderList.equals("recent")) {
+            return 최신순보기();
+        } else if (orderList.equals("career")) {
+            return 경력순보기();
+        }
+        // else {
+        // return 추천순보기(companyId);
+        // }
+        return null;
+    }
+    public List<Recruit> 최신순보기() {
+        return recruitDao.orderByCreatedAt();
+    }
+
+    public List<Recruit> 경력순보기() {
+        return recruitDao.orderByCareer();
+    }
+
+
+
+
 
 
 
@@ -41,7 +78,7 @@ public class RecruitService {
     }
     public void 최신순기업리스트(){
         List<Company> companies = new ArrayList<>();
-        List<Recruit> recruitPS = recruitDao.orederByCreatedAt(); // 내림차순 작성일 정렬
+        List<Recruit> recruitPS = recruitDao.orderByCreatedAt(); // 내림차순 작성일 정렬
         for(Recruit r : recruitPS){
             Company companyPS = companyDao.findById(r.getRecruitCompanyId());
             if(companies.size()>5){

@@ -9,6 +9,9 @@ public interface RecruitDao {
 	public void update(Recruit recruit);
 	public void deleteById(Integer id);
 
-	public List<Recruit> orederByCreatedAt();
+	public List<Recruit> orderByCreatedAt();
+	public List<Recruit> orderByCareer();
+
+
 	public void findByCareer();
 }
