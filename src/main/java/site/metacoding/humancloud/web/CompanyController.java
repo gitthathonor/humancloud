@@ -149,5 +149,11 @@ public class CompanyController {
 		}
 		return new CMRespDto<>(1, "1", result);
 	}
+	
+	@GetMapping("/company/mypage")
+    public String viewMypage(@RequestParam Integer id, Model model) {
+        model.addAttribute("company", companyService.getCompanyDetail(id));
+        return "page/user/mypage";
+    }
 
 }
