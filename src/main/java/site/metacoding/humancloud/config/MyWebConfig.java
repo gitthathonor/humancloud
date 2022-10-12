@@ -12,5 +12,4 @@ public class MyWebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/img/**")
                 .addResourceLocations("file:///C:/temp/img/");
     }
-
 }

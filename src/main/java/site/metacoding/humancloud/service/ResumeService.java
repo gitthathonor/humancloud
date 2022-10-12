@@ -6,14 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.domain.category.CategoryDao;
-import site.metacoding.humancloud.domain.company.Company;
-import site.metacoding.humancloud.domain.company.CompanyDao;
-import site.metacoding.humancloud.domain.recruit.Recruit;
-import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.domain.resume.ResumeDao;
 import site.metacoding.humancloud.domain.user.UserDao;
@@ -25,25 +22,26 @@ import site.metacoding.humancloud.web.dto.request.resume.UpdateDto;
 public class ResumeService {
 
     private final ResumeDao resumeDao;
-    private final RecruitDao recruitDao;
-    private final CompanyDao companyDao;
     private final CategoryDao categoryDao;
     private final UserDao userDao;
 
+    @Transactional(rollbackFor = RuntimeException.class)
     public void 이력서삭제(Integer resumeId) {
         resumeDao.deleteById(resumeId);
         categoryDao.deleteByResumeId(resumeId);
     }
 
+    @Transactional(rollbackFor = RuntimeException.class)
     public void 이력서수정(Integer resumeId, UpdateDto updateDto) {
         resumeDao.update(updateDto);
-        categoryDao.deleteByResumeId(4); // updateDto.getResumeUserId();
+        categoryDao.deleteByResumeId(resumeId);
         for (String category : updateDto.getCategoryList()) {
             Category categoryElement = new Category(resumeId, category);
             categoryDao.save(categoryElement);
         }
     }
 
+    @Transactional(rollbackFor = RuntimeException.class)
     public void 이력서저장(SaveDto saveDto) {
         resumeDao.save(saveDto);
         for (String category : saveDto.getCategoryList()) {
@@ -56,75 +54,85 @@ public class ResumeService {
         Map<String, Object> resumeDetail = new HashMap<>();
         resumeDetail.put("resume", resumeDao.findById(resumeId));
         resumeDetail.put("category", categoryDao.findByResumeId(resumeId));
-        resumeDetail.put("user", userDao.findById(1));
+        resumeDetail.put("user", userDao.findById(userId));
         return resumeDetail;
     }
 
-    // 페이지 맨 위 추천 기업 리스트 : 매개변수-세션값
-    public void 추천기업리스트보기(Integer userId) {
-        if (userId == null) {
-            최신순기업리스트();
-        } else {
-            추천순기업리스트(userId); // 로그인 후, 구독기업이 있으면 최신순 대신 구독기업을 보여줄까
-        }
+    // 이력서 목록
+    public Map<String, Object> 이력서목록보기() {
+        Map<String, Object> resumeList = new HashMap<>();
+        resumeList.put("resume", resumeDao.findAll());
+        resumeList.put("category", categoryDao.distinctName());
+        return resumeList;
     }
 
-    public void 최신순기업리스트() {
-        List<Company> companies = new ArrayList<>();
-        List<Recruit> recruitPS = recruitDao.orederByCreatedAt(); // 내림차순 작성일 정렬
-        for (Recruit r : recruitPS) {
-            Company companyPS = companyDao.findById(r.getRecruitCompanyId());
-            if (companies.size() > 5) {
-                break;
+    public List<Resume> 분류별이력서목록보기(String category) {
+        List<Category> categories = categoryDao.findByName(category);
+
+        List<Resume> resumes = new ArrayList<>();
+
+        for (Category c : categories) {
+            if (c.getCategoryResumeId() != null) {
+                resumes.add(resumeDao.findById(c.getCategoryResumeId()));
             }
         }
-        // return companies;
+        return resumes;
     }
 
-    public void 추천순기업리스트(Integer userId) {
-        List<Category> categoryPS = categoryDao.findByResumeId(4);
-        List<String> categoryName = new ArrayList<>();
-
-        for (Category c : categoryPS) {
-            categoryName.add(c.getCategoryName());
+    public List<Resume> 정렬하기(String orderList) {
+        if (orderList.equals("recent")) {
+            return 최신순보기();
+        } else if (orderList.equals("career")) {
+            return 경력순보기();
+        } else if (orderList.equals("education")) {
+            return 학력순보기();
         }
-        List<Company> companyList = new ArrayList<>();
-        for (String c : categoryName) {
-            Company companies = categoryDao.findByCompanyCategory(c);
-            companyList.add(companies);
-        }
-        // return companyList;
+        // else {
+        // return 추천순보기(companyId);
+        // }
+        return null;
     }
 
-    // 이력서 목록
-    public List<Resume> 이력서목록보기() {
-        return resumeDao.findAll();
-    }
-
-    public List<Recruit> 분류별이력서목록보기(String category) {
-        List<Category> categories = categoryDao.findByName(category);
-        List<Recruit> recruits = new ArrayList<>();
-        for (Category c : categories) {
-            recruits.add(recruitDao.findById(c.getCategoryRecruitId()));
-        }
-        return recruits;
+    public List<Resume> 최신순보기() {
+        return resumeDao.orderByCreatedAt();
     }
 
     public List<Resume> 경력순보기() {
-        List<Resume> categories = resumeDao.orderByCareer();
-        return categories;
+        return resumeDao.orderByCareer();
     }
 
-    public void 학력순보기() {
+    public List<Resume> 학력순보기() {
+        return resumeDao.orderByEducation();
     }
 
     public void 추천순보기(Integer companyId) {
-        // 1. 로그인 하지 않으면 최신순?
-        // 2. 로그인시 category에 해당하는 걸로
-        List<Category> categories = categoryDao.findByCompanyId(companyId);
-        List<Category> categoryUser = new ArrayList<>();
-        for (Category category : categories) {
+        // 1. 로그인 하지 않으면?
 
+        // 2. 로그인시
+
+        // 기업의 이력서 목록에 해당되는 관심 이름 목록 불러오기
+        List<Category> recruitList = categoryDao.joinRecruitCategory(companyId);
+
+        // 그 기업에 해당하는 이력서 뽑아내기
+        List<List<Resume>> resumeList = new ArrayList<>();
+        for (Category c : recruitList) {
+            resumeList.add(categoryDao.findByResumeCategory(c.getCategoryName()));
         }
+
+        // 리스트 빈도수 카운트
+        Map<Integer, Integer> countResume = new HashMap<>();
+        for (List<Resume> x : resumeList) {
+            for (int i = 0; i < x.size(); i++) {
+                Integer count = countResume.get(x.get(i).getResumeId());
+                if (count == null) {
+                    countResume.put(x.get(i).getResumeId(), 1);
+                } else {
+                    countResume.put(x.get(i).getResumeId(), countResume.get(x.get(i).getResumeId()) + 1);
+                }
+            }
+        }
+
+        System.out.println(countResume.get(1));
+
     }
 }

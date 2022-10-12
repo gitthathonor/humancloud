@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/recruit/list">
           <i class="icon-head menu-icon"></i>
           <span class="menu-title">채용</span>
         </a>
@@ -15,7 +15,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/resume">
           <i class="icon-paper menu-icon"></i>
           <span class="menu-title">이력서</span>
         </a>
@@ -27,17 +27,17 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-          <i class="icon-grid-2 menu-icon"></i>
-          <span class="menu-title">마이페이지</span>
-          <i class="menu-arrow"></i>
+        <c:choose>
+          <c:when test="${empty sessionScope.principal}">
+            <a class="nav-link" href="/login">
+          </c:when>
+          <c:otherwise>
+            <a class="nav-link" href="/mypage?id=${sessionScope.principal}">
+          </c:otherwise>
+        </c:choose>
+        <i class="icon-grid-2 menu-icon"></i>
+        <span class="menu-title">마이페이지</span>
         </a>
-        <div class="collapse" id="tables">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-          </ul>
-        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">

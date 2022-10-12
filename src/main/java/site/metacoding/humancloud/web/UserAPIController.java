@@ -1,36 +1,98 @@
 package site.metacoding.humancloud.web;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.humancloud.domain.subscribe.Subscribe;
+import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.service.UserService;
+import site.metacoding.humancloud.web.dto.CMRespDto;
+import site.metacoding.humancloud.web.dto.request.user.JoinDto;
+import site.metacoding.humancloud.web.dto.request.user.LoginDto;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
-@RestController
+@Controller
 public class UserAPIController {
 
     private final UserService userService;
+    private final HttpSession session;
 
-    @GetMapping("/user/api/mypage")
-    public void viewMypage(){
-        System.out.println("------------------------");
-        System.out.println(userService.유저정보보기(1).getPhoneNumber());
-        System.out.println(userService.관심분야목록(1).get(1));
+    @DeleteMapping("/user/{id}")
+    public @ResponseBody CMRespDto<?> delete(@PathVariable Integer id) {
+        userService.회원탈퇴(id);
+        session.invalidate();
+        return new CMRespDto<>(1, "회원탈퇴성공", null);
+    }
 
-        userService.메인페이지구성(1);
-        // List<Map<String, Object>> categoryPS = new ArrayList<>();
-        // Map sample = new HashMap<>();
-        // sample.put("key", "data");
-        // sample.put("key2", "data2");
+    @PutMapping("/update/{id}")
+    public @ResponseBody CMRespDto<?> update(@PathVariable Integer id, @RequestBody JoinDto joinDto) {
+        userService.회원업데이트(id, joinDto);
+        return new CMRespDto<>(1, "ok", null);
+    }
 
+    @GetMapping("/update/{id}")
+    public String updateMypage(@PathVariable Integer id, Model model) {
+        model.addAttribute("user", userService.유저정보보기(id));
+        return "page/user/updateMypageForm";
+    }
 
-        // categoryPS.add(sample);
-        // System.out.println(categoryPS.get(0).get("key"));
+    @GetMapping("/mypage")
+    public String viewMypage(@RequestParam Integer id, Model model) {
+        // Session principal = (Session) session.getAttribute("principal");
+        // System.out.println(principal);
+        model.addAttribute("user", userService.유저정보보기(id));
+        model.addAttribute("resume", userService.이력서보기(id));
+        return "page/user/mypage";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        session.invalidate();
+        return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String loginForm() {
+        return "page/user/login";
+    }
+
+    @PostMapping("/login")
+    public @ResponseBody CMRespDto<?> login(@RequestBody LoginDto loginDto, HttpServletRequest request) {
+        User result = userService.로그인(loginDto);
+        if (result != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("principal", result.getUserId());
+        }
+        return new CMRespDto<>(1, "1", result);
+    }
+
+    @PostMapping("/user/join")
+    public @ResponseBody CMRespDto<?> joinUser(@RequestBody JoinDto joinDto) {
+        userService.회원가입(joinDto);
+        return new CMRespDto<>(1, "ok", null);
+    }
+
+    @GetMapping("/user/usernameSameCheck")
+    public @ResponseBody CMRespDto<?> usernameSameCheck(@RequestParam("username") String username) {
+        Boolean result = userService.유저네임중복체크(username);
+        if (result == true) {
+            return new CMRespDto<>(1, "ok", true);
+        }
+        return new CMRespDto<>(1, "same id", false);
+    }
+
+    @GetMapping("/join")
+    public String userSaveForm() {
+        return "page/user/userSaveForm";
+    }
+
+    @GetMapping({ "/", "/main" })
+    public String main() {
+        return "page/main";
     }
 }

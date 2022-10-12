@@ -15,7 +15,11 @@ public interface RecruitDao {
 
 	public void deleteById(Integer id);
 
-	public List<Recruit> orederByCreatedAt();
+	public List<Recruit> orderByCreatedAt();
+
+	public List<Recruit> orderByCareer();
+
+	public void findByCareer();
 
 	public List<Recruit> findByCompanyId(Integer id);
 }

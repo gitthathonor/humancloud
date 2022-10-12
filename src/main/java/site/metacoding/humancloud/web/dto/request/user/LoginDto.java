@@ -13,8 +13,7 @@ public class LoginDto {
     private String username;
     private String password;
 
-    public LoginDto(String username){
+    public LoginDto(String username) {
         this.username = username;
     }
 }
-

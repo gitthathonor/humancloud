@@ -2,23 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.resume.ResumeDao">
 
+   <select id="findByUserId" resultType="site.metacoding.humancloud.domain.resume.Resume">
+        select * from resume where resume_user_id=#{userId}
+    </select>
+
+   <select id="orderByCreatedAt" resultType="site.metacoding.humancloud.domain.resume.Resume">
+        select *
+        from resume
+        order by resume_created_at desc
+    </select>
+
+   <select id="orderByEducation" resultType="site.metacoding.humancloud.domain.resume.Resume">
+        select * from resume
+        order by FIELD(resume_education, '고졸', '초대졸', '대졸'),
+                 resume_education ASC
+    </select>
+
    <select id="orderByCareer" resultType="site.metacoding.humancloud.domain.resume.Resume">
       select * from resume order by
       (
          CASE WHEN ASCII(SUBSTRING(resume_career,1)) BETWEEN 48 AND 57 THEN 3
-	      WHEN ASCII(SUBSTRING(resume_career,1)) <![CDATA[<]]> 123 THEN 2 ELSE 1 END
+	      WHEN ASCII(SUBSTRING(resume_career,1))
+      <![CDATA[<]]>
+      123 THEN 2 ELSE 1 END
       ), binary(resume_career)
    </select>
 
    <select id="sumReadCount" resultType="site.metacoding.humancloud.domain.resume.Resume">
-      select sum(resume_readcount) resumeReadCount from resume where resume_user_id=#{userId}
+      select sum(resume_read_count) resumeReadCount from resume where resume_user_id=#{userId}
    </select>
-   
+
    <select id="findAll" resultType="site.metacoding.humancloud.domain.resume.Resume">
       SELECT * FROM resume
    </select>
 
-   <insert id="save">
+   <insert id="save" useGeneratedKeys="true" keyProperty="resumeId">
       INSERT INTO resume(
       resume_title, resume_education, resume_career, resume_photo, 
       resume_link, resume_user_id, resume_read_count, resume_created_at
@@ -40,8 +58,12 @@
     WHERE resume_id = ${resumeId}
   </update>
 
-	<delete id="deleteById">
+   <delete id="deleteById">
 		DELETE FROM resume WHERE resume_id=#{resumeId}
+	</delete>
+
+   <delete id="deleteByUserId">
+		DELETE FROM resume WHERE resume_user_id=#{userId}
 	</delete>
 
 </mapper>
