@@ -96,7 +96,7 @@
                 <p class="fs-10 mb-2">${resume.resumeCreatedAt}</p>
             </div>
             <div class="col-2 d-flex flex-wrap align-content-center">
-                <a href="resume/detail/${resume.resumeId}">
+                <a href="resume/detail/${resume.resumeId}/${resume.resumeUserId}">
                 <button type="button" class="btn btn-outline-danger">상세보기</button>
                 </a>
             </div>

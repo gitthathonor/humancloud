@@ -106,7 +106,7 @@
     let edu = '${resume.resumeEducation}';
     let career = '${resume.resumeCareer}';
     // 라디오 버튼 값 가져오기
-    document.querySelector('input[type=radio][name=education value='+edu+']').setAttribute('checked' , true);
+    $('input:radio[name = education]:input[value='+edu+']').attr("checked", true);
    
     // 드롭박스 값 가져오기
     $("#resumeCareer").val(career);
