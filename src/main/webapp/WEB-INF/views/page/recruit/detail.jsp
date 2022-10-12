@@ -4,26 +4,27 @@
 
         <!-- 기업사진 명 등-->
         <div class="row">
-            <div class="col-md-4  stretch-card">
-                <div class="card tale-bg">
-                    <div class="card-people mt-auto">
-                        <img src="images/dashboard/people.svg" alt="people">
-                    </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="stretch-card" src="/img/${Recruit.company.companyLogo}" alt="people">
                 </div>
             </div>
 
 
             <div class="col-md-8  transparent">
                 <div>
-
-                    <p class="card-title">Detailed Reports</p>
-                    <h2 class="text-primary">기업명이 들어오면 되는 곳곳곳곳곳ㄱ속속솏곳곳곳곳</h2>
-
+                    <p class="card-title"></p>${Recruit.company.companyName}</p>
+                    <h2 class="text-primary">${Recruit.recruitTitle}</h2>
                 </div>
 
                 <div>
-                    <div class="mt-5">
-                        <p>간략한 설명들이 들어서는 곳곳곳곳곳ㄱ속속솏곳곳곳곳</p>
+                    <div class="mt-2">
+                        <p class="text-primary">
+                            <c:forEach var="category" items="${Recruit.category}">
+                                <span>#${category.categoryName}</span>
+                            </c:forEach>
+                        </p>
+                        <p><span>근무지 : ${Recruit.recruitLocation}</span></p>
                     </div>
                 </div>
             </div>
@@ -36,26 +37,17 @@
                     <h3 class="mt-3 ml-2">지원 자격</h3>
                     <hr class="border-primary" />
 
-                    <p class="m-3 plan-cost text-primary">경력 :${Recruit.recruitId} </p>
-                    <p class="m-3 plan-cost text-primary">경력 : </p>
-
+                    <p class="m-3 plan-cost text-primary">경력 :${Recruit.recruitCareer} </p>
+                    <p class="m-3 plan-cost text-primary">연봉 :${Recruit.recruitSalary} </p>
                 </div>
             </div>
 
-            <div class="col-md-4 col-xl-4  stretch-card pricing-card">
+            <div class="col-md-8 col-xl-8  stretch-card pricing-card">
                 <div class="card border border-success">
-                    <h3 class="mt-3 ml-2">업무 내용</h3>
-                    <hr class="border-success" />
-                    <p class="m-3 plan-cost text-success">업무 소개 내용 존농=ㅇㄴㄹ녀롬ㄴ뎌ㅑ로ㅑㅕㄴㅁㅈㄷ뢔ㅔㅁ 곳곳곳곳곳ㄱ속속솏곳곳곳곳</p>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-xl-4  stretch-card pricing-card">
-                <div class="card border border-primary">
                     <h3 class="mt-3 ml-2">회사 소개</h3>
-                    <hr class="border-primary" />
+                    <hr class="border-success" />
 
-                    <p class="m-3 plan-cost text-primary">회사 소개 내용 존농=ㅇㄴㄹ녀롬ㄴ뎌ㅑ로ㅑㅕㄴㅁㅈㄷ뢔ㅔㅁ 곳곳곳곳곳ㄱ속속솏곳곳곳곳</p>
+                    <p class="m-3 plan-cost text-success">${Recruit.company.companyName} 의 소개 내용</p>
 
                 </div>
             </div>
@@ -96,10 +88,19 @@
                         <p class="card-title"></p>
                         <a href="#" class="text-info">Vist Company</a>
                     </div>
-                    <p class="font-weight-500">회사내용
-                        ㄹ더랴ㅐ덜ㄴ댜ㅐ런대ㅑ[러매[ㅑ허ㅗㅁㄷ개ㅑ호ㅜㅁㅇㄱ라;ㅓㅜㅁ대ㅓ먛ㅁㄴㄱ;ㅐ흐ㅓㅜㅁㄵ꺠ㅑㅎㅇㅁㄹ"ㅒㅠㅜㄴㄷ개ㅑㅓㅎㅍㄴㄱ'ㅐㅑ헌ㅁ"해ㅓㄴ'ㅇ먜ㅓㄴ'애ㅑ햐ㅐㄴ'</p>
+                    <p class="font-weight-500">
+                        ${Recruit.recruitContent}
+                    </p>
 
                 </div>
+
+            </div>
+            <div class="mr-2">
+                <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
+                    onclick="goUpdate()">
+                    <i class="ti-file btn-icon-prepend"></i>
+                    수정하기
+                </button>
             </div>
         </div>
 
@@ -107,7 +108,7 @@
         <div class="row">
             <div class="card" style="width: 100%;">
                 <div class="card-body">
-                    <p class="card-title">이 기업의 다른 공고</p>
+                    <p class="card-title">${Recruit.company.companyName} 기업의 다른 공고</p>
 
                     <div class="dataTables_wrapper ">
 
@@ -116,7 +117,7 @@
                                 <tr role="row">
                                     <!-- sorting_desc / sorting_asc 으로 해가지고 Ajax 로 ORDER BY 하는거 하면 리스트 정렬 가능-->
                                     <!-- 이름순, 추천순, 작성일자 순 -->
-                                    <th class="select-checkbox sorting_desc" rowspan="1" colspan="1">
+                                    <th onclick="order()" class="select-checkbox sorting_desc" rowspan="1" colspan="1">
                                         No
                                         <!-- recruitId -->
                                     </th>
@@ -124,11 +125,8 @@
                                         공고
                                         <!-- recruitId -->
                                     </th>
-                                    <th class="select-checkbox sorting_desc" rowspan="1" colspan="1">
-                                        회사 이름
-                                        <!-- recruitId -->
-                                    </th>
-                                    <th class="select-checkbox sorting_desc" rowspan="1" colspan="1">
+
+                                    <th class="select-checkbox sorting_desc" rowspan="1" colspan="2">
                                         연봉
                                         <!-- recruitId -->
                                     </th>
@@ -141,13 +139,14 @@
                             </thead>
                             <tbody>
                                 <!-- class = odd / even -->
-                                <tr role="row">
-                                    <td rowspan="1" colspan="1">번호</td>
-                                    <td rowspan="1" colspan="2">그린컴퓨터아카데미 노예 모집 awfawfawfawfaw공고</td>
-                                    <td rowspan="1" colspan="1">Green Academe</td>
-                                    <td rowspan="1" colspan="1">$8888</td>
-                                    <td rowspan="1" colspan="1">25/04/2020</td>
-                                </tr>
+                                <c:forEach var="lists" items="${Recruit.recruitListByCompanyId}">
+                                    <tr role="row">
+                                        <td rowspan="1" colspan="1">추천 수...?</td>
+                                        <td rowspan="1" colspan="2">${lists.recruitTitle}</td>
+                                        <td rowspan="1" colspan="2">${lists.recruitSalary} 만원</td>
+                                        <td rowspan="1" colspan="1">25/04/2020</td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
 
@@ -155,4 +154,18 @@
                 </div>
             </div>
         </div>
+        <input id="companyData" value="${Recruit.recruitId}" type="hidden">
+        <script>
+            function goUpdate() {
+                alert("갈까요?");
+                let data = $("#companyData").val();
+                location.href = "/recruit/update/" + data;
+            }
+
+            function order() {
+                alert("솔트 합니다");
+            }
+
+        </script>
+
         <%@ include file="../../layout/footer.jsp" %>

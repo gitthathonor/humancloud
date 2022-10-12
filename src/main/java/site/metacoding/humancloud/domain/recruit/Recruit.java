@@ -6,6 +6,8 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import site.metacoding.humancloud.domain.category.Category;
+import site.metacoding.humancloud.domain.company.Company;
 
 @NoArgsConstructor
 @Getter
@@ -23,8 +25,12 @@ public class Recruit {
 
 	private List<String> recruitCategoryList;
 
+	private Company company;
+	private List<Category> category;
+	private List<Recruit> recruitListByCompanyId;
+
 	public Recruit(String recruitTitle) {
 		this.recruitTitle = recruitTitle;
 	}
-	
+
 }

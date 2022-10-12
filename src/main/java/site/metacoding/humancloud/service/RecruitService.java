@@ -1,11 +1,15 @@
 package site.metacoding.humancloud.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.domain.category.CategoryDao;
+import site.metacoding.humancloud.domain.company.Company;
+import site.metacoding.humancloud.domain.company.CompanyDao;
 import site.metacoding.humancloud.domain.recruit.Recruit;
 import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
@@ -16,10 +20,16 @@ public class RecruitService {
 
     private final RecruitDao recruitDao;
     private final CategoryDao categoryDao;
+    private final CompanyDao companyDao;
 
     public Recruit 공고상세페이지(Integer recruitId) {
-
         Recruit recruitPS = recruitDao.findById(recruitId);
+        Company companyPS = companyDao.findById(recruitPS.getRecruitCompanyId());
+        List<Category> categoryList = categoryDao.findByRecruitId(recruitId);
+        List<Recruit> recruitListByCompanyId = recruitDao.findByCompanyId(recruitPS.getRecruitCompanyId());
+        recruitPS.setCategory(categoryList);
+        recruitPS.setCompany(companyPS);
+        recruitPS.setRecruitListByCompanyId(recruitListByCompanyId);
         return recruitPS;
     }
 
