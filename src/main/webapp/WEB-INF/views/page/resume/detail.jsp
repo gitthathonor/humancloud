@@ -69,7 +69,7 @@
         <div class="row">
             <div class="d-flex">
                 <div class="mr-2">
-                    <a href="/resume/updateForm/${resumeId}"class="btn btn-primary btn-icon-text">
+                    <a href="/resume/updateForm/${resume.resumeId}/${resume.resumeUserId}"class="btn btn-primary btn-icon-text">
                         <i class="ti-file btn-icon-prepend"></i>
                         이력서 수정하기
                     </a>

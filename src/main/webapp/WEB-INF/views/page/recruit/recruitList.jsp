@@ -95,7 +95,7 @@
                     <p class="fs-10 mb-2">${recruit.recruitCreatedAt}</p>
                 </div>
                 <div class="col-2 d-flex flex-wrap align-content-center">
-                    <a href="/${recruit.recruitId}">
+                    <a href="/recruit/detail/${recruit.recruitId}">
                         <button type="button" class="btn btn-outline-danger">상세보기</button>
                     </a>
                 </div>
@@ -151,7 +151,7 @@
             item += `<p class="fs-30 mb-2">`+list.recruitTitle+`</p>`;
             item += `<p>`+list.recruitLocation+`</p>`;
             item += `</div><div class="col-2 d-flex flex-wrap align-content-center">`;
-            item += `<a hreaf="#`+`여기뭐들어가야됨`+`>`;
+            item += `<a href="/recruit/detail/`+list.recruitId+`>`;
             item += `<button type="button" class="btn btn-outline-danger">`+`상세보기`+`</button></a>`
             item += `</div></div>`
         }

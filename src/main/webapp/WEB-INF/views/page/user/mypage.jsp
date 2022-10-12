@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../../layout/header.jsp" %>
+<%@ include file="subscribeModal.jsp" %>
+
 <div class="row">
     <%@ include file="profile.jsp" %>
     <div class="col-md-9 grid-margin stretch-card">
@@ -39,7 +41,7 @@
                     <c:otherwise>
                         <c:forEach var="r" items="${resume.resume}">
                             <div class="m-3 p-3 col-2 border" onchang='viewResume("${r.resumeId}")'>
-                                <a href="/resume/detail/${r.resumeId}">
+                                <a href="/resume/detail/${r.resumeId}/${r.resumeUserId}">
                                 <h3>${r.resumeTitle}</h3>
                                 </a>
                                 <p>${r.resumeReadCount}</p>
