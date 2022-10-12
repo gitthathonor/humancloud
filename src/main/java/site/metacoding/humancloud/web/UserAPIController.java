@@ -5,7 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.subscribe.Subscribe;
+import site.metacoding.humancloud.domain.subscribe.SubscribeDao;
 import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.service.UserService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
@@ -14,6 +16,7 @@ import site.metacoding.humancloud.web.dto.request.user.LoginDto;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -21,6 +24,7 @@ public class UserAPIController {
 
     private final UserService userService;
     private final HttpSession session;
+
 
     @DeleteMapping("/user/{id}")
     public @ResponseBody CMRespDto<?> delete(@PathVariable Integer id) {
@@ -43,8 +47,7 @@ public class UserAPIController {
 
     @GetMapping("/mypage")
     public String viewMypage(@RequestParam Integer id, Model model) {
-        // Session principal = (Session) session.getAttribute("principal");
-        // System.out.println(principal);
+        model.addAttribute("subscribe", userService.구독기업보기(id));
         model.addAttribute("user", userService.유저정보보기(id));
         model.addAttribute("resume", userService.이력서보기(id));
         return "page/user/mypage";
@@ -61,7 +64,7 @@ public class UserAPIController {
         return "page/user/login";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     public @ResponseBody CMRespDto<?> login(@RequestBody LoginDto loginDto, HttpServletRequest request) {
         User result = userService.로그인(loginDto);
         if (result != null) {
@@ -91,8 +94,4 @@ public class UserAPIController {
         return "page/user/userSaveForm";
     }
 
-    @GetMapping({ "/", "/main" })
-    public String main() {
-        return "page/main";
-    }
 }

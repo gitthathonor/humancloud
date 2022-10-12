@@ -9,9 +9,8 @@
                 Basic form layout
             </p>
             <div class="btn-group m-4" role="group" aria-label="Basic example">
-                <!-- 버튼을 누르면, 아작스로 부분 리로드할 건지, 그냥 넘길 건지-->
                 <button type="button" class="btn btn-primary">일반</button>
-                <button type="button" class="btn btn-primary">기업</button>
+                <button type="button" class="btn btn-default"><a class="text-black" href="/company/saveForm">기업</a></button>
             </div>
 
             <form class="forms-sample">
@@ -75,6 +74,11 @@
 
     function checkUsername() {
         let username = $("#username").val();
+
+        if(username===""){
+            alert("아이디를 입력하시오");
+            return;
+        }
 
         $.ajax("/user/usernameSameCheck?username="+username, {
             type: "GET",

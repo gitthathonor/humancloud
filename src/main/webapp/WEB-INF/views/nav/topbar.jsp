@@ -28,9 +28,8 @@
           <c:choose>
             <c:when test="${empty principal}">
               <div style="margin: 0 10px;">
-                <button type="button" class="btn btn-primary"><a class="text-white" href="/login">로그인</a> </button>
-                <button type="button" class="btn btn-outline-primary"><a class="text-primary"
-                    href="/join">회원가입</a></button>
+                <a class="text-white" href="/login"><button type="button" class="btn btn-primary">로그인 </button></a>
+                <a class="text-primary" href="/join"><button type="button" class="btn btn-outline-primary">회원가입</button></a>
               </div>
             </c:when>
             <c:otherwise>

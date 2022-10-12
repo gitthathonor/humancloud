@@ -9,21 +9,20 @@ import java.util.UUID;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.company.Company;
+import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.service.CompanyService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
+import site.metacoding.humancloud.web.dto.request.company.LoginDto;
 import site.metacoding.humancloud.web.dto.request.company.SaveDto;
 import site.metacoding.humancloud.web.dto.request.company.UpdateDto;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequiredArgsConstructor
@@ -138,6 +137,19 @@ public class CompanyController {
 	public @ResponseBody CMRespDto<?> delete(@PathVariable Integer id) {
 		companyService.deleteCompany(id);
 		return new CMRespDto<>(1, "기업정보 삭제 완료", null);
+	}
+
+	@PostMapping("/company/login")
+	public @ResponseBody CMRespDto<?> login(@RequestBody LoginDto loginDto, HttpServletRequest request) {
+		System.out.println(loginDto.getCompanyUsername());
+		System.out.println(loginDto.getCompanyPassword());
+		Company result = companyService.로그인(loginDto);
+
+		if (result != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("principal", result.getCompanyId());
+		}
+		return new CMRespDto<>(1, "1", result);
 	}
 
 }

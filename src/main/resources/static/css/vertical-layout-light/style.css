@@ -17333,7 +17333,7 @@ a.close.disabled {
 
   .modal-lg,
   .modal-xl {
-    max-width: 90%;
+    max-width: 50%;
   }
 }
 

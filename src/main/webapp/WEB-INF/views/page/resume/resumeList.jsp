@@ -68,7 +68,7 @@
     <div class="w-75 d-flex justify-content-between">
         <div class="btn-group">
             <c:forEach var="category" items="${resumeData.category}">
-                <button onclick='btnCategory("${category.categoryName}")' class="btn btn-primary">${category.categoryName}</button>
+                <button onclick='btnCategory("${category.categoryName}", ${sessionScope.principal})' class="btn btn-primary">${category.categoryName}</button>
             </c:forEach>
         </div>
         <div class="dropdown">
@@ -77,6 +77,7 @@
               <option value="recent">최신순</option>
               <option value="career">경력순</option>
               <option value="education">학력순</option>
+                <option value="recommend">추천순</option>
             </select>
         </div>
     </div>
@@ -95,7 +96,7 @@
                 <p class="fs-10 mb-2">${resume.resumeCreatedAt}</p>
             </div>
             <div class="col-2 d-flex flex-wrap align-content-center">
-                <a href="resume/detail/${resume.resumeId}">
+                <a href="resume/detail/${resume.resumeId}/${resume.resumeUserId}">
                 <button type="button" class="btn btn-outline-danger">상세보기</button>
                 </a>
             </div>
@@ -126,14 +127,20 @@
         });
     }
 
-    function orderDo(listOption){
+    function orderDo(listOption, userId){
+        let data = {
+            userId : userId,
+        };
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "/resume/list?order="+listOption,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
+            data: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
         }).done((res) => {
-            console.log(res.data);
             $("#resumeCard").empty();
             $("#resumeCard").append(makeList(res.data));
         }).fail(function(error){

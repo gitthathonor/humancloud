@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.company.CompanyDao;
+import site.metacoding.humancloud.web.dto.request.company.LoginDto;
 import site.metacoding.humancloud.web.dto.request.company.SaveDto;
 import site.metacoding.humancloud.web.dto.request.company.UpdateDto;
 
@@ -58,14 +59,14 @@ public class CompanyService {
 		companyDao.deleteById(id);
 	}
 
-	// public boolean 로그인(Integer id, LoginDto loginDto) {
-	// User userPS = userDao.findById(id);
-	// if (loginDto.getUsername() != userPS.getUsername()) {
-	// return false;
-	// } else if (loginDto.getPassword() != userPS.getPassword()) {
-	// return false;
-	// }
-	// return true;
-	// }
+	 public Company 로그인(LoginDto loginDto) {
+	 Company companyPS = companyDao.findByUsername(loginDto.getCompanyUsername());
+	 if (loginDto.getCompanyUsername() != companyPS.getCompanyName()) {
+	 return null;
+	 } else if (loginDto.getCompanyPassword() != companyPS.getCompanyPassword()) {
+	 return null;
+	 }
+	 return companyPS;
+	 }
 
 }
