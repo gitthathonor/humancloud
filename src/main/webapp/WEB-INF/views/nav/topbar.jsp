@@ -26,7 +26,7 @@
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item dropdown">
           <c:choose>
-            <c:when test="${empty principal}">
+            <c:when test="${empty sessionScope}">
               <div style="margin: 0 10px;">
                 <a class="text-white" href="/login"><button type="button" class="btn btn-primary">로그인 </button></a>
                 <a class="text-primary" href="/join"><button type="button" class="btn btn-outline-primary">회원가입</button></a>
@@ -90,7 +90,7 @@
             <img src="images/faces/face28.jpg" alt="profile" />
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-            <a href="/mypage?id=${sessionScope.principal}" class="dropdown-item">
+            <a href="/mypage?id=${sessionScope.principal.userId}" class="dropdown-item">
               <i class="ti-settings text-primary"></i>
               MyPage
             </a>

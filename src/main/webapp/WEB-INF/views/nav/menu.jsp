@@ -32,7 +32,7 @@
             <a class="nav-link" href="/login">
           </c:when>
           <c:otherwise>
-            <a class="nav-link" href="/mypage?id=${sessionScope.principal}">
+            <a class="nav-link" href="/mypage?id=${sessionScope.principal.userId}">
           </c:otherwise>
         </c:choose>
         <i class="icon-grid-2 menu-icon"></i>

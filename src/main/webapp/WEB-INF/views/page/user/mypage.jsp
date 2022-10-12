@@ -49,7 +49,7 @@
                             </div>
                         </c:forEach>
                         <div class="m-3 p-3 col-2 border" onchang='viewResume("${r.resumeId}")'>
-                            <a href="/resume/saveForm/${sessionScope.principal}">
+                            <a href="/resume/saveForm/${sessionScope.principal.userId}">
                                 <h3>이력서 써</h3>
                                 <p>이력서 작성 페이지로 이동</p>
                             </a>

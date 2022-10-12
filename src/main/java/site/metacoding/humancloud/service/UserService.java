@@ -56,7 +56,7 @@ public class UserService {
     }
 
     public boolean 유저네임중복체크(String username) {
-        User userPS = userDao.findByUsername(username);
+        User userPS = userDao.findAllUsername(username);
         if (userPS == null) {
             return true;
         } else {
