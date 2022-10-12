@@ -7,6 +7,7 @@
                 <button type="button" class=" btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+
                 <c:forEach var="subs" items="${subscribe}">
                     <div class="row d-flex justify-content-between">
                         <div class="m-3 col-7 border">${subs.companyName}</div>

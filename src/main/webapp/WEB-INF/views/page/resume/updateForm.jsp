@@ -5,6 +5,7 @@
     <div class="card-body">
         <h3 class="card-title">이력서 작성</h3>
         <input id="resumeId" type ="hidden" value='${resume.resumeId}'/>
+        <input id="userId" type ="hidden" value='${user.userId}'/>
         <form class="forms-sample">
         <div class="form-group">
             <label for="name">이력서 제목</label>
@@ -23,13 +24,9 @@
             <input type="tel" class="form-control" id="phoneNumber" placeholder="전화번호 입력" value="${user.phoneNumber}" >
         </div>
         <div class="form-group">
-<<<<<<< HEAD
-            <div style="margin:  20px 0 0 0;"></div>
-            <input type="file" id="file" onchange="setThumbnail(event)"/>
-=======
+
             <input type="file" id="file" onchange="setThumbnail(event)"/>
             <div style="margin:  20px 0 0 0;"></div>
->>>>>>> master
             <div id="image_container">
                 <img id ="oldImg" src="/img/${resume.resumePhoto}">
 	        </div>
@@ -38,14 +35,14 @@
         <div class="form-check d-flex" id="education">
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="고졸">
+                <input type="radio" class="form-check-input" name="education" value="고졸">
                     고졸
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="대졸">
+                <input type="radio" class="form-check-input" name="education" value="대졸">
                     대졸
                 <i class="input-helper"></i></label>
             </div>
@@ -94,19 +91,11 @@
             </div>   
         </div>    
         <div class="btn-group m-4" role="group" aria-label="Basic example">
-<<<<<<< HEAD
             <button type="button" class="btn btn-primary" id="btnUpdate">작성완료</button>
         </div><%-- btn-group m-4 --%>
         <c:forEach var="category" items="${category}">
             <input name="asd" type ="hidden" value='${category.categoryName}'/>
         </c:forEach> 
-=======
-            <button type="button" class="btn btn-primary" id="btnSave">작성완료</button>
-        </div><%-- btn-group m-4 --%>
-           <c:forEach var="category" items="${category}">
-        <input id = "asd" name="asd" type ="text" value='${category.categoryName}'/>
-    </c:forEach> 
->>>>>>> master
 
         </form>
     </div>
@@ -114,11 +103,10 @@
 
 <script>
 
-<<<<<<< HEAD
     let edu = '${resume.resumeEducation}';
     let career = '${resume.resumeCareer}';
     // 라디오 버튼 값 가져오기
-    document.querySelector('#education input[value='+edu+']').setAttribute('checked' , true);
+    document.querySelector('input[type=radio][name=education value='+edu+']').setAttribute('checked' , true);
    
     // 드롭박스 값 가져오기
     $("#resumeCareer").val(career);
@@ -140,56 +128,37 @@
             }
         }
     }
-=======
-    // 라디오 버튼 값 가져오기
-    document.querySelector("#education input[value=${resume.resumeEducation}]").setAttribute('checked' , true);
-   
-    // 드롭박스 값 가져오기
-    $("#resumeCareer").val('${resume.resumeCareer}');
 
->>>>>>> master
 
     function setThumbnail(event) {
         let reader = new FileReader();
 
         reader.onload = function(event) {
-<<<<<<< HEAD
+
             if(document.getElementById("newImg")){
                 document.getElementById("newImg").remove();
             }
-
-=======
->>>>>>> master
             let img = document.createElement("img");
             let oldImg = $("#oldImg");
             oldImg.remove();
             img.setAttribute("src", event.target.result);
-<<<<<<< HEAD
             img.setAttribute("id", "newImg");
             document.querySelector("#image_container").appendChild(img);
 
-=======
-            document.querySelector("#image_container").appendChild(img);
->>>>>>> master
         };
         reader.readAsDataURL(event.target.files[0]);
     }
 
-<<<<<<< HEAD
+
 	$("#btnUpdate").click(()=>{
 		update();
 	});
 	function update(){
-=======
-	$("#btnSave").click(()=>{
-		Save();
-	});
-	function Save(){
->>>>>>> master
         let categoryName = new Array();
         let education = "";
 
         let resumeId = $("#resumeId").val();
+        let userId = $("#userId").val();
 
         $('input[type=radio][name=education]').each(function() {
             if($(this).is(":checked") == true){
@@ -225,10 +194,9 @@
 		}).done((res) => {
 			if (res.code == 1) {
 				alert("이력서 수정 성공");
-<<<<<<< HEAD
-                location.href="/resume/detail/"+resumeId;
-=======
->>>>>>> master
+
+                location.href="/resume/detail/"+resumeId+"/"+userId;
+
 				}
 			});
 		}

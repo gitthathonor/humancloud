@@ -91,8 +91,4 @@ public class UserAPIController {
         return "page/user/userSaveForm";
     }
 
-    @GetMapping({ "/", "/main" })
-    public String main() {
-        return "page/main";
-    }
 }
