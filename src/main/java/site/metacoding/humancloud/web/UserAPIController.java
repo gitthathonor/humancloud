@@ -69,7 +69,7 @@ public class UserAPIController {
         User result = userService.로그인(loginDto);
         if (result != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("principal", result.getUserId());
+            session.setAttribute("principal", result);
         }
         return new CMRespDto<>(1, "1", result);
     }

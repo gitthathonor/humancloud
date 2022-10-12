@@ -149,7 +149,7 @@ public class CompanyController {
 
 		if (result != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("principal", result.getCompanyId());
+			session.setAttribute("companyPrincipal", result.getCompanyId());
 		}
 		return new CMRespDto<>(1, "1", result);
 	}

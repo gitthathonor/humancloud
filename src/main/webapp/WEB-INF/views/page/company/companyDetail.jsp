@@ -9,10 +9,9 @@
 					<div class="col-lg-12 grid-margin stretch-card">
 						<div class="card">
 							<div class="card-body">
-								<div class="row" style="margin: 0 0 0 5px">
+								<div class="d-flex justify-content-between" style="margin: 0 0 0 5px">
 									<h3>기업 정보</h3>
-									<div style="margin: 0 100px 0 0;"></div>
-									<button style="margin: 0 0 0 80px">
+									<button class="btn btn-primary" onclick='subscribeCompany(${sessionScope.principal.userId})'>
 										<i class="fa-regular fa-heart"></i> <span>관심기업등록</span>
 									</button>
 								</div>
@@ -106,6 +105,35 @@
 		<%-- row --%>
 			<script type="text/javascript"
 				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20cf6648d61d4bd68efbb7c7c95723f3&libraries=services"></script>
+			<script>
+				function subscribeCompany(userId){
+
+
+					let data = {
+						subscribeUserId : userId,
+						subscribeCompanyId: $("#id").val()
+					};
+
+
+					$.ajax("/subscribe", {
+						type: "POST",
+						dataType: "json",
+						data: JSON.stringify(data),
+						headers: {
+							"Content-Type": "application/json"
+						}
+					}).done((res) => {
+						if (res.code == 1) {
+							alert("구독완료");
+							// 나중에는 여기 기업 상세보기로 변경
+							location.reload();
+						}
+					});
+				}
+
+			</script>
+
+
 			<script>
 				let address = $("#address").val();
 
