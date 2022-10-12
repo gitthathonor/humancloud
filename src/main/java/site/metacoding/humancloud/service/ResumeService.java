@@ -107,8 +107,34 @@ public class ResumeService {
         return resumeDao.orderByEducation();
     }
 
-    public void 추천순보기(Integer userId) {
+//    public void 추천순보기(Integer userId) {
 //
-
-    }
+//        // 1. 로그인 하지 않으면?
+//
+//        // 2. 로그인시
+//
+//        // 기업의 이력서 목록에 해당되는 관심 이름 목록 불러오기
+//        List<Category> recruitList = categoryDao.joinRecruitCategory();
+//
+//        // 그 기업에 해당하는 이력서 뽑아내기
+//        List<List<Resume>> resumeList = new ArrayList<>();
+//        for (Category c : recruitList) {
+//            resumeList.add(categoryDao.findByResumeCategory(c.getCategoryName()));
+//        }
+//
+//        // 리스트 빈도수 카운트
+//        Map<Integer, Integer> countResume = new HashMap<>();
+//        for (List<Resume> x : resumeList) {
+//            for (int i = 0; i < x.size(); i++) {
+//                Integer count = countResume.get(x.get(i).getResumeId());
+//                if (count == null) {
+//                    countResume.put(x.get(i).getResumeId(), 1);
+//                } else {
+//                    countResume.put(x.get(i).getResumeId(), countResume.get(x.get(i).getResumeId()) + 1);
+//                }
+//            }
+//        }
+//
+//        System.out.println(countResume.get(1));
+//    }
 }

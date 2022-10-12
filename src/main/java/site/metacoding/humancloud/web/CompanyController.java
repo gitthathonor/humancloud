@@ -143,13 +143,9 @@ public class CompanyController {
 	public @ResponseBody CMRespDto<?> login(@RequestBody LoginDto loginDto, HttpServletRequest request) {
 		Company result = companyService.로그인(loginDto);
 
-		System.out.println("-------------");
-		System.out.println(result.getCompanyName());
-		System.out.println(result.getCompanyPassword());
-
 		if (result != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("companyPrincipal", result.getCompanyId());
+			session.setAttribute("companyPrincipal", result);
 		}
 		return new CMRespDto<>(1, "1", result);
 	}
