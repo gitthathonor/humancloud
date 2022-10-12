@@ -156,11 +156,11 @@
                 </div>
             </div>
         </div>
-        <input id="companyData" value="${Recruit.recruitId}" type="hidden">
+        <input id="recruitId" value="${Recruit.recruitId}" type="hidden">
         <script>
             function goUpdate() {
                 alert("갈까요?");
-                let data = $("#companyData").val();
+                let data = $("#recruitId").val();
                 location.href = "/recruit/update/" + data;
             }
 
