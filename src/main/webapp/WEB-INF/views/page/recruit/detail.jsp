@@ -14,7 +14,17 @@
             <div class="col-md-8  transparent">
                 <div>
                     <p class="card-title"></p>${Recruit.company.companyName}</p>
-                    <h2 class="text-primary">${Recruit.recruitTitle}</h2>
+                    <h2 class="text-primary">${Recruit.recruitTitle}
+
+                        <!--          <button type="button" class="ml-5 btn btn-info btn-rounded btn-social-icon">
+                            <i class="ti-star"></i>
+                        </button>
+
+
+                        <button type="button" class="btn btn-outline-secondary btn-rounded btn-social-icon">
+                            <i class="ti-star text-primary"></i>
+                        </button> -->
+                    </h2>
                 </div>
 
                 <div>
@@ -69,15 +79,7 @@
                 </div>
             </div>
 
-            <!-- 버튼 눌러 졌을 때
-            <button type="button" class="btn btn-info btn-rounded btn-social-icon">
-                <i class="ti-star"></i>
-            </button>
 
-            버튼 안눌러 졌을 때
-            <button type="button" class="btn btn-outline-secondary btn-rounded btn-social-icon">
-                <i class="ti-star text-primary"></i>
-            </button> -->
         </div>
         <hr />
 
@@ -121,7 +123,7 @@
                                         No
                                         <!-- recruitId -->
                                     </th>
-                                    <th class="select-checkbox sorting_asc" rowspan="1" colspan="2">
+                                    <th class="select-checkbox sorting_asc" rowspan="1" colspan="3">
                                         공고
                                         <!-- recruitId -->
                                     </th>
@@ -142,9 +144,9 @@
                                 <c:forEach var="lists" items="${Recruit.recruitListByCompanyId}">
                                     <tr role="row">
                                         <td rowspan="1" colspan="1">추천 수...?</td>
-                                        <td rowspan="1" colspan="2">${lists.recruitTitle}</td>
+                                        <td rowspan="1" colspan="3">${lists.recruitTitle}</td>
                                         <td rowspan="1" colspan="2">${lists.recruitSalary} 만원</td>
-                                        <td rowspan="1" colspan="1">25/04/2020</td>
+                                        <td rowspan="1" colspan="1">${lists.recruitStartDay}</td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

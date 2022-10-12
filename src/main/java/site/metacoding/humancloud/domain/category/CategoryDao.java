@@ -30,6 +30,4 @@ public interface CategoryDao {
 
 	public List<Category> joinRecruitCategory(Integer CompanyId);
 
-	// public List<Map<String, Object>>
-	// findCompanyByName(@Param("categories")List<Category> categories);
 }
