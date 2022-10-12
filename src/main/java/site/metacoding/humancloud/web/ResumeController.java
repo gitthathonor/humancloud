@@ -22,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.category.Category;
-import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.service.ResumeService;
 import site.metacoding.humancloud.service.UserService;
@@ -92,7 +91,8 @@ public class ResumeController {
   }
 
   @GetMapping("resume/updateForm/{resumeId}/{userId}")
-  public String updatePage(@PathVariable("resumeId") Integer resumeId, @PathVariable("userId") Integer userId, Model model) {
+  public String updatePage(@PathVariable("resumeId") Integer resumeId, @PathVariable("userId") Integer userId,
+      Model model) {
     model.addAttribute("resume", resumeService.이력서상세보기(resumeId, userId).get("resume"));
     model.addAttribute("category", resumeService.이력서상세보기(resumeId, userId).get("category"));
     model.addAttribute("user", resumeService.이력서상세보기(resumeId, userId).get("user"));
@@ -100,7 +100,8 @@ public class ResumeController {
   }
 
   @GetMapping("resume/detail/{resumeId}/{userId}")
-  public String detailResume(@PathVariable("resumeId") Integer resumeId, @PathVariable("userId") Integer userId, Model model) {
+  public String detailResume(@PathVariable("resumeId") Integer resumeId, @PathVariable("userId") Integer userId,
+      Model model) {
     model.addAttribute("resume", resumeService.이력서상세보기(resumeId, userId).get("resume"));
     model.addAttribute("category", resumeService.이력서상세보기(resumeId, userId).get("category"));
     model.addAttribute("user", resumeService.이력서상세보기(resumeId, userId).get("user"));

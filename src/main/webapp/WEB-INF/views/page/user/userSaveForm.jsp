@@ -10,11 +10,9 @@
             </p>
             <div class="btn-group m-4" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary">일반</button>
-<<<<<<< HEAD
+
                 <button type="button" class="btn btn-default"><a class="text-black" href="/company/saveForm">기업</a></button>
-=======
-                <a class="text-black" href="/company/saveForm"><button type="button" class="btn btn-default">기업</button></a>
->>>>>>> 6bae7796cf94180ad4a9ee8d8cd694ce22c5edbc
+
             </div>
 
             <form class="forms-sample">
