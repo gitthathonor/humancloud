@@ -34,8 +34,6 @@
 	</select>
 	<select id="findAll" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
 		select * from recruit
-	
-	select * from recruit
 	</select>
 	<update id="update"></update>
 	<delete id="deleteById"></delete>
