@@ -76,7 +76,7 @@
                                         </div>
                                         <input type="number" class="form-control" id="recruitSalary"
                                             aria-label="Amount (to the nearest dollar)"
-                                            placeholder="연봉을 ' 만 ' 단위로 입력해 주세요">
+                                            placeholder="연봉을 ' 만 ' 단위로 입력해 주세요" value="${Recruit.recruitSalary}">
                                     </div>
                                 </div>
                                 <hr />
@@ -98,7 +98,8 @@
                                     <div class="input-group">
                                         <div class="form-outline">
                                             <input type="text" class="form-control" id="recruitLocation"
-                                                placeholder="주소" name="companyAddress">
+                                                placeholder="주소" name="companyAddress"
+                                                value="${Recruit.recruitLocation}">
                                         </div>
                                         <div class="input-group-append">
                                             <input class="btn btn-sm btn-primary " type="button" id="recruitLocation"
@@ -109,7 +110,7 @@
                                 <hr />
                                 <div class="form-group">
                                     <label for="exampleTextarea1">내용 입력 (recruitContent)</label>
-                                    <textarea id="summernote"></textarea>
+                                    <textarea id="summernote">${Recruit.recruitContent}</textarea>
                                 </div>
                                 <button id="submitBtn" type="button" class="btn btn-primary mr-2">Submit</button>
                                 <button class="btn btn-light">Cancel</button>
