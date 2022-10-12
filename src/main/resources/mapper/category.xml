@@ -6,6 +6,10 @@
 		delete from category where category_resume_id=#{categoryResumeId}
 	</delete>
 
+	<delete id="deleteByRecruitId">
+		delete from category where category_recruit_id=#{categoryRcruitId}
+	</delete>
+
 	<select id="distinctName" resultType="site.metacoding.humancloud.domain.category.Category">
 		select distinct(category_name) from category
 	</select>

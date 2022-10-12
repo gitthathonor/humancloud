@@ -112,7 +112,8 @@
                                     <label for="exampleTextarea1">내용 입력 (recruitContent)</label>
                                     <textarea id="summernote">${Recruit.recruitContent}</textarea>
                                 </div>
-                                <button id="submitBtn" type="button" class="btn btn-primary mr-2">Submit</button>
+                                <button id="submitBtn" type="button" class="btn btn-primary mr-2"
+                                    onclick="update()">Submit</button>
                                 <button class="btn btn-light">Cancel</button>
                             </form>
                         </div>
@@ -123,8 +124,9 @@
         </div>
 
         <c:forEach var="category" items="${Recruit.category}">
-            <input type="text" value="${category.categoryName}" name="category">
+            <input type="hidden" value="${category.categoryName}" name="category">
         </c:forEach>
+        <input hidden id="recruitId" value="${Recruit.recruitId}" />
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
             let arr = new Array();
@@ -142,10 +144,6 @@
                     }
                 }
             }
-
-
-
-
 
             function sample6_execDaumPostcode() {
                 new daum.Postcode({
@@ -192,6 +190,7 @@
                     recruitCategoryList.push($(this).val());
                 });
                 let data = {
+                    recruitId: $('#recruitId').val(),
                     recruitTitle: $('#recruitTitle').val(),
                     recruitCareer: $('#recruitCareer').val(),
                     recruitLocation: $('#recruitLocation').val(),
@@ -201,8 +200,8 @@
                     recruitContent: $('#summernote').val()
                 }
 
-                $.ajax("recruit/save", {
-                    type: "POST",
+                $.ajax("recruit/update", {
+                    type: "put",
                     dataType: "json",
                     data: JSON.stringify(data),
                     headers: {
@@ -210,7 +209,7 @@
                     }
                 }).done((res) => {
                     if (res.code == 1) {
-                        alert("인서트 성공하였습니다");
+                        alert("업데이트에 성공하였습니다");
                     } else {
                         alert("업데이트에 실패했습니다");
                     }

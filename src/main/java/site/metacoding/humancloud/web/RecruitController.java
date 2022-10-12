@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,8 +28,13 @@ public class RecruitController {
   public String updateFrom(@PathVariable(required = false) Integer id, Model model) {
     Recruit recruitPS = recruitService.공고상세페이지(id);
     model.addAttribute("Recruit", recruitPS);
-
     return "page/recruit/updateForm";
+  }
+
+  @PutMapping("recruit/update")
+  public @ResponseBody CMRespDto<?> update(@RequestBody SaveDto saveDto) {
+
+    return new CMRespDto<>(1, "성공", null);
   }
 
   @GetMapping("recruit/detail/{id}")

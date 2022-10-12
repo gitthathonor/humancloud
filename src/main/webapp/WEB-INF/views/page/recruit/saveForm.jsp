@@ -176,7 +176,7 @@
                     recruitContent: $('#summernote').val()
                 }
 
-                $.ajax("recruit/save", {
+                $.ajax("/recruit/save", {
                     type: "POST",
                     dataType: "json",
                     data: JSON.stringify(data),
