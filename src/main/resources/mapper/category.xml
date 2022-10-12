@@ -17,11 +17,6 @@
 		where category_name=#{categoryName}
 	</select>
 
-
-	<select id="findByRecruitId" resultType="site.metacoding.humancloud.domain.category.Category">
-		select * from category where category_recruit_id=#{recruitId}
-	</select>
-
 	<select id="findByRecruitId" resultType="site.metacoding.humancloud.domain.category.Category">
 		select * from category where category_recruit_id=#{recruitId}
 	</select>
