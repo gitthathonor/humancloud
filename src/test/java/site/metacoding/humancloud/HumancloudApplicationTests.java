@@ -2,6 +2,7 @@ package site.metacoding.humancloud;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -53,6 +54,13 @@ class HumancloudApplicationTests {
 		List<Category> categoryList = categoryDao.findByRecruitId(글아이디);
 		recruitPS.setCategory(categoryList);
 		recruitPS.setCompany(companyPS);
+
+		SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd");
+		String t = form.format(recruitPS.getRecruitCreatedAt());
+
+		System.out.println("===========================");
+		System.out.println(t);
+		System.out.println("===========================");
 
 		assertEquals(3, recruitPS.getCategory().size());
 	}
