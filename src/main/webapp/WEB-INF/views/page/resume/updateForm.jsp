@@ -23,8 +23,13 @@
             <input type="tel" class="form-control" id="phoneNumber" placeholder="전화번호 입력" value="${user.phoneNumber}" >
         </div>
         <div class="form-group">
+<<<<<<< HEAD
             <div style="margin:  20px 0 0 0;"></div>
             <input type="file" id="file" onchange="setThumbnail(event)"/>
+=======
+            <input type="file" id="file" onchange="setThumbnail(event)"/>
+            <div style="margin:  20px 0 0 0;"></div>
+>>>>>>> master
             <div id="image_container">
                 <img id ="oldImg" src="/img/${resume.resumePhoto}">
 	        </div>
@@ -89,11 +94,19 @@
             </div>   
         </div>    
         <div class="btn-group m-4" role="group" aria-label="Basic example">
+<<<<<<< HEAD
             <button type="button" class="btn btn-primary" id="btnUpdate">작성완료</button>
         </div><%-- btn-group m-4 --%>
         <c:forEach var="category" items="${category}">
             <input name="asd" type ="hidden" value='${category.categoryName}'/>
         </c:forEach> 
+=======
+            <button type="button" class="btn btn-primary" id="btnSave">작성완료</button>
+        </div><%-- btn-group m-4 --%>
+           <c:forEach var="category" items="${category}">
+        <input id = "asd" name="asd" type ="text" value='${category.categoryName}'/>
+    </c:forEach> 
+>>>>>>> master
 
         </form>
     </div>
@@ -101,6 +114,7 @@
 
 <script>
 
+<<<<<<< HEAD
     let edu = '${resume.resumeEducation}';
     let career = '${resume.resumeCareer}';
     // 라디오 버튼 값 가져오기
@@ -126,30 +140,52 @@
             }
         }
     }
+=======
+    // 라디오 버튼 값 가져오기
+    document.querySelector("#education input[value=${resume.resumeEducation}]").setAttribute('checked' , true);
+   
+    // 드롭박스 값 가져오기
+    $("#resumeCareer").val('${resume.resumeCareer}');
+
+>>>>>>> master
 
     function setThumbnail(event) {
         let reader = new FileReader();
 
         reader.onload = function(event) {
+<<<<<<< HEAD
             if(document.getElementById("newImg")){
                 document.getElementById("newImg").remove();
             }
 
+=======
+>>>>>>> master
             let img = document.createElement("img");
             let oldImg = $("#oldImg");
             oldImg.remove();
             img.setAttribute("src", event.target.result);
+<<<<<<< HEAD
             img.setAttribute("id", "newImg");
             document.querySelector("#image_container").appendChild(img);
 
+=======
+            document.querySelector("#image_container").appendChild(img);
+>>>>>>> master
         };
         reader.readAsDataURL(event.target.files[0]);
     }
 
+<<<<<<< HEAD
 	$("#btnUpdate").click(()=>{
 		update();
 	});
 	function update(){
+=======
+	$("#btnSave").click(()=>{
+		Save();
+	});
+	function Save(){
+>>>>>>> master
         let categoryName = new Array();
         let education = "";
 
@@ -189,7 +225,10 @@
 		}).done((res) => {
 			if (res.code == 1) {
 				alert("이력서 수정 성공");
+<<<<<<< HEAD
                 location.href="/resume/detail/"+resumeId;
+=======
+>>>>>>> master
 				}
 			});
 		}

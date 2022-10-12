@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ include file="../layout/header.jsp" %>
+<<<<<<< HEAD
 <ol>
 <li>추천순 구현 미완 -> 마이페이지 기업 추천은?</li>
 <li>마이페이지에서 이력서 클릭하면 이력서 상세보기로 넘어가야 됨</li>
@@ -9,6 +10,8 @@
 <li>상세보기 페이징 없음</li>
 <li>상세보기 정렬</li>
 </ol>
+=======
+>>>>>>> master
 <div class="row">
     <div class="col-md-12 grid-margin">
     </div>

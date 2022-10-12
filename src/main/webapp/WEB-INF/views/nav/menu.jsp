@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
       <li class="nav-item">
         <a class="nav-link" href="/recruit/list">
@@ -27,16 +27,16 @@
         </a>
       </li>
       <li class="nav-item">
-          <c:choose>
+        <c:choose>
           <c:when test="${empty sessionScope.principal}">
             <a class="nav-link" href="/login">
           </c:when>
           <c:otherwise>
             <a class="nav-link" href="/mypage?id=${sessionScope.principal}">
           </c:otherwise>
-          </c:choose>
-          <i class="icon-grid-2 menu-icon"></i>
-          <span class="menu-title">마이페이지</span>
+        </c:choose>
+        <i class="icon-grid-2 menu-icon"></i>
+        <span class="menu-title">마이페이지</span>
         </a>
       </li>
       <li class="nav-item">
