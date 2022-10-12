@@ -64,7 +64,7 @@ public class UserAPIController {
         return "page/user/login";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     public @ResponseBody CMRespDto<?> login(@RequestBody LoginDto loginDto, HttpServletRequest request) {
         User result = userService.로그인(loginDto);
         if (result != null) {
