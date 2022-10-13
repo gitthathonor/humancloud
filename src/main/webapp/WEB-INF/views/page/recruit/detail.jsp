@@ -201,7 +201,7 @@
                 }).done((res) => {
                     if (res.code == 1) {
                         alert("삭제 성공하였습니다");
-                        location.href = "/page/recruit/recruitList";
+                        location.href = "/recruit/list";
                     } else {
                         alert("삭제에 실패했습니다");
                     }
