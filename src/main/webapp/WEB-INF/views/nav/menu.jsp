@@ -28,12 +28,15 @@
       </li>
       <li class="nav-item">
         <c:choose>
-          <c:when test="${empty sessionScope.principal}">
+          <c:when test="${empty sessionScope.principal && empty sessionScope.companyPrincipal}">
             <a class="nav-link" href="/login">
           </c:when>
-          <c:otherwise>
-            <a class="nav-link" href="/mypage?id=${sessionScope.principal.userId}">
-          </c:otherwise>
+          <c:when test="${!empty sessionScope.principal.userId }">
+          	<a class="nav-link" href="/mypage?id=${sessionScope.principal.userId}">
+          </c:when>
+           <c:when test="${!empty sessionScope.companyPrincipal.companyId }">
+          	<a class="nav-link" href="/company/mypage?id=${sessionScope.companyPrincipal.companyId}">
+          </c:when> 
         </c:choose>
         <i class="icon-grid-2 menu-icon"></i>
         <span class="menu-title">마이페이지</span>

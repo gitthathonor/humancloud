@@ -5,16 +5,9 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">user register form</h4>
-            <p class="card-description">
-                Basic form layout
-            </p>
             <div class="btn-group m-4" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-primary">일반</button>
-<<<<<<< HEAD
-                <button type="button" class="btn btn-default"><a class="text-black" href="/company/saveForm">기업</a></button>
-=======
                 <a class="text-black" href="/company/saveForm"><button type="button" class="btn btn-default">기업</button></a>
->>>>>>> 6bae7796cf94180ad4a9ee8d8cd694ce22c5edbc
             </div>
 
             <form class="forms-sample">
@@ -23,7 +16,14 @@
                     <div class="col-9"><input type="text" class="form-control" id="username" placeholder="Username"></div>
                     <div class="col-3"><button onclick="checkUsername()" class="btn btn-light" type="button">중복확인</button></div>
                 </div>
-
+				<div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" class="form-control" id="password2" placeholder="Password">
+                </div>
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" placeholder="Username">
@@ -36,14 +36,7 @@
                     <label for="phoneNumber">Phone number</label>
                     <input type="tel" class="form-control" id="phoneNumber" placeholder="Email">
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="password2">Confirm Password</label>
-                    <input type="password" class="form-control" id="password2" placeholder="Password">
-                </div>
+                
 
                 <button id="join" type="submit" class="btn btn-primary mr-2">Submit</button>
                 <button class="btn btn-light">Cancel</button>
@@ -90,10 +83,10 @@
         }).done((res) => {
             if (res.code == 1) { // 통신 성공
                 if (res.data == true) {
-                    alert("사용 가능");
+                    alert("가입이 가능한 username입니다.");
                     isUsernameSameCheck = true;
                 } else {
-                    alert("아이디 중복");
+                    alert("중복된 username 입니다.");
                     isUsernameSameCheck = false;
                 }
             }

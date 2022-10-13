@@ -93,7 +93,6 @@ CREATE TABLE board(
 	board_id INT AUTO_INCREMENT PRIMARY KEY,
 	board_title VARCHAR(50) NOT null,
 	board_content LONGTEXT,
-	board_file VARCHAR(500),
 	board_read_count INT,
 	board_user_id INT, 
 	board_created_at TIMESTAMP
@@ -116,20 +115,20 @@ CREATE TABLE subscribe(
 	subscribe_created_at TIMESTAMP
 );
 
--- 게시글에 대한 추천(좋아요)
-CREATE TABLE likes(
-	likes_id INT AUTO_INCREMENT PRIMARY KEY,
-	likes_user_id INT,
-	likes_board_id INT,
-	likes_created_at TIMESTAMP
-);
-
 -- 1:1 채팅 테이블
 CREATE TABLE chatting(
 	chatting_id INT AUTO_INCREMENT PRIMARY KEY,
 	chatting_user_id INT,
 	chatting_content LONGTEXT,
 	chatting_created_at TIMESTAMP
+);
+
+-- 알림 테이블
+CREATE TABLE notice(
+	notice_id INT AUTO_INCREMENT PRIMARY KEY,
+	notice_recruit_id INT,
+	notice_content INT,
+	notice_created_at TIMESTAMP
 );
 ```
 
@@ -155,10 +154,6 @@ ALTER TABLE comment ADD FOREIGN KEY(comment_board_id) REFERENCES board(board_id)
 -- 관심 기업 구독 테이블 fk
 ALTER TABLE comment ADD FOREIGN KEY(subscribe_user_id) REFERENCES user(user_id);
 ALTER TABLE comment ADD FOREIGN KEY(subscribe_company_id) REFERENCES company(company_id);
-
--- 게시글 추천(좋아요) 테이블 fk
-ALTER TABLE comment ADD FOREIGN KEY(likes_user_id) REFERENCES user(user_id);
-ALTER TABLE comment ADD FOREIGN KEY(likes_board_id) REFERENCES board(board_id);
 
 -- 1:1 채팅 테이블 fk
 ALTER TABLE comment ADD FOREIGN KEY(chatting_user_id) REFERENCES user(user_id);
