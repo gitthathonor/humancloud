@@ -54,6 +54,10 @@ public class CompanyController {
 			MediaType.MULTIPART_FORM_DATA_VALUE })
 	public @ResponseBody CMRespDto<?> save(@RequestPart("file") MultipartFile file,
 			@RequestPart("saveDto") SaveDto saveDto) throws Exception {
+
+		System.out.println("===================");
+		System.out.println("말도안돼");
+		System.out.println("===================");
 		int pos = file.getOriginalFilename().lastIndexOf(".");
 		String extension = file.getOriginalFilename().substring(pos + 1);
 		String filePath = "C:\\temp\\img\\";
@@ -149,11 +153,11 @@ public class CompanyController {
 		}
 		return new CMRespDto<>(1, "1", result);
 	}
-	
+
 	@GetMapping("/company/mypage")
-    public String viewMypage(@RequestParam Integer id, Model model) {
-        model.addAttribute("company", companyService.getCompanyDetail(id));
-        return "page/user/mypage";
-    }
+	public String viewMypage(@RequestParam Integer id, Model model) {
+		model.addAttribute("company", companyService.getCompanyDetail(id));
+		return "page/user/mypage";
+	}
 
 }
