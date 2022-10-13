@@ -8,12 +8,6 @@
           <span class="menu-title">채용</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/company" aria-expanded="false" aria-controls="ui-basic">
-          <i class="icon-columns menu-icon"></i>
-          <span class="menu-title">기업</span>
-        </a>
-      </li>
       <c:if test="${!empty sessionScope.companyPrincipal.companyId}">
         <li class="nav-item">
           <a class="nav-link" href="/resume">
@@ -22,6 +16,12 @@
           </a>
         </li>
       </c:if>
+      <li class="nav-item">
+        <a class="nav-link" href="/company" aria-expanded="false" aria-controls="ui-basic">
+          <i class="icon-columns menu-icon"></i>
+          <span class="menu-title">기업</span>
+        </a>
+      </li>
       <li class="nav-item">
         <c:choose>
           <c:when test="${empty sessionScope.principal && empty sessionScope.companyPrincipal}">
