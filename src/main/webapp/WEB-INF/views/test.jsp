@@ -5,8 +5,14 @@
 <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card position-relative">
-                <div class="card-body">
-                	
+                <div class="card-body d-flex">
+                	<div>
+                		<a href="/recruit/detail/${recruit.recruitId}">공고 제목</a>
+                	</div>
+                	<div>
+                	<button type="button" class="btn btn-primary">Primary</button>
+                	<button type="button" class="btn btn-outline-primary btn-fw">Primary</button>
+                	</div>
                 </div>
               </div>
             </div>
