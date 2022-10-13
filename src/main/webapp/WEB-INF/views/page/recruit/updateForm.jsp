@@ -210,6 +210,7 @@
                 }).done((res) => {
                     if (res.code == 1) {
                         alert("업데이트에 성공하였습니다");
+                        location.href = document.referrer;
                     } else {
                         alert("업데이트에 실패했습니다");
                     }
