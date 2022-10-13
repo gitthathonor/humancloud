@@ -42,7 +42,6 @@ public class RecruitController {
 
   @GetMapping("recruit/detail/{id}")
   public String recruit_Detail(@PathVariable Integer id, Model model) {
-
     Recruit recruitPS = recruitService.공고상세페이지(id);
     model.addAttribute("Recruit", recruitPS);
     return "page/recruit/detail";
