@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -11,11 +12,7 @@
                 <c:forEach var="subs" items="${subscribe}">
                     <div class="row d-flex justify-content-between">
                         <div class="m-3 col-7 border">${subs.companyName}</div>
-<<<<<<< HEAD
-                        <button onclick='deleteSubscribe(${subs.companyId}, ${sessionScope.principal})' class="m-3 col-3 btn btn-outline-danger" type="button">구독취소</button>
-=======
                         <button onclick='deleteSubscribe(${subs.companyId}, ${sessionScope.principal.userId})' class="m-3 col-3 btn btn-outline-danger" type="button">구독취소</button>
->>>>>>> 6bae7796cf94180ad4a9ee8d8cd694ce22c5edbc
                     </div>
                 </c:forEach>
             </div>

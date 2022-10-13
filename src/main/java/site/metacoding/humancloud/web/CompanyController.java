@@ -39,7 +39,7 @@ public class CompanyController {
 	// 기업 회원가입 페이지
 	@GetMapping("/company/saveForm")
 	public String saveForm() {
-		return "page/company/companySaveForm";
+		return "page/company/saveForm";
 	}
 
 	// 기업회원 username 중복체크
@@ -83,7 +83,7 @@ public class CompanyController {
 	@GetMapping("/company/{id}")
 	public String getCompanyDetail(@PathVariable Integer id, Model model) {
 		model.addAttribute("company", companyService.getCompanyDetail(id));
-		return "page/company/companyDetail";
+		return "page/company/detail";
 	}
 
 	// 기업 리스트 보기
@@ -98,7 +98,7 @@ public class CompanyController {
 	@GetMapping("/company/updateForm/{id}")
 	public String updateForm(@PathVariable Integer id, Model model) {
 		model.addAttribute("company", companyService.getCompanyDetail(id));
-		return "page/company/companyUpdateForm";
+		return "page/company/updateForm";
 	}
 
 	// 기업 정보 수정
