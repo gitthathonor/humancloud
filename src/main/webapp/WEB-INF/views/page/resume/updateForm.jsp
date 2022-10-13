@@ -14,16 +14,16 @@
                     </div>
                     <div class="form-group">
                         <label for="name">이름</label>
-                        <input type="text" class="form-control" id="name" placeholder="이름 입력" value="${user.name}">
+                        <input type="text" class="form-control" id="name" placeholder="이름 입력" value="${user.name}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="email">이메일</label>
-                        <input type="email" class="form-control" id="email" placeholder="이메일 입력" value="${user.email}">
+                        <input type="email" class="form-control" id="email" placeholder="이메일 입력" value="${user.email}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber">전화번호</label>
                         <input type="tel" class="form-control" id="phoneNumber" placeholder="전화번호 입력"
-                            value="${user.phoneNumber}">
+                            value="${user.phoneNumber}" readonly>
                     </div>
                     <div class="form-group">
 
