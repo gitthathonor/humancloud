@@ -59,7 +59,6 @@
                                         </c:choose>
                                     </div>
                                 </div>
-                                </c:if>
                                 <c:if
                                     test="${!empty sessionScope.companyPrincipal.companyId || empty sessionScope.principal.userId}">
                                     <div class="my-5">

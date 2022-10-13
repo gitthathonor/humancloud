@@ -152,6 +152,9 @@
 
 				formData.append("saveDto", new Blob([JSON.stringify(data)], { type: "application/json" }));
 
+				console.log(data.companyName);
+				console.log(data.companyUsername);
+
 				$.ajax("/company/save", {
 					type: "post",
 					data: formData,
@@ -160,8 +163,8 @@
 					enctype: 'multipart/form-data'
 				}).done((res) => {
 					if (res.code == 1) {
-						alert("파일 등록 성공");
-						location.href = "/company"
+						alert("회원가입 성공");
+						location.href = "/login"
 					}
 					else {
 						alert("실패");
