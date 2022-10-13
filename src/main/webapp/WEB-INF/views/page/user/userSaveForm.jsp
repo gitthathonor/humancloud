@@ -66,7 +66,7 @@
                 let password2 = $("#password2").val();
 
                 if (password != password2) {
-                    alert("비밀번호 노일치");
+                    alert("비밀번호가 일치하지 않습니다");
                 } else {
                     checkPassword = true;
                 }
