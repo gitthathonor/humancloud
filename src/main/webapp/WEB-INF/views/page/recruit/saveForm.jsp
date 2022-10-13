@@ -186,6 +186,7 @@
                 }).done((res) => {
                     if (res.code == 1) {
                         alert("인서트 성공하였습니다");
+                        location.href="/recruit/list"
                     } else {
                         alert("업데이트에 실패했습니다");
                     }
