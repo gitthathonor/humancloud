@@ -31,7 +31,7 @@ CREATE TABLE user (
 	email VARCHAR(120) UNIQUE NOT null,
 	phone_number VARCHAR(100) UNIQUE,
 	created_at TIMESTAMP
-);
+) engine=InnoDB default charset=UTF8;
 
 -- 분야
 CREATE TABLE category (
@@ -39,7 +39,7 @@ CREATE TABLE category (
 	category_resume_id INT,
 	category_recruit_id INT,
 	category_name VARCHAR(50)
-);
+) engine=InnoDB default charset=UTF8;
 
 -- 회사 
 CREATE TABLE company (
@@ -51,7 +51,7 @@ CREATE TABLE company (
 	company_phone_number VARCHAR(100) UNIQUE,
 	company_address VARCHAR(150) NOT null,
 	company_created_at TimeStamp
-);
+) engine=InnoDB default charset=UTF8;
 
 -- 이력서 
 CREATE TABLE resume(
@@ -64,7 +64,7 @@ CREATE TABLE resume(
 	resume_read_count INT,
 	resume_user_id INT,
 	resume_created_at TIMESTAMP
-);
+) engine=InnoDB default charset=UTF8;
 
 
 -- 채용 공고 
@@ -78,7 +78,7 @@ CREATE TABLE recruit(
 	recruit_read_count INT,
 	recruit_company_id INT,
 	recruit_created_at TIMESTAMP
-);
+) engine=InnoDB default charset=UTF8;
 
 -- 채용 지원 
 CREATE TABLE apply(
@@ -86,7 +86,7 @@ CREATE TABLE apply(
 	apply_recruit_id INT, 
 	apply_resume_id INT, 
 	apply_created_at TIMESTAMP
-);
+) engine=InnoDB default charset=UTF8;
 
 -- 게시판 
 CREATE TABLE board(
@@ -96,7 +96,7 @@ CREATE TABLE board(
 	board_read_count INT,
 	board_user_id INT, 
 	board_created_at TIMESTAMP
-);
+) engine=InnoDB default charset=UTF8;
 
 -- 댓글 
 CREATE TABLE comment(
@@ -105,7 +105,7 @@ CREATE TABLE comment(
 	comment_user_id INT,
 	comment_board_id INT,
 	comment_created_at TIMESTAMP
-);
+) engine=InnoDB default charset=UTF8;
 
 -- 관심 기업 구독
 CREATE TABLE subscribe(
@@ -113,7 +113,7 @@ CREATE TABLE subscribe(
 	subscribe_user_id INT,
 	subscribe_company_id INT,
 	subscribe_created_at TIMESTAMP
-);
+) engine=InnoDB default charset=UTF8;
 
 -- 1:1 채팅 테이블
 CREATE TABLE chatting(
@@ -121,7 +121,7 @@ CREATE TABLE chatting(
 	chatting_user_id INT,
 	chatting_content LONGTEXT,
 	chatting_created_at TIMESTAMP
-);
+) engine=InnoDB default charset=UTF8;
 
 -- 알림 테이블
 CREATE TABLE notice(
@@ -129,7 +129,7 @@ CREATE TABLE notice(
 	notice_recruit_id INT,
 	notice_content INT,
 	notice_created_at TIMESTAMP
-);
+) engine=InnoDB default charset=UTF8;
 ```
 
 ### fk 제약조건
@@ -157,4 +157,29 @@ ALTER TABLE comment ADD FOREIGN KEY(subscribe_company_id) REFERENCES company(com
 
 -- 1:1 채팅 테이블 fk
 ALTER TABLE comment ADD FOREIGN KEY(chatting_user_id) REFERENCES user(user_id);
+```
+
+### utf-8 변경
+```sql
+alter table user convert to character set utf8;
+
+alter table company convert to character set utf8;
+
+alter table resume convert to character set utf8;
+
+alter table recruit convert to character set utf8;
+
+alter table category convert to character set utf8;
+
+alter table apply convert to character set utf8;
+
+alter table board convert to character set utf8;
+
+alter table comment convert to character set utf8;
+
+alter table subscribe convert to character set utf8;
+
+alter table chatting convert to character set utf8;
+
+alter table notice convert to character set utf8;
 ```
