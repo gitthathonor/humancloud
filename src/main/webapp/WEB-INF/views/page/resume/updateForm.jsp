@@ -35,19 +35,42 @@
                     </div>
                     <h3 class="card-title">학력 정보</h3>
                     <div class="form-check d-flex" id="education">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="education" value="고졸">
-                                고졸
-                                <i class="input-helper"></i></label>
-                        </div>
-                        <div style="margin: 0 20px 0 0;"></div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="education" value="대졸">
-                                대졸
-                                <i class="input-helper"></i></label>
-                        </div>
+                            <div class="form-check d-flex">
+            <div class="form-check">
+                <label class="form-check-label">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="고졸">
+                    고졸
+                <i class="input-helper"></i></label>
+            </div>
+            <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="고졸">
+                    2년제 대학 졸업
+                <i class="input-helper"></i></label>
+            </div>
+            <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="고졸">
+                    3년제 대학 졸업
+                <i class="input-helper"></i></label>
+            </div>
+            <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="고졸">
+                    4년제 대학 졸업
+                <i class="input-helper"></i></label>
+            </div>
+            <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="대졸">
+                   대학원 졸업
+                <i class="input-helper"></i></label>
+            </div>
+        </div>
                     </div>
                     <h3 class="card-title">경력 사항</h3>
                     <div class="col-md-8">
@@ -142,6 +165,7 @@
                 let reader = new FileReader();
 
                 reader.onload = function (event) {
+
 
                     if (document.getElementById("newImg")) {
                         document.getElementById("newImg").remove();

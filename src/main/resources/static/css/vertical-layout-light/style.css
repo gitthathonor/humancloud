@@ -11763,6 +11763,7 @@ textarea.tt-hint {
   padding-left: 1.25rem;
 }
 
+
 .form-check-input {
   position: absolute;
   margin-top: 0.3rem;
@@ -25720,7 +25721,10 @@ code {
   font-size: .9375rem;
   font-weight: bold;
   color: #ffffff;
+
 }
+
+/**-------------------------------------------------------------------------------------------------------------------------------------*/
 
 .form-check .form-check-label input[type="checkbox"]:checked+.input-helper:before {
   background: #4B49AC;

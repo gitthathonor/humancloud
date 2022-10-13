@@ -22,7 +22,7 @@
             <input type="tel" class="form-control" id="phoneNumber" placeholder="전화번호 입력" value="${user.phoneNumber}" >
         </div>
         <div class="form-group">
-            <input type="file" id="file" onchange="setThumbnail(event)" >
+            <input type="file" id="file" accept="image/*" onchange="setThumbnail(event)">
             <div id="imageContainer">
             </div>
         </div>
@@ -37,8 +37,29 @@
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="대졸">
-                    대졸
+                <input type="radio" class="form-check-input" id = "education" name="education" value="2년제 대학 졸업">
+                    2년제 대학 졸업
+                <i class="input-helper"></i></label>
+            </div>
+            <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="3년제 대학 졸업">
+                    3년제 대학 졸업
+                <i class="input-helper"></i></label>
+            </div>
+            <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="4년제 대학 졸업">
+                    4년제 대학 졸업
+                <i class="input-helper"></i></label>
+            </div>
+            <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                <input type="radio" class="form-check-input" id = "education" name="education" value=" 대학원 졸업">
+                   대학원 졸업
                 <i class="input-helper"></i></label>
             </div>
         </div>
@@ -86,16 +107,18 @@
             </div>   
         </div>    
         <div class="btn-group m-4" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-primary" id="btnSave" onclick='Save("${sessionScope.principal}")'>작성완료</button>
+            <button type="button" class="btn btn-primary" id="btnSave" onclick='Save("${sessionScope.principal.userId}")'>작성완료</button>
         </div><%-- btn-group m-4 --%>
         </form>
     </div>
 </div>
 <script>
+
  function setThumbnail(event) {
         let reader = new FileReader();
-
+        
         reader.onload = function(event) {
+
 
             if(document.getElementById("newImg")){
                 document.getElementById("newImg").remove();
