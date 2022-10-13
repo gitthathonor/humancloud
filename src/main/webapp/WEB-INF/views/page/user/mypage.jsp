@@ -26,7 +26,7 @@
                         <div>불합격</div>
                     </div>
                 </div>
-                <c:if test="${sessionScope.principal.userId}">
+                <c:if test="${!empty sessionScope.principal.userId || empty sessionScope.companyPrincipal.companyId}">
                 	<div class="my-5">
                     <h4 class="m-3 text-primary">이력서</h4>
                     <div class="row d-flex justify-content-center">
@@ -60,7 +60,7 @@
                 </c:if>
                 <c:if test="${!empty sessionScope.companyPrincipal.companyId || empty sessionScope.principal.userId}">
                 	<div class="my-5">
-                    <h4 class="m-3 text-primary">이력서</h4>
+                    <h4 class="m-3 text-primary">채용공고</h4>
                     <div class="row d-flex justify-content-center">
                     	<a href="/recruit/save"><button class="btn btn-primary">채용공고 작성</button></a>
                     </div>
