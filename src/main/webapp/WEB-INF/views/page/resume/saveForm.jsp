@@ -115,10 +115,32 @@
 <script>
 
  function setThumbnail(event) {
-        let reader = new FileReader();
-        
-        reader.onload = function(event) {
+    let reader = new FileReader();
+    
+    let imgFile = $('#file').val();
+    let fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf)$/;
+    let maxSize = 5 * 1024 * 1024;
+    let fileSize;
 
+   
+
+
+    if(imgFile != "" && imgFile != null) {
+        fileSize = document.getElementById("file").files[0].size;
+            console.log("==================");
+            console.log(fileSize);
+            console.log("==================");
+        if(!imgFile.match(fileForm)) {
+            alert("이미지 파일만 업로드 가능");
+            return $("#file").val(null);
+        } else if(fileSize == maxSize) {
+            alert("파일 사이즈는 5MB까지 가능");
+            return $("#file").val(null);
+        }
+    }
+
+        reader.onload = function(event) {
+            
 
             if(document.getElementById("newImg")){
                 document.getElementById("newImg").remove();
@@ -136,6 +158,13 @@
 	function Save(userId){
         let categoryName = new Array();
         let education = "";
+
+        if($('#file').val() == "") {
+            alert("이력서 사진은 필수!");
+            $("#file").focus();
+            return;
+        }
+
 
         $('input[type=radio][name=education]').each(function() {
             if($(this).is(":checked") == true){
