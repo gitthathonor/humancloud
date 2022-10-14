@@ -54,7 +54,7 @@
 							<input type="file" class="form-control" id="companyLogo" name="companyLogo">
 						</div>
 
-						<button id="btnSave" type="submit" class="btn btn-primary mr-2">회원가입</button>
+						<button id="btnSave" type="button" class="btn btn-primary mr-2">회원가입</button>
 						<button class="btn btn-light">Cancel</button>
 					</form>
 				</div>
