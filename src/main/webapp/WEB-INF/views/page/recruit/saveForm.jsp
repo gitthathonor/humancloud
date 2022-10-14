@@ -93,16 +93,28 @@
                                     </div>
                                 </div>
                                 <hr /> -->
-                                <div class="form-group">
-                                    <label>위치검색 (recruitLocation)</label>
-                                    <div class="input-group">
-                                        <div class="form-outline">
-                                            <input type="text" class="form-control" id="recruitLocation"
-                                                placeholder="주소" name="companyAddress">
+                                <div class="form-group d-flex ">
+                                    <div class="">
+                                        <label>위치검색 (recruitLocation)</label>
+                                        <div class="input-group">
+                                            <div class="form-outline">
+                                                <input type="text" class="form-control" id="recruitLocation"
+                                                    placeholder="주소" name="companyAddress">
+                                            </div>
+                                            <div class="input-group-append">
+                                                <input class="btn btn-sm btn-primary " type="button"
+                                                    id="recruitLocation" onclick="sample6_execDaumPostcode()"
+                                                    value="우편번호 찾기">
+                                            </div>
                                         </div>
-                                        <div class="input-group-append">
-                                            <input class="btn btn-sm btn-primary " type="button" id="recruitLocation"
-                                                onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+                                    </div>
+                                    <div class="ml-5">
+                                        <label>공고 마감날짜 선택 (recruitLocation)</label>
+                                        <div class="input-group">
+                                            <div class="form-outline">
+                                                <input type="date" class="form-control text-primary"
+                                                    id="recruitDeadline" placeholder="주소" name="companyAddress">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -172,6 +184,7 @@
                     recruitLocation: $('#recruitLocation').val(),
                     //recruitPatternList: $('#recruitPattern').val(),
                     recruitCategoryList: recruitCategoryList,
+                    recruitDeadline: $('#recruitDeadline').val(),
                     recruitSalary: $('#recruitSalary').val(),
                     recruitContent: $('#summernote').val()
                 }
@@ -186,7 +199,7 @@
                 }).done((res) => {
                     if (res.code == 1) {
                         alert("인서트 성공하였습니다");
-                        location.href="/recruit/list"
+                        location.href = "/recruit/list"
                     } else {
                         alert("업데이트에 실패했습니다");
                     }

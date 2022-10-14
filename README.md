@@ -1,5 +1,7 @@
 # 미니프로젝트 humancloud - 이력서 관리 웹 사이트
 
+
+
 ### recruit-detail 수정사항 메모
 PathVarilable 이 해당 프로젝트에서는 동작하지않아, 쿼리스트릥으로
 Get 요청을 받아  findById 메서드 실행을 한 후,
@@ -12,6 +14,10 @@ layout/header.jsp 에서 충돌나는 헤드 코드 saveForm 에서만 쓰일 �
 ![Untitled](https://user-images.githubusercontent.com/92712092/194812543-6bf839a5-8397-4b4b-9dba-ac9d8f75e191.png)
 
 
+### 테이블에 컬럼 추가 for MariaDB
+```sql
+ALTER TABLE recruit ADD COLUMN recruit_deadline VARCHAR(20) AFTER recruit_company_id;
+```
 
 ### DB - user생성 및 권한 부여
 ```sql
