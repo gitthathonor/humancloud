@@ -16,6 +16,7 @@ public class SaveDto {
     private Integer recruitReadCount;
     private String recruitContent;
     private Integer recruitCompanyId;
+    private String recruitDeadline;
 
     private List<String> recruitCategoryList;
 }
