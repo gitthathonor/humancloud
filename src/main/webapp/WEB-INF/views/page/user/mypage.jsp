@@ -27,7 +27,7 @@
                                     </div>
                                 </div>
                                 <c:if
-                                    test="${!empty sessionScope.principal.userId || empty sessionScope.companyPrincipal.companayId}">
+                                    test="${!empty sessionScope.principal.userId || empty sessionScope.companyPrincipal.companyId}">
                                     <div class="my-5">
                                         <h4 class="m-3 text-primary">이력서</h4>
                                         <div class="row d-flex justify-content-center">
