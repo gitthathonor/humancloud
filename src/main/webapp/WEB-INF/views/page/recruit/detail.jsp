@@ -38,6 +38,17 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="d-flex">
+                    <div class="ml-auto">
+                        <button type="button" class="btn btn-outline-primary btn-icon-text" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            <i class="ti-file btn-icon-prepend"></i>
+                            즉시지원하기
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         <hr />
 
@@ -63,19 +74,6 @@
             </div>
         </div>
         <hr />
-        <div class="row">
-            <div class="d-flex">
-                <div class="mr-2">
-                    <button type="button" class="btn btn-outline-primary btn-icon-text" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                        <i class="ti-file btn-icon-prepend"></i>
-                        즉시지원하기
-                    </button>
-                </div>
-            </div>
-        </div>
-        <hr />
-
         <div class="row">
             <div class="card" style="width: 100%;">
                 <div class="card-body">
@@ -151,7 +149,11 @@
                                 <c:forEach var="lists" items="${Recruit.recruitListByCompanyId}">
                                     <tr role="row">
                                         <td rowspan="1" colspan="1">추천 수...?</td>
-                                        <td rowspan="1" colspan="3">${lists.recruitTitle}</td>
+                                        <td rowspan="1" colspan="3">
+                                            <a href="/recruit/detail/${lists.recruitId}" class="text-dark">
+                                                ${lists.recruitTitle}
+                                            </a>
+                                        </td>
                                         <td rowspan="1" colspan="2">${lists.recruitSalary} 만원</td>
                                         <td rowspan="1" colspan="1">${lists.recruitStartDay}</td>
                                     </tr>
@@ -173,25 +175,25 @@
                     </div>
                     <div class="modal-body">
                         <form class="forms-sample">
-                            <c:forEach var="resume" items="${resume}">
+                            <c:forEach var="resume" items="${resume.resume}">
                                 <div class="form-check">
                                     <div class="m-5 p-5 col-5 border">
                                         <div style="position: absolute; top:0px; left:-50px;">
                                             <label class="form-check-label">
                                                 <input type="radio" class="form-check-input" name="applyByResumeId"
-                                                    value="${resume.resumeId}">
+                                                    value="${resume.resume.resumeId}">
                                                 <i class="input-helper"> </i></label>
                                         </div>
-                                        <h3>${resume.resumeTitle}</h3>
-                                        <p>${resume.resumeReadCount}</p>
-                                        <p>${resume.resumeCreatedAt}</p>
+                                        <h3>${resume.resume.resumeTitle}</h3>
+                                        <p>${resume.resume.resumeReadCount}</p>
+                                        <p>${resume.resume.resumeCreatedAt}</p>
                                     </div>
                                 </div>
                             </c:forEach>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
                         <button id="btnSave" type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
