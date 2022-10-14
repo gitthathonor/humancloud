@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.domain.recruit.Recruit;
+import site.metacoding.humancloud.service.CompanyService;
 import site.metacoding.humancloud.service.RecruitService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
 import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
@@ -24,6 +25,7 @@ import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
 public class RecruitController {
 
   private final RecruitService recruitService;
+  private final CompanyService companyService;
 
   @GetMapping("recruit/update/{id}")
   public String updateFrom(@PathVariable(required = false) Integer id, Model model) {
@@ -44,6 +46,7 @@ public class RecruitController {
   public String recruit_Detail(@PathVariable Integer id, Model model) {
     Recruit recruitPS = recruitService.공고상세페이지(id);
     model.addAttribute("Recruit", recruitPS);
+    model.addAttribute("company", companyService.getCompanyDetail(id));
     return "page/recruit/detail";
   }
 

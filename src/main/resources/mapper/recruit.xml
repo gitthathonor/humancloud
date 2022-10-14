@@ -18,8 +18,8 @@
 									 ), binary(recruit_career)
 	</select>
 	<insert id="save" useGeneratedKeys="true" keyProperty="recruitId">
-		INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_created_at) 
-		VALUES(#{recruitTitle}, #{recruitCareer}, #{recruitSalary},#{recruitLocation}, #{recruitContent}, #{recruitReadCount}, #{recruitCompanyId}, NOW())
+		INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline,recruit_created_at) 
+		VALUES(#{recruitTitle}, #{recruitCareer}, #{recruitSalary},#{recruitLocation}, #{recruitContent}, #{recruitReadCount}, #{recruitCompanyId}, #{recruitDeadline},NOW())
 	</insert>
 
 	<select id="findById" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
@@ -40,7 +40,8 @@
 		recruit_career = #{recruitCareer},
 		recruit_salary = #{recruitSalary},
 		recruit_location = #{recruitLocation},
-		recruit_content = #{recruitContent}
+		recruit_content = #{recruitContent},
+		recruit_deadline = #{recruitDeadline}
 		WHERE recruit_id = #{recruitId};
 	</update>
 	<delete id="deleteById">

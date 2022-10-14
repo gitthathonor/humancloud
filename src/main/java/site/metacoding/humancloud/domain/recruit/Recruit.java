@@ -23,6 +23,7 @@ public class Recruit {
 	private String recruitContent;
 	private Integer recruitReadCount;
 	private Integer recruitCompanyId;
+	private String recruitDeadline;
 	private Timestamp recruitCreatedAt;
 	private String recruitStartDay;
 
