@@ -41,7 +41,7 @@
                         </div>
 
 
-                        <button id="join" type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button id="join" type="button" class="btn btn-primary mr-2">Submit</button>
                         <button class="btn btn-light">Cancel</button>
                     </form>
                 </div>
@@ -119,6 +119,8 @@
                     }
                 });
             }
+
+            
         </script>
 
         <%@ include file="../../layout/footer.jsp" %>

@@ -1,6 +1,9 @@
 package site.metacoding.humancloud.domain.company;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
+
+import org.springframework.data.redis.core.RedisHash;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +13,8 @@ import site.metacoding.humancloud.web.dto.request.company.UpdateDto;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Company {
+@RedisHash("company")
+public class Company implements Serializable {
 	private Integer companyId;
 	private String companyUsername;
 	private String companyPassword;
@@ -20,8 +24,7 @@ public class Company {
 	private String companyAddress;
 	private String companyLogo;
 	private Timestamp companyCreatedAt;
-	
-	
+
 	public Company(String companyUsername, String companyPassword, String companyName, String companyEmail,
 			String companyPhoneNumber, String companyAddress, String companyLogo) {
 		this.companyUsername = companyUsername;
@@ -33,7 +36,6 @@ public class Company {
 		this.companyLogo = companyLogo;
 	}
 
-
 	public Company(String companyPassword, String companyName, String companyEmail,
 			String companyPhoneNumber, String companyAddress, String companyLogo) {
 		this.companyPassword = companyPassword;
@@ -43,7 +45,7 @@ public class Company {
 		this.companyAddress = companyAddress;
 		this.companyLogo = companyLogo;
 	}
-	
+
 	public void update(UpdateDto updateDto) {
 		this.companyPassword = updateDto.getCompanyPassword();
 		this.companyName = updateDto.getCompanyName();
@@ -52,5 +54,5 @@ public class Company {
 		this.companyAddress = updateDto.getCompanyAddress();
 		this.companyLogo = updateDto.getCompanyLogo();
 	}
-	
+
 }

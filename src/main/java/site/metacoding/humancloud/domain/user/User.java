@@ -1,14 +1,18 @@
 package site.metacoding.humancloud.domain.user;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
+
+import org.springframework.data.redis.core.RedisHash;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Getter
-public class User {
+@RedisHash("user")
+public class User implements Serializable {
 	private Integer userId;
 	private String username;
 	private String password;
