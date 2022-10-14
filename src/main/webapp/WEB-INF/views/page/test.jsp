@@ -3,6 +3,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 배너 양식  -->
 <div class="row">
+	<div class="col-md-10 grid-margin stretch-card">
+		<div class="card position-relative">
+			<div class="card-people mt-auto" style="padding-top: 0;">
+				<div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel" style="padding-top: 0;">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+								<img src="images/dashboard/people.svg">
+						</div>
+						<div class="carousel-item">
+							<h1><img src="images/dashboard/shape-1.svg"></h1>
+						</div>
+					</div>
+				</div>
+				<a class="carousel-control-prev" href="#detailedReports" role="button" data-slide="prev"> <span
+						class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+					</a> <a class="carousel-control-next" href="#detailedReports" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span>
+					</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- <div class="row">
 	<div class="col-md-12 grid-margin stretch-card">
 		<div class="card position-relative">
 			<div class="card-body">
@@ -10,9 +35,7 @@
 					data-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<div class="card-people">
-								<img src="images/dashboard/people.svg" alt="people">
-							</div>
+								<img src="images/dashboard/people.svg" style="width">
 						</div>
 						<div class="carousel-item">
 							<h1>bye</h1>
@@ -27,7 +50,8 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
+
 
 
 
