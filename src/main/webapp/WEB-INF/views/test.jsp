@@ -7,7 +7,7 @@
               <div class="card position-relative">
                 <div class="card-body d-flex">
                 	<div>
-                		<a href="/recruit/detail/${recruit.recruitId}">공고 제목</a>
+                		<a href="/recruit/detail/${recruit.recruitId}" style="font-size: 16px;">공고 제목</a>
                 	</div>
                 	<div>
                 	<button type="button" class="btn btn-primary">Primary</button>
