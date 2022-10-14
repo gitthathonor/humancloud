@@ -132,6 +132,7 @@
 
             </div>
         </div>
+        <input />
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
             function sample6_execDaumPostcode() {
@@ -188,6 +189,7 @@
                     recruitSalary: $('#recruitSalary').val(),
                     recruitContent: $('#summernote').val()
                 }
+
 
                 $.ajax("/recruit/save", {
                     type: "POST",
