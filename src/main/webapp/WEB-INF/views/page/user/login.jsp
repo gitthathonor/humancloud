@@ -9,9 +9,9 @@
                         </div>
                         <h4>login form</h4>
                         <h6 class="font-weight-light">Sign in to continue.</h6>
-                        <div class="btn-group m-4" role="group" aria-label="Basic example">
+                        <div class="btn-group col-lg" role="group" aria-label="Basic example">
                             <button id="user" onclick="changeColor(this.value)" type="button"
-                                class="str btn btn-default" value="user">일반</button>
+                                class="str btn btn-primary" value="user">일반</button>
                             <button id="company" onclick="changeColor(this.value)" type="button"
                                 class="str btn btn-default" value="company">기업</button>
                         </div>
