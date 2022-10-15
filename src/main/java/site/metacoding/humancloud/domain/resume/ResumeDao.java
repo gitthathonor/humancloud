@@ -28,4 +28,6 @@ public interface ResumeDao {
 
 	public List<Resume> orderByCreatedAt();
 
+	public List<Resume> orderByRecommended(Integer companyId);
+
 }
