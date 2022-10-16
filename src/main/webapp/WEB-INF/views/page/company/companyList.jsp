@@ -22,7 +22,6 @@
 </div>
 
 
-
 <!-- 기업 리스트 출력(추천순,업력순, )  -->
 <c:forEach var="company" items="${companyList}">
 <div class="row d-flex justify-content-center">
@@ -32,11 +31,12 @@
 				<div id="recruit-content" class="d-flex justify-content-between align-items-center">
 					<div>
 						<div>
-							<img src="/img/${company.companyLogo}" style="width: 120px; height: 40px;">
+							<img src="/img/${company.companyLogo}" style="width: 110px; height: 50px;">
 						</div>
 					</div>
 					<div>
-						<a href="/company/${company.companyId}" style="font-size: 16px; color: #1F1F1F;">${company.companyName}</a>
+						<h3>${company.companyName}</h3>
+						<p>현재 채용중</p>
 					</div>
 				</div>
 				<div class="d-flex justify-content-between align-items-center">
@@ -44,7 +44,7 @@
 						<i></i><span style="margin: 0 10px 0 0">조회수</span>
 					</div>
 					<div>
-						<button type="button" class="btn btn-outline-primary btn-fw">상세보기</button>
+						<a href="/company/${company.companyId}" style="font-size: 16px; color: #1F1F1F;"><button type="button" class="btn btn-outline-primary btn-fw">상세보기</button></a>
 					</div>
 				</div>
 			</div>
