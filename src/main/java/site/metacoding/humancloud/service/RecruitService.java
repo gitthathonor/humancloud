@@ -63,7 +63,6 @@ public class RecruitService {
 
     @Transactional
     public void 구인공고작성(SaveDto saveDto) {
-
         recruitDao.save(saveDto);
         Category category = new Category(saveDto.getRecruitId(), null, null);
 

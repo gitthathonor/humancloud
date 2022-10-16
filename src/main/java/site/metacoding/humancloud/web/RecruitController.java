@@ -50,7 +50,8 @@ public class RecruitController {
   }
 
   @GetMapping("/recruit/saveForm/{companyId}")
-  public String writeFrom(@PathVariable Integer companyId) {
+  public String writeFrom(@PathVariable Integer companyId, Model model) {
+     model.addAttribute("company", companyService.getCompanyDetail(companyId));
     return "page/recruit/saveForm";
   }
 
