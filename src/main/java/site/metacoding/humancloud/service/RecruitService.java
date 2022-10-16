@@ -77,7 +77,7 @@ public class RecruitService {
 
     public Map<String, Object> 채용공고목록보기() {
         Map<String, Object> recruitList = new HashMap<>();
-        recruitList.put("recruit", recruitDao.findAll());
+        recruitList.put("recruit", recruitDao.joinCompanyRecruit());
         recruitList.put("category", categoryDao.distinctName());
         return recruitList;
     }

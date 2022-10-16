@@ -2,6 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.resume.ResumeDao">
 
+    <select id="orderByRecommend" resultType="site.metacoding.humancloud.domain.resume.Resume">
+        select resume.*, result.count from resume
+        left join
+            (select *, count(*) count
+            from
+                (select c2.* from (select category.*
+                from
+                    (select recruit.* from recruit inner join company
+                        on company.company_id=recruit.recruit_company_id
+                        where company_id=#{companyId}) r
+                inner join category
+                on r.recruit_id=category.category_recruit_id
+                group by category_name) c1
+            join (SELECT * FROM category
+                WHERE category_resume_id is not null) c2
+        on c1.category_name=c2.category_name) list
+        group by category_resume_id
+        order by count desc) result
+    on resume.resume_id=result.category_resume_id;
+    </select>
 
    <select id="findByUserId" resultType="site.metacoding.humancloud.domain.resume.Resume">
         select * from resume where resume_user_id=#{userId}

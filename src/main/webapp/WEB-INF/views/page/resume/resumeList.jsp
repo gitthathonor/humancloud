@@ -73,7 +73,7 @@
             </c:forEach>
         </div>
         <div class="dropdown">
-            <select id="btnOrder" onchange="orderDo(this.value)" class="form-select dropdown-toggle"
+            <select id="btnOrder" onchange="orderDo(this.value, ${sessionScope.companyPrincipal.companyId})" class="form-select dropdown-toggle"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <option selected>정렬</option>
                 <option value="recent">최신순</option>
@@ -130,9 +130,9 @@
         });
     }
 
-    function orderDo(listOption, userId) {
+    function orderDo(listOption, id) {
         let data = {
-            userId: userId,
+            companyId: id,
         };
         $.ajax({
             type: "POST",
