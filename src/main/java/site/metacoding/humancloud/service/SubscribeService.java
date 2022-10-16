@@ -18,9 +18,16 @@ public class SubscribeService {
         subscribeDao.deleteByUserCompany(userId, companyId);
     }
 
+    public boolean 구독확인(Subscribe subscribe){
+        if(subscribeDao.findById(subscribe.getSubscribeUserId(), subscribe.getSubscribeCompanyId())==null){
+            구독하기(subscribe);
+            return true;
+        }
+        return false;
+    }
+
     public void 구독하기(Subscribe subscribe){
-        Subscribe subscribe1 = new Subscribe(subscribe.getSubscribeUserId(), subscribe.getSubscribeCompanyId());
-        subscribeDao.save(subscribe1);
+            subscribeDao.save(subscribe);
     }
 
     public List<Company> 구독기업보기(Integer userId){
