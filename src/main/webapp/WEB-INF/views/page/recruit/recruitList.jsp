@@ -21,7 +21,7 @@
                         <td class="font-weight-bold">백엔드엔지니어링</td>
                         <td>21 Sep 2018</td>
                         <td class="font-weight-medium">
-                            <div class="badge badge-success">모집중</div>
+                            <div class="badge badge-primary">모집중</div>
                         </td>
                     </tr>
                     <tr>
@@ -29,7 +29,7 @@
                         <td class="font-weight-bold">주거인테리어웹디자이너</td>
                         <td>13 Jun 2018</td>
                         <td class="font-weight-medium">
-                            <div class="badge badge-success">모집중</div>
+                            <div class="badge badge-primary">모집중</div>
                         </td>
                     </tr>
                     <tr>
@@ -37,7 +37,7 @@
                         <td class="font-weight-bold">펌웨어하드웨어개발자</td>
                         <td>01 Nov 2018</td>
                         <td class="font-weight-medium">
-                            <div class="badge badge-danger">임박</div>
+                            <div class="badge badge-primary">임박</div>
                         </td>
                     </tr>
                     <tr>
@@ -45,7 +45,7 @@
                         <td class="font-weight-bold">시스템앤지니어</td>
                         <td>30 Jun 2018</td>
                         <td class="font-weight-medium">
-                            <div class="badge badge-warning">완료</div>
+                            <div class="badge badge-primary">완료</div>
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +53,7 @@
                         <td class="font-weight-bold">자바 개발자, IOS 개발자</td>
                         <td>30 Jun 2018</td>
                         <td class="font-weight-medium">
-                            <div class="badge badge-warning">미등록</div>
+                            <div class="badge badge-primary">미등록</div>
                         </td>
                     </tr>
                     </tbody>

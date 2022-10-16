@@ -45,28 +45,28 @@
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="고졸">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="2년제 대학 졸업">
                     2년제 대학 졸업
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="고졸">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="3년제 대학 졸업">
                     3년제 대학 졸업
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="고졸">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="4년제 대학 졸업">
                     4년제 대학 졸업
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="대졸">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="대학원 졸업">
                    대학원 졸업
                 <i class="input-helper"></i></label>
             </div>

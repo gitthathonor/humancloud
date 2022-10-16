@@ -94,12 +94,12 @@
                     <a class="nav-link" href="/company/mypage?id=${sessionScope.companyPrincipal.companyId}">
                         <div class="mr-2">
 
-                            <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
+                            <button style="font-style: white;" type="button" class="btn btn-outline-primary btn-icon-text"
                                 onclick="location.href='/recruit/update/${Recruit.recruitId}'">
                                 <i class="ti-file btn-icon-prepend"></i>
                                 수정하기
                             </button>
-                            <button style="font-style: white;" type="button" class="btn btn-danger btn-icon-text"
+                            <button style="font-style: white;" type="button" class="btn btn-outline-danger btn-icon-text"
                                 onclick="recruitDelete()">
                                 <i class="ti-file btn-icon-prepend"></i>
                                 삭제하기

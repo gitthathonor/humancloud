@@ -43,8 +43,6 @@
 	<div class="col-md-2 grid-margin stretch-card"></div>
 </div>
 
-
-
 <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
