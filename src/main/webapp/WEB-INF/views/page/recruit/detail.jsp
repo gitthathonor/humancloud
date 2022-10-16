@@ -4,13 +4,11 @@
 
         <!-- 기업사진 명 등-->
         <div class="row">
-            <div class="col-md-4">
+            <%-- <div class="col-md-4">
                 <div class="card">
                     <img class="stretch-card" src="/img/${Recruit.company.companyLogo}" alt="people">
                 </div>
-            </div>
-
-
+            </div> --%>
             <div class="col-md-8  transparent">
                 <div>
                     <p class="card-title"></p>${Recruit.company.companyName}</p>

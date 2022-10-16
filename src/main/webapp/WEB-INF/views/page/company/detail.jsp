@@ -9,8 +9,8 @@
 					<div class="col-lg-12 grid-margin stretch-card">
 						<div class="card">
 							<div class="card-body">
-								<div class="d-flex justify-content-between" style="margin: 0 0 0 5px">
-									<h3>기업 정보</h3>
+								<div class="d-flex justify-content-between align-items-center" style="margin: 0 0 0 5px">
+									<h3><strong>기업 정보</strong></h3>
 									<button class="btn btn-primary" onclick='subscribeCompany(${sessionScope.principal.userId})'>
 										<i class="fa-regular fa-heart"></i> <span>관심기업등록</span>
 									</button>
@@ -19,10 +19,10 @@
 								<div style="border-bottom: 1px solid #aaa"></div>
 								<div style="margin: 30px 0 0 0;"></div>
 								<div class="row d-flex align-items-center">
-									<div class="col-xs-3 col-sm-3">
+									<div class="col-xs-3 col-sm-4">
+									
 										<img src="/img/${company.companyLogo}" style="width: 120px; height: 44px;" />
-									</div>
-									<div class="col-xs-4 col-sm-6">
+									
 										<ul class="list-unstyled">
 											<li style="font-size: 22px; font-weight: bold;">${company.companyName}</li>
 											<div style="margin: 20px 0 0 0;"></div>
@@ -35,8 +35,8 @@
 											<li style="font-size: 16px;"><i class="ti-direction"></i>
 												${company.companyAddress}</li>
 										</ul>
-										<div id="map" style="width: 50%; height: 300px;"></div>
 									</div>
+									<div id="map" style="width: 300px; height: 300px;"></div>
 									<%-- col-xs-4 col-sm-6 --%>
 								</div>
 								<%-- row --%>

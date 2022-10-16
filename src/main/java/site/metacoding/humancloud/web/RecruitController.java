@@ -46,7 +46,7 @@ public class RecruitController {
   public String recruit_Detail(@PathVariable Integer id, Model model) {
     Recruit recruitPS = recruitService.공고상세페이지(id);
     model.addAttribute("Recruit", recruitPS);
-    model.addAttribute("company", companyService.getCompanyDetail(id));
+    model.addAttribute("company", companyService.getCompanyDetail(recruitPS.getRecruitCompanyId()));
     return "page/recruit/detail";
   }
 
