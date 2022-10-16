@@ -27,7 +27,7 @@
                                     </div>
                                 </div>
                                 <c:if
-                                    test="${!empty sessionScope.principal.userId || empty sessionScope.companyPrincipal.companyId}">
+                                    test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
                                     <div class="my-5">
                                         <h4 class="m-3 text-primary">이력서</h4>
                                         <div class="row d-flex justify-content-center">
@@ -64,11 +64,15 @@
                                 </c:if>
 
                                 <c:if
-                                    test="${!empty sessionScope.companyPrincipal.companyId || empty sessionScope.principal.userId}">
+                                    test="${!empty sessionScope.companyPrincipal.companyId && empty sessionScope.principal.userId}">
                                     <div class="my-5">
+                                    	 <div class="row d-flex justify-content-center">
                                         <h4 class="m-3 text-primary">채용공고</h4>
-                                        <div class="row d-flex justify-content-center">
-                                            <a href="/recruit/save"><button class="btn btn-primary">채용공고 작성</button></a>
+                                        <div class="m-3 p-3 col-2 border" onchange='viewResume("${r.resumeId}")'>
+                                            <a href="/recruit/saveForm/${sessionScope.companyPrincipal.companyId}">
+                                                <h1 style="text-align:center; margin-top:30px;">+</h1>
+                                            </a>
+                                        </div>
                                         </div>
                                     </div>
                                 </c:if>
