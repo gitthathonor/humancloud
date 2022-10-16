@@ -19,7 +19,7 @@
 	</select>
 	<insert id="save" useGeneratedKeys="true" keyProperty="recruitId">
 		INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline,recruit_created_at) 
-		VALUES(#{recruitTitle}, #{recruitCareer}, #{recruitSalary},#{recruitLocation}, #{recruitContent}, 0, #{recruitCompanyId}, now(),NOW())
+		VALUES(#{recruitTitle}, #{recruitCareer}, #{recruitSalary},#{recruitLocation}, #{recruitContent}, 0, #{recruitCompanyId}, NOW(),NOW())
 	</insert>
 
 	<select id="findById" resultType="site.metacoding.humancloud.domain.recruit.Recruit">

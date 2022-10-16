@@ -22,13 +22,13 @@
 				<div id="detailedReports" class="carousel slide detailed-report-carousel position-static pt-2" data-ride="carousel" style="padding-top: 0 !important;">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-								<img src="/img/KakaoTalk_20221014_192215063.jpg" style="height:500px;">
+								<img src="/images/banner1.jpg" style="height:500px;">
 						</div>
 						<div class="carousel-item">
-							<img src="/img/KakaoTalk_20221014_192215177.jpg" style="height:500px;">
+							<img src="/images/banner2.jpg" style="height:500px;">
 						</div>
 						<div class="carousel-item">
-							<img src="/img/KakaoTalk_20221014_192215289.jpg" style="height:500px;">
+							<img src="/images/banner3.jpg" style="height:500px;">
 						</div>
 					</div>
 				</div>
