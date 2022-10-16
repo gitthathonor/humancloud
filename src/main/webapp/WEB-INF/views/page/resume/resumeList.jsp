@@ -64,8 +64,8 @@
 </div>
 
 
-<div class="d-flex justify-content-center my-5">
-    <div class="w-75 d-flex justify-content-between">
+<div class=" m-3">
+    <div class="d-flex justify-content-between">
         <div class="btn-group">
             <c:forEach var="category" items="${resumeData.category}">
                 <button onclick='btnCategory("${category.categoryName}", ${sessionScope.principal})'
@@ -73,7 +73,7 @@
             </c:forEach>
         </div>
         <div class="dropdown">
-            <select id="btnOrder" onchange="orderDo(this.value)" class="btn btn-outline-primary dropdown-toggle"
+            <select id="btnOrder" onchange="orderDo(this.value)" class="form-select dropdown-toggle"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <option selected>정렬</option>
                 <option value="recent">최신순</option>
