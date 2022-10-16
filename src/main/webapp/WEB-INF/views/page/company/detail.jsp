@@ -83,21 +83,21 @@
 					<div style="border-bottom: 1px solid #aaa"></div>
 					<div style="margin: 30px 0 0 0;"></div>
 					<div class="row" style="margin: 0 0 0 15px">
-						<div class="d-flex">
+						<%-- <div class="d-flex">
 							<div class="mr-2">
 								<a href="/company/updateForm/${company.companyId}"><button type="button"
 										class="btn btn-outline-info btn-icon-text">
 										<i class="ti-file btn-icon-prepend"></i> 기업 정보 수정하기
 									</button></a>
 							</div>
-							<%-- mr-2 --%>
+							mr-2
 								<div class="mr-2">
 									<button id="btnDelete" type="button" class="btn btn-outline-info btn-icon-text">
 										<i class="ti-trash btn-icon-prepend"></i> 기업 정보 삭제하기
 									</button>
 								</div>
-								<%-- mr-2 --%>
-						</div>
+								mr-2
+						</div> --%>
 						<%-- d-flex --%>
 					</div>
 					<%-- row --%>
