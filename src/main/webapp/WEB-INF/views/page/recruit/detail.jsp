@@ -53,7 +53,7 @@
         <hr />
 
         <div class="row">
-            <div class="col-md-4 col-xl-4  stretch-card pricing-card">
+            <div class="col-md-6 col-xl-6  stretch-card pricing-card">
                 <div class="card border border-primary">
                     <h3 class="mt-3 ml-2">지원 자격</h3>
                     <hr class="border-primary" />
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="col-md-8 col-xl-8  stretch-card pricing-card">
+            <div class="col-md-6 col-xl-6  stretch-card pricing-card">
                 <div class="card border border-primary">
                     <h3 class="mt-3 ml-2">회사 소개</h3>
                     <hr class="border-primary" />
