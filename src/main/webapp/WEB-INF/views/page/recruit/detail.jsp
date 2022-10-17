@@ -4,13 +4,11 @@
 
         <!-- 기업사진 명 등-->
         <div class="row">
-            <div class="col-md-4">
+            <%-- <div class="col-md-4">
                 <div class="card">
                     <img class="stretch-card" src="/img/${Recruit.company.companyLogo}" alt="people">
                 </div>
-            </div>
-
-
+            </div> --%>
             <div class="col-md-8  transparent">
                 <div>
                     <p class="card-title"></p>${Recruit.company.companyName}</p>
@@ -96,12 +94,12 @@
                     <a class="nav-link" href="/company/mypage?id=${sessionScope.companyPrincipal.companyId}">
                         <div class="mr-2">
 
-                            <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
+                            <button style="font-style: white;" type="button" class="btn btn-outline-primary btn-icon-text"
                                 onclick="location.href='/recruit/update/${Recruit.recruitId}'">
                                 <i class="ti-file btn-icon-prepend"></i>
                                 수정하기
                             </button>
-                            <button style="font-style: white;" type="button" class="btn btn-danger btn-icon-text"
+                            <button style="font-style: white;" type="button" class="btn btn-outline-danger btn-icon-text"
                                 onclick="recruitDelete()">
                                 <i class="ti-file btn-icon-prepend"></i>
                                 삭제하기
@@ -173,18 +171,18 @@
                     </div>
                     <div class="modal-body">
                         <form class="forms-sample">
-                            <c:forEach var="resume" items="${resume}">
+                            <c:forEach var="apply" items="${apply}">
                                 <div class="form-check">
                                     <div class="m-5 p-5 col-5 border">
                                         <div style="position: absolute; top:0px; left:-50px;">
                                             <label class="form-check-label">
                                                 <input type="radio" class="form-check-input" name="applyByResumeId"
-                                                    value="${resume.resumeId}">
+                                                    value="${apply.resumeId}">
                                                 <i class="input-helper"> </i></label>
                                         </div>
-                                        <h3>${resume.resumeTitle}</h3>
-                                        <p>${resume.resumeReadCount}</p>
-                                        <p>${resume.resumeCreatedAt}</p>
+                                        <h3>${apply.resumeTitle}</h3>
+                                        <p>${apply.resumeReadCount}</p>
+                                        <p>${apply.resumeCreatedAt}</p>
                                     </div>
                                 </div>
                             </c:forEach>

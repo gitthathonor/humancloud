@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ include file="../../layout/header.jsp" %>
+    <%@ include file="../../layout/header.jsp" %>
 
-<div class="col grid-margin stretch-card">
+<!--<div class="col grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <p class="card-title mb-0 p-3"> 추천 매칭 리스트</p>
@@ -61,7 +61,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <div class=" m-3">
@@ -130,13 +130,13 @@
         });
     }
 
-    function orderDo(listOption, id) {
+    function orderDo(listOption, userId){
         let data = {
-            companyId: id,
+            userId : userId,
         };
         $.ajax({
             type: "POST",
-            url: "/resume/list?order=" + listOption,
+            url: "/resume/list?order="+listOption,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: JSON.stringify(data),
@@ -146,25 +146,24 @@
         }).done((res) => {
             $("#resumeCard").empty();
             $("#resumeCard").append(makeList(res.data));
-        }).fail(function (error) {
+        }).fail(function(error){
             console.log(error);
             alert("오류");
         });
     }
-
-    function makeList(x) {
-        let item = ``;
-        for (let list of x) {
-            item += `<div class="card px-4 m-3"><div class="card-body row"><div class="col-2" style="width:200px">
-                    <img src="/img/`+list.resumePhoto+`" class="img-thumbnail"/></div>`;
+    
+    function makeList(x){
+        let item =`<div class="card px-4">`;
+        for(let list of x){
+            item +=`<div class="card-body row border"><div class="bg-danger col-2" style="width:200px">`+list.resumePhoto+`</div>`;
             item += `<div class="col-8 px-5">`
-            item += `<p class="mb-4">` + list.resumeUserId + `</p>`;
-            item += `<p class="fs-30 mb-2">` + list.resumeTitle + `</p>`;
-            item += `<p>` + list.resumeCreatedAt + `</p>`;
+            item += `<p class="mb-4">`+list.resumeUserId+`</p>`;
+            item += `<p class="fs-30 mb-2">`+list.resumeTitle+`</p>`;
+            item += `<p>`+list.resumeCreatedAt+`</p>`;
             item += `</div><div class="col-2 d-flex flex-wrap align-content-center">`;
-            item += `<a href="resume/detail/` + list.resumeId + `">`;
-            item += `<button type="button" class="btn btn-outline-primary">` + `상세보기` + `</button></a>`
-            item += `</div></div></div>`
+            item += `<a hreaf="resume/detail/`+list.resumeId+`>`;
+            item += `<button type="button" class="btn btn-outline-danger">`+`상세보기`+`</button></a>`
+            item += `</div></div>`
         }
         return item;
     }

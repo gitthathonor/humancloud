@@ -117,6 +117,7 @@
 			<script>
 				function subscribeCompany(userId){
 
+
 					let data = {
 						subscribeUserId : userId,
 						subscribeCompanyId: $("#id").val()

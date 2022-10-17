@@ -22,6 +22,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Basic form elements</h4>
                             <form class="forms-sample">
+                                <input type="hidden" id="recruitCompanyId" value="${company.companyId}">
                                 <div class="form-group">
                                     <label>공고명 (recruitTitle)</label>
                                     <input type="text" required class="form-control" id="recruitTitle"
@@ -41,7 +42,7 @@
                                 </div>
                                 <hr />
                                 <div class="form-group">
-                                    <div><label>근무형태 (recruitPattern)</label></div>
+                                    <div><label>직무 (recruitPattern)</label></div>
                                     <div class="d-flex form-group">
                                         <div class="ml-2 form-check">
                                             <label class="form-check-label">
@@ -51,20 +52,13 @@
                                         <div class="ml-2 form-check">
                                             <label class="form-check-label">
                                                 <input type="checkbox" class="form-check-input" id="recruitCategory"
-                                                    value="프론트">프론트</label>
+                                                    value="프론트 개발자">프론트 개발자</label>
                                         </div>
                                         <div class="ml-2 form-check">
                                             <label class="form-check-label">
                                                 <input type="checkbox" class="form-check-input" id="recruitCategory"
-                                                    value="백 앤드">백 앤드</label>
+                                                    value="백 개발자">백 개발자</label>
                                         </div>
-                                        <div class="ml-2 form-check">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input" id="recruitCategory"
-                                                    value="풀스택">풀스택</label>
-                                        </div>
-
-
                                     </div>
                                 </div>
                                 <hr />
@@ -108,7 +102,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="ml-5">
+                                    <!-- <div class="ml-5">
                                         <label>공고 마감날짜 선택 (recruitLocation)</label>
                                         <div class="input-group">
                                             <div class="form-outline">
@@ -116,7 +110,7 @@
                                                     id="recruitDeadline" placeholder="주소" name="companyAddress">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <hr />
                                 <div class="form-group">
@@ -129,7 +123,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <input id="companyId" type="hidden" value="${sessionScope.companyPrincipal.companyId}" />
@@ -179,16 +172,22 @@
                 $("#recruitCategory:checked").each(function () {
                     recruitCategoryList.push($(this).val());
                 });
+
                 let data = {
                     recruitTitle: $('#recruitTitle').val(),
                     recruitCareer: $('#recruitCareer').val(),
                     recruitLocation: $('#recruitLocation').val(),
                     recruitCompanyId: $('#companyId').val(),
                     recruitCategoryList: recruitCategoryList,
-                    recruitDeadline: $('#recruitDeadline').val(),
+                    /* recruitDeadline: $('#recruitDeadline').val(), */
                     recruitSalary: $('#recruitSalary').val(),
-                    recruitContent: $('#summernote').val()
-                }
+                    recruitContent: $('#summernote').val(),
+                    recruitCompanyId: $('#recruitCompanyId').val()
+                };
+
+                let recruitCompanyId = $('#recruitCompanyId').val();
+                console.log(recruitCompanyId);
+                console.log(data);
 
 
                 $.ajax("/recruit/save", {
