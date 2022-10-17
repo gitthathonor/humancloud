@@ -89,7 +89,7 @@
                     }
                 }).done((res) => {
                     if (res.data != null) {
-                        location.href = "/";
+                        location.href = document.referrer;
                     } else {
                         alert("로그인 실패");
                     }

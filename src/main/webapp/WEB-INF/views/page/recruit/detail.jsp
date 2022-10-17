@@ -9,6 +9,8 @@
                     <img class="stretch-card" src="/img/${Recruit.company.companyLogo}" alt="people">
                 </div>
             </div>
+
+
             <div class="col-md-8  transparent">
                 <div>
                     <p class="card-title"></p>${Recruit.company.companyName}</p>
@@ -171,32 +173,60 @@
                         <h5 class="modal-title" id="exampleModalLabel">이력서를 선택해주세요</h5>
                         <button type="button" class=" btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <form class="forms-sample">
-                            <c:forEach var="resume" items="${resume.resume}">
-                                <div class="form-check">
-                                    <div class="m-5 p-5 col-5 border">
-                                        <div style="position: absolute; top:0px; left:-50px;">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="applyByResumeId"
-                                                    value="${resume.resume.resumeId}">
-                                                <i class="input-helper"> </i></label>
-                                        </div>
-                                        <h3>${resume.resume.resumeTitle}</h3>
-                                        <p>${resume.resume.resumeReadCount}</p>
-                                        <p>${resume.resume.resumeCreatedAt}</p>
+
+
+                    <c:choose>
+                        <c:when test="${empty sessionScope.principal}">
+                            <div class="modal-body">
+                                <form class="forms-sample">
+                                    <div class="align-center">
+                                        <p>로그인 먼저 해주세요</p>
                                     </div>
-                                </div>
-                            </c:forEach>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
-                        <button id="btnSave" type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button id="btnSave" type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+
+
+                        </c:when>
+
+                        <c:when test="${!empty sessionScope.principal}">
+                            <div class="modal-body">
+                                <form class="forms-sample">
+                                    <c:forEach var="resume" items="${resume.resume}">
+                                        <div class="form-check">
+                                            <div class="m-5 p-5 col-5 border">
+                                                <div style="position: absolute; top:0px; left:-50px;">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input"
+                                                            name="applyByResumeId" value="${resume.resume.resumeId}">
+                                                        <i class="input-helper"> </i></label>
+                                                </div>
+                                                <h3>${resume.resume.resumeTitle}</h3>
+                                                <p>${resume.resume.resumeReadCount}</p>
+                                                <p>${resume.resume.resumeCreatedAt}</p>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button id="btnSave" type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+
+                        </c:when>
+                    </c:choose>
                 </div>
             </div>
         </div>
+
+
+
 
         <input id="recruitId" value="${Recruit.recruitId}" type="hidden">
         <script>
