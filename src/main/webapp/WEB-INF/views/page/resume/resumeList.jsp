@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../../layout/header.jsp" %>
 
-<div class="col grid-margin stretch-card">
+<!-- <div class="col grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <p class="card-title mb-0 p-3"> 추천 매칭 리스트</p>
@@ -61,7 +61,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 <div class="d-flex justify-content-center my-5">
@@ -87,9 +87,9 @@
     <div class="card px-4">
     <c:forEach var="resume" items="${resumeData.resume}">
         <div class="card-body row border">
-            <div class="bg-danger col-2" style="width:200px">
+            <!-- <div class="bg-danger col-2" style="width:200px">
                 resume.resumeTitle
-            </div>
+            </div> -->
             <div class="col-8 px-5">
                 <p class="mb-4">${resume.resumeUserId}</p>
                 <p class="fs-30 mb-2">${resume.resumeTitle}</p>

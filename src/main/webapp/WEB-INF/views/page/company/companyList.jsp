@@ -6,7 +6,7 @@
 	<div class="col-md-3 grid-margin stretch-card recommend">
 		<div class="card">
 			<div class="card-people" style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
-				<img src="/img/home-gc381fbfc1_1280.jpg"
+				<img src="/images/company_best.jpg"
 					style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
 			</div>
 			<div class="row container d-flex justify-content-between">

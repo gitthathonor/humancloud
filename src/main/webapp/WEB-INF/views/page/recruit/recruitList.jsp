@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../../layout/header.jsp" %>
 
-<div class="col grid-margin stretch-card">
+<!-- <div class="col grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <p class="card-title mb-0 p-3"> 추천 매칭 리스트</p>
@@ -62,7 +62,7 @@
         </div>
     </div>
 </div>
-
+ -->
 
 <div class="d-flex justify-content-center my-5">
     <div class="w-75 d-flex justify-content-between">
@@ -86,9 +86,9 @@
     <div class="card px-4">
         <c:forEach var="recruit" items="${recruits.recruit}">
             <div class="card-body row border">
-                <div class="bg-danger col-2" style="width:200px">
+                <!-- <div class="bg-danger col-2" style="width:200px">
                     resume.사진
-                </div>
+                </div> -->
                 <div class="col-8 px-5">
                     <p class="mb-4">${recruit.recruitLocation}</p>
                    <p class="fs-30 mb-2"><a href="/recruit/detail/${recruit.recruitId}">${recruit.recruitTitle}</a></p>
