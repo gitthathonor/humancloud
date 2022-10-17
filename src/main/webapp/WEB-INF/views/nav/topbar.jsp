@@ -22,6 +22,10 @@
           </li>
         </ul>
 
+        <div id="boxAlarm">
+          뭐가 적어짐 여기?
+        </div>
+
 
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown">
@@ -115,4 +119,18 @@
           </li>
         </ul>
       </div>
+
     </nav>
+
+
+
+<c:choose>
+  <c:when test="${!empty principal.userId}">
+    <input class="checkUser" type="hidden" value="${sessionScope.principal.username}">
+  </c:when>
+  <c:when test="${!empty companyPrincipal.companyId}">
+    <input class="checkUser" type="hidden" value="${sessionScope.companyPrincipal.companyName}">
+  </c:when>
+</c:choose>
+
+<script src="/socket/webSocket.js"></script>

@@ -11,7 +11,7 @@
 							<div class="card-body">
 								<div class="d-flex justify-content-between" style="margin: 0 0 0 5px">
 									<h3>기업 정보</h3>
-									<button class="btn btn-primary" onclick='subscribeCompany(${sessionScope.principal.userId})'>
+									<button class="btn btn-primary" onclick='subscribeCompany(${sessionScope.principal.userId}), sendData()'>
 										<i class="fa-regular fa-heart"></i> <span>관심기업등록</span>
 									</button>
 								</div>
@@ -103,8 +103,17 @@
 					<%-- row --%>
 		</div>
 		<%-- row --%>
+
+
+<input id="writer" type="hidden" value="${company.companyName}">
+
+
 			<script type="text/javascript"
 				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20cf6648d61d4bd68efbb7c7c95723f3&libraries=services"></script>
+
+			<%--소켓--%>
+			<script src="/socket/webSocket.js"></script>
+
 			<script>
 				function subscribeCompany(userId){
 
