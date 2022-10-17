@@ -20,7 +20,9 @@
 		where subscribe.subscribe_user_id=#{userId}
 	</select>
 
-	<select id="findById" resultType="site.metacoding.humancloud.domain.subscribe.Subscribe"></select>
+	<select id="findById" resultType="site.metacoding.humancloud.domain.subscribe.Subscribe">
+		select * from subscribe where subscribe_user_id=#{userId} and subscribe_company_id=#{companyId}
+	</select>
 	<select id="findAll" resultType="site.metacoding.humancloud.domain.subscribe.Subscribe"></select>
 	<update id="update"></update>
 	<delete id="deleteById"></delete>

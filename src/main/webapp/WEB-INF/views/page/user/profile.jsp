@@ -23,8 +23,7 @@
 
                 </div>
             </div>
-            <div class="py-3 px-3 text-center d-flex justify-content-around">
-            
+            <div class="my-5 p-3 text-center d-flex justify-content-around">
                 <a class="text-black" href="/update/${sessionScope.principal.userId}"><div class="btn btn-inverse-dark btn-fw">회원정보수정</div></a>
                 <div class="btn btn-inverse-dark btn-fw" onclick='deleteUser("${sessionScope.principal.userId}")'>계정탈퇴</div>
             </div>
