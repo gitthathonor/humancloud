@@ -58,7 +58,7 @@
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value=" 대학원졸업">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="대학원졸업">
                    대학원 졸업
                 <i class="input-helper"></i></label>
             </div>
