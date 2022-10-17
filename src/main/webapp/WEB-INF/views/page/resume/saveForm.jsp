@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <input type="file" id="file" accept="image/*" onchange="setThumbnail(event)">
-            <div id="imageContainer">
+            <div id="imageContainer"    >
             </div>
         </div>
         <h3 class="card-title">학력 정보</h3>
@@ -126,6 +126,8 @@
             let img = document.createElement("img");
             img.setAttribute("src", event.target.result);
             img.setAttribute("id", "newImg");
+            img.style.width= '150px';
+            img.style.height='200px';
             document.querySelector("#imageContainer").appendChild(img);
 
         };
