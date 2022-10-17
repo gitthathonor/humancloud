@@ -20,7 +20,7 @@
         on c1.category_name=c2.category_name) list
         group by category_resume_id
         order by count desc) result
-    on resume.resume_id=result.category_resume_id;
+    on resume.resume_id=result.category_resume_id
     </select>
 
    <select id="findByUserId" resultType="site.metacoding.humancloud.domain.resume.Resume">
