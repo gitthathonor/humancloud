@@ -89,7 +89,7 @@
 
             <c:choose>
                 <c:when test="${!empty sessionScope.companyPrincipal.companyId }">
-                    <div class="mr-2">
+                    <div class="m-2">
                         <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
                             onclick="location.href='/recruit/update/${Recruit.recruitId}'">
                             <i class="ti-file btn-icon-prepend"></i>
