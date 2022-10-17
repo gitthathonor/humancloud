@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ include file="../../layout/header.jsp" %>
+	<%@ include file="../../layout/header.jsp" %>
 
 		<input id="id" type="hidden" value="${company.companyId}">
 		<input id="address" type="hidden" value="${company.companyAddress}">
@@ -11,7 +11,8 @@
 							<div class="card-body">
 								<div class="d-flex justify-content-between" style="margin: 0 0 0 5px">
 									<h3>기업 정보</h3>
-									<button class="btn btn-primary" onclick='subscribeCompany(${sessionScope.principal.userId}), sendData()'>
+									<button class="btn btn-primary"
+										onclick='subscribeCompany(${sessionScope.principal.userId}), sendData()'>
 										<i class="fa-regular fa-heart"></i> <span>관심기업등록</span>
 									</button>
 								</div>
@@ -105,115 +106,121 @@
 		<%-- row --%>
 
 
-<input id="writer" type="hidden" value="${company.companyName}">
+			<input id="writer" type="hidden" value="${company.companyName}">
 
 
 			<script type="text/javascript"
 				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20cf6648d61d4bd68efbb7c7c95723f3&libraries=services"></script>
 
 			<%--소켓--%>
-			<script src="/socket/webSocket.js"></script>
+				<script src="/socket/webSocket.js"></script>
 
-			<script>
-				function subscribeCompany(userId){
+				<script>
+					function subscribeCompany(userId) {
+						
+						let subscribeCompanyId = $("#id").val();
+						console.log(typeof subscribeCompanyId);
+						subscribeCompanyId *= 1;
+						console.log(typeof subscribeCompanyId);
 
-
-					let data = {
-						subscribeUserId : userId,
-						subscribeCompanyId: $("#id").val()
-					};
-
-
-					$.ajax("/subscribe", {
-						type: "POST",
-						dataType: "json",
-						data: JSON.stringify(data),
-						headers: {
-							"Content-Type": "application/json"
-						}
-					}).done((res) => {
-						if (res.data == true) {
-							alert("구독완료");
-							// 나중에는 여기 기업 상세보기로 변경
-							location.reload();
-						} else {
-							alert("이미 구독 중입니다");
-							location.reload();
-						}
-					});
-				}
-
-			</script>
+						let data = {
+							subscribeUserId: userId,
+							subscribeCompanyId: subscribeCompanyId
+						};
+						
+						console.log(data);
 
 
-			<script>
-				let address = $("#address").val();
-
-
-				$("#btnDelete").click(() => {
-					if (!confirm("정말로 삭제하시겠습니까?")) {
-						location.reload();
-					}
-					resign();
-				});
-
-				function resign() {
-					let id = $("#id").val();
-					console.log(id);
-
-					$.ajax("/company/delete/" + id, {
-						type: "DELETE",
-						dataType: "json" // 응답 데이터
-					}).done((res) => {
-						if (res.code == 1) {
-							alert("회원탈퇴 완료");
-							location.href = "/company";
-						} else {
-							alert("회원탈퇴 실패");
-						}
-					});
-				}
-
-
-				// 지도 API
-
-				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-					mapOption = {
-						center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-						level: 3 // 지도의 확대 레벨
-					};
-
-				// 지도를 생성합니다    
-				var map = new kakao.maps.Map(mapContainer, mapOption);
-
-				// 주소-좌표 변환 객체를 생성합니다
-				var geocoder = new kakao.maps.services.Geocoder();
-
-				// 주소로 좌표를 검색합니다
-				geocoder.addressSearch(address, function (result, status) {
-
-					// 정상적으로 검색이 완료됐으면 
-					if (status === kakao.maps.services.Status.OK) {
-
-						var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-						// 결과값으로 받은 위치를 마커로 표시합니다
-						var marker = new kakao.maps.Marker({
-							map: map,
-							position: coords
+						$.ajax("/subscribe", {
+							type: "POST",
+							dataType: "json",
+							data: JSON.stringify(data),
+							headers: {
+								"Content-Type": "application/json"
+							}
+						}).done((res) => {
+							if (res.data == true) {
+								alert("구독완료");
+								// 나중에는 여기 기업 상세보기로 변경
+								location.reload();
+							} else {
+								alert("이미 구독 중입니다");
+								location.reload();
+							}
 						});
-
-						// 인포윈도우로 장소에 대한 설명을 표시합니다
-						var infowindow = new kakao.maps.InfoWindow({
-							content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-						});
-						infowindow.open(map, marker);
-
-						// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-						map.setCenter(coords);
 					}
-				});  
-			</script>
+
+				</script>
 
 
-			<%@ include file="../../layout/footer.jsp" %>
+				<script>
+					let address = $("#address").val();
+
+
+					$("#btnDelete").click(() => {
+						if (!confirm("정말로 삭제하시겠습니까?")) {
+							location.reload();
+						}
+						resign();
+					});
+
+					function resign() {
+						let id = $("#id").val();
+						console.log(id);
+
+						$.ajax("/company/delete/" + id, {
+							type: "DELETE",
+							dataType: "json" // 응답 데이터
+						}).done((res) => {
+							if (res.code == 1) {
+								alert("회원탈퇴 완료");
+								location.href = "/company";
+							} else {
+								alert("회원탈퇴 실패");
+							}
+						});
+					}
+
+
+					// 지도 API
+
+					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+						mapOption = {
+							center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+							level: 3 // 지도의 확대 레벨
+						};
+
+					// 지도를 생성합니다    
+					var map = new kakao.maps.Map(mapContainer, mapOption);
+
+					// 주소-좌표 변환 객체를 생성합니다
+					var geocoder = new kakao.maps.services.Geocoder();
+
+					// 주소로 좌표를 검색합니다
+					geocoder.addressSearch(address, function (result, status) {
+
+						// 정상적으로 검색이 완료됐으면 
+						if (status === kakao.maps.services.Status.OK) {
+
+							var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+							// 결과값으로 받은 위치를 마커로 표시합니다
+							var marker = new kakao.maps.Marker({
+								map: map,
+								position: coords
+							});
+
+							// 인포윈도우로 장소에 대한 설명을 표시합니다
+							var infowindow = new kakao.maps.InfoWindow({
+								content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+							});
+							infowindow.open(map, marker);
+
+							// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+							map.setCenter(coords);
+						}
+					});  
+				</script>
+
+
+				<%@ include file="../../layout/footer.jsp" %>
