@@ -57,7 +57,7 @@
                                         <div class="ml-2 form-check">
                                             <label class="form-check-label">
                                                 <input type="checkbox" class="form-check-input" id="recruitCategory"
-                                                    value="HTML\&Css">HTML\&Css</label>
+                                                    value="HTML\&Css">HTML&Css</label>
                                         </div>
                                         <div class="ml-2 form-check">
                                             <label class="form-check-label">

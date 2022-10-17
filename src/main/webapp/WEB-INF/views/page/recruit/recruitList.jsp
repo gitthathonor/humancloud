@@ -67,7 +67,7 @@
                 <div class="d-flex">
                     <div class="col-10 "></div>
                     <div class="">
-                        <button id="btnLogin" type="button" class="btn btn-outline-primary btn-icon-text">공고
+                        <button id="btnGoSave" type="button" class="btn btn-outline-primary btn-icon-text">공고
                             작성하기</button>
                     </div>
                 </div>
@@ -123,8 +123,16 @@
 
             </c:forEach>
         </div>
-
+        <input hidden value="${sessionScope.companyPrincipal.companyId}" id="companyId" />
         <script>
+            $("#btnGoSave").click(() => {
+                recruitSave();
+            });
+            function recruitSave() {
+                let id = $('#companyId').val();
+                location.href = "/recruit/saveForm/" + id;
+            }
+
             function btnCategory(title) {
                 let data = {
                     categoryName: title,
