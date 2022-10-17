@@ -94,11 +94,11 @@
                         <div class="col-8 px-5">
                             <p class="mb-4">${recruit.recruitLocation}</p>
                             <p class="fs-30 mb-2"><a
-                                    href="/recruit/detail/${recruit.recruitId}">${recruit.recruitTitle}</a></p>
+                                    href="/recruit/detail/${recruit.recruitId}} ">${recruit.recruitTitle}</a></p>
                             <p class="fs-10 mb-2">${recruit.recruitCreatedAt}</p>
                         </div>
                         <div class="col-2 d-flex flex-wrap align-content-center">
-                            <a href="/recruit/detail/${recruit.recruitId}">
+                            <a href="/recruit/detail/${recruit.recruitId}/${sessionScope.principal.userId}">
                                 <button type="button" class="btn btn-outline-primary">상세보기</button>
                             </a>
                         </div>

@@ -51,9 +51,11 @@
                 <div class="card border py-3">
                     <h3 class="mt-3 ml-2">원하는직업</h3>
                     <hr class="border-primary" />
-                    <c:forEach var="category" items="${category}">
-                        <span class="p-2 plan-cost text-primary ">${category.categoryName}</span>
-                    </c:forEach>  
+                    <div class="d-flex flex-wrap justify-content-center">                     
+                    <c:forEach var="category" items="${category}">                         
+                        <div class="p-2 plan-cost text-primary ">${category.categoryName}</div>                     
+                    </c:forEach>                       
+                    </div>
                 </div><%-- card border border-primary center-block --%>
             </div><%-- col-md-4 col-xl-4  stretch-card pricing-card --%>
         </div><%-- row text-center --%>
