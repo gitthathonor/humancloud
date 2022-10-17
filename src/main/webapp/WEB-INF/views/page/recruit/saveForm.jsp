@@ -126,6 +126,10 @@
             </div>
         </div>
         <input id="companyId" type="hidden" value="${sessionScope.companyPrincipal.companyId}" />
+
+        <%--소켓--%>
+        <script src="/socket/webSocket.js"></script>
+
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
             function sample6_execDaumPostcode() {
@@ -168,6 +172,8 @@
             }
 
             $('#submitBtn').click(() => {
+                sendRecruitAlarm();
+
                 let recruitCategoryList = [];
                 $("#recruitCategory:checked").each(function () {
                     recruitCategoryList.push($(this).val());

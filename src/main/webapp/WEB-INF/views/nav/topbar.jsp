@@ -89,17 +89,17 @@
           </li>
         </ul>
       </div>
-
     </nav>
 
 
 
 <c:choose>
   <c:when test="${!empty principal.userId}">
-    <input class="checkUser" type="hidden" value="${sessionScope.principal.username}">
+    <input id="checkUser" type="hidden" value="${sessionScope.principal.username}">
+    <input id="checkUserId" type="hidden" value="${sessionScope.principal.userId}">
   </c:when>
   <c:when test="${!empty companyPrincipal.companyId}">
-    <input class="checkUser" type="hidden" value="${sessionScope.companyPrincipal.companyName}">
+    <input id="checkCompany" type="hidden" value="${sessionScope.companyPrincipal.companyName}">
   </c:when>
 </c:choose>
 

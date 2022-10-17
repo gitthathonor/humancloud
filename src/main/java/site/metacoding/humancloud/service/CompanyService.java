@@ -7,15 +7,18 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.company.CompanyDao;
+import site.metacoding.humancloud.domain.subscribe.SubscribeDao;
 import site.metacoding.humancloud.web.dto.request.company.LoginDto;
 import site.metacoding.humancloud.web.dto.request.company.SaveDto;
 import site.metacoding.humancloud.web.dto.request.company.UpdateDto;
+import site.metacoding.humancloud.web.dto.response.user.ResCompanyDto;
 
 @Service
 @RequiredArgsConstructor
 public class CompanyService {
 
 	private final CompanyDao companyDao;
+	private final SubscribeDao subscribeDao;
 
 	// 회원 username 중복체크
 	public boolean checkSameUsername(String companyUsername) {
@@ -59,12 +62,12 @@ public class CompanyService {
 		companyDao.deleteById(id);
 	}
 
-	public Company 로그인(LoginDto loginDto) {
+	public ResCompanyDto 로그인(LoginDto loginDto) {
 		Company companyPS = companyDao.findByUsername(loginDto.getCompanyUsername());
 		if (companyPS == null) {
 			return null;
 		} else if (loginDto.getCompanyPassword().equals(companyPS.getCompanyPassword())) {
-			return companyPS;
+			return new ResCompanyDto(companyPS, subscribeDao.findByCompanyId(companyPS.getCompanyId()));
 		}
 		return null;
 	}
