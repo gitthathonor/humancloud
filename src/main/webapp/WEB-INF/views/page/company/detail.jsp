@@ -12,7 +12,7 @@
 								<div class="d-flex justify-content-between" style="margin: 0 0 0 5px">
 									<h3>기업 정보</h3>
 									<button class="btn btn-primary"
-										onclick='subscribeCompany(${sessionScope.principal.userId}), sendData()'>
+										onclick='subscribeCompany("${sessionScope.principal.userId}"), sendData()'>
 										<i class="fa-regular fa-heart"></i> <span>관심기업등록</span>
 									</button>
 								</div>
@@ -86,7 +86,7 @@
 			<div class="row" style="margin: 0 0 0 15px">
 				<div class="d-flex">
 					<div class="mr-2">
-						<a href="/company/updateForm/${company.companyId}"><button type="button"
+						<a href="/company/updateForm/${company.companyId}/0"><button type="button"
 								class="btn btn-outline-info btn-icon-text">
 								<i class="ti-file btn-icon-prepend"></i> 기업 정보 수정하기
 							</button></a>

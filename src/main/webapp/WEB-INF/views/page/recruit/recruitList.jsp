@@ -107,7 +107,7 @@
                             <p class="fs-10 mb-2">${recruit.recruitCreatedAt}</p>
                         </div>
                         <div class="col-2 d-flex flex-wrap align-content-center">
-                            <a href="/recruit/detail/${recruit.recruitId}">
+                            <a href="/recruit/detail/${recruit.recruitId}/0">
                                 <button type="button" class="btn btn-outline-primary">상세보기</button>
                             </a>
                         </div>

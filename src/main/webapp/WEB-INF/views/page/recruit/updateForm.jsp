@@ -109,8 +109,7 @@
                                     <label for="exampleTextarea1">내용 입력 (recruitContent)</label>
                                     <textarea id="summernote">${Recruit.recruitContent}</textarea>
                                 </div>
-                                <button id="submitBtn" type="button" class="btn btn-primary mr-2"
-                                    onclick="update()">Submit</button>
+                                <button id="submitBtn" type="button" class="btn btn-primary mr-2">Submit</button>
                                 <button class="btn btn-light">Cancel</button>
                             </form>
                         </div>
@@ -124,6 +123,7 @@
             <input type="hidden" value="${category.categoryName}" name="category">
         </c:forEach>
         <input hidden id="recruitId" value="${Recruit.recruitId}" />
+        <input id="companyId" type="hidden" value="${sessionScope.companyPrincipal.companyId}" />
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
             function sample6_execDaumPostcode() {
@@ -174,14 +174,16 @@
                     recruitTitle: $('#recruitTitle').val(),
                     recruitCareer: $('#recruitCareer').val(),
                     recruitLocation: $('#recruitLocation').val(),
-                    //recruitPatternList: $('#recruitPattern').val(),
+                    recruitCompanyId: $('#companyId').val(),
                     recruitCategoryList: recruitCategoryList,
+                    /* recruitDeadline: $('#recruitDeadline').val(), */
                     recruitSalary: $('#recruitSalary').val(),
-                    recruitContent: $('#summernote').val()
+                    recruitContent: $('#summernote').val(),
+                    recruitCompanyId: $('#recruitCompanyId').val()
                 }
 
-                $.ajax("/write", {
-                    type: "POST",
+                $.ajax("/recruit/update", {
+                    type: "PUT",
                     dataType: "json",
                     data: JSON.stringify(data),
                     headers: {
@@ -189,7 +191,8 @@
                     }
                 }).done((res) => {
                     if (res.code == 1) {
-                        alert("인서트 성공하였습니다");
+                        alert("업데이트에 성공하였습니다");
+                        location.href = "/recruit/detail/" + $('#recruitId').val() + "/" + data.recruitCompanyId;
                     } else {
                         alert("업데이트에 실패했습니다");
                     }

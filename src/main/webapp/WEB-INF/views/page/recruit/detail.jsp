@@ -89,21 +89,19 @@
 
             <c:choose>
                 <c:when test="${!empty sessionScope.companyPrincipal.companyId }">
-                    <a class="nav-link" href="/company/mypage?id=${sessionScope.companyPrincipal.companyId}">
-                        <div class="mr-2">
-
-                            <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
-                                onclick="location.href='/recruit/update/${Recruit.recruitId}'">
-                                <i class="ti-file btn-icon-prepend"></i>
-                                수정하기
-                            </button>
-                            <button style="font-style: white;" type="button" class="btn btn-danger btn-icon-text"
-                                onclick="recruitDelete()">
-                                <i class="ti-file btn-icon-prepend"></i>
-                                삭제하기
-                            </button>
-                        </div>
-                        <hr />
+                    <div class="mr-2">
+                        <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
+                            onclick="location.href='/recruit/update/${Recruit.recruitId}'">
+                            <i class="ti-file btn-icon-prepend"></i>
+                            수정하기
+                        </button>
+                        <button style="font-style: white;" type="button" class="btn btn-danger btn-icon-text"
+                            onclick="recruitDelete()">
+                            <i class="ti-file btn-icon-prepend"></i>
+                            삭제하기
+                        </button>
+                    </div>
+                    <hr />
                 </c:when>
             </c:choose>
 
