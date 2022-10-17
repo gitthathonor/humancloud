@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <input type="file" id="file" accept="image/*" onchange="setThumbnail(event)">
-            <div id="imageContainer">
+            <div id="imageContainer"    >
             </div>
         </div>
         <h3 class="card-title">학력 정보</h3>
@@ -37,28 +37,28 @@
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="2년제 대학 졸업">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="2년제대학졸업">
                     2년제 대학 졸업
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="3년제 대학 졸업">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="3년제대학졸업">
                     3년제 대학 졸업
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="4년제 대학 졸업">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="4년제대학졸업">
                     4년제 대학 졸업
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value=" 대학원 졸업">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="대학원졸업">
                    대학원 졸업
                 <i class="input-helper"></i></label>
             </div>
@@ -126,6 +126,8 @@
             let img = document.createElement("img");
             img.setAttribute("src", event.target.result);
             img.setAttribute("id", "newImg");
+            img.style.width= '150px';
+            img.style.height='200px';
             document.querySelector("#imageContainer").appendChild(img);
 
         };

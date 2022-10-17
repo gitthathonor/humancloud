@@ -45,28 +45,28 @@
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="2년제 대학 졸업">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="2년제대학졸업">
                     2년제 대학 졸업
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="3년제 대학 졸업">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="3년제대학졸업">
                     3년제 대학 졸업
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="4년제 대학 졸업">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="4년제대학졸업">
                     4년제 대학 졸업
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="대학원 졸업">
+                <input type="radio" class="form-check-input" id = "education" name="education" value="대학원졸업">
                    대학원 졸업
                 <i class="input-helper"></i></label>
             </div>
@@ -175,6 +175,8 @@
                     oldImg.remove();
                     img.setAttribute("src", event.target.result);
                     img.setAttribute("id", "newImg");
+                    img.style.width= '150px';
+                    img.style.height='200px';
                     document.querySelector("#image_container").appendChild(img);
 
                 };
