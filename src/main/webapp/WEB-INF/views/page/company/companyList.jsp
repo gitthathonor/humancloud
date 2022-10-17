@@ -200,26 +200,10 @@
 		</div>
 	</div>
 </div>
-
-<a href="/company/saveForm">기업등록</a>
-
 <div class="row">
 	<div class="col-md-12 grid-margin stretch-card">
 		<div class="card position-relative">
 			<div class="card-body">
-				<div class="d-flex flex-column justify-content-center m-5">
-					<div class="w-75 d-flex justify-content-between">
-						<div class="btn-group"></div>
-						<div class="dropdown">
-							<select class="form-control form-control-sm" id="exampleFormControlSelect3">
-								<option>추천순</option>
-								<option>업력순</option>
-								<option>관심순</option>
-							</select>
-						</div>
-					</div>
-				</div>
-
 				<div class="d-flex flex-column justify-content-center m-5">
 					<c:forEach var="company" items="${companyList}">
 						<div class="w-75 stretch-card transparent">

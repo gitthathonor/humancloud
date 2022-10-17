@@ -3,12 +3,11 @@
     <%@ include file="../../layout/header.jsp" %>
         <div>
             <div class="row">
-                <div class="col-sm-9">
-                    <h3>${resume.resumeTitle}</h3>
-                    <div style="margin: 20px 0 0 0;"></div>
-                    <div style="border-bottom: 1px solid #aaa"></div>
-                    <div style="margin: 30px 0 0 0;"></div>
-                    <div class="row">
+                <div class="d-flex justify-content-lg-center">
+                    <h1 class="my-5">${resume.resumeTitle}</h1>
+                </div>
+                <%-- col-sm-9 --%>
+                    <div class="row border-top border-bottom p-3">
                         <div class="col-xs-1 col-sm-3">
                             <img src="/img/${resume.resumePhoto}" class="img-thumbnail" />
                         </div>
@@ -35,16 +34,11 @@
                         <%-- col-xs-4 col-sm-6 --%>
                     </div>
                     <%-- row --%>
-                </div>
-                <%-- col-sm-9 --%>
             </div>
             <%-- row --%>
-                <div style="margin: 20px 0 0 0;"></div>
-                <div style="border-bottom: 1px solid #aaa"></div>
-                <div style="margin: 30px 0 0 0;"></div>
-                <div class="row text-center">
+                <div class="row text-center py-3">
                     <div class="col-md-4 col-xl-4  stretch-card pricing-card ">
-                        <div class="card border border-primary center-block ">
+                        <div class="card border center-block py-3">
                             <h3 class="mt-3 ml-2">학력사항</h3>
                             <hr class="border-primary" />
                             <p class="m-3 plan-cost text-primary">${resume.resumeEducation}</p>
@@ -53,20 +47,20 @@
                     </div>
                     <%-- col-md-4 col-xl-4 stretch-card pricing-card --%>
                         <div class="col-md-4 col-xl-4  stretch-card pricing-card">
-                            <div class="card border border-success">
+                            <div class="card border py-3">
                                 <h3 class="mt-3 ml-2">경력사항</h3>
                                 <hr class="border-success" />
-                                <p class="m-3 plan-cost text-success">${resume.resumeCareer}</p>
+                                <p class="m-3 plan-cost text-primary">${resume.resumeCareer}</p>
                             </div>
                             <%-- card border border-primary center-block --%>
                         </div>
                         <%-- col-md-4 col-xl-4 stretch-card pricing-card --%>
                             <div class="col-md-4 col-xl-4  stretch-card pricing-card">
-                                <div class="card border border-primary">
+                                <div class="card border py-3">
                                     <h3 class="mt-3 ml-2">원하는직업</h3>
                                     <hr class="border-primary" />
                                     <c:forEach var="category" items="${category}">
-                                        <span class="m-3 plan-cost text-primary">${category.categoryName}</span>
+                                        <span class="p-2 plan-cost text-primary ">${category.categoryName}</span>
                                     </c:forEach>
                                 </div>
                                 <%-- card border border-primary center-block --%>
@@ -74,11 +68,8 @@
                             <%-- col-md-4 col-xl-4 stretch-card pricing-card --%>
                 </div>
                 <%-- row text-center --%>
-                    <div style="margin: 30px 0 0 0;"></div>
-                    <div style="border-bottom: 1px solid #aaa"></div>
-                    <div style="margin: 30px 0 0 0;"></div>
-                    <div class="row">
-                        <div class="d-flex">
+                    <div class="row border-top p-4">
+                        <div class="d-flex justify-content-center">
                             <div class="mr-2">
                                 <a href="/resume/updateForm/${resume.resumeId}/${resume.resumeUserId}"
                                     class="btn btn-primary btn-icon-text">
@@ -88,7 +79,7 @@
                             </div>
                             <%-- mr-2 --%>
                                 <div class="mr-2">
-                                    <button type="button" id="btnDelete" class="btn btn-outline-info btn-icon-text">
+                                    <button type="button" id="btnDelete" class="btn btn-outline-primary btn-icon-text">
                                         <i class="ti-trash btn-icon-prepend"></i>
                                         이력서 삭제하기
                                     </button>
@@ -101,6 +92,8 @@
         </div>
         <%-- row --%>
             <script>
+
+                $('#resumeId')
                 $("#btnDelete").click(() => {
                     deleteById();
                 });

@@ -132,7 +132,7 @@
 
             </div>
         </div>
-        <input />
+        <input id="companyId" type="hidden" value="${sessionScope.companyPrincipal.companyId}" />
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
             function sample6_execDaumPostcode() {
@@ -183,7 +183,7 @@
                     recruitTitle: $('#recruitTitle').val(),
                     recruitCareer: $('#recruitCareer').val(),
                     recruitLocation: $('#recruitLocation').val(),
-                    //recruitPatternList: $('#recruitPattern').val(),
+                    recruitCompanyId: $('#companyId').val(),
                     recruitCategoryList: recruitCategoryList,
                     recruitDeadline: $('#recruitDeadline').val(),
                     recruitSalary: $('#recruitSalary').val(),

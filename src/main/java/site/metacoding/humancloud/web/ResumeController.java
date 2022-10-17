@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.category.Category;
+import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.service.ResumeService;
 import site.metacoding.humancloud.service.UserService;
@@ -48,8 +49,8 @@ public class ResumeController {
   }
 
   @PostMapping("/resume/list")
-  public @ResponseBody CMRespDto<?> orderList(@RequestParam("order") String order, User user) {
-    return new CMRespDto<>(1, "ok", resumeService.정렬하기(order, user.getUserId()));
+  public @ResponseBody CMRespDto<?> orderList(@RequestParam("order") String order, Company company) {
+    return new CMRespDto<>(1, "ok", resumeService.정렬하기(order, company.getCompanyId()));
   }
 
   @DeleteMapping("/resume/deleteById/{resumeId}")

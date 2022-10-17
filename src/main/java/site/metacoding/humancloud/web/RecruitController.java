@@ -27,7 +27,6 @@ public class RecruitController {
 
   private final RecruitService recruitService;
   private final CompanyService companyService;
-  private final ResumeService resumeService;
 
   @GetMapping("recruit/update/{id}")
   public String updateFrom(@PathVariable(required = false) Integer id, Model model) {
@@ -49,7 +48,6 @@ public class RecruitController {
     Recruit recruitPS = recruitService.공고상세페이지(id);
     model.addAttribute("Recruit", recruitPS);
     model.addAttribute("company", companyService.getCompanyDetail(id));
-    model.addAttribute("resume", resumeService.이력서목록보기());
     return "page/recruit/detail";
   }
 

@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.recruit.RecruitDao">
 
+	<select id="joinCompanyRecruit" resultType="site.metacoding.humancloud.web.dto.response.recruit.CompanyRecruitDto">
+		select * from recruit
+		inner join company
+		on recruit.recruit_company_id=company.company_id
+	</select>
+
 	<select id="orderByCreatedAt" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
 		select *
 		from recruit
