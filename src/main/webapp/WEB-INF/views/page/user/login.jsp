@@ -48,7 +48,8 @@
             </div>
         </div>
         <script>
-            let check = "user";
+            let check = "useruser";
+
             function changeColor(str) {
                 if (str == 'company') {
                     $("#user").removeClass();
