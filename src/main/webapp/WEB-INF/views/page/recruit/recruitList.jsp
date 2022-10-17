@@ -62,6 +62,7 @@
                 </div>
             </div>
         </div>
+
         <c:choose>
             <c:when test="${!empty sessionScope.companyPrincipal}">
                 <div class="d-flex">
@@ -73,32 +74,49 @@
                 </div>
             </c:when>
         </c:choose>
-
-        <div class="row">
-            <div class="d-flex justify-content-center my-5">
-                <div class="w-75 d-flex justify-content-between">
-                    <div class="btn-group">
-                        <c:forEach var="category" items="${recruits.category}">
-                            <button onclick='btnCategory("${category.categoryName}")'
-                                class="btn btn-primary">${category.categoryName}</button>
-                        </c:forEach>
-                    </div>
-                    <div class="dropdown">
-                        <select id="btnOrder" onchange="orderDo(this.value)" class="form-select dropdown-toggle"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <option selected>정렬</option>
-                            <option value="recent">최신순</option>
-                            <option value="career">경력순</option>
-                            <option value="education">학력순</option>
-                        </select>
+        <div class=" m-3">
+            <div class="d-flex justify-content-between">
+                <div class="btn-group">
+                    <c:forEach var="category" items="${recruits.category}">
+                        <button onclick='btnCategory("${category.categoryName}")'
+                            class="btn btn-primary">${category.categoryName}</button>
+                    </c:forEach>
+                </div>
+                <div class="dropdown">
+                    <select id="btnOrder" onchange="orderDo(this.value)" class="form-select dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <option selected>정렬</option>
+                        <option value="recent">최신순</option>
+                        <option value="career">경력순</option>
+                        <option value="education">학력순</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div id="recruitCard" class="">
+            <c:forEach var="recruit" items="${recruits.recruit}">
+                <div class="card px-4 m-3">
+                    <div class="card-body row">
+                        <div class="col-2" style="width:200px">
+                            <img class="img-thumbnail" src="/img/${recruit.companyLogo}" alt="people">
+                        </div>
+                        <div class="col-8 px-5">
+                            <p class="mb-4">${recruit.recruitLocation}</p>
+                            <p class="fs-30 mb-2"><a
+                                    href="/recruit/detail/${recruit.recruitId}/">${recruit.recruitTitle}</a></p>
+                            <p class="fs-10 mb-2">${recruit.recruitCreatedAt}</p>
+                        </div>
+                        <div class="col-2 d-flex flex-wrap align-content-center">
+                            <a href="/recruit/detail/${recruit.recruitId}">
+                                <button type="button" class="btn btn-outline-primary">상세보기</button>
+                            </a>
+                        </div>
                     </div>
 
                 </div>
-            </div>
 
+            </c:forEach>
         </div>
-
-
 
         <div id="recruitCard" class="">
             <c:forEach var="recruit" items="${recruits.recruit}">
@@ -154,6 +172,25 @@
                 });
             }
 
+
+            function btnCategory(title) {
+                let data = { categoryName: title, };
+                $.ajax("/recruit/category", {
+                    type: "POST",
+                    dataType: "json",
+                    data: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }).done((res) => {
+                    $("#recruitCard").empty();
+                    $("#recruitCard").append(makeList(res.data));
+                }).fail(function (error) {
+                    console.log(error);
+                    alert("오류");
+                });
+            }
+
             function orderDo(listOption) {
                 $.ajax({
                     type: "GET",
@@ -171,9 +208,10 @@
             }
 
             function makeList(x) {
-                let item = `<div class="card px-4">`;
+                let item = ``;
                 for (let list of x) {
-                    item += `<div class="card-body row border"><div class="bg-danger col-2" style="width:200px">` + list.recruitCompanyId + `</div>`;
+                    item += `<div class="card px-4 m-3"><div class="card-body row"><div class="col-2" style="width:200px">`;
+                    item += `<img class="img-thumbnail" src="/img/` + list.companyLogo + `" alt="people"></div>`
                     item += `<div class="col-8 px-5">`
                     item += `<p class="mb-4">` + list.recruitCreatedAt + `</p>`;
                     item += `<p class="fs-30 mb-2">` + list.recruitTitle + `</p>`;

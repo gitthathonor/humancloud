@@ -32,8 +32,8 @@
     <body class="d-flex justify-content-center">
       <div class="container-scroller w-75">
         <%@ include file="../nav/topbar.jsp" %>
-          <%-- <%@ include file="../nav/toast.jsp" %>--%>
-            <div class="container-fluid page-body-wrapper">
-              <%@ include file="../nav/menu.jsp" %>
-                <div class="main-panel ">
-                  <div class="content-wrapper ">
+          <!--<%@ include file="../nav/toast.jsp" %>-->
+          <div class="container-fluid page-body-wrapper">
+            <%@ include file="../nav/menu.jsp" %>
+              <div class="main-panel ">
+                <div class="content-wrapper ">

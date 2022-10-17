@@ -48,7 +48,7 @@
             </div>
         </div>
         <script>
-            let check = "useruser";
+            let check = "user";
 
             function changeColor(str) {
                 if (str == 'company') {
