@@ -88,7 +88,7 @@
 	</delete>
 
 
-   <select id="findCategoryNameList" resultType="list">
+   <select id="findCategoryNameList" resultType="arraylist">
       SELECT category_name
       FROM category
       WHERE category_recruit_id = (SELECT max(recruit_id)

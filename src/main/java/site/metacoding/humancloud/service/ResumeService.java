@@ -1,9 +1,12 @@
 package site.metacoding.humancloud.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -104,14 +107,37 @@ public class ResumeService {
     }
 
     public List<Resume> 추천순보기(Integer companyId) {
+        System.out.println("추천순 보기 시작");
         List<String> categoryNameList = resumeDao.findCategoryNameList(companyId);
+        int size = categoryNameList.size();
         for (String c : categoryNameList) {
             System.out.println(c);
         }
 
-        List<Resume> resumeList = resumeDao.findAll();
-        List<Category> categoryList
+        List<Category> categoryList = categoryDao.findAll();
 
+        // 아까 전에 들고 온 카테고리의 이름 각각에 대해서 resume_id를 list에 넣는다.
+
+        List<Integer> duplicateResumeIdList = new ArrayList<>();
+
+        for (String s : categoryNameList) {
+            for (int i = 0; i < categoryList.size(); i++) {
+                if (categoryList.get(i).getCategoryName().equals(s)
+                        && categoryList.get(i).getCategoryResumeId() != null) {
+                    duplicateResumeIdList.add(categoryList.get(i).getCategoryResumeId());
+                }
+            }
+        }
+
+        // 그 list에서 같은 id가 많이 중복되면 가장 상단에 올라가는 이력서 양식이 된다.
+        Set<Integer> set = new HashSet<>(duplicateResumeIdList);
+        List<Resume> resumeList = new ArrayList<>();
+        for (Integer resumeId : set) {
+            System.out.println(resumeId + " : " + Collections.frequency(duplicateResumeIdList, resumeId));
+            resumeList.add(resumeDao.findById(resumeId));
+        }
+
+        return resumeList;
     }
 
 }

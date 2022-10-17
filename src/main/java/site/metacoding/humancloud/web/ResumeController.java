@@ -50,6 +50,7 @@ public class ResumeController {
 
   @PostMapping("/resume/list")
   public @ResponseBody CMRespDto<?> orderList(@RequestParam("order") String order, Company company) {
+    System.out.println("controller 시작");
     return new CMRespDto<>(1, "ok", resumeService.정렬하기(order, company.getCompanyId()));
   }
 

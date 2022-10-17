@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ include file="../../layout/header.jsp" %>
-
+        <input id="companyId" type="hidden" value="${sessionScope.companyPrincipal.companyId}">
+        <input id="example" type="button">
         <div class=" m-3">
             <div class="d-flex justify-content-between">
                 <div class="btn-group">
                     <c:forEach var="category" items="${resumeData.category}">
-                        <button onclick='btnCategory("${category.categoryName}", ${sessionScope.principal})'
+                        <button onclick='btnCategory("${category.categoryName}")'
                             class="btn btn-primary">${category.categoryName}</button>
                     </c:forEach>
                 </div>
                 <div class="dropdown">
-                    <select id="btnOrder" onchange="orderDo(this.value, ${sessionScope.companyPrincipal.companyId})"
-                        class="form-select dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
+                    <select id="btnOrder" onchange="orderDo(this.value)" class="form-select dropdown-toggle"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <option selected>정렬</option>
                         <option value="recent">최신순</option>
                         <option value="career">경력순</option>
@@ -68,10 +68,13 @@
                 });
             }
 
-            function orderDo(listOption, userId) {
+            function orderDo(listOption) {
+                let userId = $("#companyId").val();
+                console.log(userId);
                 let data = {
                     userId: userId,
                 };
+                console.log(userId);
                 $.ajax({
                     type: "POST",
                     url: "/resume/list?order=" + listOption,
@@ -107,5 +110,11 @@
                 }
                 return item;
             }
+
+
+            $("#example").click(() => {
+                let id = $("#companyId").val();
+                console.log(id);
+            }); 
         </script>
         <%@ include file="../../layout/footer.jsp" %>
