@@ -104,7 +104,14 @@ public class ResumeService {
     }
 
     public List<Resume> 추천순보기(Integer companyId) {
-        return resumeDao.orderByRecommend(companyId);
+        List<String> categoryNameList = resumeDao.findCategoryNameList(companyId);
+        for (String c : categoryNameList) {
+            System.out.println(c);
+        }
+
+        List<Resume> resumeList = resumeDao.findAll();
+        List<Category> categoryList
+
     }
 
 }

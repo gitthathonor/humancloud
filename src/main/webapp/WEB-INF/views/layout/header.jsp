@@ -19,7 +19,8 @@
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
 
       <!-- sock js -->
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
+      <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.2/sockjs.min.js"></script>
       <!-- STOMP -->
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
@@ -32,8 +33,8 @@
     <body class="d-flex justify-content-center">
       <div class="container-scroller w-75">
         <%@ include file="../nav/topbar.jsp" %>
-<%--          <%@ include file="../nav/toast.jsp" %>--%>
-          <div class="container-fluid page-body-wrapper">
-            <%@ include file="../nav/menu.jsp" %>
-              <div class="main-panel ">
-                <div class="content-wrapper ">
+          <%-- <%@ include file="../nav/toast.jsp" %>--%>
+            <div class="container-fluid page-body-wrapper">
+              <%@ include file="../nav/menu.jsp" %>
+                <div class="main-panel ">
+                  <div class="content-wrapper ">

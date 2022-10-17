@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.resume.ResumeDao">
 
-    <select id="orderByRecommend" resultType="site.metacoding.humancloud.domain.resume.Resume">
+   <select id="orderByRecommend" resultType="site.metacoding.humancloud.domain.resume.Resume">
         select resume.*, result.count from resume
         left join
             (select *, count(*) count
@@ -86,5 +86,14 @@
    <delete id="deleteByUserId">
 		DELETE FROM resume WHERE resume_user_id=#{userId}
 	</delete>
+
+
+   <select id="findCategoryNameList" resultType="list">
+      SELECT category_name
+      FROM category
+      WHERE category_recruit_id = (SELECT max(recruit_id)
+      FROM recruit
+      WHERE recruit_company_id = #{companyId})
+   </select>
 
 </mapper>

@@ -2,6 +2,7 @@ package site.metacoding.humancloud.domain.resume;
 
 import java.util.List;
 
+import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.web.dto.request.resume.SaveDto;
 import site.metacoding.humancloud.web.dto.request.resume.UpdateDto;
 
@@ -29,5 +30,7 @@ public interface ResumeDao {
 	public List<Resume> orderByCreatedAt();
 
 	public List<Resume> orderByRecommend(Integer companyId);
+
+	public List<String> findCategoryNameList(Integer companyId);
 
 }
