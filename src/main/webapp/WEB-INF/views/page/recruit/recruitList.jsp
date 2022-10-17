@@ -62,27 +62,43 @@
                 </div>
             </div>
         </div>
-        -->
-
-        <div class="d-flex justify-content-center my-5">
-            <div class="w-75 d-flex justify-content-between">
-                <div class="btn-group">
-                    <c:forEach var="category" items="${recruits.category}">
-                        <button onclick='btnCategory("${category.categoryName}")'
-                            class="btn btn-primary">${category.categoryName}</button>
-                    </c:forEach>
+        <c:choose>
+            <c:when test="${!empty sessionScope.companyPrincipal}">
+                <div class="d-flex">
+                    <div class="col-10 "></div>
+                    <div class="">
+                        <button id="btnLogin" type="button" class="btn btn-outline-primary btn-icon-text">공고
+                            작성하기</button>
+                    </div>
                 </div>
-                <div class="dropdown">
-                    <select id="btnOrder" onchange="orderDo(this.value)" class="form-select dropdown-toggle"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <option selected>정렬</option>
-                        <option value="recent">최신순</option>
-                        <option value="career">경력순</option>
-                        <option value="education">학력순</option>
-                    </select>
+            </c:when>
+        </c:choose>
+
+        <div class="row">
+            <div class="d-flex justify-content-center my-5">
+                <div class="w-75 d-flex justify-content-between">
+                    <div class="btn-group">
+                        <c:forEach var="category" items="${recruits.category}">
+                            <button onclick='btnCategory("${category.categoryName}")'
+                                class="btn btn-primary">${category.categoryName}</button>
+                        </c:forEach>
+                    </div>
+                    <div class="dropdown">
+                        <select id="btnOrder" onchange="orderDo(this.value)" class="form-select dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <option selected>정렬</option>
+                            <option value="recent">최신순</option>
+                            <option value="career">경력순</option>
+                            <option value="education">학력순</option>
+                        </select>
+                    </div>
+
                 </div>
             </div>
+
         </div>
+
+
 
         <div id="recruitCard" class="">
             <c:forEach var="recruit" items="${recruits.recruit}">
