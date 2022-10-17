@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ include file="../../layout/header.jsp" %>
-        <div class="content-wrapper d-flex align-items-center auth px-0">
-            <div class="row w-100 mx-0">
-                <div class="col-lg mx-auto">
-                    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+        <div class="row">
+            <div class="content-wrapper auth px-0">
+                <div class="col-md d-flex justify-content-center">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5" style="width: 80%;">
                         <div class="brand-logo">
                             로고이미지
                         </div>
@@ -11,9 +11,9 @@
                         <h6 class="font-weight-light">Sign in to continue.</h6>
                         <div class="btn-group col-lg" role="group" aria-label="Basic example">
                             <button id="user" onclick="changeColor(this.value)" type="button"
-                                class="str btn btn-primary" value="user">일반</button>
+                                class="str btn btn-outline-primary" value="user">일반</button>
                             <button id="company" onclick="changeColor(this.value)" type="button"
-                                class="str btn btn-default" value="company">기업</button>
+                                class="str btn btn-outline-primary" value="company">기업</button>
                         </div>
                         <form class="pt-3">
                             <div class="form-group">
@@ -48,16 +48,17 @@
             </div>
         </div>
         <script>
-            let check = "user";
+            let check = "useruser";
+
             function changeColor(str) {
                 if (str == 'company') {
                     $("#user").removeClass();
-                    $("#user").addClass("btn btn-default");
-                    $("#" + str).addClass("btn btn-primary");
+                    $("#user").addClass("btn btn-outline-primary");
+                    $("#" + str).addClass("btn btn-primary text-white");
                 } else {
                     $("#company").removeClass();
-                    $("#company").addClass("btn btn-default");
-                    $("#" + str).addClass("btn btn-primary");
+                    $("#company").addClass("btn btn-outline-primary");
+                    $("#" + str).addClass("btn btn-primary text-white");
                 }
 
                 check = str;
@@ -89,7 +90,7 @@
                     }
                 }).done((res) => {
                     if (res.data != null) {
-                        location.href = "/";
+                        location.href = document.referrer; //UX 를 위해 로그인 하면 이전의 페이지로
                     } else {
                         alert("로그인 실패");
                     }

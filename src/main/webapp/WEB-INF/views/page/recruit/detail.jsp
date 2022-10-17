@@ -4,11 +4,13 @@
 
         <!-- 기업사진 명 등-->
         <div class="row">
-            <%-- <div class="col-md-4">
+            <div class="col-md-4">
                 <div class="card">
                     <img class="stretch-card" src="/img/${Recruit.company.companyLogo}" alt="people">
                 </div>
-            </div> --%>
+            </div>
+
+
             <div class="col-md-8  transparent">
                 <div>
                     <p class="card-title"></p>${Recruit.company.companyName}</p>
@@ -36,11 +38,22 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="d-flex">
+                    <div class="ml-auto">
+                        <button type="button" class="btn btn-outline-primary btn-icon-text" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            <i class="ti-file btn-icon-prepend"></i>
+                            즉시지원하기
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         <hr />
 
         <div class="row">
-            <div class="col-md-4 col-xl-4  stretch-card pricing-card">
+            <div class="col-md-6 col-xl-6  stretch-card pricing-card">
                 <div class="card border border-primary">
                     <h3 class="mt-3 ml-2">지원 자격</h3>
                     <hr class="border-primary" />
@@ -50,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="col-md-8 col-xl-8  stretch-card pricing-card">
+            <div class="col-md-6 col-xl-6  stretch-card pricing-card">
                 <div class="card border border-primary">
                     <h3 class="mt-3 ml-2">회사 소개</h3>
                     <hr class="border-primary" />
@@ -61,19 +74,6 @@
             </div>
         </div>
         <hr />
-        <div class="row">
-            <div class="d-flex">
-                <div class="mr-2">
-                    <button type="button" class="btn btn-outline-primary btn-icon-text" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal">
-                        <i class="ti-file btn-icon-prepend"></i>
-                        즉시지원하기
-                    </button>
-                </div>
-            </div>
-        </div>
-        <hr />
-
         <div class="row">
             <div class="card" style="width: 100%;">
                 <div class="card-body">
@@ -94,12 +94,12 @@
                     <a class="nav-link" href="/company/mypage?id=${sessionScope.companyPrincipal.companyId}">
                         <div class="mr-2">
 
-                            <button style="font-style: white;" type="button" class="btn btn-outline-primary btn-icon-text"
+                            <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
                                 onclick="location.href='/recruit/update/${Recruit.recruitId}'">
                                 <i class="ti-file btn-icon-prepend"></i>
                                 수정하기
                             </button>
-                            <button style="font-style: white;" type="button" class="btn btn-outline-danger btn-icon-text"
+                            <button style="font-style: white;" type="button" class="btn btn-danger btn-icon-text"
                                 onclick="recruitDelete()">
                                 <i class="ti-file btn-icon-prepend"></i>
                                 삭제하기
@@ -149,7 +149,11 @@
                                 <c:forEach var="lists" items="${Recruit.recruitListByCompanyId}">
                                     <tr role="row">
                                         <td rowspan="1" colspan="1">추천 수...?</td>
-                                        <td rowspan="1" colspan="3">${lists.recruitTitle}</td>
+                                        <td rowspan="1" colspan="3">
+                                            <a href="/recruit/detail/${lists.recruitId}" class="text-dark">
+                                                ${lists.recruitTitle}
+                                            </a>
+                                        </td>
                                         <td rowspan="1" colspan="2">${lists.recruitSalary} 만원</td>
                                         <td rowspan="1" colspan="1">${lists.recruitStartDay}</td>
                                     </tr>
@@ -169,29 +173,50 @@
                         <h5 class="modal-title" id="exampleModalLabel">이력서를 선택해주세요</h5>
                         <button type="button" class=" btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <form class="forms-sample">
-                            <c:forEach var="resume" items="${resume}">
-                                <div class="form-check">
-                                    <div class="m-5 p-5 col-5 border">
-                                        <div style="position: absolute; top:0px; left:-50px;">
-                                            <label class="form-check-label">
-                                                <input type="radio" class="form-check-input" name="applyByResumeId"
-                                                    value="${resume.resumeId}">
-                                                <i class="input-helper"> </i></label>
-                                        </div>
-                                        <h3>${resume.resumeTitle}</h3>
-                                        <p>${resume.resumeReadCount}</p>
-                                        <p>${resume.resumeCreatedAt}</p>
+                    <c:choose>
+                        <c:when test="${empty sessionScope.principal}">
+                            <div class="modal-body">
+                                <form class="forms-sample">
+                                    <div class="align-center">
+                                        <p>로그인 먼저 해주세요</p>
                                     </div>
-                                </div>
-                            </c:forEach>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button id="btnSave" type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button id="btnLogin" type="button" class="btn btn-primary">Login</button>
+                            </div>
+                        </c:when>
+
+                        <c:when test="${!empty sessionScope.principal}">
+                            <div class="modal-body">
+                                <form class="forms-sample">
+                                    <c:forEach var="resume" items="${resume.resume}">
+                                        <div class="form-check">
+                                            <div class="m-5 p-5 col-5 border">
+                                                <div style="position: absolute; top:0px; left:-50px;">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input"
+                                                            name="applyByResumeId" value="${resume.resume.resumeId}">
+                                                        <i class="input-helper"> </i></label>
+                                                </div>
+                                                <h3>${resume.resume.resumeTitle}</h3>
+                                                <p>${resume.resume.resumeReadCount}</p>
+                                                <p>${resume.resume.resumeCreatedAt}</p>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button id="btnSave" type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+
+                        </c:when>
+                    </c:choose>
                 </div>
             </div>
         </div>
@@ -220,8 +245,13 @@
                 alert("솔트 합니다");
             }
 
+            $("#btnLogin").click(() => {
+                login();
+            });
 
-
+            function login() {
+                location.href = '/login';
+            }
 
             $("#btnSave").click(() => {
                 save();

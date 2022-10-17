@@ -47,17 +47,27 @@
                                         <div class="ml-2 form-check">
                                             <label class="form-check-label">
                                                 <input type="checkbox" class="form-check-input" id="recruitCategory"
-                                                    value="웹 개발자">웹 개발자</label>
+                                                    value="Flutter">Flutter</label>
                                         </div>
                                         <div class="ml-2 form-check">
                                             <label class="form-check-label">
                                                 <input type="checkbox" class="form-check-input" id="recruitCategory"
-                                                    value="프론트 개발자">프론트 개발자</label>
+                                                    value="Java">Java</label>
                                         </div>
                                         <div class="ml-2 form-check">
                                             <label class="form-check-label">
                                                 <input type="checkbox" class="form-check-input" id="recruitCategory"
-                                                    value="백 개발자">백 개발자</label>
+                                                    value="HTML\&Css">HTML&Css</label>
+                                        </div>
+                                        <div class="ml-2 form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" id="recruitCategory"
+                                                    value="JavaScript">JavaScript</label>
+                                        </div>
+                                        <div class="ml-2 form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" id="recruitCategory"
+                                                    value="Python">Python</label>
                                         </div>
                                     </div>
                                 </div>

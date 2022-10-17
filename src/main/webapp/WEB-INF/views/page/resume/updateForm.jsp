@@ -14,11 +14,13 @@
                     </div>
                     <div class="form-group">
                         <label for="name">이름</label>
-                        <input type="text" class="form-control" id="name" placeholder="이름 입력" value="${user.name}" readonly>
+                        <input type="text" class="form-control" id="name" placeholder="이름 입력" value="${user.name}"
+                            readonly>
                     </div>
                     <div class="form-group">
                         <label for="email">이메일</label>
-                        <input type="email" class="form-control" id="email" placeholder="이메일 입력" value="${user.email}" readonly>
+                        <input type="email" class="form-control" id="email" placeholder="이메일 입력" value="${user.email}"
+                            readonly>
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber">전화번호</label>
@@ -33,45 +35,52 @@
                             <img id="oldImg" src="/img/${resume.resumePhoto}">
                         </div>
                     </div>
+                    <hr />
                     <h3 class="card-title">학력 정보</h3>
                     <div class="form-check d-flex" id="education">
-                            <div class="form-check d-flex">
-            <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="고졸">
-                    고졸
-                <i class="input-helper"></i></label>
-            </div>
-            <div style="margin: 0 20px 0 0;"></div>
-            <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="2년제 대학 졸업">
-                    2년제 대학 졸업
-                <i class="input-helper"></i></label>
-            </div>
-            <div style="margin: 0 20px 0 0;"></div>
-            <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="3년제 대학 졸업">
-                    3년제 대학 졸업
-                <i class="input-helper"></i></label>
-            </div>
-            <div style="margin: 0 20px 0 0;"></div>
-            <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="4년제 대학 졸업">
-                    4년제 대학 졸업
-                <i class="input-helper"></i></label>
-            </div>
-            <div style="margin: 0 20px 0 0;"></div>
-            <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" id = "education" name="education" value="대학원 졸업">
-                   대학원 졸업
-                <i class="input-helper"></i></label>
-            </div>
-        </div>
+                        <div class="form-check d-flex">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" id="education" name="education"
+                                        value="고졸">
+                                    고졸
+                                    <i class="input-helper"></i></label>
+                            </div>
+                            <div style="margin: 0 20px 0 0;"></div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" id="education" name="education"
+                                        value="2년제대학졸업">
+                                    2년제 대학 졸업
+                                    <i class="input-helper"></i></label>
+                            </div>
+                            <div style="margin: 0 20px 0 0;"></div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" id="education" name="education"
+                                        value="3년제대학졸업">
+                                    3년제 대학 졸업
+                                    <i class="input-helper"></i></label>
+                            </div>
+                            <div style="margin: 0 20px 0 0;"></div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" id="education" name="education"
+                                        value="4년제대학졸업">
+                                    4년제 대학 졸업
+                                    <i class="input-helper"></i></label>
+                            </div>
+                            <div style="margin: 0 20px 0 0;"></div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" id="education" name="education"
+                                        value="대학원졸업">
+                                    대학원 졸업
+                                    <i class="input-helper"></i></label>
+                            </div>
+                        </div>
                     </div>
+                    <hr />
                     <h3 class="card-title">경력 사항</h3>
                     <div class="col-md-8">
                         <div class="form-group row">
@@ -88,11 +97,13 @@
                             </div>
                         </div>
                     </div>
+                    <hr />
                     <h3 class="card-title">사용 블로그</h3>
                     <div class="form-group">
                         <input type="text" class="form-control" id="blog" placeholder="깃허브 주소나 블로그주소를 입력해주세요"
                             value="${resume.resumeLink}">
                     </div>
+                    <hr />
                     <h4 class="card-title">직무</h4>
                     <div class="d-flex">
                         <div class="form-check">
@@ -119,6 +130,7 @@
                                 <i class="input-helper"></i></label>
                         </div>
                     </div>
+                    <hr />
                     <div class="btn-group m-4" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-primary" id="btnUpdate">작성완료</button>
                     </div>
@@ -175,6 +187,8 @@
                     oldImg.remove();
                     img.setAttribute("src", event.target.result);
                     img.setAttribute("id", "newImg");
+                    img.style.width = '150px';
+                    img.style.height = '200px';
                     document.querySelector("#image_container").appendChild(img);
 
                 };
