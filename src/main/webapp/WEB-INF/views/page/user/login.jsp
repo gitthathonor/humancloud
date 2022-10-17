@@ -89,7 +89,7 @@
                     }
                 }).done((res) => {
                     if (res.data != null) {
-                        location.href = document.referrer;
+                        location.href = document.referrer; //UX 를 위해 로그인 하면 이전의 페이지로
                     } else {
                         alert("로그인 실패");
                     }
