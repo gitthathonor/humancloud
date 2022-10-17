@@ -9,8 +9,6 @@
                     <img class="stretch-card" src="/img/${Recruit.company.companyLogo}" alt="people">
                 </div>
             </div>
-
-
             <div class="col-md-8  transparent">
                 <div>
                     <p class="card-title"></p>${Recruit.company.companyName}</p>

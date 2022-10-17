@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,16 +46,17 @@ public class RecruitController {
   public String recruit_Detail(@PathVariable Integer id, Model model) {
     Recruit recruitPS = recruitService.공고상세페이지(id);
     model.addAttribute("Recruit", recruitPS);
-    model.addAttribute("company", companyService.getCompanyDetail(id));
+    model.addAttribute("company", companyService.getCompanyDetail(recruitPS.getRecruitCompanyId()));
     return "page/recruit/detail";
   }
 
-  @GetMapping("recruit/save")
-  public String writeFrom() {
+  @GetMapping("/recruit/saveForm/{companyId}")
+  public String writeFrom(@PathVariable Integer companyId, Model model) {
+     model.addAttribute("company", companyService.getCompanyDetail(companyId));
     return "page/recruit/saveForm";
   }
 
-  @PostMapping("recruit/save")
+  @PostMapping("/recruit/save")
   public @ResponseBody CMRespDto<?> write(@RequestBody SaveDto saveDto) {
 
     recruitService.구인공고작성(saveDto);
