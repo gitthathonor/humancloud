@@ -173,8 +173,6 @@
                         <h5 class="modal-title" id="exampleModalLabel">이력서를 선택해주세요</h5>
                         <button type="button" class=" btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-
-
                     <c:choose>
                         <c:when test="${empty sessionScope.principal}">
                             <div class="modal-body">
@@ -187,10 +185,8 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline-primary"
                                     data-bs-dismiss="modal">Close</button>
-                                <button id="btnSave" type="button" class="btn btn-primary">Save changes</button>
+                                <button id="btnLogin" type="button" class="btn btn-primary">Login</button>
                             </div>
-
-
                         </c:when>
 
                         <c:when test="${!empty sessionScope.principal}">
@@ -225,9 +221,6 @@
             </div>
         </div>
 
-
-
-
         <input id="recruitId" value="${Recruit.recruitId}" type="hidden">
         <script>
             let resumeId = "";
@@ -252,8 +245,13 @@
                 alert("솔트 합니다");
             }
 
+            $("#btnLogin").click(() => {
+                login();
+            });
 
-
+            function login() {
+                location.href = '/login';
+            }
 
             $("#btnSave").click(() => {
                 save();
