@@ -28,7 +28,6 @@ public class SubscribeController {
 
     @PostMapping("/subscribe")
     public @ResponseBody CMRespDto<?> subscribeCompany(@RequestBody Subscribe subscribe){
-        subscribeService.구독하기(subscribe);
-        return new CMRespDto<>(1, "ok", null);
+        return new CMRespDto<>(1, "ok", subscribeService.구독확인(subscribe));
     }
 }

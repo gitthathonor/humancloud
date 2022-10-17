@@ -3,6 +3,7 @@ package site.metacoding.humancloud.domain.recruit;
 import java.util.List;
 
 import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
+import site.metacoding.humancloud.web.dto.response.recruit.CompanyRecruitDto;
 
 public interface RecruitDao {
 	public void save(SaveDto saveDto);
@@ -22,4 +23,6 @@ public interface RecruitDao {
 	public void findByCareer();
 
 	public List<Recruit> findByCompanyId(Integer id);
+
+	public List<CompanyRecruitDto> joinCompanyRecruit();
 }

@@ -108,7 +108,6 @@
 			<script>
 				function subscribeCompany(userId){
 
-
 					let data = {
 						subscribeUserId : userId,
 						subscribeCompanyId: $("#id").val()
@@ -123,9 +122,12 @@
 							"Content-Type": "application/json"
 						}
 					}).done((res) => {
-						if (res.code == 1) {
+						if (res.data == true) {
 							alert("구독완료");
 							// 나중에는 여기 기업 상세보기로 변경
+							location.reload();
+						} else {
+							alert("이미 구독 중입니다");
 							location.reload();
 						}
 					});

@@ -16,6 +16,7 @@ import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.domain.recruit.Recruit;
 import site.metacoding.humancloud.service.CompanyService;
 import site.metacoding.humancloud.service.RecruitService;
+import site.metacoding.humancloud.service.ResumeService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
 import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
 

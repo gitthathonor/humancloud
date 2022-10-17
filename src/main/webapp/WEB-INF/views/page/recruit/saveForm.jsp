@@ -22,7 +22,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Basic form elements</h4>
                             <form class="forms-sample">
-                            	<input type="hidden" id="recruitCompanyId" value="${company.companyId}">
+                                <input type="hidden" id="recruitCompanyId" value="${company.companyId}">
                                 <div class="form-group">
                                     <label>공고명 (recruitTitle)</label>
                                     <input type="text" required class="form-control" id="recruitTitle"
@@ -125,6 +125,7 @@
                 </div>
             </div>
         </div>
+        <input id="companyId" type="hidden" value="${sessionScope.companyPrincipal.companyId}" />
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
             function sample6_execDaumPostcode() {
@@ -171,22 +172,22 @@
                 $("#recruitCategory:checked").each(function () {
                     recruitCategoryList.push($(this).val());
                 });
-                
+
                 let data = {
                     recruitTitle: $('#recruitTitle').val(),
                     recruitCareer: $('#recruitCareer').val(),
                     recruitLocation: $('#recruitLocation').val(),
-                    //recruitPatternList: $('#recruitPattern').val(),
+                    recruitCompanyId: $('#companyId').val(),
                     recruitCategoryList: recruitCategoryList,
                     /* recruitDeadline: $('#recruitDeadline').val(), */
                     recruitSalary: $('#recruitSalary').val(),
                     recruitContent: $('#summernote').val(),
                     recruitCompanyId: $('#recruitCompanyId').val()
                 };
-                
-               	let recruitCompanyId = $('#recruitCompanyId').val();
-               	console.log(recruitCompanyId);
-               	console.log(data);
+
+                let recruitCompanyId = $('#recruitCompanyId').val();
+                console.log(recruitCompanyId);
+                console.log(data);
 
 
                 $.ajax("/recruit/save", {
