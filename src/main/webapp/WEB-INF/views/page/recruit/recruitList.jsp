@@ -83,26 +83,6 @@
         </div>
     </div>
 </div>
-        <div class="d-flex justify-content-center my-5">
-            <div class="w-75 d-flex justify-content-between">
-                <div class="btn-group">
-                    <c:forEach var="category" items="${recruits.category}">
-                        <button onclick='btnCategory("${category.categoryName}")'
-                            class="btn btn-primary">${category.categoryName}</button>
-                    </c:forEach>
-                </div>
-                <div class="dropdown">
-                    <select id="btnOrder" onchange="orderDo(this.value)" class="form-select dropdown-toggle"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <option selected>정렬</option>
-                        <option value="recent">최신순</option>
-                        <option value="career">경력순</option>
-                        <option value="education">학력순</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
 <div id="recruitCard" class="">
     <c:forEach var="recruit" items="${recruits.recruit}">
         <div class="card px-4 m-3">
@@ -112,7 +92,7 @@
                 </div>
                 <div class="col-8 px-5">
                     <p class="mb-4">${recruit.recruitLocation}</p>
-                    <p class="fs-30 mb-2"><a href="/recruit/detail/${recruit.recruitId}">${recruit.recruitTitle}</a></p>
+                    <p class="fs-30 mb-2"><a href="/recruit/detail/${recruit.recruitId}/">${recruit.recruitTitle}</a></p>
                     <p class="fs-10 mb-2">${recruit.recruitCreatedAt}</p>
                 </div>
                 <div class="col-2 d-flex flex-wrap align-content-center">
