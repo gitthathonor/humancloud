@@ -176,7 +176,7 @@
                     img.setAttribute("src", event.target.result);
                     img.setAttribute("id", "newImg");
                     img.style.width= '150px';
-                img.style.height='200px';
+                    img.style.height='200px';
                     document.querySelector("#image_container").appendChild(img);
 
                 };
