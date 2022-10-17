@@ -12,6 +12,7 @@ window.onload=function (){
                 console.log(parsingResult);
                 $("#boxAlarm").empty();
                 $("#boxAlarm").append(viewMessage(parsingResult));
+                $("#notificationDropdown").dropdown('show');
             });
         });
     }
@@ -23,7 +24,7 @@ function viewMessage(message){
 
     // message = message.replaceAll("\n", "<br>").replaceAll(" ", "&nbsp");
 
-    let resultMessage =`<div>`+sender+`이 `+alarmType+`</div>`;
+    let resultMessage =`<div class="preview-item-content">`+sender+` 님이 `+alarmType+`하였습니다</div>`;
     return resultMessage
 }
 // topbar---------------------------------------------------------------------
