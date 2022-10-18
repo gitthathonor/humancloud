@@ -31,7 +31,7 @@
 
 
     <body class="d-flex justify-content-center">
-      <div class="container-scroller w-75">
+      <div class="container-scroller w-75 Larger shadow">
         <%@ include file="../nav/topbar.jsp" %>
           <!--<%@ include file="../nav/toast.jsp" %>-->
           <div class="container-fluid page-body-wrapper">
