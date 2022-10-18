@@ -43,23 +43,24 @@
                 </div>
             </div>
  -->
-                    <div class="py-3 px-3 text-center d-flex justify-content-around">
+                    <div class="py-3 px-3 text-center ">
                         <c:choose>
                             <c:when
                                 test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
-                                <div class="btn btn-outline-primary btn-fw">
-                                    <a class="text-black" href="/update/${sessionScope.principal.userId}">회원정보수정</a>
+                                <div class="btn btn-primary col-8 mb-2"
+                                    onclick="location.href='/update/${sessionScope.principal.userId}'">
+                                    회원정보수정
                                 </div>
-                                <div class="btn btn-outline-primary btn-fw"
+                                <div class="btn btn-outline-danger btn-fw col-8"
                                     onclick='deleteUser("${sessionScope.principal.userId}")'>계정탈퇴</div>
                             </c:when>
                             <c:when
                                 test="${!empty sessionScope.companyPrincipal.companyId && empty sessionScope.principal.userId}">
-                                <div class="btn btn-outline-primary btn-fw">
-                                    <a class="text-black"
-                                        href="/company/updateForm/${sessionScope.companyPrincipal.companyId}">기업정보수정</a>
+                                <div class="btn btn-primary col-8 mb-2"
+                                    onclick="location.href='/company/updateForm/${sessionScope.companyPrincipal.companyId}'">
+                                    기업정보수정
                                 </div>
-                                <div class="btn btn-outline-primary btn-fw"
+                                <div class="btn btn-outline-danger btn-fw col-8"
                                     onclick='deleteCompany("${sessionScope.companyPrincipal.companyId}")'>기업 삭제</div>
                             </c:when>
                         </c:choose>

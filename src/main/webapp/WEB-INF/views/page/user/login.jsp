@@ -50,7 +50,6 @@
         <script>
             let check = "user";
 
-
             function changeColor(str) {
                 if (str == 'company') {
                     $("#user").removeClass();
