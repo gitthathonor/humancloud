@@ -12,7 +12,7 @@
 								<div class="d-flex justify-content-between" style="margin: 0 0 0 5px">
 									<h3>기업 정보</h3>
 									<button class="btn btn-primary"
-										onclick='subscribeCompany(${sessionScope.principal.userId}), sendData()'>
+										onclick='subscribeCompany("${sessionScope.principal.userId}"), sendData()'>
 										<i class="fa-regular fa-heart"></i> <span>관심기업등록</span>
 									</button>
 								</div>
@@ -38,189 +38,187 @@
 										</ul>
 										<div id="map" style="width: 50%; height: 300px;"></div>
 									</div>
-									<%-- col-xs-4 col-sm-6 --%>
+									<!-- col-xs-4 col-sm-6 -->
 								</div>
-								<%-- row --%>
+								<!-- row -->
 							</div>
 						</div>
 					</div>
 				</div>
-				<%-- col-sm-9 --%>
+				<!-- col-sm-9 -->
 			</div>
-			<%-- row --%>
-				<div style="border-bottom: 1px solid #aaa"></div>
-				<div style="margin: 30px 0 0 0;"></div>
-				<div class="row text-center" style="margin: 0 0.5px">
-					<div class="col-md-4 col-xl-4  stretch-card pricing-card ">
-						<div class="card border border-primary center-block ">
-							<h3 class="mt-3 ml-2">커뮤니티</h3>
-							<hr class="border-primary" />
-							<p class="m-3 plan-cost text-primary">궁금했던 직무와 기업 현직자에게 물어볼래요?</p>
-						</div>
-						<%-- card border border-primary center-block --%>
+			<!-- row -->
+			<div style="border-bottom: 1px solid #aaa"></div>
+			<div style="margin: 30px 0 0 0;"></div>
+			<div class="row text-center" style="margin: 0 0.5px">
+				<div class="col-md-4 col-xl-4  stretch-card pricing-card ">
+					<div class="card border py-3 ">
+						<h3 class="mt-3 ml-2">커뮤니티</h3>
+						<hr class="border-primary" />
+						<p class="mt-3 ml-2">궁금했던 직무와 기업 현직자에게 물어볼래요?</p>
 					</div>
-					<%-- col-md-4 col-xl-4 stretch-card pricing-card --%>
-						<div class="col-md-4 col-xl-4  stretch-card pricing-card">
-							<div class="card border border-success">
-								<h3 class="mt-3 ml-2">면접경험</h3>
-								<hr class="border-success" />
-								<p class="m-3 plan-cost text-success">2019년 하반기 신입...</p>
-							</div>
-							<%-- card border border-primary center-block --%>
-						</div>
-						<%-- col-md-4 col-xl-4 stretch-card pricing-card --%>
-							<div class="col-md-4 col-xl-4  stretch-card pricing-card">
-								<div class="card border border-primary">
-									<h3 class="mt-3 ml-2">기업리뷰</h3>
-									<hr class="border-primary" />
-									<p class="m-3 plan-cost text-primary">전·현직자가 직접 등록한 기업리뷰! 근무 환경이 어떤지 확인해보세요</p>
-								</div>
-								<%-- card border border-primary center-block --%>
-							</div>
-							<%-- col-md-4 col-xl-4 stretch-card pricing-card --%>
+					<!-- card border border-primary center-block -->
 				</div>
-				<%-- row text-center --%>
-					<div style="margin: 30px 0 0 0;"></div>
-					<div style="border-bottom: 1px solid #aaa"></div>
-					<div style="margin: 30px 0 0 0;"></div>
-					<div class="row" style="margin: 0 0 0 15px">
-						<div class="d-flex">
-							<div class="mr-2">
-								<a href="/company/updateForm/${company.companyId}"><button type="button"
-										class="btn btn-outline-info btn-icon-text">
-										<i class="ti-file btn-icon-prepend"></i> 기업 정보 수정하기
-									</button></a>
-							</div>
-							<%-- mr-2 --%>
-								<div class="mr-2">
-									<button id="btnDelete" type="button" class="btn btn-outline-info btn-icon-text">
-										<i class="ti-trash btn-icon-prepend"></i> 기업 정보 삭제하기
-									</button>
-								</div>
-								<%-- mr-2 --%>
-						</div>
-						<%-- d-flex --%>
+				<!-- col-md-4 col-xl-4 stretch-card pricing-card -->
+				<div class="col-md-4 col-xl-4  stretch-card pricing-card">
+					<div class="card border py-3">
+						<h3 class="mt-3 ml-2">면접경험</h3>
+						<hr class="border-primary" />
+						<p class="mt-3 ml-2">2019년 하반기 신입...</p>
 					</div>
-					<%-- row --%>
+					<!-- card border border-primary center-block -->
+				</div>
+				<!-- col-md-4 col-xl-4 stretch-card pricing-card -->
+				<div class="col-md-4 col-xl-4  stretch-card pricing-card">
+					<div class="card border py-3">
+						<h3 class="mt-3 ml-2">기업리뷰</h3>
+						<hr class="border-primary" />
+						<p class="mt-3 ml-2">전·현직자가 직접 등록한 기업리뷰! 근무 환경이 어떤지 확인해보세요</p>
+					</div>
+					<!-- card border border-primary center-block -->
+				</div>
+				<!-- col-md-4 col-xl-4 stretch-card pricing-card -->
+			</div>
+			<!-- row text-center -->
+			<div style="margin: 30px 0 0 0;"></div>
+			<div style="border-bottom: 1px solid #aaa"></div>
+			<div style="margin: 30px 0 0 0;"></div>
+			<div class="row" style="margin: 0 0 0 15px">
+				<div class="d-flex">
+					<div class="mr-2">
+						<a href="/company/updateForm/${company.companyId}/0"><button type="button"
+								class="btn btn-outline-info btn-icon-text">
+								<i class="ti-file btn-icon-prepend"></i> 기업 정보 수정하기
+							</button></a>
+					</div>
+					<!-- mr-2 -->
+					<div class="mr-2">
+						<button id="btnDelete" type="button" class="btn btn-outline-info btn-icon-text">
+							<i class="ti-trash btn-icon-prepend"></i> 기업 정보 삭제하기
+						</button>
+					</div>
+					<!-- mr-2 -->
+				</div>
+				<!-- d-flex -->
+			</div>
+			<!-- row -->
 		</div>
-		<%-- row --%>
+		<!-- row -->
 
 
-			<input id="writer" type="hidden" value="${company.companyName}">
+		<input id="writer" type="hidden" value="${company.companyName}">
 
 
-			<script type="text/javascript"
-				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20cf6648d61d4bd68efbb7c7c95723f3&libraries=services"></script>
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20cf6648d61d4bd68efbb7c7c95723f3&libraries=services"></script>
 
-			<%--소켓--%>
-				<script src="/socket/webSocket.js"></script>
+		<!--소켓-->
+		<script src="/socket/webSocket.js"></script>
 
-				<script>
-					function subscribeCompany(userId) {
-						
-						let subscribeCompanyId = $("#id").val();
-						console.log(typeof subscribeCompanyId);
-						subscribeCompanyId *= 1;
-						console.log(typeof subscribeCompanyId);
+		<script>
+			function subscribeCompany(userId) {
 
-						let data = {
-							subscribeUserId: userId,
-							subscribeCompanyId: subscribeCompanyId
-						};
-						
-						console.log(data);
+				let subscribeCompanyId = $("#id").val();
+				console.log(typeof subscribeCompanyId);
+				subscribeCompanyId *= 1;
+				console.log(typeof subscribeCompanyId);
+
+				let data = {
+					subscribeUserId: userId,
+					subscribeCompanyId: subscribeCompanyId
+				};
+
+				console.log(data);
 
 
-						$.ajax("/subscribe", {
-							type: "POST",
-							dataType: "json",
-							data: JSON.stringify(data),
-							headers: {
-								"Content-Type": "application/json"
-							}
-						}).done((res) => {
-							if (res.data == true) {
-								alert("구독완료");
-								// 나중에는 여기 기업 상세보기로 변경
-								location.reload();
-							} else {
-								alert("이미 구독 중입니다");
-								location.reload();
-							}
-						});
+				$.ajax("/subscribe", {
+					type: "POST",
+					dataType: "json",
+					data: JSON.stringify(data),
+					headers: {
+						"Content-Type": "application/json"
 					}
+				}).done((res) => {
+					if (res.data == true) {
+						alert("구독완료");
+						// 나중에는 여기 기업 상세보기로 변경
+						location.reload();
+					} else {
+						alert("이미 구독 중입니다");
+						location.reload();
+					}
+				});
+			}
 
-				</script>
+		</script>
 
 
-				<script>
-					let address = $("#address").val();
+		<script>
+			let address = $("#address").val();
 
 
-					$("#btnDelete").click(() => {
-						if (!confirm("정말로 삭제하시겠습니까?")) {
-							location.reload();
-						}
-						resign();
+			$("#btnDelete").click(() => {
+				if (!confirm("정말로 삭제하시겠습니까?")) {
+					location.reload();
+				}
+				resign();
+			});
+
+			function resign() {
+				let id = $("#id").val();
+				console.log(id);
+
+				$.ajax("/company/delete/" + id, {
+					type: "DELETE",
+					dataType: "json" // 응답 데이터
+				}).done((res) => {
+					if (res.code == 1) {
+						alert("회원탈퇴 완료");
+						location.href = "/company";
+					} else {
+						alert("회원탈퇴 실패");
+					}
+				});
+			}
+
+
+			// 지도 API
+
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				mapOption = {
+					center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+					level: 3 // 지도의 확대 레벨
+				};
+
+			// 지도를 생성합니다    
+			var map = new kakao.maps.Map(mapContainer, mapOption);
+
+			// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new kakao.maps.services.Geocoder();
+
+			// 주소로 좌표를 검색합니다
+			geocoder.addressSearch(address, function (result, status) {
+
+				// 정상적으로 검색이 완료됐으면 
+				if (status === kakao.maps.services.Status.OK) {
+
+					var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+					// 결과값으로 받은 위치를 마커로 표시합니다
+					var marker = new kakao.maps.Marker({
+						map: map,
+						position: coords
 					});
 
-					function resign() {
-						let id = $("#id").val();
-						console.log(id);
+					// 인포윈도우로 장소에 대한 설명을 표시합니다
+					var infowindow = new kakao.maps.InfoWindow({
+						content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+					});
+					infowindow.open(map, marker);
 
-						$.ajax("/company/delete/" + id, {
-							type: "DELETE",
-							dataType: "json" // 응답 데이터
-						}).done((res) => {
-							if (res.code == 1) {
-								alert("회원탈퇴 완료");
-								location.href = "/company";
-							} else {
-								alert("회원탈퇴 실패");
-							}
-						});
-					}
-
-
-					// 지도 API
-
-					var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-						mapOption = {
-							center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-							level: 3 // 지도의 확대 레벨
-						};
-
-					// 지도를 생성합니다    
-					var map = new kakao.maps.Map(mapContainer, mapOption);
-
-					// 주소-좌표 변환 객체를 생성합니다
-					var geocoder = new kakao.maps.services.Geocoder();
-
-					// 주소로 좌표를 검색합니다
-					geocoder.addressSearch(address, function (result, status) {
-
-						// 정상적으로 검색이 완료됐으면 
-						if (status === kakao.maps.services.Status.OK) {
-
-							var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-							// 결과값으로 받은 위치를 마커로 표시합니다
-							var marker = new kakao.maps.Marker({
-								map: map,
-								position: coords
-							});
-
-							// 인포윈도우로 장소에 대한 설명을 표시합니다
-							var infowindow = new kakao.maps.InfoWindow({
-								content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-							});
-							infowindow.open(map, marker);
-
-							// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-							map.setCenter(coords);
-						}
-					});  
-				</script>
-
-
-				<%@ include file="../../layout/footer.jsp" %>
+					// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+					map.setCenter(coords);
+				}
+			});  
+		</script>
+		<%@ include file="../../layout/footer.jsp" %>
