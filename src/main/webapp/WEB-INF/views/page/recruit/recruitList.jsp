@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ include file="../../layout/header.jsp" %>
-
+        <!--
         <div class="col grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <c:choose>
             <c:when test="${!empty sessionScope.companyPrincipal}">
@@ -93,47 +93,44 @@
                 </div>
             </div>
         </div>
-        <div id="recruitCard" class="">
+        <!--<div id="recruitCard" class="">
             <c:forEach var="recruit" items="${recruits.recruit}">
                 <div class="card px-4 m-3">
                     <div class="card-body row">
-                        <div class="col-2" style="width:200px">
+                        <div class="col-2 d-flex flex-wrap align-content-center" style="width:200px">
                             <img class="img-thumbnail" src="/img/${recruit.companyLogo}" alt="people">
                         </div>
                         <div class="col-8 px-5">
-                            <p class="mb-4">${recruit.recruitLocation}</p>
-                            <p class="fs-30 mb-2"><a
-                                    href="/recruit/detail/${recruit.recruitId}/">${recruit.recruitTitle}</a></p>
-                            <p class="fs-10 mb-2">${recruit.recruitCreatedAt}</p>
+                            <p class="fs-30 mb-4 text-primary">${recruit.recruitTitle}</p>
+                            <p class=""><span class=" text-primary"> 경력 : </span>${recruit.recruitCareer} / <span
+                                    class=" text-primary"> 연봉 : </span>${recruit.recruitSalary} 만원</p>
+                            <p class=""><span class="text-primary"> 근무지 : </span>${recruit.recruitLocation}</p>
+                            <p class=""><span class=" text-primary"> 공고 일 : </span>${recruit.recruitStartDay}</p>
                         </div>
                         <div class="col-2 d-flex flex-wrap align-content-center">
                             <a href="/recruit/detail/${recruit.recruitId}/0">
-                                <button type="button" class="btn btn-outline-primary">상세보기</button>
+                                <button type="button" class="btn btn-outline-primary    ">상세보기</button>
                             </a>
                         </div>
                     </div>
-
                 </div>
-
             </c:forEach>
-        </div>
+        </div>-->
 
         <div id="recruitCard" class="">
             <c:forEach var="recruit" items="${recruits.recruit}">
-                <div class="card px-4 m-3">
+                <div class="card mb-3 mt-3">
                     <div class="card-body row">
-                        <!-- <div class="col-2" style="width:200px">
-                    <img class="img-thumbnail" src="/img/${recruit.companyLogo}" alt="people">
-                </div> -->
-                        <div class="col-8 px-5">
-                            <p class="mb-4">${recruit.recruitLocation}</p>
-                            <p class="fs-30 mb-2"><a
-                                    href="/recruit/detail/${recruit.recruitId}} ">${recruit.recruitTitle}</a></p>
-                            <p class="fs-10 mb-2">${recruit.recruitCreatedAt}</p>
+                        <div class="col-10 px-5">
+                            <p class="fs-30 mb-4 text-primary">${recruit.recruitTitle}</p>
+                            <p class=""><span class=" text-primary"> 경력 : </span>${recruit.recruitCareer} / <span
+                                    class=" text-primary"> 연봉 : </span>${recruit.recruitSalary} 만원</p>
+                            <p class=""><span class="text-primary"> 근무지 : </span>${recruit.recruitLocation}</p>
+                            <p class=""><span class=" text-primary"> 공고 일 : </span>${recruit.recruitStartDay}</p>
                         </div>
                         <div class="col-2 d-flex flex-wrap align-content-center">
-                            <a href="/recruit/detail/${recruit.recruitId}/${sessionScope.principal.userId}">
-                                <button type="button" class="btn btn-outline-primary">상세보기</button>
+                            <a href="/recruit/detail/${recruit.recruitId}/0">
+                                <button type="button" class="btn btn-outline-primary    ">상세보기</button>
                             </a>
                         </div>
                     </div>
