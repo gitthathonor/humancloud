@@ -88,7 +88,7 @@
             </div>
 
             <c:choose>
-                <c:when test="${!empty sessionScope.companyPrincipal.companyId }">
+                <c:when test="${sessionScope.companyPrincipal.companyId == Recruit.recruitCompanyId}">
                     <div class="m-2">
                         <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
                             onclick="location.href='/recruit/update/${Recruit.recruitId}'">
