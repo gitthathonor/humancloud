@@ -1,62 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<%@ include file="../../layout/header.jsp" %>
-		<div class="col-md-6 grid-margin stretch-card">
-			<div class="card">
-				<div class="card-body">
-					<h4 class="card-title">company register form</h4>
-					<div class="btn-group m-4" role="group" aria-label="Basic example">
-						<a class="text-black" href="/join"><button type="button" class="btn btn-default">일반</button></a>
-						<button type="button" class="btn btn-primary">기업</button>
+		<div class="d-flex justify-content-center">
+			<div class="grid-margin stretch-card" style="width: 45%;">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">company register form</h4>
+						<div class="btn-group m-4" role="group" aria-label="Basic example">
+							<a class="text-black" href="/join"><button type="button"
+									class="btn btn-default">일반</button></a>
+							<button type="button" class="btn btn-primary">기업</button>
+						</div>
+
+						<form enctype="multipart/form-data" id="fileUploadForm" class="forms-sample">
+							<label for="companyUsername">Username</label>
+							<div class="form-group row">
+								<div class="col-9"><input type="text" class="form-control" id="companyUsername"
+										placeholder="companyUsername" name="companyUsername"></div>
+								<div class="col-3"><button id="btnCheckSameUsername" type="button"
+										class="btn btn-light">중복확인</button></div>
+							</div>
+							<div class="form-group">
+								<label for="companyPassword">Password</label>
+								<input type="password" class="form-control" id="companyPassword"
+									placeholder="companyPassword" name="companyPassword">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputConfirmPassword1">Confirm Password</label>
+								<input type="password" class="form-control" id="exampleInputConfirmPassword1"
+									placeholder="confirm_password">
+							</div>
+							<div class="form-group">
+								<label for="companyName">Name</label>
+								<input type="text" class="form-control" id="companyName" placeholder="companyName"
+									name="companyName">
+							</div>
+							<div class="form-group">
+								<label for="companyEmail">Email</label>
+								<input type="email" class="form-control" id="companyEmail" placeholder="companyEmail"
+									name="companyEmail">
+							</div>
+							<div class="form-group">
+								<label for="companyPhoneNumber">Phone number</label>
+								<input type="text" class="form-control" id="companyPhoneNumber"
+									placeholder="companyPhoneNumber" name="companyPhoneNumber">
+							</div>
+							<div class="form-group">
+								<label for="companyAddress">Address</label>
+								<input type="text" class="form-control" id="companyAddress" placeholder="companyAddress"
+									name="companyAddress">
+								<button type="button" class="btn btn-primary mr-2"
+									onclick="sample6_execDaumPostcode()">주소입력</button>
+							</div>
+							<div class="form-group">
+								<label for="companyLogo">logo</label>
+								<input type="file" class="form-control" id="companyLogo" name="companyLogo">
+							</div>
+
+							<button id="btnSave" type="button" class="btn btn-primary mr-2">회원가입</button>
+							<button class="btn btn-light">Cancel</button>
+						</form>
 					</div>
-
-					<form enctype="multipart/form-data" id="fileUploadForm" class="forms-sample">
-						<label for="companyUsername">Username</label>
-						<div class="form-group row">
-							<div class="col-9"><input type="text" class="form-control" id="companyUsername"
-									placeholder="companyUsername" name="companyUsername"></div>
-							<div class="col-3"><button id="btnCheckSameUsername" type="button"
-									class="btn btn-light">중복확인</button></div>
-						</div>
-						<div class="form-group">
-							<label for="companyPassword">Password</label>
-							<input type="password" class="form-control" id="companyPassword"
-								placeholder="companyPassword" name="companyPassword">
-						</div>
-						<div class="form-group">
-							<label for="exampleInputConfirmPassword1">Confirm Password</label>
-							<input type="password" class="form-control" id="exampleInputConfirmPassword1"
-								placeholder="confirm_password">
-						</div>
-						<div class="form-group">
-							<label for="companyName">Name</label>
-							<input type="text" class="form-control" id="companyName" placeholder="companyName"
-								name="companyName">
-						</div>
-						<div class="form-group">
-							<label for="companyEmail">Email</label>
-							<input type="email" class="form-control" id="companyEmail" placeholder="companyEmail"
-								name="companyEmail">
-						</div>
-						<div class="form-group">
-							<label for="companyPhoneNumber">Phone number</label>
-							<input type="text" class="form-control" id="companyPhoneNumber"
-								placeholder="companyPhoneNumber" name="companyPhoneNumber">
-						</div>
-						<div class="form-group">
-							<label for="companyAddress">Address</label>
-							<input type="text" class="form-control" id="companyAddress" placeholder="companyAddress"
-								name="companyAddress">
-							<button type="button" class="btn btn-primary mr-2"
-								onclick="sample6_execDaumPostcode()">주소입력</button>
-						</div>
-						<div class="form-group">
-							<label for="companyLogo">logo</label>
-							<input type="file" class="form-control" id="companyLogo" name="companyLogo">
-						</div>
-
-						<button id="btnSave" type="button" class="btn btn-primary mr-2">회원가입</button>
-						<button class="btn btn-light">Cancel</button>
-					</form>
 				</div>
 			</div>
 		</div>
