@@ -55,11 +55,11 @@
                         <c:choose>
                             <c:when
                                 test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
-                                <div class="btn btn-primary col-12 mb-2"
+                                <div class="btn btn-primary mb-2 w-100"
                                     onclick="location.href='/update/${sessionScope.principal.userId}'">
                                     회원정보수정
                                 </div>
-                                <div class="btn btn-outline-danger btn-fw col-12"
+                                <div class="btn btn-outline-danger btn-fw w-100 "
                                     onclick='deleteUser("${sessionScope.principal.userId}")'>계정탈퇴</div>
                             </c:when>
                             <c:when

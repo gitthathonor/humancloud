@@ -14,13 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.category.Category;
 import site.metacoding.humancloud.domain.recruit.Recruit;
+import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.service.ApplyService;
 import site.metacoding.humancloud.service.CompanyService;
 import site.metacoding.humancloud.service.RecruitService;
-import site.metacoding.humancloud.service.UserService;
-import site.metacoding.humancloud.service.ResumeService;
-import site.metacoding.humancloud.service.UserService;
-import site.metacoding.humancloud.service.ResumeService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
 import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
 
@@ -78,12 +75,17 @@ public class RecruitController {
 
   @PostMapping("/recruit/category")
   public @ResponseBody CMRespDto<?> viewCategory(@RequestBody Category category) {
+    System.out.println(recruitService.분류별채용공고목록보기(category.getCategoryName()));
     return new CMRespDto<>(1, "OK", recruitService.분류별채용공고목록보기(category.getCategoryName()));
   }
 
-  @GetMapping("/recruit/order")
-  public @ResponseBody CMRespDto<?> orderList(@RequestParam("order") String order) {
-    return new CMRespDto<>(1, "ok", recruitService.정렬하기(order));
+  @PostMapping("/recruit/list")
+  public @ResponseBody CMRespDto<?> orderRecruitList(@RequestParam("order") String order, @RequestBody User user) {
+    System.out.println("==========================");
+    System.out.println(user.getUsername());
+    System.out.println(user.getUserId());
+    System.out.println("==========================");
+    return new CMRespDto<>(1, "ok", recruitService.정렬하기(order, user.getUserId()));
   }
 
   @DeleteMapping("/recruit/delete/{recruitId}")
