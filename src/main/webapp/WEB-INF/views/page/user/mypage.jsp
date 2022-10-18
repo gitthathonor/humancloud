@@ -47,7 +47,8 @@
                                                     <div class="m-3 p-3 col-2 border rounded"
                                                         onchange='viewResume("${r.resumeId}")'>
                                                         <a href="/resume/saveForm/${sessionScope.principal.userId}">
-                                                            <h1 style="text-align:center; " class="text-primary">+</h1>
+                                                            <h1 style="text-align:center; " class="text-primary">+
+                                                            </h1>
                                                         </a>
                                                     </div>
                                                 </c:when>
@@ -66,7 +67,8 @@
                                                     <div class="m-3 p-3 col-2 border rounded"
                                                         onchange='viewResume("${r.resumeId}")'>
                                                         <a href="/resume/saveForm/${sessionScope.principal.userId}">
-                                                            <h1 style="text-align:center;" class="text-primary">+</h1>
+                                                            <h1 style="text-align:center;" class="text-primary">+
+                                                            </h1>
                                                         </a>
                                                     </div>
                                                 </c:otherwise>
@@ -86,7 +88,8 @@
                                                         onchange='viewResume("${r.resumeId}")'>
                                                         <a
                                                             href="/recruit/saveForm/${sessionScope.companyPrincipal.companyId}">
-                                                            <h1 style="text-align:center; " class="text-primary">+</h1>
+                                                            <h1 style="text-align:center; " class="text-primary">+
+                                                            </h1>
                                                         </a>
                                                     </div>
                                                 </c:when>
@@ -106,7 +109,8 @@
                                                         onchange='viewResume("${r.resumeId}")'>
                                                         <a
                                                             href="/recruit/saveForm/${sessionScope.companyPrincipal.companyId}">
-                                                            <h1 style="text-align:center;" class="text-primary">+</h1>
+                                                            <h1 style="text-align:center;" class="text-primary">+
+                                                            </h1>
                                                         </a>
                                                     </div>
                                                 </c:otherwise>
@@ -114,70 +118,24 @@
                                         </div>
                                     </div>
                                 </c:if>
-
                                 <div class="my-5">
                                     <h4 class="m-3 text-primary">추천</h4>
                                     <div class="row d-flex justify-content-center">
-                                        <div class="m-3 p-3 col-2 border rounded">
-                                            <div class="card">
-                                                <div class="card-people"
-                                                    style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
-                                                    <img src="/img/job-g6e7604fc4_640.jpg"
-                                                        style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
-                                                </div>
-                                                <div class="row container d-flex justify-content-between">
-                                                    <h3>기업명</h3>
+                                        <c:forEach var="company" items="${companyList}" begin="0" end="2">
+                                            <div class="m-3 p-3 col-2 border rounded">
+                                                <div class="card row">
+                                                    <div class="card-people"
+                                                        style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
+                                                        <img src="/img/${company.logo}"
+                                                            style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; width: 110px; height: 30px;">
+                                                    </div>
                                                     <p>
-                                                        <i class="fa-regular fa-heart"></i> <span>좋아요 수</span>
+                                                        <i class="fa-regular fa-heart"></i><span>좋아요 수 :
+                                                            ${company.likes}</span>
                                                     </p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="m-3 p-3 col-2 border rounded">
-                                            <div class="card">
-                                                <div class="card-people"
-                                                    style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
-                                                    <img src="/img/job-g6e7604fc4_640.jpg"
-                                                        style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
-                                                </div>
-                                                <div class="row container d-flex justify-content-between">
-                                                    <h3>기업명</h3>
-                                                    <p>
-                                                        <i class="fa-regular fa-heart"></i> <span>좋아요 수</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="m-3 p-3 col-2 border rounded">
-                                            <div class="card">
-                                                <div class="card-people"
-                                                    style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
-                                                    <img src="/img/job-g6e7604fc4_640.jpg"
-                                                        style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
-                                                </div>
-                                                <div class="row container d-flex justify-content-between">
-                                                    <h3>기업명</h3>
-                                                    <p>
-                                                        <i class="fa-regular fa-heart"></i> <span>좋아요 수</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="m-3 p-3 col-2 border rounded">
-                                            <div class="card">
-                                                <div class="card-people"
-                                                    style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
-                                                    <img src="/img/job-g6e7604fc4_640.jpg"
-                                                        style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
-                                                </div>
-                                                <div class="row container d-flex justify-content-between">
-                                                    <h3>기업명</h3>
-                                                    <p>
-                                                        <i class="fa-regular fa-heart"></i> <span>좋아요 수</span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </c:forEach>
                                     </div>
                                 </div>
                             </div>

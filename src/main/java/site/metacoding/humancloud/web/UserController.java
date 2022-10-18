@@ -49,6 +49,7 @@ public class UserController {
         model.addAttribute("subscribe", userService.구독기업보기(id));
         model.addAttribute("user", userService.유저정보보기(id));
         model.addAttribute("resume", userService.이력서보기(id));
+        model.addAttribute("companyList", userService.추천기업목록보기());
         return "page/user/mypage";
     }
 
