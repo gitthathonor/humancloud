@@ -13,10 +13,21 @@
                                         <div class="display-2">0</div>
                                         <div>지원 완료</div>
                                     </div>
-                                    <div class="col border-right">
-                                        <div class="display-2">${resume.readCount}</div>
-                                        <div>이력서 열람</div>
-                                    </div>
+                                    <c:choose>
+                                        <c:when
+                                            test="${!empty sessionScope.principal.userId || empty sessionScope.companyPrincipal.companyId}">
+                                            <div class="col border-right">
+                                                <div class="display-2">${resume.readCount}</div>
+                                                <div>이력서 열람</div>
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="col border-right">
+                                                <div class="display-2">0</div>
+                                                <div>이력서 열람</div>
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
                                     <div class="col border-right">
                                         <div class="display-2">0</div>
                                         <div>최종합격</div>
@@ -107,10 +118,66 @@
                                 <div class="my-5">
                                     <h4 class="m-3 text-primary">추천</h4>
                                     <div class="row d-flex justify-content-center">
-                                        <div class="m-3 p-3 col-2 border">기업</div>
-                                        <div class="m-3 p-3 col-2 border">기업</div>
-                                        <div class="m-3 p-3 col-2 border">기업</div>
-                                        <div class="m-3 p-3 col-2 border">기업</div>
+                                        <div class="m-3 p-3 col-2 border rounded">
+                                            <div class="card">
+                                                <div class="card-people"
+                                                    style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
+                                                    <img src="/img/job-g6e7604fc4_640.jpg"
+                                                        style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+                                                </div>
+                                                <div class="row container d-flex justify-content-between">
+                                                    <h3>기업명</h3>
+                                                    <p>
+                                                        <i class="fa-regular fa-heart"></i> <span>좋아요 수</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-3 p-3 col-2 border rounded">
+                                            <div class="card">
+                                                <div class="card-people"
+                                                    style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
+                                                    <img src="/img/job-g6e7604fc4_640.jpg"
+                                                        style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+                                                </div>
+                                                <div class="row container d-flex justify-content-between">
+                                                    <h3>기업명</h3>
+                                                    <p>
+                                                        <i class="fa-regular fa-heart"></i> <span>좋아요 수</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-3 p-3 col-2 border rounded">
+                                            <div class="card">
+                                                <div class="card-people"
+                                                    style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
+                                                    <img src="/img/job-g6e7604fc4_640.jpg"
+                                                        style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+                                                </div>
+                                                <div class="row container d-flex justify-content-between">
+                                                    <h3>기업명</h3>
+                                                    <p>
+                                                        <i class="fa-regular fa-heart"></i> <span>좋아요 수</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-3 p-3 col-2 border rounded">
+                                            <div class="card">
+                                                <div class="card-people"
+                                                    style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
+                                                    <img src="/img/job-g6e7604fc4_640.jpg"
+                                                        style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+                                                </div>
+                                                <div class="row container d-flex justify-content-between">
+                                                    <h3>기업명</h3>
+                                                    <p>
+                                                        <i class="fa-regular fa-heart"></i> <span>좋아요 수</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
