@@ -100,6 +100,7 @@
   </c:when>
   <c:when test="${!empty companyPrincipal.companyId}">
     <input id="checkCompany" type="hidden" value="${sessionScope.companyPrincipal.companyName}">
+    <input id="checkCompanyId" type="hidden" value="${sessionScope.companyPrincipal.companyId}">
   </c:when>
 </c:choose>
 

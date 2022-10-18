@@ -6,8 +6,10 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
 import site.metacoding.humancloud.domain.subscribe.Subscribe;
+import site.metacoding.humancloud.domain.subscribe.SubscribeDao;
 import site.metacoding.humancloud.web.dto.socket.MessageDto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.apache.ibatis.session.LocalCacheScope.SESSION;
@@ -17,7 +19,14 @@ import static org.apache.ibatis.session.LocalCacheScope.SESSION;
 @Controller
 public class SocketController {
 
+    private final SubscribeDao subscribeDao;
     private final SimpMessageSendingOperations messageSendingOperations;
+
+    List<Subscribe> subList = new ArrayList<>();
+
+    public void test33(Integer companyId){
+        subList = subscribeDao.findByCompanyId(companyId);
+    }
 
     @MessageMapping("/alarm")
     public void test2(MessageDto messageDto) throws Exception{
@@ -27,10 +36,23 @@ public class SocketController {
 
     @MessageMapping("/createRecruit")
     public void doCompany(MessageDto messageDto, SimpMessageHeaderAccessor messageHeaderAccessor) throws Exception{
-        List<Subscribe> subscribes = (List<Subscribe>) messageHeaderAccessor.getSessionAttributes();
-            for(Subscribe subscribe : subscribes){
-                messageSendingOperations.convertAndSend("/sub/addRecruit/"+subscribe.getSubscribeUserId(), messageDto);
-            }
+        // System.out.println("---------------------------------------------------------");
+        // System.out.println(messageHeaderAccessor.getSessionAttributes().get("subscribeList"));
+
+        // List<Subscribe> subscribes = (List<Subscribe>) messageHeaderAccessor.getSessionAttributes().get("sessionList");
+        //     for(Subscribe subscribe : subscribes){
+        //         System.out.println(subscribe);
+        //         messageSendingOperations.convertAndSend("/sub/addRecruit/"+subscribe.getSubscribeUserId(), messageDto);
+        //     }
+        
+        test33(messageDto.getSenderId());
+        System.out.println("-------------------------------------");
+        System.out.println(subList);
+
+        for(Subscribe subscribe : subList){
+            System.out.println(subscribe);
+            messageSendingOperations.convertAndSend("/sub/addRecruit/"+subscribe.getSubscribeUserId(), messageDto);
         }
     }
+}
 

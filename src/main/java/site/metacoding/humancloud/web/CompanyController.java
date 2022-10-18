@@ -148,7 +148,7 @@ public class CompanyController {
 		if (result != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("companyPrincipal", result.getCompany());
-			session.setAttribute("subscribe", result.getSubscribe());
+			session.setAttribute("subscribeList", result.getSubscribe());
 		}
 		return new CMRespDto<>(1, "1", result.getCompany());
 	}

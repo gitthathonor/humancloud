@@ -116,6 +116,8 @@
 
 			<script>
 				function subscribeCompany(userId){
+					console.log(userId);
+					console.log($("#id").val());
 
 
 					let data = {

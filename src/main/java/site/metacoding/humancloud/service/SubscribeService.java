@@ -1,6 +1,8 @@
 package site.metacoding.humancloud.service;
 
 import lombok.RequiredArgsConstructor;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.subscribe.Subscribe;
@@ -14,7 +16,7 @@ public class SubscribeService {
 
     private final SubscribeDao subscribeDao;
 
-    public void 구독취소(Integer userId, Integer companyId){
+    public void 구독취소(@Param("userId") Integer userId, @Param("companyId") Integer companyId){
         subscribeDao.deleteByUserCompany(userId, companyId);
     }
 

@@ -1,6 +1,7 @@
 let receiverUser = $("#checkUser").val();
 let receiverUserId = $("#checkUserId").val();
 let receiverCompany = $("#checkCompany").val();
+let receiverCompanyId = $("#checkCompanyId").val();
 
 let stomp="";
 
@@ -10,7 +11,7 @@ window.onload=function (){
         stomp = Stomp.over(socket);
         stomp.connect({}, function () {
             console.log('연결됨');
-            stomp.subscribe('/sub/alarm/'+receiverUserId, function (result){
+            stomp.subscribe('/sub/addRecruit/'+receiverUserId, function (result){
                 let parsingResult = JSON.parse(result.body);
                 console.log(parsingResult);
                 $("#boxAlarm").empty();
@@ -50,7 +51,7 @@ function sendData(){
     let writer = $("#writer").val();
     let data = {
         'receiverUsername': writer,
-        'alarmType':'구독함',
+        'alarmType':'구독',
         'sender':receiverUser,
     };
 
@@ -60,7 +61,9 @@ function sendData(){
 
 function sendRecruitAlarm(){
     let data = {
-        'sender':$("#companyId").val()
+        'senderId' : receiverCompanyId,
+        'sender':receiverCompany,
+        'alarmType':'채용공고 작성',
     }
 
     stomp.send("/pub/createRecruit", {}, JSON.stringify(data));

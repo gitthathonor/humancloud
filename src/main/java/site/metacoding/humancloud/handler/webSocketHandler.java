@@ -26,7 +26,7 @@ public class webSocketHandler implements HandshakeInterceptor {
         if (request instanceof ServletServerHttpRequest) {
             ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
             HttpSession session = servletRequest.getServletRequest().getSession();
-            attributes.put("session", session.getAttribute("subscribe"));
+            attributes.put("sessionList", session.getAttribute("subscribe"));
         }
         return true;
     }
