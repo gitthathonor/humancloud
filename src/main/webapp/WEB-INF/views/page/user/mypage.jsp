@@ -45,7 +45,8 @@
                                                         <div class="m-3 p-3 col-2 border rounded"
                                                             onchange='viewResume("${r.resumeId}")'>
                                                             <a href="/resume/detail/${r.resumeId}/${r.resumeUserId}">
-                                                                <h3 class="m-1 text-primary text-center">${r.resumeTitle}</h3>
+                                                                <h3 class="m-1 text-primary text-center">
+                                                                    ${r.resumeTitle}</h3>
                                                             </a>
                                                             <div class="text-center">${r.resumeReadCount}</div>
                                                             <div class="text-center">${r.resumeCreatedAt}</div>
@@ -68,7 +69,37 @@
                                     <div class="my-5">
                                         <h4 class="m-3 text-primary">채용공고</h4>
                                         <div class="row d-flex justify-content-center">
-                                            <a href="/recruit/save"><button class="btn btn-primary">채용공고 작성</button></a>
+                                            <c:choose>
+                                                <c:when test="${empty resume.resume}">
+                                                    <div class="m-3 p-3 col-2 border rounded"
+                                                        onchange='viewResume("${r.resumeId}")'>
+                                                        <a
+                                                            href="/recruit/saveForm/${sessionScope.companyPrincipal.companyId}">
+                                                            <h1 style="text-align:center; " class="text-primary">+</h1>
+                                                        </a>
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <c:forEach var="r" items="${resume.resume}">
+                                                        <div class="m-3 p-3 col-2 border rounded"
+                                                            onchange='viewResume("${r.resumeId}")'>
+                                                            <a href="/resume/detail/${r.resumeId}/${r.resumeUserId}">
+                                                                <h3 class="m-1 text-primary text-center">
+                                                                    ${r.resumeTitle}</h3>
+                                                            </a>
+                                                            <div class="text-center">${r.resumeReadCount}</div>
+                                                            <div class="text-center">${r.resumeCreatedAt}</div>
+                                                        </div>
+                                                    </c:forEach>
+                                                    <div class="m-3 p-3 col-2 border rounded"
+                                                        onchange='viewResume("${r.resumeId}")'>
+                                                        <a
+                                                            href="/recruit/saveForm/${sessionScope.companyPrincipal.companyId}">
+                                                            <h1 style="text-align:center;" class="text-primary">+</h1>
+                                                        </a>
+                                                    </div>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </div>
                                     </div>
                                 </c:if>
