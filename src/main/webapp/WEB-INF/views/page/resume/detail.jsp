@@ -66,6 +66,7 @@
         <div class="row border-top p-4">
             <div class="d-flex justify-content-center">
                 <div class="mr-2">
+                    <c:if test="${sessionScope.companyPrincipal == null || sessionScope.userPrincipal == resume.resumeUserId}">
                     <a href="/resume/updateForm/${resume.resumeId}/${resume.resumeUserId}"
                         class="btn btn-primary btn-icon-text">
                         <i class="ti-file btn-icon-prepend"></i>
@@ -78,6 +79,7 @@
                             이력서 삭제하기
                         </button>
                     </div>
+                    </c:if>
                 </div>
         
         <script>
