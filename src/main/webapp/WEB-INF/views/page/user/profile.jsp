@@ -5,7 +5,15 @@
                 <div class="card-body">
                     <div class="py-5 px-3 border-bottom">
                         <div>
-                            <img class="w-100" src="/img/${resume.resume[0].resumePhoto}">
+                        <c:choose>
+                        <c:when test ="${resume.resume[0].resumePhoto == null}">
+                        <img src="/images/defaultprofile/defaultProfile.jpeg" class="img-thumbnail" />
+                        </c:when>
+                        <c:otherwise>
+                        <img class="w-100" src="/img/${resume.resume[0].resumePhoto}">
+                        </c:otherwise>
+                        </c:choose>
+                            
                         </div>
                         <div class="text-center p-3">${user.email}</div>
                         <div class="text-center px-3">${user.phoneNumber}</div>

@@ -106,29 +106,40 @@
                     <hr />
                     <h4 class="card-title">직무</h4>
                     <div class="d-flex">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" id="categoryName" name="categoryName"
-                                    value="웹 개발자">
-                                웹 개발자
-                                <i class="input-helper"></i></label>
-                        </div>
-                        <div style="margin: 0 20px 0 0;"></div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" id="#" name="categoryName"
-                                    value="프론트 개발자">
-                                프론트 개발자
-                                <i class="input-helper"></i></label>
-                        </div>
-                        <div style="margin: 0 20px 0 0;"></div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" id="!" name="categoryName"
-                                    value="백 개발자">
-                                백 개발자
-                                <i class="input-helper"></i></label>
-                        </div>
+                   <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" id="categoryName" name="categoryName" value="Flutter">
+                    Flutter
+                <i class="input-helper"></i></label>
+            </div>
+            <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" id="categoryName" name="categoryName"  value="Java">
+                    Java
+                <i class="input-helper"></i></label>
+            </div>
+            <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"  id="categoryName" name="categoryName"  value="HTML&CSS"> 
+                    HTML&CSS
+                <i class="input-helper"></i></label>
+            </div>   
+               <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" id="categoryName" name="categoryName"  value="JavaScript">
+                    JavaScript
+                <i class="input-helper"></i></label>
+            </div>
+            <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"  id="categoryName" name="categoryName"  value="Python"> 
+                    Python
+                <i class="input-helper"></i></label>
+            </div>   
                     </div>
                     <hr />
                     <div class="btn-group m-4" role="group" aria-label="Basic example">
