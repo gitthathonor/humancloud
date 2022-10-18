@@ -1,6 +1,7 @@
 package site.metacoding.humancloud.domain.resume;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,5 +30,4 @@ public class Resume {
 		this.resumeLink = resumeLink;
 		this.resumeUserId = resumeUserId;
 	}
-
 }
