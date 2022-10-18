@@ -19,7 +19,7 @@ public class CompanyService {
 
 	// 회원 username 중복체크
 	public boolean checkSameUsername(String companyUsername) {
-		Company companyPS = companyDao.findByUsername(companyUsername);
+		Company companyPS = companyDao.findAllUsername(companyUsername);
 		if (companyPS == null) {
 			return false;
 		} else {

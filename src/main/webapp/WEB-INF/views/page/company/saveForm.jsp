@@ -23,8 +23,8 @@
 								placeholder="companyPassword" name="companyPassword">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputConfirmPassword1">Confirm Password</label>
-							<input type="password" class="form-control" id="exampleInputConfirmPassword1"
+							<label for="companyPassword2">Confirm Password</label>
+							<input type="password" class="form-control" id="companyPassword2"
 								placeholder="confirm_password">
 						</div>
 						<div class="form-group">
@@ -63,6 +63,8 @@
 
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script>
+			let isUsernameSameCheck = false;
+			let checkPassword = false;
 
 			$("#btnCheckSameUsername").click(() => {
 				checkSameUsername();
@@ -70,7 +72,12 @@
 
 
 			$("#btnSave").click(() => {
-				save();
+				checkSamePassword();
+				if (isUsernameSameCheck == true && checkPassword == true) {
+					save();
+				} else {
+					alert("아이디체크");
+				}
 			});
 
 
@@ -78,6 +85,11 @@
 			function checkSameUsername() {
 
 				let companyUsername = $("#companyUsername").val();
+
+				if (companyUsername === "") {
+					alert("아이디를 입력하시오");
+					return;
+				}
 
 				$.ajax("/company/checkSameUsername?companyUsername=" + companyUsername, {
 					type: "GET",
@@ -87,15 +99,17 @@
 					if (res.code == 1) {
 						if (res.data == false) {
 							alert("가입이 가능한 username입니다.");
+							isUsernameSameCheck = true;
 						} else {
 							alert("중복된 username 입니다.");
+							isUsernameSameCheck = false;
 							$("#companyUsername").val('');
 						}
 					}
 				});
 			}
 
-
+			// 주소 API
 			function sample6_execDaumPostcode() {
 				new daum.Postcode({
 					oncomplete: function (data) {
@@ -134,6 +148,21 @@
 					}
 				}).open();
 			}
+
+
+			// 비밀번호 중복확인
+			function checkSamePassword() {
+				let password = $("#companyPassword").val();
+				let password2 = $("#companyPassword2").val();
+
+				if (password != password2) {
+					alert("비밀번호가 일치하지 않습니다");
+				} else {
+					checkPassword = true;
+				}
+			}
+
+
 
 			// 기업 회원 등록
 			function save() {
