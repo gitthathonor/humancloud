@@ -45,7 +45,7 @@ public class CompanyController {
 
 	// 기업회원 username 중복체크
 	@GetMapping("/company/checkSameUsername")
-	public @ResponseBody CMRespDto<?> checkSameUsername(String companyUsername) {
+	public @ResponseBody CMRespDto<?> checkSameUsername(@RequestParam("companyUsername") String companyUsername) {
 		boolean isSame = companyService.checkSameUsername(companyUsername);
 		return new CMRespDto<>(1, "통신 성공", isSame);
 	}

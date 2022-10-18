@@ -9,7 +9,7 @@
                 <!-- col-sm-9 -->
                 <div class="row border-top border-bottom p-3">
                     <div class="col-xs-1 col-sm-3">
-                        <img src="/img/${resume.resumePhoto}" class="img-thumbnail" />
+                    <img src="/img/${resume.resumePhoto}" class="img-thumbnail" />
                     </div>
                     <div class="col-xs-3 col-sm-5">
                         <ul class="list-unstyled">
@@ -33,29 +33,9 @@
                     </div>
                     <!-- col-xs-4 col-sm-6 -->
                 </div>
-                <div class="col-xs-3 col-sm-5">
-                    <ul class="list-unstyled">
-                        <li style="font-size : 22px; font-weight:bold;">
-                            ${user.name}
-                        </li>
-                        <div style="margin: 20px 0 0 0;"></div>
-                        <li style="font-size : 16px;">
-                            <i class="ti-mobile"></i> ${user.phoneNumber}
-                        </li>
-                        <div style="margin: 10px 0 0 0;"></div>
-                        <li style="font-size : 16px;">
-                            <i class="ti-email"></i> ${user.email}
-                        </li>
-                        <div style="margin: 10px 0 0 0;"></div>
-                        <li style="font-size : 16px;">
-                            <i class="ti-desktop"></i>
-                            <a href="${resume.resumeLink}">${resume.resumeLink}</a>
-                        </li>
-                    </ul>
-                </div><!-- col-xs-4 col-sm-6 -->
             </div><!-- row -->
         </div><!-- col-sm-9 -->
-        </div><!-- row -->
+    
         <div class="row text-center py-3">
             <div class="col-md-4 col-xl-4  stretch-card pricing-card ">
                 <div class="card border center-block py-3">
@@ -86,21 +66,22 @@
         <div class="row border-top p-4">
             <div class="d-flex justify-content-center">
                 <div class="mr-2">
+                    <c:if test="${sessionScope.companyPrincipal == null && sessionScope.userPrincipal == resume.resumeUserId}">
                     <a href="/resume/updateForm/${resume.resumeId}/${resume.resumeUserId}"
                         class="btn btn-primary btn-icon-text">
                         <i class="ti-file btn-icon-prepend"></i>
                         이력서 수정하기
                     </a>
-                </div><!-- mr-2 -->
-                <div class="mr-2">
-                    <button type="button" id="btnDelete" class="btn btn-outline-primary btn-icon-text">
-                        <i class="ti-trash btn-icon-prepend"></i>
-                        이력서 삭제하기
-                    </button>
-                </div><!-- mr-2 -->
-            </div><!-- d-flex -->
-        </div><!-- row -->
-        </div><!-- row -->
+                    </div><!-- mr-2 -->
+                    <div class="mr-2">
+                        <button type="button" id="btnDelete" class="btn btn-outline-primary btn-icon-text">
+                            <i class="ti-trash btn-icon-prepend"></i>
+                            이력서 삭제하기
+                        </button>
+                    </div>
+                    </c:if>
+                </div>
+        
         <script>
             $("#btnDelete").click(() => {
                 deleteById();

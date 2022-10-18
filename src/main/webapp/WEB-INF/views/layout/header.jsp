@@ -13,6 +13,7 @@
 
       <link rel="stylesheet" type="text/css" href="/js/select.dataTables.min.css">
       <link rel="stylesheet" href="/css/vertical-layout-light/style.css">
+      <link rel="stylesheet" href="/vendors/ti-icons/css/themify-icons.css">
       <link rel="shortcut icon" href="/images/favicon.png" />
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">

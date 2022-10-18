@@ -25,8 +25,8 @@
 									placeholder="companyPassword" name="companyPassword">
 							</div>
 							<div class="form-group">
-								<label for="exampleInputConfirmPassword1">Confirm Password</label>
-								<input type="password" class="form-control" id="exampleInputConfirmPassword1"
+								<label for="companyPassword2">Confirm Password</label>
+								<input type="password" class="form-control" id="companyPassword2"
 									placeholder="confirm_password">
 							</div>
 							<div class="form-group">
@@ -41,7 +41,7 @@
 							</div>
 							<div class="form-group">
 								<label for="companyPhoneNumber">Phone number</label>
-								<input type="text" class="form-control" id="companyPhoneNumber"
+								<input type="tel" class="form-control" id="companyPhoneNumber"
 									placeholder="companyPhoneNumber" name="companyPhoneNumber">
 							</div>
 							<div class="form-group">
@@ -66,6 +66,9 @@
 
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script>
+			let isUsernameSameCheck = false;
+			let checkPassword = false;
+			let checkEmail = false;
 
 			$("#btnCheckSameUsername").click(() => {
 				checkSameUsername();
@@ -73,14 +76,22 @@
 
 
 			$("#btnSave").click(() => {
-				save();
+				checkSamePassword();
+				checkEmailExp();
+				if (isUsernameSameCheck == true && checkPassword == true && checkEmail == true) {
+					save();
+				}
 			});
-
 
 			// username 중복 체크
 			function checkSameUsername() {
 
 				let companyUsername = $("#companyUsername").val();
+
+				if (companyUsername === "") {
+					alert("아이디를 입력하시오");
+					return;
+				}
 
 				$.ajax("/company/checkSameUsername?companyUsername=" + companyUsername, {
 					type: "GET",
@@ -90,15 +101,47 @@
 					if (res.code == 1) {
 						if (res.data == false) {
 							alert("가입이 가능한 username입니다.");
+							isUsernameSameCheck = true;
 						} else {
 							alert("중복된 username 입니다.");
+							isUsernameSameCheck = false;
 							$("#companyUsername").val('');
 						}
 					}
 				});
 			}
 
+			// 비밀번호 중복확인
+			function checkSamePassword() {
+				let password = $("#companyPassword").val();
+				let password2 = $("#companyPassword2").val();
 
+				if (password != password2) {
+					alert("비밀번호가 일치하지 않습니다");
+				} else {
+					checkPassword = true;
+				}
+			}
+
+			// 이메일 정규표현식 검증
+			function checkEmailExp() {
+				let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])\.([a-z]{2,6}(?:\.[a-z]{2})?)$/");
+
+				let companyEmail = $("#companyEmail").val();
+
+				console.log(regex.test(companyEmail));
+
+				if (regex.test(companyEmail) == true) {
+					checkEmail = true;
+				} else {
+					alert("이메일 형식이 잘못되었습니다.");
+				}
+			}
+
+
+
+
+			// 주소 API
 			function sample6_execDaumPostcode() {
 				new daum.Postcode({
 					oncomplete: function (data) {
@@ -137,6 +180,9 @@
 					}
 				}).open();
 			}
+
+
+
 
 			// 기업 회원 등록
 			function save() {

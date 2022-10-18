@@ -20,11 +20,10 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
-public class UserAPIController {
+public class UserController {
 
     private final UserService userService;
     private final HttpSession session;
-
 
     @DeleteMapping("/user/{id}")
     public @ResponseBody CMRespDto<?> delete(@PathVariable Integer id) {

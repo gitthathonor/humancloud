@@ -14,4 +14,6 @@ public interface CompanyDao {
 	public void deleteById(Integer id);
 
 	public Company findByUsername(String companyUsername);
+
+	public Company findAllUsername(String companyUsername);
 }
