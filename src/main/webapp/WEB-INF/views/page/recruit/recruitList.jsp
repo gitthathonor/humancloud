@@ -129,8 +129,8 @@
                             <p class=""><span class=" text-primary"> 공고 일 : </span>${recruit.recruitStartDay}</p>
                         </div>
                         <div class="col-2 d-flex flex-wrap align-content-center">
-                            <a href="/recruit/detail/${recruit.recruitId}/">
-                                <button type="button" class="btn btn-outline-primary    ">상세보기</button>
+                            <a href="/recruit/detail/${recruit.recruitId}/${sessionScope.principal.userId}">
+                                <button type="button" class="btn btn-outline-primary">상세보기</button>
                             </a>
                         </div>
                     </div>

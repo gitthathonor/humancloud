@@ -150,10 +150,14 @@ public class RecruitService {
         // return companyList;
     }
 
+    @Transactional
     public Integer 공고삭제하기(Integer recruitId) {
         Recruit recruitPS = recruitDao.findById(recruitId);
         if (recruitPS != null) {
+            // 기존의 카테고리 없애고
+            categoryDao.deleteByRecruitId(recruitId);
             recruitDao.deleteById(recruitId);
+
             return 1;
         }
         return 0;
