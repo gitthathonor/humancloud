@@ -5,15 +5,15 @@
                 <div class="card-body">
                     <div class="py-5 px-3 border-bottom">
                         <div>
-                        <c:choose>
-                        <c:when test ="${resume.resume[0].resumePhoto == null}">
-                        <img src="/images/defaultprofile/defaultProfile.jpeg" class="img-thumbnail" />
-                        </c:when>
-                        <c:otherwise>
-                        <img class="w-100" src="/img/${resume.resume[0].resumePhoto}">
-                        </c:otherwise>
-                        </c:choose>
-                            
+                            <c:choose>
+                                <c:when test="${resume.resume[0].resumePhoto == null}">
+                                    <img src="/images/defaultprofile/defaultProfile.jpeg" class="img-thumbnail" />
+                                </c:when>
+                                <c:otherwise>
+                                    <img class="w-100" src="/img/${resume.resume[0].resumePhoto}">
+                                </c:otherwise>
+                            </c:choose>
+
                         </div>
                         <div class="text-center p-3">${user.email}</div>
                         <div class="text-center px-3">${user.phoneNumber}</div>
@@ -55,20 +55,20 @@
                         <c:choose>
                             <c:when
                                 test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
-                                <div class="btn btn-primary col-8 mb-2"
+                                <div class="btn btn-primary col-12 mb-2"
                                     onclick="location.href='/update/${sessionScope.principal.userId}'">
                                     회원정보수정
                                 </div>
-                                <div class="btn btn-outline-danger btn-fw col-8"
+                                <div class="btn btn-outline-danger btn-fw col-12"
                                     onclick='deleteUser("${sessionScope.principal.userId}")'>계정탈퇴</div>
                             </c:when>
                             <c:when
                                 test="${!empty sessionScope.companyPrincipal.companyId && empty sessionScope.principal.userId}">
-                                <div class="btn btn-primary col-8 mb-2"
+                                <div class="btn btn-primary col-12 mb-2"
                                     onclick="location.href='/company/updateForm/${sessionScope.companyPrincipal.companyId}'">
                                     기업정보수정
                                 </div>
-                                <div class="btn btn-outline-danger btn-fw col-8"
+                                <div class="btn btn-outline-danger btn-fw col-12"
                                     onclick='deleteCompany("${sessionScope.companyPrincipal.companyId}")'>기업 삭제</div>
                             </c:when>
                         </c:choose>

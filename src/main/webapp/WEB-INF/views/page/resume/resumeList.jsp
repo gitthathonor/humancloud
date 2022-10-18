@@ -28,14 +28,15 @@
                 <div class="card px-4 m-3">
                     <div class="card-body row">
                         <div class="col-2" style="width:200px">
-                            <img src="/img/${resume.resumePhoto}" class="img-thumbnail" />
+                            <img src="/img/${resume.resumePhoto}" class="img-thumbnail" style="width:200px; height:150px"/>
                         </div>
                         <div class="col-8 px-5">
-                            <p class="mb-4">${resume.resumeUserId}</p>
                             <a href="resume/detail/${resume.resumeId}/${resume.resumeUserId}">
-                                <p class="fs-30 mb-2 text-black">${resume.resumeTitle}</p>
+                                <p class="fs-30 text-black py-3">${resume.resumeTitle}</p>
                             </a>
-                            <p class="fs-10 mb-2">${resume.resumeCreatedAt}</p>
+                            <p class="">학력 : ${resume.resumeEducation}</p>
+                            <p class="">경력 : ${resume.resumeCareer}</p>
+                            <p class="">${resume.resumeCreatedAt}</p>
                         </div>
                         <div class="col-2 d-flex flex-wrap align-content-center">
                             <a href="resume/detail/${resume.resumeId}/${resume.resumeUserId}">
@@ -92,17 +93,19 @@
             }
 
             function makeList(x) {
-                let item = `<div class="card px-4">`;
+                let item = ``;
                 for (let list of x) {
-                    item += `<div class="card-body row border"><div class="bg-danger col-2" style="width:200px">` + list.resumePhoto + `</div>`;
+                    item += `<div class="card px-4 m-3"><div class="card-body row"><div class="col-2" style="width:200px">` ;
+                    item += `<img src="/img/`+list.resumePhoto+`" class="img-thumbnail" style="width:200px; height:150px"/></div>`;
                     item += `<div class="col-8 px-5">`
-                    item += `<p class="mb-4">` + list.resumeUserId + `</p>`;
-                    item += `<p class="fs-30 mb-2">` + list.resumeTitle + `</p>`;
-                    item += `<p>` + list.resumeCreatedAt + `</p>`;
+                    item += `<a href="resume/detail/${resume.resumeId}/${resume.resumeUserId}"><p class="fs-30 text-black py-3">` + list.resumeTitle + `</p></a>`;
+                    item += `<p>학력 : ` + list.resumeEducation + `</p>`;
+                    item += `<p>경력 : ` + list.resumeCareer + `</p>`;
+                    item += `<p class="">` + list.resumeCreatedAt + `</p>`;
                     item += `</div><div class="col-2 d-flex flex-wrap align-content-center">`;
                     item += `<a hreaf="resume/detail/` + list.resumeId + `>`;
                     item += `<button type="button" class="btn btn-outline-danger">` + `상세보기` + `</button></a>`
-                    item += `</div></div>`
+                    item += `</div></div></div>`
                 }
                 return item;
             }
