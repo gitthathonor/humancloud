@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -79,7 +80,7 @@ public class ResumeService {
         return resumes;
     }
 
-    public List<Resume> 정렬하기(String orderList, Integer companyId) {
+    public List<Resume> 정렬하기(@Param("orderList") String orderList, @Param("companyId") Integer companyId) {
         if (orderList.equals("recent")) {
             return 최신순보기();
         } else if (orderList.equals("career")) {
