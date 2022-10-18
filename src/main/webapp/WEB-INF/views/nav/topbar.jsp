@@ -17,7 +17,7 @@
                 </span>
               </div>
               <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now"
-                aria-label="search" aria-describedby="search">
+                aria-label="search" aria-describedby="search" onkeypress="search(event)">
             </div>
           </li>
         </ul>
@@ -83,15 +83,24 @@
         </ul>
       </div>
     </nav>
-<c:choose>
-  <c:when test="${!empty principal.userId}">
-    <input id="checkUser" type="hidden" value="${sessionScope.principal.username}">
-    <input id="checkUserId" type="hidden" value="${sessionScope.principal.userId}">
-  </c:when>
-  <c:when test="${!empty companyPrincipal.companyId}">
-    <input id="checkCompany" type="hidden" value="${sessionScope.companyPrincipal.companyName}">
-    <input id="checkCompanyId" type="hidden" value="${sessionScope.companyPrincipal.companyId}">
-  </c:when>
-</c:choose>
+    <c:choose>
+      <c:when test="${!empty principal.userId}">
+        <input id="checkUser" type="hidden" value="${sessionScope.principal.username}">
+        <input id="checkUserId" type="hidden" value="${sessionScope.principal.userId}">
+      </c:when>
+      <c:when test="${!empty companyPrincipal.companyId}">
+        <input id="checkCompany" type="hidden" value="${sessionScope.companyPrincipal.companyName}">
+        <input id="checkCompanyId" type="hidden" value="${sessionScope.companyPrincipal.companyId}">
+      </c:when>
+    </c:choose>
 
-<script src="/socket/webSocket.js"></script>
+    <script src="/socket/webSocket.js"></script>
+    <script>
+      function search(e) {
+        var txt = document.getElementById("navbar-search-input").value;
+        if (e.keyCode == 13) {
+          alert(txt);
+        }
+      }
+
+    </script>
