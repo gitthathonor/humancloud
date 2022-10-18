@@ -17,7 +17,6 @@ import site.metacoding.humancloud.domain.recruit.Recruit;
 import site.metacoding.humancloud.service.ApplyService;
 import site.metacoding.humancloud.service.CompanyService;
 import site.metacoding.humancloud.service.RecruitService;
-import site.metacoding.humancloud.service.ResumeService;
 import site.metacoding.humancloud.service.UserService;
 import site.metacoding.humancloud.service.ResumeService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
@@ -47,8 +46,7 @@ public class RecruitController {
   }
 
   @GetMapping("recruit/detail/{id}/{userId}")
-  public String recruit_Detail(@PathVariable("id") Integer id, @PathVariable("userId") Integer userId,
-      Model model) {
+  public String recruit_Detail(@PathVariable Integer id, @PathVariable Integer userId, Model model) {
     Recruit recruitPS = recruitService.공고상세페이지(id);
     model.addAttribute("Recruit", recruitPS);
     model.addAttribute("company", companyService.getCompanyDetail(recruitPS.getRecruitCompanyId()));
