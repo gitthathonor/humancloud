@@ -10,4 +10,5 @@ public class MessageDto {
       private String receiverUsername;
       private String alarmType;
       private String sender;
+      private Integer senderId;
 }

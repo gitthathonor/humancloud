@@ -20,8 +20,7 @@ public class Company {
 	private String companyAddress;
 	private String companyLogo;
 	private Timestamp companyCreatedAt;
-	
-	
+
 	public Company(String companyUsername, String companyPassword, String companyName, String companyEmail,
 			String companyPhoneNumber, String companyAddress, String companyLogo) {
 		this.companyUsername = companyUsername;
@@ -33,7 +32,6 @@ public class Company {
 		this.companyLogo = companyLogo;
 	}
 
-
 	public Company(String companyPassword, String companyName, String companyEmail,
 			String companyPhoneNumber, String companyAddress, String companyLogo) {
 		this.companyPassword = companyPassword;
@@ -43,7 +41,7 @@ public class Company {
 		this.companyAddress = companyAddress;
 		this.companyLogo = companyLogo;
 	}
-	
+
 	public void update(UpdateDto updateDto) {
 		this.companyPassword = updateDto.getCompanyPassword();
 		this.companyName = updateDto.getCompanyName();
@@ -52,5 +50,8 @@ public class Company {
 		this.companyAddress = updateDto.getCompanyAddress();
 		this.companyLogo = updateDto.getCompanyLogo();
 	}
-	
+
+	public void toPhoneNumber(String num) {
+		this.companyPhoneNumber = num;
+	}
 }
