@@ -21,12 +21,6 @@
             </div>
           </li>
         </ul>
-
-<%--        <div id="boxAlarm">--%>
-<%--          뭐가 적어짐 여기?--%>
-<%--        </div>--%>
-
-
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown">
             <c:choose>
@@ -43,7 +37,6 @@
                 <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                   data-toggle="dropdown">
                   <i class="bi bi-bell-fill"></i>
-<%--                  <span class="count"></span>--%>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                   aria-labelledby="notificationDropdown">
@@ -61,8 +54,8 @@
           </li>
           <!------------로그인후 아이콘------------>
           <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="images/faces/face28.jpg" alt="profile" />
+            <a class="nav-link count-indicator dropdown-toggle" id="profileDropdown" data-toggle="dropdown">
+              <i class="bi bi-person-circle" alt="profile"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <c:choose>
@@ -90,9 +83,6 @@
         </ul>
       </div>
     </nav>
-
-
-
 <c:choose>
   <c:when test="${!empty principal.userId}">
     <input id="checkUser" type="hidden" value="${sessionScope.principal.username}">

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ include file="../../layout/header.jsp" %>
-        <div class="row">
+    <div class="d-flex justify-content-center ">
+        <div class="row w-50">
             <div class="content-wrapper auth px-0">
                 <div class="col-md d-flex justify-content-center">
                     <div class="auth-form-light text-left py-5 px-4 px-sm-5" style="width: 80%;">
@@ -8,7 +9,6 @@
                             로고이미지
                         </div>
                         <h4>login form</h4>
-                        <h6 class="font-weight-light">Sign in to continue.</h6>
                         <div class="btn-group col-lg" role="group" aria-label="Basic example">
                             <button id="user" onclick="changeColor(this.value)" type="button"
                                 class="str btn btn-outline-primary" value="user">일반</button>
@@ -47,6 +47,7 @@
                 </div>
             </div>
         </div>
+    </div>
         <script>
             let check = "user";
 
