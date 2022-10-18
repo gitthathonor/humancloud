@@ -44,11 +44,22 @@
                             <p class=""><span class="text-primary"> 근무지 : </span>${recruit.recruitLocation}</p>
                             <p class=""><span class=" text-primary"> 공고 일 : </span>${recruit.recruitStartDay}</p>
                         </div>
-                        <div class="col-2 d-flex flex-wrap align-content-center">
-                            <a href="/recruit/detail/${recruit.recruitId}/${sessionScope.principal.userId}">
-                                <button type="button" class="btn btn-outline-primary">상세보기</button>
-                            </a>
-                        </div>
+                        <c:choose>
+                            <c:when test="${empty sessionScope.principal.userId}">
+                                <div class="col-2 d-flex flex-wrap align-content-center">
+                                    <a href="/recruit/detail/${recruit.recruitId}/0">
+                                        <button type="button" class="btn btn-outline-primary">상세보기</button>
+                                    </a>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="col-2 d-flex flex-wrap align-content-center">
+                                    <a href="/recruit/detail/${recruit.recruitId}/${sessionScope.principal.userId}">
+                                        <button type="button" class="btn btn-outline-primary">상세보기</button>
+                                    </a>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </c:forEach>
