@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.company.Company;
-import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.service.CompanyService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
 import site.metacoding.humancloud.web.dto.request.company.LoginDto;
