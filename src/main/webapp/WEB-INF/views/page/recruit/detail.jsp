@@ -88,7 +88,7 @@
             </div>
 
             <c:choose>
-                <c:when test="${!empty sessionScope.companyPrincipal.companyId }">
+                <c:when test="${sessionScope.companyPrincipal.companyId == Recruit.recruitCompanyId}">
                     <div class="m-2">
                         <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
                             onclick="location.href='/recruit/update/${Recruit.recruitId}'">
@@ -188,18 +188,18 @@
                         <c:when test="${!empty sessionScope.principal}">
                             <div class="modal-body">
                                 <form class="forms-sample">
-                                    <c:forEach var="resume" items="${resume.resume}">
+                                    <c:forEach var="apply" items="${apply}">
                                         <div class="form-check">
                                             <div class="m-5 p-5 col-5 border">
                                                 <div style="position: absolute; top:0px; left:-50px;">
                                                     <label class="form-check-label">
                                                         <input type="radio" class="form-check-input"
-                                                            name="applyByResumeId" value="${resume.resume.resumeId}">
+                                                            name="applyByResumeId" value="${apply.resumeId}">
                                                         <i class="input-helper"> </i></label>
                                                 </div>
-                                                <h3>${resume.resume.resumeTitle}</h3>
-                                                <p>${resume.resume.resumeReadCount}</p>
-                                                <p>${resume.resume.resumeCreatedAt}</p>
+                                                <h3>${apply.resumeTitle}</h3>
+                                                <p>${apply.resumeReadCount}</p>
+                                                <p>${apply.resumeCreatedAt}</p>
                                             </div>
                                         </div>
                                     </c:forEach>

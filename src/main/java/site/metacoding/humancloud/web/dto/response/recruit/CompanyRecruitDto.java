@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 @Getter
 @Setter
@@ -29,4 +30,10 @@ public class CompanyRecruitDto {
     private String recruitDeadline;
     private Timestamp recruitCreatedAt;
     private String recruitStartDay;
+
+    public void setRecruitCreatedAt(Timestamp recruitCreatedAt) {
+        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd");
+        String t = form.format(recruitCreatedAt);
+        this.recruitStartDay = t;
+    }
 }

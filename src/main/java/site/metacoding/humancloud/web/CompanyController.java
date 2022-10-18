@@ -20,6 +20,7 @@ import site.metacoding.humancloud.web.dto.CMRespDto;
 import site.metacoding.humancloud.web.dto.request.company.LoginDto;
 import site.metacoding.humancloud.web.dto.request.company.SaveDto;
 import site.metacoding.humancloud.web.dto.request.company.UpdateDto;
+import site.metacoding.humancloud.web.dto.response.user.ResCompanyDto;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -44,7 +45,7 @@ public class CompanyController {
 
 	// 기업회원 username 중복체크
 	@GetMapping("/company/checkSameUsername")
-	public @ResponseBody CMRespDto<?> checkSameUsername(String companyUsername) {
+	public @ResponseBody CMRespDto<?> checkSameUsername(@RequestParam("companyUsername") String companyUsername) {
 		boolean isSame = companyService.checkSameUsername(companyUsername);
 		return new CMRespDto<>(1, "통신 성공", isSame);
 	}
@@ -142,13 +143,14 @@ public class CompanyController {
 
 	@PostMapping("/company/login")
 	public @ResponseBody CMRespDto<?> login(@RequestBody LoginDto loginDto, HttpServletRequest request) {
-		Company result = companyService.로그인(loginDto);
+		ResCompanyDto result = companyService.로그인(loginDto);
 
 		if (result != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("companyPrincipal", result);
+			session.setAttribute("companyPrincipal", result.getCompany());
+			session.setAttribute("subscribeList", result.getSubscribe());
 		}
-		return new CMRespDto<>(1, "1", result);
+		return new CMRespDto<>(1, "1", result.getCompany());
 	}
 
 	@GetMapping("/company/mypage")

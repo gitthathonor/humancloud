@@ -1,25 +1,29 @@
 package site.metacoding.humancloud.service;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.company.CompanyDao;
+import site.metacoding.humancloud.domain.subscribe.SubscribeDao;
 import site.metacoding.humancloud.web.dto.request.company.LoginDto;
 import site.metacoding.humancloud.web.dto.request.company.SaveDto;
 import site.metacoding.humancloud.web.dto.request.company.UpdateDto;
+import site.metacoding.humancloud.web.dto.response.user.ResCompanyDto;
 
 @Service
 @RequiredArgsConstructor
 public class CompanyService {
 
 	private final CompanyDao companyDao;
+	private final SubscribeDao subscribeDao;
 
 	// 회원 username 중복체크
 	public boolean checkSameUsername(String companyUsername) {
-		Company companyPS = companyDao.findByUsername(companyUsername);
+		Company companyPS = companyDao.findAllUsername(companyUsername);
 		if (companyPS == null) {
 			return false;
 		} else {
@@ -34,12 +38,22 @@ public class CompanyService {
 
 	// 기업 정보 상세보기
 	public Company getCompanyDetail(Integer companyId) {
-		return companyDao.findById(companyId);
+		Company companyPS = companyDao.findById(companyId);
+
+		// 전화번호 포매팅
+		String fomat = "(\\d{2,3})(\\d{3,4})(\\d{4})";
+		if (Pattern.matches(fomat, companyPS.getCompanyPhoneNumber())) {
+			String result = companyPS.getCompanyPhoneNumber().replaceAll(fomat, "$1-$2-$3");
+			companyPS.toPhoneNumber(result);
+		}
+
+		return companyPS;
 	}
 
 	// 기업 리스트 보기
 	public List<Company> getCompanyList() {
 		return companyDao.findAll();
+
 	}
 
 	// 기업정보 수정
@@ -59,12 +73,12 @@ public class CompanyService {
 		companyDao.deleteById(id);
 	}
 
-	public Company 로그인(LoginDto loginDto) {
+	public ResCompanyDto 로그인(LoginDto loginDto) {
 		Company companyPS = companyDao.findByUsername(loginDto.getCompanyUsername());
 		if (companyPS == null) {
 			return null;
 		} else if (loginDto.getCompanyPassword().equals(companyPS.getCompanyPassword())) {
-			return companyPS;
+			return new ResCompanyDto(companyPS, subscribeDao.findByCompanyId(companyPS.getCompanyId()));
 		}
 		return null;
 	}

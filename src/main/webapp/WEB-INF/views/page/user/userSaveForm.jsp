@@ -1,53 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ include file="../../layout/header.jsp" %>
+        <div class="d-flex justify-content-center">
+            <div class="grid-margin stretch-card" style="width: 45%;">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">user register form</h4>
+                        <div class="btn-group m-4" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-primary">일반</button>
+                            <a class="text-black" href="/company/saveForm"><button type="button"
+                                    class="btn btn-default">기업</button></a>
+                        </div>
 
-        <div class="col-md-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">user register form</h4>
-                    <div class="btn-group m-4" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-primary">일반</button>
-                        <a class="text-black" href="/company/saveForm"><button type="button"
-                                class="btn btn-default">기업</button></a>
+                        <form class="forms-sample">
+                            <label for="username">Username</label>
+                            <div class="form-group row">
+                                <div class="col-9"><input type="text" class="form-control" id="username"
+                                        placeholder="Username"></div>
+                                <div class="col-3"><button onclick="checkUsername()" class="btn btn-light"
+                                        type="button">중복확인</button></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="password2">Confirm Password</label>
+                                <input type="password" class="form-control" id="password2" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone number</label>
+                                <input type="tel" class="form-control" id="phoneNumber" placeholder="Email">
+                            </div>
+
+
+                            <button id="join" type="submit" class="btn btn-primary mr-2">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                        </form>
                     </div>
-
-                    <form class="forms-sample">
-                        <label for="username">Username</label>
-                        <div class="form-group row">
-                            <div class="col-9"><input type="text" class="form-control" id="username"
-                                    placeholder="Username"></div>
-                            <div class="col-3"><button onclick="checkUsername()" class="btn btn-light"
-                                    type="button">중복확인</button></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="password2">Confirm Password</label>
-                            <input type="password" class="form-control" id="password2" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Username">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="phoneNumber">Phone number</label>
-                            <input type="tel" class="form-control" id="phoneNumber" placeholder="Email">
-                        </div>
-
-
-                        <button id="join" type="submit" class="btn btn-primary mr-2">Submit</button>
-                        <button class="btn btn-light">Cancel</button>
-                    </form>
                 </div>
             </div>
         </div>
-
         <script>
             let isUsernameSameCheck = false;
             let checkPassword = false;

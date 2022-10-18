@@ -22,9 +22,9 @@
           </li>
         </ul>
 
-        <!--        <div id="boxAlarm">-->
-        <!--          뭐가 적어짐 여기?-->
-        <!--        </div>-->
+<%--        <div id="boxAlarm">--%>
+<%--          뭐가 적어짐 여기?--%>
+<%--        </div>--%>
 
 
         <ul class="navbar-nav navbar-nav-right">
@@ -43,7 +43,7 @@
                 <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                   data-toggle="dropdown">
                   <i class="bi bi-bell-fill"></i>
-                  <!-- <span class="count"></span>-->
+<%--                  <span class="count"></span>--%>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                   aria-labelledby="notificationDropdown">
@@ -89,18 +89,19 @@
           </li>
         </ul>
       </div>
-
     </nav>
 
 
 
-    <c:choose>
-      <c:when test="${!empty principal.userId}">
-        <input class="checkUser" type="hidden" value="${sessionScope.principal.username}">
-      </c:when>
-      <c:when test="${!empty companyPrincipal.companyId}">
-        <input class="checkUser" type="hidden" value="${sessionScope.companyPrincipal.companyName}">
-      </c:when>
-    </c:choose>
+<c:choose>
+  <c:when test="${!empty principal.userId}">
+    <input id="checkUser" type="hidden" value="${sessionScope.principal.username}">
+    <input id="checkUserId" type="hidden" value="${sessionScope.principal.userId}">
+  </c:when>
+  <c:when test="${!empty companyPrincipal.companyId}">
+    <input id="checkCompany" type="hidden" value="${sessionScope.companyPrincipal.companyName}">
+    <input id="checkCompanyId" type="hidden" value="${sessionScope.companyPrincipal.companyId}">
+  </c:when>
+</c:choose>
 
-    <script src="/socket/webSocket.js"></script>
+<script src="/socket/webSocket.js"></script>

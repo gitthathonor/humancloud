@@ -7,7 +7,7 @@
         <form class="forms-sample">
         <div class="form-group">
             <label for="name">이력서 제목</label>
-            <input type="text" class="form-control" id="title" placeholder="이력서 제목" >
+            <input type="text" class="form-control" id="title" placeholder="이력서 제목" minlength = "3"  maxlength = "20"  >
         </div>
         <div class="form-group">
             <label for="name">이름</label>
@@ -81,28 +81,42 @@
         </div>
         <h3 class="card-title">사용 블로그</h3>
         <div class="form-group">
-            <input type="text" class="form-control" id="blog" placeholder="깃허브 주소나 블로그주소를 입력해주세요">
+            <input type="text" class="form-control" id="blog" placeholder="깃허브 주소나 블로그주소를 입력해주세요" maxlength = "60">
         </div>
         <h4 class="card-title">직무</h4>
         <div class="d-flex">
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" id="categoryName" name="categoryName" value="웹 개발자">
-                    웹 개발자
+                    <input type="checkbox" class="form-check-input" id="categoryName" name="categoryName" value="Flutter">
+                    Flutter
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" id="categoryName" name="categoryName"  value="프론트 개발자">
-                    프론트 개발자
+                    <input type="checkbox" class="form-check-input" id="categoryName" name="categoryName"  value="Java">
+                    Java
                 <i class="input-helper"></i></label>
             </div>
             <div style="margin: 0 20px 0 0;"></div>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input"  id="categoryName" name="categoryName"  value="백 개발자"> 
-                    백 개발자
+                    <input type="checkbox" class="form-check-input"  id="categoryName" name="categoryName"  value="HTML&CSS"> 
+                    HTML&CSS
+                <i class="input-helper"></i></label>
+            </div>   
+               <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" id="categoryName" name="categoryName"  value="JavaScript">
+                    JavaScript
+                <i class="input-helper"></i></label>
+            </div>
+            <div style="margin: 0 20px 0 0;"></div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"  id="categoryName" name="categoryName"  value="Python"> 
+                    Python
                 <i class="input-helper"></i></label>
             </div>   
         </div>    
@@ -137,7 +151,13 @@
 	
 	function Save(userId){
         let categoryName = new Array();
-        let education = "";
+        let education = "",
+            titleNullCheck = $("#title").val();
+
+        if(titleNullCheck == ""){
+            alert("이력서 제목은 필수 입니다.");
+            return;
+        }
 
         $('input[type=radio][name=education]').each(function() {
             if($(this).is(":checked") == true){
