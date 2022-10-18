@@ -15,11 +15,27 @@
                             </c:choose>
 
                         </div>
-                        <div class="text-center p-3">${user.email}</div>
-                        <div class="text-center px-3">${user.phoneNumber}</div>
+                        <c:choose>
+                            <c:when
+                                test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
+                                <div class="text-center p-3">${user.email}</div>
+                                <div class="text-center px-3">${user.phoneNumber}</div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="text-center p-3">${company.companyEmail}</div>
+                                <div class="text-center px-3">${company.companyPhoneNumber}</div>
+                            </c:otherwise>
+                        </c:choose>
                         <!-- <div class="text-center py-4 my-3 btn-primary rounded">#백엔드 #자바</div> -->
-                        <div class="text-center py-4 my-3 btn-primary rounded" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">구독한 기업</div>
+                        <c:if
+                            test="${!empty sessionScope.companyPrincipal.companyId && empty sessionScope.principal.userId}">
+                            <div></div>
+                        </c:if>
+                        <c:if
+                            test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
+                            <div class="text-center py-4 my-3 btn-primary rounded" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">구독한 기업</div>
+                        </c:if>
                     </div>
                     <!--             <div class="p-3 border-bottom d-flex justify-content-around">
                 <div class="">
