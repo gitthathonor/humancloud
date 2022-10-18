@@ -70,9 +70,9 @@
                 });
             }
 
-            function orderDo(listOption, userId) {
+            function orderDo(listOption, companyId) {
                 let data = {
-                    userId: userId,
+                    companyId: companyId,
                 };
                 $.ajax({
                     type: "POST",

@@ -3,6 +3,7 @@ package site.metacoding.humancloud.service;
 import lombok.RequiredArgsConstructor;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -85,25 +86,22 @@ public class RecruitService {
         List<Category> categories = categoryDao.findByName(categoryName);
 
         List<Recruit> recruits = new ArrayList<>();
-
         for (Category c : categories) {
-            if (c.getCategoryResumeId() != null) {
+            if (c.getCategoryRecruitId() != null) {
                 recruits.add(recruitDao.findById(c.getCategoryRecruitId()));
             }
         }
         return recruits;
     }
 
-    public List<Recruit> 정렬하기(String orderList) {
+    public List<Recruit> 정렬하기(@Param("orderList") String orderList, Integer userId) {
         if (orderList.equals("recent")) {
             return 최신순보기();
         } else if (orderList.equals("career")) {
             return 경력순보기();
+        } else {
+            return 추천순보기(userId);
         }
-        // else {
-        // return 추천순보기(companyId);
-        // }
-        return null;
     }
 
     public List<Recruit> 최신순보기() {
@@ -112,15 +110,6 @@ public class RecruitService {
 
     public List<Recruit> 경력순보기() {
         return recruitDao.orderByCareer();
-    }
-
-    // 페이지 맨 위 추천 기업 리스트 : 매개변수-세션값
-    public void 추천기업리스트보기(Integer userId) {
-        if (userId == null) {
-            최신순기업리스트();
-        } else {
-            추천순기업리스트(userId); // 로그인 후, 구독기업이 있으면 최신순 대신 구독기업을 보여줄까
-        }
     }
 
     public void 최신순기업리스트() {
@@ -132,22 +121,10 @@ public class RecruitService {
                 break;
             }
         }
-        // return companies;
     }
 
-    public void 추천순기업리스트(Integer userId) {
-        // List<Category> categoryPS = categoryDao.findByUserId(userId);
-        // List<String> categoryName = new ArrayList<>();
-        //
-        // for(Category c : categoryPS){
-        // categoryName.add( c.getCategoryName());
-        // }
-        // List<Company> companyList = new ArrayList<>();
-        // for(String c : categoryName){
-        // Company companies = categoryDao.findByCompanyCategory(c);
-        // companyList.add(companies);
-        // }
-        // return companyList;
+    public List<Recruit> 추천순보기(Integer userId) {
+        return recruitDao.orderByrecommend(userId);
     }
 
     public Integer 공고삭제하기(Integer recruitId) {

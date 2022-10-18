@@ -5,15 +5,7 @@
                 <div class="card-body">
                     <div class="py-5 px-3 border-bottom">
                         <div>
-                        <c:choose>
-                        <c:when test ="${resume.resume[0].resumePhoto == null}">
-                        <img src="/images/defaultprofile/defaultProfile.jpeg" class="img-thumbnail" />
-                        </c:when>
-                        <c:otherwise>
-                        <img class="w-100" src="/img/${resume.resume[0].resumePhoto}">
-                        </c:otherwise>
-                        </c:choose>
-                            
+                            <img class="w-100" src="/img/${resume.resume[0].resumePhoto}">
                         </div>
                         <div class="text-center p-3">${user.email}</div>
                         <div class="text-center px-3">${user.phoneNumber}</div>
@@ -55,11 +47,11 @@
                         <c:choose>
                             <c:when
                                 test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
-                                <div class="btn btn-primary col-8 mb-2"
+                                <div class="btn btn-primary mb-2 w-100"
                                     onclick="location.href='/update/${sessionScope.principal.userId}'">
                                     회원정보수정
                                 </div>
-                                <div class="btn btn-outline-danger btn-fw col-8"
+                                <div class="btn btn-outline-danger btn-fw w-100 "
                                     onclick='deleteUser("${sessionScope.principal.userId}")'>계정탈퇴</div>
                             </c:when>
                             <c:when
