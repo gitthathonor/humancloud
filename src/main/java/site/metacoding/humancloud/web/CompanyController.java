@@ -86,8 +86,12 @@ public class CompanyController {
 	@GetMapping("/company/{id}")
 	public String getCompanyDetail(@PathVariable Integer id, Model model) {
 		User userSession = (User) session.getAttribute("principal");
-		model.addAttribute("company", companyService.getCompanyDetail(id));
-		model.addAttribute("isSub", subscribeService.구독확인(userSession.getUserId(), id));
+		if (userSession == null) {
+			model.addAttribute("company", companyService.getCompanyDetail(id));
+		} else {
+			model.addAttribute("company", companyService.getCompanyDetail(id));
+			model.addAttribute("isSub", subscribeService.구독확인(userSession.getUserId(), id));
+		}
 		return "page/company/detail";
 	}
 
