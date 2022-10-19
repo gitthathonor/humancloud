@@ -68,8 +68,8 @@ public class RecruitController {
   }
 
   @GetMapping("/recruit/list")
-  public String viewList(Model model) {
-    model.addAttribute("recruits", recruitService.채용공고목록보기());
+  public String viewList(@RequestParam(required = false) String title, Model model) {
+    model.addAttribute("recruits", recruitService.채용공고목록보기(title));
     return "page/recruit/recruitList";
   }
 

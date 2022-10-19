@@ -98,8 +98,12 @@
     <script>
       function search(e) {
         var txt = document.getElementById("navbar-search-input").value;
-        if (e.keyCode == 13) {
-          alert(txt);
+        if (e.keyCode == 13) { //엔터 키 == 13 -> 엔터키 일때만 동작
+          if (txt == "") {
+            alert("검색어를 입력해 주세요");
+            return;
+          }
+          location.href = "/recruit/list?title=" + txt;
         }
       }
 

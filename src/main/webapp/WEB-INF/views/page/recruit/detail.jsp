@@ -51,34 +51,30 @@
         <hr />
 
         <div class="row">
-            <div class="col-md-6 col-xl-6  stretch-card pricing-card">
-                <div class="card border border-primary">
-                    <h3 class="mt-3 ml-2">지원 자격</h3>
+            <div class="col-md-6 col-xl-6  stretch-card pricing-card ">
+                <div class="card border border-primary ">
+                    <h3 class="mt-3 text-center">지원 자격</h3>
                     <hr class="border-primary" />
 
-                    <p class="m-3 plan-cost text-primary">경력 :${Recruit.recruitCareer} </p>
-                    <p class="m-3 plan-cost text-primary">연봉 :${Recruit.recruitSalary} </p>
+                    <p class="m-3 text-center plan-cost text-primary">경력 :${Recruit.recruitCareer} </p>
+                    <p class="m-3 text-center plan-cost text-primary">연봉 :${Recruit.recruitSalary} </p>
                 </div>
             </div>
 
             <div class="col-md-6 col-xl-6  stretch-card pricing-card">
                 <div class="card border border-primary">
-                    <h3 class="mt-3 ml-2">회사 소개</h3>
+                    <h3 class="mt-3 text-center">회사 소개</h3>
                     <hr class="border-primary" />
 
-                    <p class="m-3 plan-cost text-primary">${Recruit.company.companyName} 의 소개 내용</p>
+                    <p class="m-3 text-center plan-cost text-primary">${Recruit.company.companyName} 의 소개 내용</p>
 
                 </div>
             </div>
         </div>
         <hr />
         <div class="row">
-            <div class="card" style="width: 100%;">
+            <div class="card align-items-center">
                 <div class="card-body">
-                    <div class="d-flex justify-content">
-                        <p class="card-title"></p>
-                        <a href="#" class="text-info">Vist Company</a>
-                    </div>
                     <p class="font-weight-500">
                         ${Recruit.recruitContent}
                     </p>
@@ -90,24 +86,23 @@
             <c:choose>
                 <c:when test="${sessionScope.companyPrincipal.companyId == Recruit.recruitCompanyId}">
                     <div class="m-2">
-                        <button style="font-style: white;" type="button" class="btn btn-success btn-icon-text"
+                        <button style="font-style: white;" type="button" class="btn btn-primary btn-icon-text"
                             onclick="location.href='/recruit/update/${Recruit.recruitId}'">
                             <i class="ti-file btn-icon-prepend"></i>
                             수정하기
                         </button>
-                        <button style="font-style: white;" type="button" class="btn btn-danger btn-icon-text"
+                        <button style="font-style: white;" type="button" class="btn btn-outline-primary btn-icon-text"
                             onclick="recruitDelete()">
                             <i class="ti-file btn-icon-prepend"></i>
                             삭제하기
                         </button>
                     </div>
-                    <hr />
                 </c:when>
             </c:choose>
 
         </div>
 
-
+        <hr />
         <div class="row">
             <div class="card" style="width: 100%;">
                 <div class="card-body">

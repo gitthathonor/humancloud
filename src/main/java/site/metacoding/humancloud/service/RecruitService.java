@@ -16,6 +16,7 @@ import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.web.RecruitController;
 import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
+import site.metacoding.humancloud.web.dto.response.recruit.RecruitDetail;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,10 +76,25 @@ public class RecruitService {
         return;
     }
 
-    public Map<String, Object> 채용공고목록보기() {
+    public Map<String, Object> 채용공고목록보기(String title) {
+
+        if (title == null || title == "") {
+            Map<String, Object> recruitList = new HashMap<>();
+            recruitList.put("recruit", recruitDao.joinCompanyRecruit());
+            recruitList.put("category", categoryDao.distinctName());
+            System.out.println("===============");
+            System.err.println(title);
+            System.out.println(recruitList.get("recruit"));
+            System.out.println("===============");
+            return recruitList;
+        }
         Map<String, Object> recruitList = new HashMap<>();
-        recruitList.put("recruit", recruitDao.joinCompanyRecruit());
-        recruitList.put("category", categoryDao.distinctName());
+        recruitDao.findByTitle(title);
+        recruitList.put("recruit", recruitDao.findByTitle(title));
+        System.out.println("===============");
+        System.err.println(title);
+        System.out.println(recruitDao.findByTitle(title));
+        System.out.println("===============");
         return recruitList;
     }
 
