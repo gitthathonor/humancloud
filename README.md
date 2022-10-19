@@ -284,6 +284,217 @@ INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,r
 VALUES("이력서19", "4년제대학졸업", "신입", "defaultProfile.jpeg","https://github.com/yujin9907",  10,0, NOW());
 INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
 VALUES("이력서20", "2년제대학졸업", "1년이상 ~ 3년미만", "defaultProfile.jpeg","https://github.com/yujin9907",  10,0, NOW());
+
+--resume용 category
+insert into category(category_resume_id, category_recruit_id, category_name) values (1, NULL, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) values (1, NULL, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) values (1, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) values (1, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) values (1, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (2, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (2, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (2, null, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (3, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (3, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (3, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (4, NULL, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (5, null, 'Python');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (5, NULL, 'Flutter');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (6, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (6, NULL, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (7, NULL, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (7, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (7, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (7, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (8, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (8, NULL, 'Java');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (9, null, 'Flutter');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (10, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (10, null, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (11, NULL, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (11, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (11, NULL, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (12, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (12, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (12, null, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (13, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (13, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (13, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (14, null, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (15, null, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (15, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (15, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (15, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (15, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (16, null, 'Java');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (17, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (17, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (17, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (18, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (18, NULL, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (19, null, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (20, NULL, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (20, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (20, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (20, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (20, NULL, 'Python');
+
+-- recruit 더미데이터
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고1", "고졸", 2400 , "부산 동구 망양로945번길 19 (범일동)", "1", 0, 1, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고2", "2년제대학졸업", 3200 , "부산 동구 망양로945번길 19 (범일동)", "2", 0, 2, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고3", "3년제대학졸업", 3600 , "부산 동구 망양로945번길 19 (범일동)", "3", 0, 3, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고4", "4년제대학졸업", 4000 , "부산 동구 망양로945번길 19 (범일동)", "4", 0, 4, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고5", "고졸", 2400 , "부산 동구 망양로945번길 19 (범일동)", "5", 0, 5, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고6", "2년제대학졸업", 3200 , "부산 동구 망양로945번길 19 (범일동)", "6", 0, 6, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고7", "대학원졸업", 3600 , "부산 동구 망양로945번길 19 (범일동)", "7", 0, 7, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고8", "4년제대학졸업", 4000 , "부산 동구 망양로945번길 19 (범일동)", "8", 0, 8, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고9", "고졸", 2400 , "부산 동구 망양로945번길 19 (범일동)", "9", 0, 9, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고10", "2년제대학졸업", 3200 , "부산 동구 망양로945번길 19 (범일동)", "10", 0, 10, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고11", "대학원졸업", 3600 , "부산 동구 망양로945번길 19 (범일동)", "11", 0, 11, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고12", "2년제대학졸업", 4000 , "부산 동구 망양로945번길 19 (범일동)", "12", 12, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고13", "고졸", 2400 , "부산 동구 망양로945번길 19 (범일동)", "13", 0, 13, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고14", "대학원졸업", 3200 , "부산 동구 망양로945번길 19 (범일동)", "14", 0, 14, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고15", "3년제대학졸업", 3600 , "부산 동구 망양로945번길 19 (범일동)", "15", 0, 15, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고16", "대학원졸업", 4000 , "부산 동구 망양로945번길 19 (범일동)", "16", 0, 16, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고17", "고졸", 2400 , "부산 동구 망양로945번길 19 (범일동)", "17", 0, 17, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고18", "고졸", 3200 , "부산 동구 망양로945번길 19 (범일동)", "18", 0, 18, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고19", "4년제대학졸업", 3600 , "부산 동구 망양로945번길 19 (범일동)", "19", 0, 19, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고20", "3년제대학졸업", 4000 , "부산 동구 망양로945번길 19 (범일동)", "20", 0, 20, NOW(), NOW());
+
+INSERT INTO recruit(recruit_title, recruit_career, recruit_salary, recruit_location, recruit_content, recruit_read_count, recruit_company_id, recruit_deadline, recruit_created_at) 
+VALUES("채용공고21", "2년제대학졸업", 4000 , "부산 동구 망양로945번길 19 (범일동)", "21", 0, 21, NOW(), NOW());
+
+-- recruit용 category
+insert into category(category_resume_id, category_recruit_id, category_name) values (NULL, 1, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) values (NULL, 1, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) values (NULL, 1, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) values (NULL, 1, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) values (NULL, 1, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 2, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 2, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 2, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 3, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 3, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 3, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 4, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 5, 'Python');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 5, 'Flutter');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 6, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 6, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 7, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 7, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 7, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 7, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 8, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 8, 'Java');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 9, 'Flutter');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 10, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 10, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 11, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 11, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 11, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 12, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 12, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 12, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 13, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 13, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 13, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 14, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 15, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 15, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 15, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 15, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 15, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 16, 'Java');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 17, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 17, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 17, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 18, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 18, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 19, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 20, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 20, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 20, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (null, 21, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (NULL, 21, 'Python');
 ```
 
 
