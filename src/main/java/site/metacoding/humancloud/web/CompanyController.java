@@ -86,10 +86,6 @@ public class CompanyController {
 	// 기업 정보 상세보기
 	@GetMapping("/company/{id}")
 	public String getCompanyDetail(@PathVariable Integer id, Model model) {
-		System.out.println("----------------------------------------");
-		System.out.println(id);
-		System.out.println("-------------------------------");
-
 		User userSession = (User) session.getAttribute("principal");
 		if (userSession == null) {
 			model.addAttribute("company", companyService.getCompanyDetail(id));
