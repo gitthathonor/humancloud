@@ -18,12 +18,12 @@
                         <c:choose>
                             <c:when
                                 test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
-                                <div class="text-center p-3">${user.email}</div>
-                                <div class="text-center px-3">${user.phoneNumber}</div>
+                                <div class="text-center p-3 font-weight-bold">${user.email}</div>
+                                <div class="text-center px-3 font-weight-bold">${user.phoneNumber}</div>
                             </c:when>
                             <c:otherwise>
-                                <div class="text-center p-3">${company.companyEmail}</div>
-                                <div class="text-center px-3">${company.companyPhoneNumber}</div>
+                                <div class="text-center p-3  font-weight-bold">${company.companyEmail}</div>
+                                <div class="text-center px-3  font-weight-bold">${company.companyPhoneNumber}</div>
                             </c:otherwise>
                         </c:choose>
                         <!-- <div class="text-center py-4 my-3 btn-primary rounded">#백엔드 #자바</div> -->
@@ -75,7 +75,7 @@
                                     onclick="location.href='/update/${sessionScope.principal.userId}'">
                                     회원정보수정
                                 </div>
-                                <div class="btn btn-outline-danger btn-fw w-100 "
+                                <div class="btn btn-outline-primary btn-fw w-100 "
                                     onclick='deleteUser("${sessionScope.principal.userId}")'>계정탈퇴</div>
                             </c:when>
                             <c:when
@@ -84,7 +84,7 @@
                                     onclick="location.href='/company/updateForm/${sessionScope.companyPrincipal.companyId}'">
                                     기업정보수정
                                 </div>
-                                <div class="btn btn-outline-danger btn-fw col-12"
+                                <div class="btn btn-outline-primary btn-fw col-12"
                                     onclick='deleteCompany("${sessionScope.companyPrincipal.companyId}")'>기업 삭제</div>
                             </c:when>
                         </c:choose>

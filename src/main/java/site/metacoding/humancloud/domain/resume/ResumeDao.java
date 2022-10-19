@@ -33,4 +33,6 @@ public interface ResumeDao {
 
 	public PagingDto paging(Integer page);
 
+	public void updateReadCount(Integer resumeId);
+
 }
