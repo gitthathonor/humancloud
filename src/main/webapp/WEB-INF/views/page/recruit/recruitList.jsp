@@ -46,32 +46,33 @@
                         </div>
                         <div class="col-2 d-flex flex-wrap align-content-center">
                             <c:choose>
-                            <c:when test="${empty sessionScope.principal.userId}">
-                            <a href="/recruit/detail/${recruit.recruitId}/0">
-                                <button type="button" class="btn btn-outline-primary">상세보기</button>
-                            </a>
-                            </c:when>
-                            <c:otherwise>
-                            <a href="/recruit/detail/${recruit.recruitId}/${sessionScope.principal.userId}">
-                                <button type="button" class="btn btn-outline-primary">상세보기</button>
-                            </a>
-                            </c:otherwise>
+                                <c:when test="${empty sessionScope.principal.userId}">
+                                    <a href="/recruit/detail/${recruit.recruitId}/0">
+                                        <button type="button" class="btn btn-outline-primary">상세보기</button>
+                                    </a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/recruit/detail/${recruit.recruitId}/${sessionScope.principal.userId}">
+                                        <button type="button" class="btn btn-outline-primary">상세보기</button>
+                                    </a>
+                                </c:otherwise>
                             </c:choose>
                         </div>
                     </div>
                 </div>
             </c:forEach>
             <div class="d-flex justify-content-center">
-	            <ul class="pagination">
-	            	<li class='page-item'><a class="page-link text-black"
-	            		href="/recruit/list?page=${recruits.paging.currentPage -1}">previous</a></li>
-	            		 <c:forEach var="num" begin="${recruits.paging.startPageNum}" end="${recruits.paging.lastPageNum}" step="1">
+                <ul class="pagination">
+                    <li class='page-item'><a class="page-link text-black"
+                            href="/recruit/list?page=${recruits.paging.currentPage -1}">previous</a></li>
+                    <c:forEach var="num" begin="${recruits.paging.startPageNum}" end="${recruits.paging.lastPageNum}"
+                        step="1">
                         <a class="page-link text-black" href='/recruit/list?page=${num-1}'>${num}</a>
-                        </c:forEach>
-	            		<li class='page-item'><a class="page-link text-black"
-	            		href="/recruit/list?page=${recruits.paging.currentPage+1}">Next</a></li>
-	            </ul>
-	        </div>
+                    </c:forEach>
+                    <li class='page-item'><a class="page-link text-black"
+                            href="/recruit/list?page=${recruits.paging.currentPage+1}">Next</a></li>
+                </ul>
+            </div>
         </div>
         <input hidden value="${sessionScope.companyPrincipal.companyId}" id="companyId" />
         <script>
@@ -130,8 +131,8 @@
 
             function makeList(x, checkUser) {
                 let pathDetail = checkUser;
-                if(checkUser==null){
-                    pathDetail=0;
+                if (checkUser == null) {
+                    pathDetail = 0;
                 }
 
                 let item = ``;
@@ -143,7 +144,7 @@
                     item += `<p class=""><span class="text-primary"> 근무지 : </span>` + list.recruitLocation + `</p>`;
                     item += `<p class=""><span class=" text-primary"> 공고 일 : </span>` + list.recruitStartDay + `</p></div>`;
                     item += `<div class="col-2 d-flex flex-wrap align-content-center">`;
-                    item += `<a href="/recruit/detail/` + list.recruitId + `/` + pathDetail +`">`;
+                    item += `<a href="/recruit/detail/` + list.recruitId + `/` + pathDetail + `">`;
                     item += ` <button type="button" class="btn btn-outline-primary ">상세보기</button>`;
                     item += `</a></div></div></div>`;
                 }

@@ -34,14 +34,12 @@ public class RecruitController {
   private final CompanyService companyService;
   private final ApplyService applyService;
 
-
-
-  	// main
-	@GetMapping("/")
-	public String main(Model model) {
+  // main
+  @GetMapping("/")
+  public String main(Model model) {
     model.addAttribute("list", recruitService.메인공고목록보기());
-		return "page/main";
-	}
+    return "page/main";
+  }
 
   @GetMapping("recruit/update/{id}")
   public String updateFrom(@PathVariable(required = false) Integer id, Model model) {
@@ -61,7 +59,7 @@ public class RecruitController {
   @GetMapping("/recruit/detail/{id}/{userId}")
   public String recruit_Detail(@PathVariable("id") Integer id, @PathVariable("userId") Integer userId, Model model) {
     Recruit recruitPS = recruitService.공고상세페이지(id);
-  
+
     model.addAttribute("Recruit", recruitPS);
     model.addAttribute("company", companyService.getCompanyDetail(recruitPS.getRecruitCompanyId()));
     model.addAttribute("apply", applyService.이력서목록보기(userId));
