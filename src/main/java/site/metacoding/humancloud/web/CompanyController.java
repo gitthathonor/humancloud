@@ -101,7 +101,7 @@ public class CompanyController {
 	}
 
 	// 기업 리스트 보기
-	@GetMapping("/company")
+	@GetMapping("/companys")
 	public String getCompanyList(Model model, @Param("page") Integer page) {
 		model.addAttribute("companyList", companyService.getCompanyList(page));
 		return "page/company/companyList";

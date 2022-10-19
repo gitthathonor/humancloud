@@ -24,13 +24,13 @@
 			<div class="d-flex justify-content-center">
 				<ul class="pagination">
 					<li class='page-item'><a class="page-link text-black"
-							href="/company?page=${companyList.paging.currentPage -1}">previous</a></li>
+							href="/companys?page=${companyList.paging.currentPage -1}">previous</a></li>
 					<c:forEach var="num" begin="${companyList.paging.startPageNum}"
 						end="${companyList.paging.lastPageNum}" step="1">
-						<a class="page-link text-black" href='/company?page=${num-1}'>${num}</a>
+						<a class="page-link text-black" href='/companys?page=${num-1}'>${num}</a>
 					</c:forEach>
 					<li class='page-item'><a class="page-link text-black"
-							href="/company?page=${companyList.paging.currentPage+1}">Next</a></li>
+							href="/companys?page=${companyList.paging.currentPage+1}">Next</a></li>
 				</ul>
 			</div>
 
