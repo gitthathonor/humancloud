@@ -32,9 +32,7 @@
                                 style="width:200px; height:150px" />
                         </div>
                         <div class="col-8 px-5">
-                            <a href="resume/detail/${resume.resumeId}/${resume.resumeUserId}">
-                                <p class="fs-30 text-black py-3">${resume.resumeTitle}</p>
-                            </a>
+                            <p class="fs-30 text-black py-3">${resume.resumeTitle}</p>
                             <p class="">학력 : ${resume.resumeEducation}</p>
                             <p class="">경력 : ${resume.resumeCareer}</p>
                             <p class="">${resume.resumeCreatedAt}</p>
