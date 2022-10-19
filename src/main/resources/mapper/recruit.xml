@@ -51,7 +51,7 @@ order by count DESC
 
 
 	<select id="findByTitle" resultType="site.metacoding.humancloud.web.dto.response.recruit.RecruitDetail">
-		SELECT * FROM recruit WHERE recruit_title LIKE '%#{recruit_title}%'
+		SELECT * FROM recruit WHERE recruit_title LIKE '%'||#{recruitTitle}||'%'
 
 	</select>
 	<select id="findById" resultType="site.metacoding.humancloud.domain.recruit.Recruit">

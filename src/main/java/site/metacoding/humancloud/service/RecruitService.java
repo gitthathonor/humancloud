@@ -82,10 +82,6 @@ public class RecruitService {
             Map<String, Object> recruitList = new HashMap<>();
             recruitList.put("recruit", recruitDao.joinCompanyRecruit());
             recruitList.put("category", categoryDao.distinctName());
-            System.out.println("===============");
-            System.err.println(title);
-            System.out.println(recruitList.get("recruit"));
-            System.out.println("===============");
             return recruitList;
         }
         Map<String, Object> recruitList = new HashMap<>();
