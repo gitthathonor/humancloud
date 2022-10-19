@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="/"><img src="images/devridge.jpg" class="mr-2" alt="logo"
-            style="width:80px; height: 60px;" /></a>
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center ">
+        <a class="navbar-brand brand-logo mr-5 text-primary" href="/"><i class="fa-solid fa-d small">evridge</i></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
 
