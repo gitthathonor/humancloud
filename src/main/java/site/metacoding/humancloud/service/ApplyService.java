@@ -31,4 +31,8 @@ public class ApplyService {
     applyDao.deleteById(recruitId, resumeId);
   }
 
+  public void 지원유저목록보기(Integer companyId){
+    
+  }
+
 }

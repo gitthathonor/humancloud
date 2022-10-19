@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ include file="../../layout/header.jsp" %>
         <%@ include file="subscribeModal.jsp" %>
-
             <div class="row">
                 <%@ include file="profile.jsp" %>
                     <div class="col-md-9 grid-margin stretch-card">
@@ -9,13 +8,14 @@
                             <div class="card-body my-5">
                                 <h4 class="m-3 text-primary font-weight-bold">지원 현황</h4>
                                 <div class="row rounded m-2 p-5 text-center  border">
-                                    <div class="col border-right">
-                                        <div class="display-2">0</div>
-                                        <div>지원 완료</div>
-                                    </div>
+                                
                                     <c:choose>
                                         <c:when
                                             test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
+                                            <div class="col border-right">
+                                                <div class="display-2">0</div>
+                                                <div>지원 완료</div>
+                                            </div>
                                             <div class="col border-right">
                                                 <div class="display-2">${resume.readCount}</div>
                                                 <div>이력서 열람</div>
@@ -23,8 +23,8 @@
                                         </c:when>
                                         <c:otherwise>
                                             <div class="col border-right">
-                                                <div class="display-2">0</div>
-                                                <div>이력서 열람</div>
+                                                <a href="/company/${sessionScope.companyPrincipal.companyId}/applyList"><div class="display-2 text-black">${countApply}</div></a>
+                                                <div>지원 이력서</div>
                                             </div>
                                         </c:otherwise>
                                     </c:choose>

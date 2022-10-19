@@ -59,7 +59,6 @@ public class RecruitController {
   @GetMapping("/recruit/detail/{id}/{userId}")
   public String recruit_Detail(@PathVariable("id") Integer id, @PathVariable("userId") Integer userId, Model model) {
     Recruit recruitPS = recruitService.공고상세페이지(id);
-
     model.addAttribute("Recruit", recruitPS);
     model.addAttribute("company", companyService.getCompanyDetail(recruitPS.getRecruitCompanyId()));
     model.addAttribute("apply", applyService.이력서목록보기(userId));

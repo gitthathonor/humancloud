@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.user.User;
+import site.metacoding.humancloud.service.ApplyService;
 import site.metacoding.humancloud.service.CompanyService;
 import site.metacoding.humancloud.service.RecruitService;
 import site.metacoding.humancloud.service.SubscribeService;
@@ -85,7 +86,12 @@ public class CompanyController {
 	// 기업 정보 상세보기
 	@GetMapping("/company/{id}")
 	public String getCompanyDetail(@PathVariable Integer id, Model model) {
+		System.out.println("----------------------------------------");
+		System.out.println(id);
+		System.out.println("-------------------------------");
+
 		User userSession = (User) session.getAttribute("principal");
+
 		model.addAttribute("company", companyService.getCompanyDetail(id));
 		model.addAttribute("isSub", subscribeService.구독확인(userSession.getUserId(), id));
 		return "page/company/detail";
@@ -157,9 +163,21 @@ public class CompanyController {
 
 	@GetMapping("/company/mypage")
 	public String viewMypage(@RequestParam Integer id, Model model) {
+		Integer countApply = companyService.지원목록보기(id).size();
+		if(companyService.지원목록보기(id)==null){
+			countApply=0;
+		}
+
+		model.addAttribute("countApply", countApply);
 		model.addAttribute("company", companyService.getCompanyDetail(id));
 		model.addAttribute("recruitList", companyService.채용공고리스트불러오기(id));
 		return "page/user/mypage";
+	}
+
+	@GetMapping("/company/{companyId}/applyList")
+	public String applyList(@PathVariable Integer companyId, Model model){
+		model.addAttribute("apply", companyService.지원목록보기(companyId));
+		return "page/company/applyList";
 	}
 
 }
