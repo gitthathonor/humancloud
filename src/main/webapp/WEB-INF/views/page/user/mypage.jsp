@@ -8,7 +8,7 @@
                             <div class="card-body my-5">
                                 <h4 class="m-3 text-primary font-weight-bold">지원 현황</h4>
                                 <div class="row rounded m-2 p-5 text-center  border">
-                                
+
                                     <c:choose>
                                         <c:when
                                             test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
@@ -23,7 +23,9 @@
                                         </c:when>
                                         <c:otherwise>
                                             <div class="col border-right">
-                                                <a href="/company/${sessionScope.companyPrincipal.companyId}/applyList"><div class="display-2 text-black">${countApply}</div></a>
+                                                <a href="/company/${sessionScope.companyPrincipal.companyId}/applyList">
+                                                    <div class="display-2 text-black">${countApply}</div>
+                                                </a>
                                                 <div>지원 이력서</div>
                                             </div>
                                         </c:otherwise>
@@ -124,17 +126,17 @@
                                     <div class="my-5">
                                         <h4 class="m-3 text-primary font-weight-bold">추천</h4>
                                         <div class="row d-flex justify-content-center">
-                                            <c:forEach var="company" items="${companyList}" begin="0" end="2">
+                                            <c:forEach var="company" items="${companyList}" begin="0" end="3">
                                                 <div class="m-3 p-3 col-2 border rounded">
                                                     <div class="card row">
                                                         <div class="card-people d-flex justify-content-center"
                                                             style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
                                                             <img src="/img/${company.logo}"
-                                                                style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; width: 110px; height: 70px;">
+                                                                style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; width: 110px; height: 50px;">
                                                         </div>
                                                         <p class="p-3 mx-3">
-                                                            <i class="fa-solid fa-heart"
-                                                                style="color:red;"></i><span> 좋아요
+                                                            <i class="fa-solid fa-heart" style="color:red;"></i><span>
+                                                                좋아요
                                                                 :
                                                                 ${company.likes}</span>
                                                         </p>

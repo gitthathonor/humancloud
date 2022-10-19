@@ -17,7 +17,7 @@
 								<div class="col-9"><input type="text" class="form-control" id="companyUsername"
 										placeholder="companyUsername" name="companyUsername"></div>
 								<div class="col-3"><button id="btnCheckSameUsername" type="button"
-										class="btn btn-outline-primary">중복확인</button></div>
+										class="btn btn-outline-primary" style="font-size: 8px;">중복확인</button></div>
 							</div>
 							<div class="form-group">
 								<label for="companyPassword">Password</label>
@@ -57,7 +57,7 @@
 							</div>
 
 							<button id="btnSave" type="button" class="btn btn-primary mr-2">회원가입</button>
-							<button class="btn btn-light">Cancel</button>
+							<button id="btnCancel" type="button" class="btn btn-light">취소</button>
 						</form>
 					</div>
 				</div>
@@ -81,6 +81,10 @@
 				if (isUsernameSameCheck == true && checkPassword == true && checkEmail == true) {
 					save();
 				}
+			});
+
+			$("#btnCancel").click(() => {
+				location.href = "/";
 			});
 
 			// username 중복 체크

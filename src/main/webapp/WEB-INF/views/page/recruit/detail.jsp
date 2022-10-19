@@ -13,15 +13,6 @@
                 <div>
                     <p class="card-title"></p>${Recruit.company.companyName}</p>
                     <h2 class="text-primary">${Recruit.recruitTitle}
-
-                        <!--          <button type="button" class="ml-5 btn btn-info btn-rounded btn-social-icon">
-                            <i class="ti-star"></i>
-                        </button>
-
-
-                        <button type="button" class="btn btn-outline-secondary btn-rounded btn-social-icon">
-                            <i class="ti-star text-primary"></i>
-                        </button> -->
                     </h2>
                 </div>
 
@@ -36,17 +27,24 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="d-flex">
-                    <div class="ml-auto">
-                        <button type="button" class="btn btn-outline-primary btn-icon-text" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            <i class="ti-file btn-icon-prepend"></i>
-                            즉시지원하기
-                        </button>
+            <c:choose>
+                <c:when test="${empty sessionScope.companyPrincipal}">
+                    <div class="row">
+                        <div class="d-flex">
+                            <div class="ml-auto">
+                                <button type="button" class="btn btn-outline-primary btn-icon-text"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <i class="ti-file btn-icon-prepend"></i>
+                                    즉시지원하기
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </c:when>
+                <c:otherwise>
+                    <div></div>
+                </c:otherwise>
+            </c:choose>
         </div>
         <hr />
 

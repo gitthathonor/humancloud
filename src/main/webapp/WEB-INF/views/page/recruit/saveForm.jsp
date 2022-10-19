@@ -5,17 +5,17 @@
                 <div class="col-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Basic form elements</h4>
+                            <h4 class="card-title">공고 작성 페이지</h4>
                             <form class="forms-sample">
                                 <input type="hidden" id="recruitCompanyId" value="${company.companyId}">
                                 <div class="form-group">
-                                    <label>공고명 (recruitTitle)</label>
+                                    <label>공고명</label>
                                     <input type="text" required class="form-control" id="recruitTitle"
                                         placeholder="Name">
                                 </div>
                                 <hr />
                                 <div class="form-group">
-                                    <label>경력 (recruitCareer)</label>
+                                    <label>경력</label>
                                     <select class="form-control" id="recruitCareer">
                                         <option>경력선택</option>
                                         <option>신입</option>
@@ -27,7 +27,7 @@
                                 </div>
                                 <hr />
                                 <div class="form-group">
-                                    <div><label>직무 (recruitPattern)</label></div>
+                                    <div><label>카테고리</label></div>
                                     <div class="d-flex form-group">
                                         <div class="ml-2 form-check">
                                             <label class="form-check-label">
@@ -58,7 +58,7 @@
                                 </div>
                                 <hr />
                                 <div class="form-group">
-                                    <label>연봉 (recruitSalary)</label>
+                                    <label>연봉</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text bg-primary text-white">$</span>
@@ -84,7 +84,7 @@
                                 <hr /> -->
                                 <div class="form-group d-flex ">
                                     <div class="">
-                                        <label>위치검색 (recruitLocation)</label>
+                                        <label>위치검색</label>
                                         <div class="input-group">
                                             <div class="form-outline">
                                                 <input type="text" class="form-control" id="recruitLocation"
@@ -98,7 +98,7 @@
                                         </div>
                                     </div>
                                     <div class="ml-5">
-                                        <label>공고 마감날짜 선택 (recruitLocation)</label>
+                                        <label>마감일자</label>
                                         <div class="input-group">
                                             <div class="form-outline">
                                                 <input type="date" class="form-control text-primary"
@@ -109,12 +109,12 @@
                                 </div>
                                 <hr />
                                 <div class="form-group">
-                                    <label for="exampleTextarea1">내용 입력 (recruitContent)</label>
+                                    <label for="exampleTextarea1">내용 입력</label>
                                     <%@ include file="summernote.jsp" %>
                                         <textarea id="summernote"></textarea>
                                 </div>
-                                <button id="submitBtn" type="button" class="btn btn-primary mr-2">Submit</button>
-                                <button class="btn btn-light">Cancel</button>
+                                <button id="submitBtn" type="button" class="btn btn-primary mr-2">작성 완료</button>
+                                <button id="btnCancel" class="btn btn-light">취소</button>
                             </form>
                         </div>
                     </div>
@@ -213,6 +213,10 @@
 
                 $('#summernote').summernote({
                     height: 300
+                });
+
+                $("#btnCancel").click(() => {
+                    history.back();
                 });
             </script>
             <%@ include file="../../layout/footer.jsp" %>

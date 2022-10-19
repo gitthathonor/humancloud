@@ -13,10 +13,13 @@
 								<div class="d-flex justify-content-between align-items-center"
 									style="margin: 0 0 0 5px">
 									<div></div>
-									<button class="btn btn-primary"
-										onclick='subscribeCompany("${sessionScope.principal.userId}"), sendData()'>
-										<i id="iconHeart" class="fa-regular fa-heart"></i> <span>관심기업등록</span>
-									</button>
+									<c:if
+										test="${empty sessionScope.companyPrincipal && !empty sessionScope.principal}">
+										<button class="btn btn-primary"
+											onclick='subscribeCompany("${sessionScope.principal.userId}"), sendData()'>
+											<i id="iconHeart" class="fa-regular fa-heart"></i> <span>관심기업등록</span>
+										</button>
+									</c:if>
 								</div>
 								<div style="margin: 20px 0 0 0;"></div>
 								<div style="border-bottom: 1px solid #aaa"></div>
@@ -99,14 +102,14 @@
 		<script src="/socket/webSocket.js"></script>
 
 		<script>
-			
-			$(document).ready(function(){
+
+			$(document).ready(function () {
 				let isSub = $("#isSub").val();
 				console.log(isSub);
-				if(isSub =="true"){
+				if (isSub == "true") {
 					$("#iconHeart").removeClass("fa-regular");
 					$("#iconHeart").addClass("fa-solid");
-				}else{
+				} else {
 					$("#iconHeart").removeClass("fa-solid");
 					$("#iconHeart").addClass("fa-regular");
 				}

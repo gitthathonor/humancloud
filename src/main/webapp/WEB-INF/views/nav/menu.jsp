@@ -17,7 +17,7 @@
         </li>
       </c:if>
       <li class="nav-item">
-        <a class="nav-link" href="/company" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" href="/companys" aria-expanded="false" aria-controls="ui-basic">
           <i class="icon-columns menu-icon"></i>
           <span class="menu-title">기업</span>
         </a>

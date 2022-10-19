@@ -86,10 +86,6 @@ public class CompanyController {
 	// 기업 정보 상세보기
 	@GetMapping("/company/{id}")
 	public String getCompanyDetail(@PathVariable Integer id, Model model) {
-		System.out.println("----------------------------------------");
-		System.out.println(id);
-		System.out.println("-------------------------------");
-
 		User userSession = (User) session.getAttribute("principal");
 		if (userSession == null) {
 			model.addAttribute("company", companyService.getCompanyDetail(id));
@@ -101,7 +97,7 @@ public class CompanyController {
 	}
 
 	// 기업 리스트 보기
-	@GetMapping("/company")
+	@GetMapping("/companys")
 	public String getCompanyList(Model model, @Param("page") Integer page) {
 		model.addAttribute("companyList", companyService.getCompanyList(page));
 		return "page/company/companyList";
