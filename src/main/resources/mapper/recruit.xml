@@ -2,32 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.recruit.RecruitDao">
 
+	<select id="paging" resultType="site.metacoding.humancloud.web.dto.response.page.PagingDto">
+		SELECT totalCount,
+		totalPage,
+		currentPage,
+		case when currentPage=0 then 1 else 0 end as isFirst,
+		case when currentPage=totalPage-1 then 1 else 0 end as isLast
+		FROM
+		(
+		select count(*) totalCount, ceil(count(*)/3) totalPage, #{page} currentPage, 0
+		isFirst, 0 isLast
+		FROM recruit
+		) b
+	</select>
+
 	<select id="joinCompanyRecruit" resultType="site.metacoding.humancloud.web.dto.response.recruit.CompanyRecruitDto">
 		select * from recruit
 		inner join company
 		on recruit.recruit_company_id=company.company_id
 		order by recruit.recruit_created_at desc
-	</select>
-
-	<select id="orderByrecommend" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
-select recruit.*, result.count from recruit
-left join
-(select *, count(*) count
-from
-(select c2.* from (select category.*
-from
-(select resume.* from resume inner join user
-on user.user_id=resume.resume_user_id
-where user_id=#{userId}) r
-inner join category
-on r.resume_id=category.category_resume_id
-group by category_name) c1
-join (SELECT * FROM category
-WHERE category_recruit_id is not null) c2
-on c1.category_name=c2.category_name) list
-group by category_recruit_id) result
-on recruit.recruit_id=result.category_recruit_id
-order by count DESC
 	</select>
 
 	<select id="orderByrecommend" resultType="site.metacoding.humancloud.domain.recruit.Recruit">

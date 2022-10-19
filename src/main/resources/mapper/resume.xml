@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.resume.ResumeDao">
 
-   	<select id="paging"
-		resultType="package site.metacoding.humancloud.web.dto.response.page.PagingDto">
+   <select id="paging" resultType="site.metacoding.humancloud.web.dto.response.page.PagingDto">
 		SELECT totalCount,
 		totalPage,
 		currentPage,
@@ -17,7 +16,7 @@
 		) b
 	</select>
 
-    <select id="orderByRecommend" resultType="site.metacoding.humancloud.domain.resume.Resume">
+   <select id="orderByRecommend" resultType="site.metacoding.humancloud.domain.resume.Resume">
 select resume.*, result.count from resume
 left join
 (select *, count(*) count
