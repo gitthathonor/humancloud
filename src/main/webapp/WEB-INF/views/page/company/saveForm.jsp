@@ -32,7 +32,7 @@
 							<div class="form-group">
 								<label for="companyName">Name</label>
 								<input type="text" class="form-control" id="companyName" placeholder="companyName"
-									name="companyName">
+									name="companyName" maxlength="20">
 							</div>
 							<div class="form-group">
 								<label for="companyEmail">Email</label>

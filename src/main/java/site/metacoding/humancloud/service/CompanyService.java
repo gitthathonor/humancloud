@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.company.CompanyDao;
+import site.metacoding.humancloud.domain.recruit.Recruit;
+import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.domain.subscribe.SubscribeDao;
 import site.metacoding.humancloud.web.dto.request.company.LoginDto;
 import site.metacoding.humancloud.web.dto.request.company.SaveDto;
@@ -20,6 +22,7 @@ public class CompanyService {
 
 	private final CompanyDao companyDao;
 	private final SubscribeDao subscribeDao;
+	private final RecruitDao recruitDao;
 
 	// 회원 username 중복체크
 	public boolean checkSameUsername(String companyUsername) {
@@ -83,4 +86,10 @@ public class CompanyService {
 		return null;
 	}
 
+	public List<Recruit> 채용공고리스트불러오기(Integer id) {
+		for (int i = 0; i < recruitDao.findByCompanyId(id).size(); i++) {
+			System.out.println(recruitDao.findByCompanyId(id).get(i).getRecruitTitle());
+		}
+		return recruitDao.findByCompanyId(id);
+	}
 }

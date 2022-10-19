@@ -9,8 +9,9 @@
 					<div class="col-lg-12 grid-margin stretch-card">
 						<div class="card">
 							<div class="card-body">
-								<div class="d-flex justify-content-between" style="margin: 0 0 0 5px">
-									<h3>기업 정보</h3>
+								<div class="d-flex justify-content-between align-items-center"
+									style="margin: 0 0 0 5px">
+									<div></div>
 									<button class="btn btn-primary"
 										onclick='subscribeCompany("${sessionScope.principal.userId}"), sendData()'>
 										<i class="fa-regular fa-heart"></i> <span>관심기업등록</span>
@@ -36,8 +37,8 @@
 											<li style="font-size: 16px;"><i class="ti-direction"></i>
 												${company.companyAddress}</li>
 										</ul>
-										<div id="map" style="width: 50%; height: 300px;"></div>
 									</div>
+									<div id="map" style="width: 230px; height: 200px;"></div>
 									<!-- col-xs-4 col-sm-6 -->
 								</div>
 								<!-- row -->
@@ -83,25 +84,6 @@
 			<div style="margin: 30px 0 0 0;"></div>
 			<div style="border-bottom: 1px solid #aaa"></div>
 			<div style="margin: 30px 0 0 0;"></div>
-			<div class="row" style="margin: 0 0 0 15px">
-				<div class="d-flex">
-					<div class="mr-2">
-						<a href="/company/updateForm/${company.companyId}/0"><button type="button"
-								class="btn btn-outline-info btn-icon-text">
-								<i class="ti-file btn-icon-prepend"></i> 기업 정보 수정하기
-							</button></a>
-					</div>
-					<!-- mr-2 -->
-					<div class="mr-2">
-						<button id="btnDelete" type="button" class="btn btn-outline-info btn-icon-text">
-							<i class="ti-trash btn-icon-prepend"></i> 기업 정보 삭제하기
-						</button>
-					</div>
-					<!-- mr-2 -->
-				</div>
-				<!-- d-flex -->
-			</div>
-			<!-- row -->
 		</div>
 		<!-- row -->
 
