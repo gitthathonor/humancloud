@@ -17,7 +17,7 @@
                                 <div class="col-9"><input type="text" class="form-control" id="username"
                                         placeholder="Username"></div>
                                 <div class="col-3"><button onclick="checkUsername()" class="btn btn-outline-primary"
-                                        type="button">중복확인</button></div>
+                                        type="button" style="font-size: 8px;">중복확인</button></div>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
@@ -42,7 +42,7 @@
 
 
                             <button id="join" type="button" class="btn btn-primary mr-2">회원가입</button>
-                            <button class="btn btn-light">Cancel</button>
+                            <button id="btnCancel" type="button" class="btn btn-light">취소</button>
                         </form>
                     </div>
                 </div>
@@ -61,6 +61,10 @@
                 } else {
                     alert("아이디체크");
                 }
+            });
+
+            $("#btnCancel").click(() => {
+                location.href = "/";
             });
 
             function checkSamePassword() {

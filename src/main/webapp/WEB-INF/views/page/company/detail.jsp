@@ -13,7 +13,8 @@
 								<div class="d-flex justify-content-between align-items-center"
 									style="margin: 0 0 0 5px">
 									<div></div>
-									<c:if test="${empty sessionScope.companyPrincipal}">
+									<c:if
+										test="${empty sessionScope.companyPrincipal && !empty sessionScope.principal}">
 										<button class="btn btn-primary"
 											onclick='subscribeCompany("${sessionScope.principal.userId}"), sendData()'>
 											<i id="iconHeart" class="fa-regular fa-heart"></i> <span>관심기업등록</span>

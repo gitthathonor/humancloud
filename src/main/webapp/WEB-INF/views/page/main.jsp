@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
   <%@ include file="../layout/header.jsp" %>
-    
+
     <div class="row">
       <div class="col-md-12 grid-margin">
       </div>
@@ -48,8 +48,8 @@
               <div class="col-12">
                 <div class="table">
                   <table id="" class="display expandable-table" style="width:100%">
-                    <thead >
-                      <tr >
+                    <thead>
+                      <tr>
                         <th class="text-center">기업명</th>
                         <th class="text-center">공고명</th>
                         <th class="text-center">등록일</th>
@@ -58,12 +58,15 @@
                     </thead>
                     <tbody>
                       <c:forEach var="data" items="${list}">
-                      <tr>
-                        <th class="text-center ">${data.companyUsername}</th>
-                        <th class="text-center "><h3> ${data.recruitTitle} </h3></th>
-                        <th class="text-center ">${data.recruitDeadline}</th>
-                        <th class="text-center "><a href="/recruit/detail/${data.recruitId}/1"><button type="button" class="btn btn-primary">지원하기</button></a></th>
-                      </tr>
+                        <tr>
+                          <th class="text-center ">${data.companyUsername}</th>
+                          <th class="text-center ">
+                            <h3> ${data.recruitTitle} </h3>
+                          </th>
+                          <th class="text-center ">${data.recruitDeadline}</th>
+                          <th class="text-center "><a href="/recruit/detail/${data.recruitId}/1"><button type="button"
+                                class="btn btn-primary">지원하기</button></a></th>
+                        </tr>
                       </c:forEach>
                     </tbody>
                   </table>
