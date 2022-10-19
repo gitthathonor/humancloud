@@ -54,8 +54,8 @@
           </li>
           <!------------로그인후 아이콘------------>
           <li class="nav-item nav-profile dropdown">
-            <a class="nav-link count-indicator dropdown-toggle" id="profileDropdown" data-toggle="dropdown">
-              <i class="bi bi-person-circle" alt="profile"></i>
+            <a class="nav-link count-indicator dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
+              <i class="bi bi-person-circle"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <c:choose>
