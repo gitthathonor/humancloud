@@ -57,7 +57,7 @@
 					<div class="card border py-3 ">
 						<h3 class="mt-3 ml-2">커뮤니티</h3>
 						<hr class="border-primary" />
-						<p class="mt-3 ml-2">궁금했던 직무와 기업 현직자에게 물어볼래요?</p>
+						<p class="mt-3 ml-2 px-3">궁금했던 직무와 기업 현직자에게 물어볼래요?</p>
 					</div>
 					<!-- card border border-primary center-block -->
 				</div>
@@ -66,7 +66,7 @@
 					<div class="card border py-3">
 						<h3 class="mt-3 ml-2">면접경험</h3>
 						<hr class="border-primary" />
-						<p class="mt-3 ml-2">2019년 하반기 신입...</p>
+						<p class="mt-3 ml-2 px-3">2019년 하반기 신입...</p>
 					</div>
 					<!-- card border border-primary center-block -->
 				</div>
@@ -75,7 +75,7 @@
 					<div class="card border py-3">
 						<h3 class="mt-3 ml-2">기업리뷰</h3>
 						<hr class="border-primary" />
-						<p class="mt-3 ml-2">전·현직자가 직접 등록한 기업리뷰! 근무 환경이 어떤지 확인해보세요</p>
+						<p class="mt-3 ml-2 px-3">전·현직자가 직접 등록한 기업리뷰! 근무 환경이 어떤지 확인해보세요</p>
 					</div>
 					<!-- card border border-primary center-block -->
 				</div>
