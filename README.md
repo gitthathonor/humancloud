@@ -1,11 +1,5 @@
 # 미니프로젝트 humancloud - 이력서 관리 웹 사이트
 
-
-### 테이블에 컬럼 추가 for MariaDB
-```sql
-ALTER TABLE recruit ADD COLUMN recruit_deadline VARCHAR(20) AFTER recruit_company_id;
-```
-
 ### DB - user생성 및 권한 부여
 ```sql
 CREATE USER 'human'@'%' IDENTIFIED BY 'human1234';
@@ -127,6 +121,172 @@ alter table apply convert to character set utf8;
 alter table subscribe convert to character set utf8;
 ```
 
+### 더미 데이터
+```sql
+-- user 더미 데이터
+insert into user(username, password, name, email, phone_number, created_at)
+VALUES ("ssar", "1234", "장씨", "wkdTl@naver.com", "01011112222", NOW());
+insert into user(username, password, name, email, phone_number, created_at)
+VALUES ("cos", "1234", "정씨", "wjdTl@naver.com", "01022223333", NOW());
+insert into user(username, password, name, email, phone_number, created_at)
+VALUES ("sun", "1234", "김씨", "rlaTl@naver.com", "01033332222", NOW());
+insert into user(username, password, name, email, phone_number, created_at)
+VALUES ("jin", "1234", "허씨", "jinTl@naver.com", "01044442222", NOW());
+insert into user(username, password, name, email, phone_number, created_at)
+VALUES ("cool", "1234", "노씨", "NoTl@naver.com", "01055552222", NOW());
+insert into user(username, password, name, email, phone_number, created_at)
+VALUES ("hotguy", "1234", "핫씨", "HOTTl@naver.com", "01018188888", NOW());
+insert into user(username, password, name, email, phone_number, created_at)
+VALUES ("hermes", "1234", "메씨", "hermes@naver.com", "01078790053", NOW());
+insert into user(username, password, name, email, phone_number, created_at)
+VALUES ("yun", "1234", "윤씨", "seock@naver.com", "01098746321", NOW());
+insert into user(username, password, name, email, phone_number, created_at)
+VALUES ("bts", "1234", "방씨", "tancream@naver.com", "01088772233", NOW());
+insert into user(username, password, name, email, phone_number, created_at)
+VALUES ("herry", "1234", "윙가디움레비오싸씨", "porter@naver.com", "01044444444", NOW());
+
+-- company 더미 데이터
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("adt", "1234", "ADT", "adt@never.com", "01020203060", "부산진구청", "ADT.png", NOW());
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("gsbuilt", "1234", "GS건설", "gs@never.com", "01025259999", "광주광역시청", "GS건설.png", NOW());
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("ktds", "1234", "KT다이노소얼", "kt_ds@never.com", "01088259999", "대구광역시청", "kt_ds.png", NOW());
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("sgc", "1234", "(주)SGC", "SGC@never.com", "01080569999", "인천공항", "SGC.png", NOW());
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("naver", "1234", "네이버", "네이버@never.com", "01078964123", "잠실역", "네이버.jpg", NOW());
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("dbcar", "1234", "동부 자동차 손해보험", "dbcar@never.com", "010555584123", "G7 레지던스", "동부 자동차 손해보험.png", NOW());
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("dongwon", "1234", "동원그룹", "동원그룹@never.com", "010555546423", "사직야구장", "동원그룹.png", NOW());
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("ssg", "1234", "신세계 푸드", "신세계 푸드@never.com", "010623143123", "센텀시티 신세계백화점", "신세계 푸드.png", NOW());
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("yogiyo", "1234", "요기요", "요기요@never.com", "010797184123", "SM엔터테인먼트", "요기요.png", NOW());
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("woah", "1234", "우아한 청년들", "우아한 청년들@never.com", "01079444123", "용산역", "우아한 청년들.png", NOW());
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("yosin", "1234", "유신", "유신@never.com", "010666184123", "부산역", "유신.png", NOW());
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("jumpit", "1234", "점핏", "점핏@never.com", "010889984123", "남산타워", "점핏.png", NOW());
+
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("koreabio", "1234", "코리아 바이오 협회", "koreaBio@never.com", "01082184123", "짚신", "코리아 바이오 협회.png", NOW());
+
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("coupang", "1234", "쿠팡", "쿠팡@never.com", "010989884123", "양산시 물금역", "쿠팡.png", NOW());
+
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("toss", "1234", "토스", "toss@never.com", "010444484123", "국민은행", "토스.png", NOW());
+
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("posco", "1234", "포스코플로우", "posco@never.com", "010400684123", "포항역", "포스코플로우.png", NOW());
+
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("korealand", "1234", "한국 토지 신탁", "koreaLand@never.com", "010998884123", "남포역", "한국 토지 신탁.png", NOW());
+
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("hyundaidep", "1234", "현대 백화점 그룹", "hd@never.com", "010797184523", "현대 백화점", "현대 백화점 그룹.png", NOW());
+
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("hyundai", "1234", "현대", "hytund@never.com", "010796684123", "현대 백화점", "현대.png", NOW());
+
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("hmobis", "1234", "현대모비스", "hmobis@never.com", "010797180000", "현대 자동차", "현대모비스.png", NOW());
+
+
+INSERT INTO company(company_username, company_password, company_name, company_email, 
+            company_phone_number, company_address, company_logo,   company_created_at)
+VALUES("welding", "1234", "현대종합금속", "hwelding@never.com", "010696984123", "울산 현대", "현대종합금속.png", NOW());
+
+
+-- resume 더미 데이터
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서1", "고졸", "신입", "defaultProfile.jpeg","https://github.com/Sylar0012",  1,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서2", "2년제대학졸업", "3년이상 ~ 5년미만", "defaultProfile.jpeg","https://github.com/Sylar0012",  1,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서3", "2년제대학졸업", "6년이상", "defaultProfile.jpeg","https://github.com/Sylar0012",  2,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서4", "2년제대학졸업", "3년이상 ~ 5년미만", "defaultProfile.jpeg","https://github.com/Sylar0012",  2,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서5", "대학원졸업", "1년이상 ~ 3년미만", "defaultProfile.jpeg","https://github.com/Sylar0012",  3,0, NOW());
+
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서6", "대학원졸업", "1년이상 ~ 3년미만", "defaultProfile.jpeg","https://github.com/Goldfish808",  3,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서7", "고졸", "3년이상 ~ 5년미만", "defaultProfile.jpeg","https://github.com/Goldfish808",  4,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서8", "2년제대학졸업", "신입", "defaultProfile.jpeg","https://github.com/Goldfish808",  4,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서9", "3년제대학졸업", "1년이상 ~ 3년미만", "defaultProfile.jpeg","https://github.com/Goldfish808",  5,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서10", "4년제대학졸업", "신입", "defaultProfile.jpeg","https://github.com/Goldfish808",  5,0, NOW());
+
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서11", "4년제대학졸업", "1년이상 ~ 3년미만", "defaultProfile.jpeg","https://github.com/gitthathonor",  6,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서12", "대학원졸업", "1년이상 ~ 3년미만", "defaultProfile.jpeg","https://github.com/gitthathonor",  6,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서13", "2년제대학졸업", "3년이상 ~ 5년미만", "defaultProfile.jpeg","https://github.com/gitthathonor",  7,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서14", "3년제대학졸업", "신입", "defaultProfile.jpeg","https://github.com/gitthathonor",  7,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서15", "고졸", "1년이상 ~ 3년미만", "defaultProfile.jpeg","https://github.com/gitthathonor",  8,0, NOW());
+
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서16", "대학원졸업", "1년이상 ~ 3년미만", "defaultProfile.jpeg","https://github.com/yujin9907",  8,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서17", "고졸", "3년이상 ~ 5년미만", "defaultProfile.jpeg","https://github.com/yujin9907",  9,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서18", "3년제대학졸업", "1년이상 ~ 3년미만", "defaultProfile.jpeg","https://github.com/yujin9907",  9,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서19", "4년제대학졸업", "신입", "defaultProfile.jpeg","https://github.com/yujin9907",  10,0, NOW());
+INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
+VALUES("이력서20", "2년제대학졸업", "1년이상 ~ 3년미만", "defaultProfile.jpeg","https://github.com/yujin9907",  10,0, NOW());
+```
+
+
 ### recruit-detail 수정사항 메모
 PathVarilable 이 해당 프로젝트에서는 동작하지않아, 쿼리스트릥으로
 Get 요청을 받아  findById 메서드 실행을 한 후,
@@ -137,3 +297,8 @@ layout/header.jsp 에서 충돌나는 헤드 코드 saveForm 에서만 쓰일 �
 ### 부트스트랩 로드 오류
 부트스트랩 Font 로드 오류가 있어 수정함
 ![Untitled](https://user-images.githubusercontent.com/92712092/194812543-6bf839a5-8397-4b4b-9dba-ac9d8f75e191.png)
+
+### 테이블에 컬럼 추가 for MariaDB(해결됨)
+```sql
+ALTER TABLE recruit ADD COLUMN recruit_deadline VARCHAR(20) AFTER recruit_company_id;
+```
