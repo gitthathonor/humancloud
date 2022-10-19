@@ -49,12 +49,12 @@
             	<div class="d-flex justify-content-center">
 	                <ul class="pagination">
 	                	<li class='page-item'><a class="page-link text-black"
-	                		href="/?page=${resumeData.paging.currentPage -1}">previous</a></li>
+	                		href="/resume?page=${resumeData.paging.currentPage -1}">previous</a></li>
 	                		 <c:forEach var="num" begin="${resumeData.paging.startPageNum}" end="${resumeData.paging.lastPageNum}" step="1">
-                            <a class="page-link text-black" href='?page=${num-1}'>${num}</a>
+                            <a class="page-link text-black" href='/resume?page=${num-1}'>${num}</a>
                          </c:forEach>
 	                		<li class='page-item'><a class="page-link text-black"
-	                		href="/?page=${resumeData.paging.currentPage+1}">Next</a></li>
+	                		href="/resume?page=${resumeData.paging.currentPage+1}">Next</a></li>
 	                </ul>
 	            </div>
         </div>

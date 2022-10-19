@@ -80,7 +80,7 @@ public class RecruitService {
         if (page == null) {
 			page = 0;
 		}
-		int startNum = page * 3;
+		int startNum = page * 20;
 		PagingDto paging = recruitDao.paging(page);
 		paging.dopaging();
 
