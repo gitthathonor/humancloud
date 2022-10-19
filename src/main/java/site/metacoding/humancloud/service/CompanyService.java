@@ -60,7 +60,7 @@ public class CompanyService {
 		if (page == null) {
 			page = 0;
 		}
-		int startNum = page * 3;
+		int startNum = page * 20;
 		PagingDto paging = companyDao.paging(page);
 		paging.dopaging();
 
