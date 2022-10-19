@@ -16,7 +16,8 @@ import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.web.RecruitController;
 import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
-import site.metacoding.humancloud.web.dto.response.recruit.RecruitDetail;
+import site.metacoding.humancloud.web.dto.response.page.PagingDto;
+import site.metacoding.humancloud.web.dto.response.recruit.CompanyRecruitDto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,21 +77,35 @@ public class RecruitService {
         return;
     }
 
-    public Map<String, Object> 채용공고목록보기(String title) {
-
-        if (title == null || title == "") {
-            Map<String, Object> recruitList = new HashMap<>();
-            recruitList.put("recruit", recruitDao.joinCompanyRecruit());
-            recruitList.put("category", categoryDao.distinctName());
-            return recruitList;
+    public List<CompanyRecruitDto> 메인공고목록보기() {
+        List<CompanyRecruitDto> recruitPS = recruitDao.joinCompanyRecruit(0);
+        List<CompanyRecruitDto> result = new ArrayList<>();
+        int endFor;
+        if (recruitPS.size() < 5) {
+            endFor = recruitPS.size();
+        } else {
+            endFor = 6;
         }
+
+        for (int i = 0; i < endFor; i++) {
+            result.add(recruitPS.get(i));
+        }
+
+        return result;
+    }
+
+    public Map<String, Object> 채용공고목록보기(Integer page) {
+        if (page == null) {
+            page = 0;
+        }
+        int startNum = page * 20;
+        PagingDto paging = recruitDao.paging(page);
+        paging.dopaging();
+
         Map<String, Object> recruitList = new HashMap<>();
-        recruitDao.findByTitle(title);
-        recruitList.put("recruit", recruitDao.findByTitle(title));
-        System.out.println("===============");
-        System.err.println(title);
-        System.out.println(recruitDao.findByTitle(title));
-        System.out.println("===============");
+        recruitList.put("paging", paging);
+        recruitList.put("recruit", recruitDao.joinCompanyRecruit(startNum));
+        recruitList.put("category", categoryDao.distinctName());
         return recruitList;
     }
 

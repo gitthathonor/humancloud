@@ -6,15 +6,21 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.company.Company;
+import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.service.CompanyService;
+import site.metacoding.humancloud.service.RecruitService;
+import site.metacoding.humancloud.service.SubscribeService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
 import site.metacoding.humancloud.web.dto.request.company.LoginDto;
 import site.metacoding.humancloud.web.dto.request.company.SaveDto;
@@ -29,12 +35,8 @@ import javax.servlet.http.HttpSession;
 public class CompanyController {
 
 	private final CompanyService companyService;
-
-	// main
-	@GetMapping("/")
-	public String main() {
-		return "page/main";
-	}
+	private final SubscribeService subscribeService;
+	private final HttpSession session;
 
 	// 기업 회원가입 페이지
 	@GetMapping("/company/saveForm")
@@ -83,15 +85,16 @@ public class CompanyController {
 	// 기업 정보 상세보기
 	@GetMapping("/company/{id}")
 	public String getCompanyDetail(@PathVariable Integer id, Model model) {
+		User userSession = (User) session.getAttribute("principal");
 		model.addAttribute("company", companyService.getCompanyDetail(id));
+		model.addAttribute("isSub", subscribeService.구독확인(userSession.getUserId(), id));
 		return "page/company/detail";
 	}
 
 	// 기업 리스트 보기
 	@GetMapping("/company")
-	public String getCompanyList(Model model) {
-		List<Company> companyList = companyService.getCompanyList();
-		model.addAttribute("companyList", companyList);
+	public String getCompanyList(Model model, @Param("page") Integer page) {
+		model.addAttribute("companyList", companyService.getCompanyList(page));
 		return "page/company/companyList";
 	}
 

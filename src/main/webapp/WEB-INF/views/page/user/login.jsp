@@ -5,10 +5,7 @@
                 <div class="content-wrapper auth px-0">
                     <div class="col-md d-flex justify-content-center">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5" style="width: 80%;">
-                            <div class="brand-logo">
-                                로고이미지
-                            </div>
-                            <h4>login form</h4>
+                            <i class="fa-solid fa-d small text-primary display-4 m-3 py-3">evridge</i>
                             <div class="btn-group col-lg" role="group" aria-label="Basic example">
                                 <button id="user" onclick="changeColor(this.value)" type="button"
                                     class="str btn btn-primary" value="user">일반</button>

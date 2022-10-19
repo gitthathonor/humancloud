@@ -108,7 +108,7 @@
                 <div class="card-body">
                     <p class="card-title">${Recruit.company.companyName} 기업의 다른 공고</p>
 
-                    <div class="dataTables_wrapper ">
+                    <div class="">
 
                         <table class="display expandable-table dataTable no-footer" style="width: 100%;">
                             <thead>

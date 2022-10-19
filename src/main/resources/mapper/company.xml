@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.company.CompanyDao">
+
+<select id="paging"
+		resultType="site.metacoding.humancloud.web.dto.response.page.PagingDto">
+		SELECT totalCount,
+		totalPage,
+		currentPage,
+		case when currentPage=0 then 1 else 0 end as isFirst,
+		case when currentPage=totalPage-1 then 1 else 0 end as isLast
+		FROM
+		(
+		select count(*) totalCount, ceil(count(*)/20) totalPage, #{page} currentPage, 0
+		isFirst, 0 isLast
+		FROM company
+		) b
+	</select>
+
 	<insert id="save" useGeneratedKeys="true" keyProperty="companyId">
 		INSERT INTO company(company_username, company_password,
 		company_name, company_email, company_phone_number, company_address,
@@ -20,6 +36,7 @@
 	<select id="findAll" resultType="site.metacoding.humancloud.domain.company.Company">
 		SELECT *
 		FROM company
+		limit 20 offset #{startNum}
 	</select>
 
 	<update id="update">

@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,8 +39,8 @@ public class ResumeController {
   private final UserService userService;
 
   @GetMapping("/resume")
-  public String viewList(Model model) {
-    model.addAttribute("resumeData", resumeService.이력서목록보기());
+  public String viewList(Model model, @Param("page") Integer page) {
+    model.addAttribute("resumeData", resumeService.이력서목록보기(page));
     return "page/resume/resumeList";
   }
 
@@ -103,9 +104,13 @@ public class ResumeController {
   @GetMapping("resume/detail/{resumeId}/{userId}")
   public String detailResume(@PathVariable("resumeId") Integer resumeId, @PathVariable("userId") Integer userId,
       Model model) {
+
+        resumeService.열람횟수증가(resumeId);
+
     model.addAttribute("resume", resumeService.이력서상세보기(resumeId, userId).get("resume"));
     model.addAttribute("category", resumeService.이력서상세보기(resumeId, userId).get("category"));
     model.addAttribute("user", resumeService.이력서상세보기(resumeId, userId).get("user"));
+
     return "page/resume/detail";
   }
 
