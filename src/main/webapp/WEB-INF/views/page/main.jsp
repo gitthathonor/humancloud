@@ -65,7 +65,7 @@
                           </th>
                           <th class="text-center ">${data.recruitDeadline}</th>
                           <th class="text-center "><a href="/recruit/detail/${data.recruitId}/1"><button type="button"
-                                class="btn btn-primary">지원하기</button></a></th>
+                                class="btn btn-outline-primary">지원하기</button></a></th>
                         </tr>
                       </c:forEach>
                     </tbody>
