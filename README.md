@@ -1,19 +1,6 @@
 # 미니프로젝트 humancloud - 이력서 관리 웹 사이트
 
 
-
-### recruit-detail 수정사항 메모
-PathVarilable 이 해당 프로젝트에서는 동작하지않아, 쿼리스트릥으로
-Get 요청을 받아  findById 메서드 실행을 한 후,
-jstl 로 view 페이지에 로드 했음
-
-layout/header.jsp 에서 충돌나는 헤드 코드 saveForm 에서만 쓰일 수 있도록 코드 옮김. 이 전의 코드를 참고.
-
-### 부트스트랩 로드 오류
-부트스트랩 Font 로드 오류가 있어 수정함
-![Untitled](https://user-images.githubusercontent.com/92712092/194812543-6bf839a5-8397-4b4b-9dba-ac9d8f75e191.png)
-
-
 ### 테이블에 컬럼 추가 for MariaDB
 ```sql
 ALTER TABLE recruit ADD COLUMN recruit_deadline VARCHAR(20) AFTER recruit_company_id;
@@ -56,6 +43,7 @@ CREATE TABLE company (
 	company_email VARCHAR(120) UNIQUE NOT null,
 	company_phone_number VARCHAR(100) UNIQUE,
 	company_address VARCHAR(150) NOT null,
+	company_logo VARCHAR(500),
 	company_created_at TimeStamp
 ) engine=InnoDB default charset=UTF8;
 
@@ -83,6 +71,7 @@ CREATE TABLE recruit(
 	recruit_content LONGTEXT,
 	recruit_read_count INT,
 	recruit_company_id INT,
+	recruit_deadline TIMESTAMP,
 	recruit_created_at TIMESTAMP
 ) engine=InnoDB default charset=UTF8;
 
@@ -94,47 +83,12 @@ CREATE TABLE apply(
 	apply_created_at TIMESTAMP
 ) engine=InnoDB default charset=UTF8;
 
--- 게시판 
-CREATE TABLE board(
-	board_id INT AUTO_INCREMENT PRIMARY KEY,
-	board_title VARCHAR(50) NOT null,
-	board_content LONGTEXT,
-	board_read_count INT,
-	board_user_id INT, 
-	board_created_at TIMESTAMP
-) engine=InnoDB default charset=UTF8;
-
--- 댓글 
-CREATE TABLE comment(
-	comment_id INT AUTO_INCREMENT PRIMARY KEY,
-	comment_content LONGTEXT,
-	comment_user_id INT,
-	comment_board_id INT,
-	comment_created_at TIMESTAMP
-) engine=InnoDB default charset=UTF8;
-
 -- 관심 기업 구독
 CREATE TABLE subscribe(
 	subscribe_id INT auto_increment PRIMARY KEY,
 	subscribe_user_id INT,
 	subscribe_company_id INT,
 	subscribe_created_at TIMESTAMP
-) engine=InnoDB default charset=UTF8;
-
--- 1:1 채팅 테이블
-CREATE TABLE chatting(
-	chatting_id INT AUTO_INCREMENT PRIMARY KEY,
-	chatting_user_id INT,
-	chatting_content LONGTEXT,
-	chatting_created_at TIMESTAMP
-) engine=InnoDB default charset=UTF8;
-
--- 알림 테이블
-CREATE TABLE notice(
-	notice_id INT AUTO_INCREMENT PRIMARY KEY,
-	notice_recruit_id INT,
-	notice_content INT,
-	notice_created_at TIMESTAMP
 ) engine=InnoDB default charset=UTF8;
 ```
 
@@ -150,19 +104,10 @@ ALTER TABLE recruit ADD FOREIGN KEY(recruit_company_id) REFERENCES company(compa
 ALTER TABLE apply ADD FOREIGN KEY(apply_recruit_id) REFERENCES recruit(recruit_id);
 ALTER TABLE apply ADD FOREIGN KEY(apply_resume_id) REFERENCES resume(resume_id);
 
--- 게시판 테이블 fk
-ALTER TABLE board ADD FOREIGN KEY(board_user_id) REFERENCES user(user_id);
-
--- 댓글 테이블 fk
-ALTER TABLE comment ADD FOREIGN KEY(comment_user_id) REFERENCES user(user_id);
-ALTER TABLE comment ADD FOREIGN KEY(comment_board_id) REFERENCES board(board_id);
-
 -- 관심 기업 구독 테이블 fk
 ALTER TABLE comment ADD FOREIGN KEY(subscribe_user_id) REFERENCES user(user_id);
 ALTER TABLE comment ADD FOREIGN KEY(subscribe_company_id) REFERENCES company(company_id);
 
--- 1:1 채팅 테이블 fk
-ALTER TABLE comment ADD FOREIGN KEY(chatting_user_id) REFERENCES user(user_id);
 ```
 
 ### utf-8 변경
@@ -179,13 +124,16 @@ alter table category convert to character set utf8;
 
 alter table apply convert to character set utf8;
 
-alter table board convert to character set utf8;
-
-alter table comment convert to character set utf8;
-
 alter table subscribe convert to character set utf8;
-
-alter table chatting convert to character set utf8;
-
-alter table notice convert to character set utf8;
 ```
+
+### recruit-detail 수정사항 메모
+PathVarilable 이 해당 프로젝트에서는 동작하지않아, 쿼리스트릥으로
+Get 요청을 받아  findById 메서드 실행을 한 후,
+jstl 로 view 페이지에 로드 했음
+
+layout/header.jsp 에서 충돌나는 헤드 코드 saveForm 에서만 쓰일 수 있도록 코드 옮김. 이 전의 코드를 참고.
+
+### 부트스트랩 로드 오류
+부트스트랩 Font 로드 오류가 있어 수정함
+![Untitled](https://user-images.githubusercontent.com/92712092/194812543-6bf839a5-8397-4b4b-9dba-ac9d8f75e191.png)
