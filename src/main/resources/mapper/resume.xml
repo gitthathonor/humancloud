@@ -2,6 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.metacoding.humancloud.domain.resume.ResumeDao">
 
+   	<select id="paging"
+		resultType="package site.metacoding.humancloud.web.dto.response.page.PagingDto">
+		SELECT totalCount,
+		totalPage,
+		currentPage,
+		case when currentPage=0 then 1 else 0 end as isFirst,
+		case when currentPage=totalPage-1 then 1 else 0 end as isLast
+		FROM
+		(
+		select count(*) totalCount, ceil(count(*)/3) totalPage, #{page} currentPage, 0
+		isFirst, 0 isLast
+		FROM resume
+		) b
+	</select>
+
     <select id="orderByRecommend" resultType="site.metacoding.humancloud.domain.resume.Resume">
 select resume.*, result.count from resume
 left join
@@ -55,6 +70,8 @@ order by count desc
 
    <select id="findAll" resultType="site.metacoding.humancloud.domain.resume.Resume">
       SELECT * FROM resume
+      order by resume_created_at
+		limit 3 offset #{startNum}
    </select>
 
    <insert id="save" useGeneratedKeys="true" keyProperty="resumeId">

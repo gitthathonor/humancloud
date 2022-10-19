@@ -17,6 +17,7 @@ import site.metacoding.humancloud.domain.resume.ResumeDao;
 import site.metacoding.humancloud.domain.user.UserDao;
 import site.metacoding.humancloud.web.dto.request.resume.SaveDto;
 import site.metacoding.humancloud.web.dto.request.resume.UpdateDto;
+import site.metacoding.humancloud.web.dto.response.page.PagingDto;
 
 @RequiredArgsConstructor
 @Service
@@ -60,9 +61,17 @@ public class ResumeService {
     }
 
     // 이력서 목록
-    public Map<String, Object> 이력서목록보기() {
+    public Map<String, Object> 이력서목록보기(Integer page) {
+        if (page == null) {
+			page = 0;
+		}
+		int startNum = page * 3;
+		PagingDto paging = resumeDao.paging(page);
+		paging.dopaging();
+
         Map<String, Object> resumeList = new HashMap<>();
-        resumeList.put("resume", resumeDao.findAll());
+        resumeList.put("paging", paging);
+        resumeList.put("resume", resumeDao.findAll(startNum));
         resumeList.put("category", categoryDao.distinctName());
         return resumeList;
     }

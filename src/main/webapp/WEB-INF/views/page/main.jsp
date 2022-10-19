@@ -43,7 +43,7 @@
       <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <p class="card-title">기업 몇개 보여주기 리스트</p>
+            <p class="card-title">최신 공고</p>
             <div class="row">
               <div class="col-12">
                 <div class="table-responsive">

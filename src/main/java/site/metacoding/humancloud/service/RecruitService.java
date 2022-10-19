@@ -16,6 +16,7 @@ import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.web.RecruitController;
 import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
+import site.metacoding.humancloud.web.dto.response.page.PagingDto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,9 +76,17 @@ public class RecruitService {
         return;
     }
 
-    public Map<String, Object> 채용공고목록보기() {
+    public Map<String, Object> 채용공고목록보기(Integer page) {
+        if (page == null) {
+			page = 0;
+		}
+		int startNum = page * 3;
+		PagingDto paging = recruitDao.paging(page);
+		paging.dopaging();
+
         Map<String, Object> recruitList = new HashMap<>();
-        recruitList.put("recruit", recruitDao.joinCompanyRecruit());
+        recruitList.put("paging", paging);
+        recruitList.put("recruit", recruitDao.joinCompanyRecruit(startNum));
         recruitList.put("category", categoryDao.distinctName());
         return recruitList;
     }

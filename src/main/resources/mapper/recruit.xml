@@ -6,6 +6,28 @@
 		select * from recruit
 		inner join company
 		on recruit.recruit_company_id=company.company_id
+		order by recruit.recruit_created_at desc
+	</select>
+
+	<select id="orderByrecommend" resultType="site.metacoding.humancloud.domain.recruit.Recruit">
+select recruit.*, result.count from recruit
+left join
+(select *, count(*) count
+from
+(select c2.* from (select category.*
+from
+(select resume.* from resume inner join user
+on user.user_id=resume.resume_user_id
+where user_id=#{userId}) r
+inner join category
+on r.resume_id=category.category_resume_id
+group by category_name) c1
+join (SELECT * FROM category
+WHERE category_recruit_id is not null) c2
+on c1.category_name=c2.category_name) list
+group by category_recruit_id) result
+on recruit.recruit_id=result.category_recruit_id
+order by count DESC
 	</select>
 
 	<select id="orderByrecommend" resultType="site.metacoding.humancloud.domain.recruit.Recruit">

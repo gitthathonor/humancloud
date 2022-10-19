@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.RecursiveAction;
 
 import site.metacoding.humancloud.web.dto.request.recruit.SaveDto;
+import site.metacoding.humancloud.web.dto.response.page.PagingDto;
 import site.metacoding.humancloud.web.dto.response.recruit.CompanyRecruitDto;
 
 public interface RecruitDao {
@@ -25,7 +26,9 @@ public interface RecruitDao {
 
 	public List<Recruit> findByCompanyId(Integer id);
 
-	public List<CompanyRecruitDto> joinCompanyRecruit();
+	public List<CompanyRecruitDto> joinCompanyRecruit(int startNum);
 
 	public List<Recruit> orderByrecommend(Integer userId);
+
+	public PagingDto paging(Integer page);
 }

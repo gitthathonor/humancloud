@@ -1,6 +1,8 @@
 package site.metacoding.humancloud.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Service;
@@ -12,8 +14,8 @@ import site.metacoding.humancloud.domain.recruit.Recruit;
 import site.metacoding.humancloud.domain.recruit.RecruitDao;
 import site.metacoding.humancloud.domain.subscribe.SubscribeDao;
 import site.metacoding.humancloud.web.dto.request.company.LoginDto;
-import site.metacoding.humancloud.web.dto.request.company.SaveDto;
 import site.metacoding.humancloud.web.dto.request.company.UpdateDto;
+import site.metacoding.humancloud.web.dto.response.page.PagingDto;
 import site.metacoding.humancloud.web.dto.response.user.ResCompanyDto;
 
 @Service
@@ -54,9 +56,19 @@ public class CompanyService {
 	}
 
 	// 기업 리스트 보기
-	public List<Company> getCompanyList() {
-		return companyDao.findAll();
+	public Map<String, Object> getCompanyList(Integer page) {
+		if (page == null) {
+			page = 0;
+		}
+		int startNum = page * 3;
+		PagingDto paging = companyDao.paging(page);
+		paging.dopaging();
 
+
+		Map<String, Object> result = new HashMap<>();
+        result.put("paging", paging);
+        result.put("list", companyDao.findAll(startNum));
+		return result;
 	}
 
 	// 기업정보 수정

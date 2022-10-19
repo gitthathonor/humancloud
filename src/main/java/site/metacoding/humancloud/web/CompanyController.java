@@ -6,15 +6,19 @@ import java.nio.file.Files;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.service.CompanyService;
+import site.metacoding.humancloud.service.RecruitService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
 import site.metacoding.humancloud.web.dto.request.company.LoginDto;
 import site.metacoding.humancloud.web.dto.request.company.SaveDto;
@@ -32,7 +36,7 @@ public class CompanyController {
 
 	// main
 	@GetMapping("/")
-	public String main() {
+	public String main(Model model) {
 		return "page/main";
 	}
 
@@ -89,9 +93,8 @@ public class CompanyController {
 
 	// 기업 리스트 보기
 	@GetMapping("/company")
-	public String getCompanyList(Model model) {
-		List<Company> companyList = companyService.getCompanyList();
-		model.addAttribute("companyList", companyList);
+	public String getCompanyList(Model model, @Param("page") Integer page) {
+		model.addAttribute("companyList", companyService.getCompanyList(page));
 		return "page/company/companyList";
 	}
 
