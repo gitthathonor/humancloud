@@ -15,7 +15,7 @@
                                     </div>
                                     <c:choose>
                                         <c:when
-                                            test="${!empty sessionScope.principal.userId || empty sessionScope.companyPrincipal.companyId}">
+                                            test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
                                             <div class="col border-right">
                                                 <div class="display-2">${resume.readCount}</div>
                                                 <div>이력서 열람</div>
@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <c:if
-                                    test="${!empty sessionScope.principal.userId || empty sessionScope.companyPrincipal.companyId}">
+                                    test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
                                     <div class="my-5">
                                         <h4 class="m-3 text-primary">이력서</h4>
                                         <div class="row d-flex justify-content-center">
@@ -53,7 +53,7 @@
                                                     </div>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <c:forEach var="r" items="${resume.resume}">
+                                                    <c:forEach var="r" items="${resume.resume}" begin="0" end="2">
                                                         <div class="m-3 p-3 col-2 border rounded"
                                                             onchange='viewResume("${r.resumeId}")'>
                                                             <a href="/resume/detail/${r.resumeId}/${r.resumeUserId}">
@@ -78,12 +78,12 @@
                                 </c:if>
 
                                 <c:if
-                                    test="${!empty sessionScope.companyPrincipal.companyId || empty sessionScope.principal.userId}">
+                                    test="${!empty sessionScope.companyPrincipal.companyId && empty sessionScope.principal.userId}">
                                     <div class="my-5">
                                         <h4 class="m-3 text-primary">채용공고</h4>
                                         <div class="row d-flex justify-content-center">
                                             <c:choose>
-                                                <c:when test="${empty resume.resume}">
+                                                <c:when test="${empty recruitList}">
                                                     <div class="m-3 p-3 col-2 border rounded"
                                                         onchange='viewResume("${r.resumeId}")'>
                                                         <a
@@ -94,11 +94,11 @@
                                                     </div>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <c:forEach var="recruit" items="${recruitList}">
+                                                    <c:forEach var="recruit" items="${recruitList}" begin="0" end="2">
                                                         <div class="m-3 p-3 col-2 border rounded"
                                                             onchange='viewRecruit("${recruit.recruitId}")'>
                                                             <a
-                                                                href="recruit/detail/${recruit.recruitId}/${recruit.recruitCompanyId}">
+                                                                href="/recruit/detail/${recruit.recruitId}/${sessionScope.companyPrincipal.companyId}">
                                                                 <h3 class="m-1 text-primary text-center">
                                                                     ${recruit.recruitTitle}</h3>
                                                             </a>
@@ -120,20 +120,22 @@
                                     </div>
                                 </c:if>
                                 <c:if
-                                    test="${!empty sessionScope.principal.userId || empty sessionScope.companyPrincipal.companyId}">
+                                    test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
                                     <div class="my-5">
                                         <h4 class="m-3 text-primary">추천</h4>
                                         <div class="row d-flex justify-content-center">
                                             <c:forEach var="company" items="${companyList}" begin="0" end="2">
                                                 <div class="m-3 p-3 col-2 border rounded">
                                                     <div class="card row">
-                                                        <div class="card-people"
+                                                        <div class="card-people d-flex justify-content-center"
                                                             style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
                                                             <img src="/img/${company.logo}"
                                                                 style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; width: 110px; height: 30px;">
                                                         </div>
                                                         <p>
-                                                            <i class="fa-regular fa-heart"></i><span>좋아요 수 :
+                                                            <i class="fa-solid fa-heart"
+                                                                style="color:red;"></i><span>좋아요
+                                                                수 :
                                                                 ${company.likes}</span>
                                                         </p>
                                                     </div>
