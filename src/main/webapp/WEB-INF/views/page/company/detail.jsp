@@ -3,7 +3,7 @@
 
 		<input id="id" type="hidden" value="${company.companyId}">
 		<input id="address" type="hidden" value="${company.companyAddress}">
-		<input id="subcribeCheck" type="hidden" value="${isSubcribe}">
+		<input id="isSub" type="hidden" value="${isSub}">
 		<div>
 			<div class="row">
 				<div class="col-sm-12">
@@ -100,19 +100,17 @@
 
 		<script>
 			
-
-			window.onload = function(){
-				let subcribeCheck = $("#subcribeCheck").val();
-				if(subcribeCheck ==true){
+			$(document).ready(function(){
+				let isSub = $("#isSub").val();
+				console.log(isSub);
+				if(isSub =="true"){
 					$("#iconHeart").removeClass("fa-regular");
 					$("#iconHeart").addClass("fa-solid");
 				}else{
 					$("#iconHeart").removeClass("fa-solid");
 					$("#iconHeart").addClass("fa-regular");
 				}
-			}
-
-
+			})
 			function subscribeCompany(userId) {
 
 				let subscribeCompanyId = $("#id").val();

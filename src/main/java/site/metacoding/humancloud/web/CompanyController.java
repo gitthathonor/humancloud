@@ -35,6 +35,7 @@ import javax.servlet.http.HttpSession;
 public class CompanyController {
 
 	private final CompanyService companyService;
+	private final SubscribeService subscribeService;
 	private final HttpSession session;
 
 	// 기업 회원가입 페이지
@@ -84,9 +85,9 @@ public class CompanyController {
 	// 기업 정보 상세보기
 	@GetMapping("/company/{id}")
 	public String getCompanyDetail(@PathVariable Integer id, Model model) {
-
 		User userSession = (User) session.getAttribute("principal");
 		model.addAttribute("company", companyService.getCompanyDetail(id));
+		model.addAttribute("isSub", subscribeService.구독확인(userSession.getUserId(), id));
 		return "page/company/detail";
 	}
 
