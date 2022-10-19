@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import site.metacoding.humancloud.web.dto.request.user.JoinDto;
+import site.metacoding.humancloud.web.dto.response.user.CompanyRankingDto;
 
 public interface UserDao {
 	public int save(JoinDto joinDto);
@@ -18,6 +19,9 @@ public interface UserDao {
 	public int deleteById(Integer userId);
 
 	public User findByUsername(String username);
+
 	public User findAllUsername(String username);
+
+	public List<CompanyRankingDto> findByRank();
 
 }

@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Username">
+                                <input type="text" class="form-control" id="name" placeholder="Username" maxlength="10">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email address</label>
@@ -41,7 +41,7 @@
                             </div>
 
 
-                            <button id="join" type="submit" class="btn btn-primary mr-2">Submit</button>
+                            <button id="join" type="button" class="btn btn-primary mr-2">회원가입</button>
                             <button class="btn btn-light">Cancel</button>
                         </form>
                     </div>
@@ -51,10 +51,12 @@
         <script>
             let isUsernameSameCheck = false;
             let checkPassword = false;
+            let checkEmail = false;
 
             $("#join").click(() => {
                 checkSamePassword();
-                if (isUsernameSameCheck == true && checkPassword == true) {
+                checkEmailExp();
+                if (isUsernameSameCheck == true && checkPassword == true && checkEmail == true) {
                     insert();
                 } else {
                     alert("아이디체크");
@@ -69,6 +71,21 @@
                     alert("비밀번호가 일치하지 않습니다");
                 } else {
                     checkPassword = true;
+                }
+            }
+
+            // 이메일 정규표현식 검증
+            function checkEmailExp() {
+                let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+
+                let email = $("#email").val();
+
+                console.log(regex.test(email));
+
+                if (regex.test(email) == true) {
+                    checkEmail = true;
+                } else {
+                    alert("이메일 형식이 잘못되었습니다.");
                 }
             }
 

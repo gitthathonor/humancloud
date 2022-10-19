@@ -10,12 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.company.Company;
+import site.metacoding.humancloud.domain.company.CompanyDao;
 import site.metacoding.humancloud.domain.resume.Resume;
 import site.metacoding.humancloud.domain.resume.ResumeDao;
 import site.metacoding.humancloud.domain.subscribe.SubscribeDao;
 import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.domain.user.UserDao;
 import site.metacoding.humancloud.web.dto.request.user.LoginDto;
+import site.metacoding.humancloud.web.dto.response.user.CompanyRankingDto;
 import site.metacoding.humancloud.web.dto.request.user.JoinDto;
 
 import javax.servlet.http.HttpSession;
@@ -27,7 +29,7 @@ public class UserService {
     private final ResumeDao resumeDao;
     private final SubscribeDao subscribeDao;
 
-    public List<Company> 구독기업보기(Integer userId){
+    public List<Company> 구독기업보기(Integer userId) {
         return subscribeDao.findCompanyByUserId(userId);
     }
 
@@ -116,6 +118,12 @@ public class UserService {
 
     }
 
+    public List<CompanyRankingDto> 추천기업목록보기() {
+        for (CompanyRankingDto c : userDao.findByRank()) {
+            System.out.println(c.getName());
+        }
+        return userDao.findByRank();
+    }
     // public List<String> 관심분야목록(Integer userId){
     // List<Category> categoryPS = categoryDao.findByUserId(userId);
     // List<String> categoryName = new ArrayList<>();
