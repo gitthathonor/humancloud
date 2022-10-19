@@ -77,6 +77,7 @@ public class RecruitService {
         return;
     }
 
+<<<<<<< HEAD
     public List<CompanyRecruitDto> 메인공고목록보기(){
         List<CompanyRecruitDto> recruitPS = recruitDao.joinCompanyRecruit(0);
         List<CompanyRecruitDto> result = new ArrayList<>();
@@ -88,6 +89,19 @@ public class RecruitService {
         }
 
         for(int i = 0; i<endFor; i++){
+=======
+    public List<CompanyRecruitDto> 메인공고목록보기() {
+        List<CompanyRecruitDto> recruitPS = recruitDao.joinCompanyRecruit(0);
+        List<CompanyRecruitDto> result = new ArrayList<>();
+        int endFor;
+        if (recruitPS.size() < 5) {
+            endFor = recruitPS.size();
+        } else {
+            endFor = 6;
+        }
+
+        for (int i = 0; i < endFor; i++) {
+>>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
             result.add(recruitPS.get(i));
         }
 
@@ -96,11 +110,19 @@ public class RecruitService {
 
     public Map<String, Object> 채용공고목록보기(Integer page) {
         if (page == null) {
+<<<<<<< HEAD
 			page = 0;
 		}
 		int startNum = page * 20;
 		PagingDto paging = recruitDao.paging(page);
 		paging.dopaging();
+=======
+            page = 0;
+        }
+        int startNum = page * 20;
+        PagingDto paging = recruitDao.paging(page);
+        paging.dopaging();
+>>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
 
         Map<String, Object> recruitList = new HashMap<>();
         recruitList.put("paging", paging);
@@ -154,10 +176,14 @@ public class RecruitService {
         return recruitDao.orderByrecommend(userId);
     }
 
+    @Transactional
     public Integer 공고삭제하기(Integer recruitId) {
         Recruit recruitPS = recruitDao.findById(recruitId);
         if (recruitPS != null) {
+            // 기존의 카테고리 없애고
+            categoryDao.deleteByRecruitId(recruitId);
             recruitDao.deleteById(recruitId);
+
             return 1;
         }
         return 0;
