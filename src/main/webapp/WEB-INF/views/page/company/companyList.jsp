@@ -23,7 +23,7 @@
 			</div>
 
 			<div id="recruitCard" class="">
-				<c:forEach var="company" items="${companyList}">
+				<c:forEach var="company" items="${companyList.list}">
 					<div class="card mb-3 mt-3">
 						<div class="card-body row">
 							<div class="col-10 px-5">
@@ -47,7 +47,7 @@
 	<ul class="pagination">
 		<li class='page-item'><a class="page-link text-black"
 			href="/?page=${companyList.paging.currentPage -1}">previous</a></li>
-			 <c:forEach var="num" begin="${companyList.paging..startPageNum}" end="${companyList.paging..lastPageNum}" step="1">
+			 <c:forEach var="num" begin="${companyList.paging.startPageNum}" end="${companyList.paging.lastPageNum}" step="1">
             <a class="page-link text-black" href='?page=${num-1}'>${num}</a>
          </c:forEach>
 			<li class='page-item'><a class="page-link text-black"
