@@ -35,4 +35,6 @@ public interface ResumeDao {
 
 	public void updateReadCount(Integer resumeId);
 
+	public List<Resume> applyResumeList(Integer companyId);
+
 }

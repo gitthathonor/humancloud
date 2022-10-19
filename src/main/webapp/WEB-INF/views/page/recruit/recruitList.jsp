@@ -10,7 +10,7 @@
                     </c:forEach>
                 </div>
                 <div class="dropdown">
-                    <select id="btnOrder" onchange="orderDo(this.value, ${sessionScope.principal.userId})"
+                    <select id="btnOrder" onchange="orderDo(this.value, '${sessionScope.principal.userId}')"
                         class="form-select dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <option selected>정렬</option>

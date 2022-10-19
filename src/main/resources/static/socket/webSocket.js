@@ -69,4 +69,4 @@ function sendRecruitAlarm(){
     stomp.send("/pub/createRecruit", {}, JSON.stringify(data));
 }
 
-//recruit saveform-----------------------------------
+//recruit saveform----------------------------------------------------------------
