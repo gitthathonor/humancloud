@@ -91,9 +91,12 @@ public class CompanyController {
 		System.out.println("-------------------------------");
 
 		User userSession = (User) session.getAttribute("principal");
-
-		model.addAttribute("company", companyService.getCompanyDetail(id));
-		model.addAttribute("isSub", subscribeService.구독확인(userSession.getUserId(), id));
+		if (userSession == null) {
+			model.addAttribute("company", companyService.getCompanyDetail(id));
+		} else {
+			model.addAttribute("company", companyService.getCompanyDetail(id));
+			model.addAttribute("isSub", subscribeService.구독확인(userSession.getUserId(), id));
+		}
 		return "page/company/detail";
 	}
 
@@ -164,8 +167,8 @@ public class CompanyController {
 	@GetMapping("/company/mypage")
 	public String viewMypage(@RequestParam Integer id, Model model) {
 		Integer countApply = companyService.지원목록보기(id).size();
-		if(companyService.지원목록보기(id)==null){
-			countApply=0;
+		if (companyService.지원목록보기(id) == null) {
+			countApply = 0;
 		}
 
 		model.addAttribute("countApply", countApply);
@@ -175,7 +178,7 @@ public class CompanyController {
 	}
 
 	@GetMapping("/company/{companyId}/applyList")
-	public String applyList(@PathVariable Integer companyId, Model model){
+	public String applyList(@PathVariable Integer companyId, Model model) {
 		model.addAttribute("apply", companyService.지원목록보기(companyId));
 		return "page/company/applyList";
 	}
