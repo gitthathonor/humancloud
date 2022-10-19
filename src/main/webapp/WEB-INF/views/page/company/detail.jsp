@@ -3,6 +3,7 @@
 
 		<input id="id" type="hidden" value="${company.companyId}">
 		<input id="address" type="hidden" value="${company.companyAddress}">
+		<input id="isSub" type="hidden" value="${isSub}">
 		<div>
 			<div class="row">
 				<div class="col-sm-12">
@@ -14,7 +15,7 @@
 									<div></div>
 									<button class="btn btn-primary"
 										onclick='subscribeCompany("${sessionScope.principal.userId}"), sendData()'>
-										<i class="fa-regular fa-heart"></i> <span>관심기업등록</span>
+										<i id="iconHeart" class="fa-regular fa-heart"></i> <span>관심기업등록</span>
 									</button>
 								</div>
 								<div style="margin: 20px 0 0 0;"></div>
@@ -56,7 +57,7 @@
 					<div class="card border py-3 ">
 						<h3 class="mt-3 ml-2">커뮤니티</h3>
 						<hr class="border-primary" />
-						<p class="mt-3 ml-2">궁금했던 직무와 기업 현직자에게 물어볼래요?</p>
+						<p class="mt-3 ml-2 px-3">궁금했던 직무와 기업 현직자에게 물어볼래요?</p>
 					</div>
 					<!-- card border border-primary center-block -->
 				</div>
@@ -65,7 +66,7 @@
 					<div class="card border py-3">
 						<h3 class="mt-3 ml-2">면접경험</h3>
 						<hr class="border-primary" />
-						<p class="mt-3 ml-2">2019년 하반기 신입...</p>
+						<p class="mt-3 ml-2 px-3">2019년 하반기 신입...</p>
 					</div>
 					<!-- card border border-primary center-block -->
 				</div>
@@ -74,7 +75,7 @@
 					<div class="card border py-3">
 						<h3 class="mt-3 ml-2">기업리뷰</h3>
 						<hr class="border-primary" />
-						<p class="mt-3 ml-2">전·현직자가 직접 등록한 기업리뷰! 근무 환경이 어떤지 확인해보세요</p>
+						<p class="mt-3 ml-2 px-3">전·현직자가 직접 등록한 기업리뷰! 근무 환경이 어떤지 확인해보세요</p>
 					</div>
 					<!-- card border border-primary center-block -->
 				</div>
@@ -98,6 +99,18 @@
 		<script src="/socket/webSocket.js"></script>
 
 		<script>
+			
+			$(document).ready(function(){
+				let isSub = $("#isSub").val();
+				console.log(isSub);
+				if(isSub =="true"){
+					$("#iconHeart").removeClass("fa-regular");
+					$("#iconHeart").addClass("fa-solid");
+				}else{
+					$("#iconHeart").removeClass("fa-solid");
+					$("#iconHeart").addClass("fa-regular");
+				}
+			})
 			function subscribeCompany(userId) {
 
 				let subscribeCompanyId = $("#id").val();

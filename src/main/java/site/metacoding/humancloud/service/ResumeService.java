@@ -117,4 +117,7 @@ public class ResumeService {
         return resumeDao.orderByRecommend(companyId);
     }
 
+    public void 열람횟수증가(Integer resumeId){
+        resumeDao.updateReadCount(resumeId);
+    }
 }

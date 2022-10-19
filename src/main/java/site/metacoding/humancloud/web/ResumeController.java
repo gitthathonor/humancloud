@@ -104,9 +104,13 @@ public class ResumeController {
   @GetMapping("resume/detail/{resumeId}/{userId}")
   public String detailResume(@PathVariable("resumeId") Integer resumeId, @PathVariable("userId") Integer userId,
       Model model) {
+
+        resumeService.열람횟수증가(resumeId);
+
     model.addAttribute("resume", resumeService.이력서상세보기(resumeId, userId).get("resume"));
     model.addAttribute("category", resumeService.이력서상세보기(resumeId, userId).get("category"));
     model.addAttribute("user", resumeService.이력서상세보기(resumeId, userId).get("user"));
+
     return "page/resume/detail";
   }
 

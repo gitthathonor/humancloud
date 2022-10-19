@@ -20,6 +20,7 @@
 		select * from recruit
 		inner join company
 		on recruit.recruit_company_id=company.company_id
+		order by recruit.recruit_created_at desc
 		limit 20 offset #{startNum}
 	</select>
 
