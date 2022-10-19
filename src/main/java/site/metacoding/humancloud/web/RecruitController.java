@@ -1,5 +1,6 @@
 package site.metacoding.humancloud.web;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -68,8 +69,8 @@ public class RecruitController {
   }
 
   @GetMapping("/recruit/list")
-  public String viewList(Model model) {
-    model.addAttribute("recruits", recruitService.채용공고목록보기());
+  public String viewList(Model model, @Param("page") Integer page) {
+    model.addAttribute("recruits", recruitService.채용공고목록보기(page));
     return "page/recruit/recruitList";
   }
 

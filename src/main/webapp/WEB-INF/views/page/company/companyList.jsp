@@ -23,7 +23,7 @@
 
 
 <!-- 기업 리스트 출력(추천순,업력순, )  -->
-<c:forEach var="company" items="${companyList}">
+<c:forEach var="company" items="${companyList.list}">
 <div class="row d-flex justify-content-center">
 	<div class="col-md-9 grid-margin stretch-card" style="margin: 0 0 10px 0">
 		<div class="card position-relative" style="border: 1px solid;">
@@ -52,6 +52,17 @@
 	</div>
 </div>
 </c:forEach>
+<div class="d-flex justify-content-center">
+	<ul class="pagination">
+		<li class='page-item'><a class="page-link text-black"
+			href="/?page=${companyList.paging.currentPage -1}">previous</a></li>
+			 <c:forEach var="num" begin="${companyList.paging..startPageNum}" end="${companyList.paging..lastPageNum}" step="1">
+            <a class="page-link text-black" href='?page=${num-1}'>${num}</a>
+         </c:forEach>
+			<li class='page-item'><a class="page-link text-black"
+			href="/?page=${companyList.paging.currentPage+1}">Next</a></li>
+	</ul>
+</div>
 
 
 <%@ include file="../../layout/footer.jsp"%>

@@ -4,13 +4,14 @@ import java.util.List;
 
 import site.metacoding.humancloud.web.dto.request.resume.SaveDto;
 import site.metacoding.humancloud.web.dto.request.resume.UpdateDto;
+import site.metacoding.humancloud.web.dto.response.page.PagingDto;
 
 public interface ResumeDao {
 	public void save(SaveDto saveDto);
 
 	public Resume findById(Integer id);
 
-	public List<Resume> findAll();
+	public List<Resume> findAll(int startNum);
 
 	public void update(UpdateDto updateDto);
 
@@ -29,5 +30,7 @@ public interface ResumeDao {
 	public List<Resume> orderByCreatedAt();
 
 	public List<Resume> orderByRecommend(Integer companyId);
+
+	public PagingDto paging(Integer page);
 
 }
