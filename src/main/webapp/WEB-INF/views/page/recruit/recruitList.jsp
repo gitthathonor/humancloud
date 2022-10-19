@@ -1,17 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ include file="../../layout/header.jsp" %>
-
-        <c:choose>
-            <c:when test="${!empty sessionScope.companyPrincipal}">
-                <div class="d-flex">
-                    <div class="col-10 "></div>
-                    <div class="">
-                        <button id="btnGoSave" type="button" class="btn btn-outline-primary btn-icon-text">공고
-                            작성하기</button>
-                    </div>
-                </div>
-            </c:when>
-        </c:choose>
         <div class=" m-3">
             <div class="d-flex justify-content-between">
                 <div class="btn-group">
