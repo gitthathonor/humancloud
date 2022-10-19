@@ -32,7 +32,7 @@
 							<div class="form-group">
 								<label for="companyName">Name</label>
 								<input type="text" class="form-control" id="companyName" placeholder="companyName"
-									name="companyName">
+									name="companyName" maxlength="20">
 							</div>
 							<div class="form-group">
 								<label for="companyEmail">Email</label>
@@ -125,7 +125,7 @@
 
 			// 이메일 정규표현식 검증
 			function checkEmailExp() {
-				let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])\.([a-z]{2,6}(?:\.[a-z]{2})?)$/");
+				let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
 
 				let companyEmail = $("#companyEmail").val();
 

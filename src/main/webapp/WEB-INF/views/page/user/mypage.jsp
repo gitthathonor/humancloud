@@ -13,10 +13,21 @@
                                         <div class="display-2">0</div>
                                         <div>지원 완료</div>
                                     </div>
-                                    <div class="col border-right">
-                                        <div class="display-2">${resume.readCount}</div>
-                                        <div>이력서 열람</div>
-                                    </div>
+                                    <c:choose>
+                                        <c:when
+                                            test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
+                                            <div class="col border-right">
+                                                <div class="display-2">${resume.readCount}</div>
+                                                <div>이력서 열람</div>
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="col border-right">
+                                                <div class="display-2">0</div>
+                                                <div>이력서 열람</div>
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
                                     <div class="col border-right">
                                         <div class="display-2">0</div>
                                         <div>최종합격</div>
@@ -27,7 +38,7 @@
                                     </div>
                                 </div>
                                 <c:if
-                                    test="${!empty sessionScope.principal.userId || empty sessionScope.companyPrincipal.companyId}">
+                                    test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
                                     <div class="my-5">
                                         <h4 class="m-3 text-primary">이력서</h4>
                                         <div class="row d-flex justify-content-center">
@@ -36,12 +47,13 @@
                                                     <div class="m-3 p-3 col-2 border rounded"
                                                         onchange='viewResume("${r.resumeId}")'>
                                                         <a href="/resume/saveForm/${sessionScope.principal.userId}">
-                                                            <h1 style="text-align:center; " class="text-primary">+</h1>
+                                                            <h1 style="text-align:center; " class="text-primary">+
+                                                            </h1>
                                                         </a>
                                                     </div>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <c:forEach var="r" items="${resume.resume}">
+                                                    <c:forEach var="r" items="${resume.resume}" begin="0" end="2">
                                                         <div class="m-3 p-3 col-2 border rounded"
                                                             onchange='viewResume("${r.resumeId}")'>
                                                             <a href="/resume/detail/${r.resumeId}/${r.resumeUserId}">
@@ -55,7 +67,8 @@
                                                     <div class="m-3 p-3 col-2 border rounded"
                                                         onchange='viewResume("${r.resumeId}")'>
                                                         <a href="/resume/saveForm/${sessionScope.principal.userId}">
-                                                            <h1 style="text-align:center;" class="text-primary">+</h1>
+                                                            <h1 style="text-align:center;" class="text-primary">+
+                                                            </h1>
                                                         </a>
                                                     </div>
                                                 </c:otherwise>
@@ -65,37 +78,40 @@
                                 </c:if>
 
                                 <c:if
-                                    test="${!empty sessionScope.companyPrincipal.companyId || empty sessionScope.principal.userId}">
+                                    test="${!empty sessionScope.companyPrincipal.companyId && empty sessionScope.principal.userId}">
                                     <div class="my-5">
                                         <h4 class="m-3 text-primary">채용공고</h4>
                                         <div class="row d-flex justify-content-center">
                                             <c:choose>
-                                                <c:when test="${empty resume.resume}">
+                                                <c:when test="${empty recruitList}">
                                                     <div class="m-3 p-3 col-2 border rounded"
                                                         onchange='viewResume("${r.resumeId}")'>
                                                         <a
                                                             href="/recruit/saveForm/${sessionScope.companyPrincipal.companyId}">
-                                                            <h1 style="text-align:center; " class="text-primary">+</h1>
+                                                            <h1 style="text-align:center; " class="text-primary">+
+                                                            </h1>
                                                         </a>
                                                     </div>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <c:forEach var="r" items="${resume.resume}">
+                                                    <c:forEach var="recruit" items="${recruitList}" begin="0" end="2">
                                                         <div class="m-3 p-3 col-2 border rounded"
-                                                            onchange='viewResume("${r.resumeId}")'>
-                                                            <a href="/resume/detail/${r.resumeId}/${r.resumeUserId}">
+                                                            onchange='viewRecruit("${recruit.recruitId}")'>
+                                                            <a
+                                                                href="/recruit/detail/${recruit.recruitId}/${sessionScope.companyPrincipal.companyId}">
                                                                 <h3 class="m-1 text-primary text-center">
-                                                                    ${r.resumeTitle}</h3>
+                                                                    ${recruit.recruitTitle}</h3>
                                                             </a>
-                                                            <div class="text-center">${r.resumeReadCount}</div>
-                                                            <div class="text-center">${r.resumeCreatedAt}</div>
+                                                            <div class="text-center">${recruit.recruitReadCount}</div>
+                                                            <div class="text-center">${recruit.recruitCreatedAt}</div>
                                                         </div>
                                                     </c:forEach>
                                                     <div class="m-3 p-3 col-2 border rounded"
                                                         onchange='viewResume("${r.resumeId}")'>
                                                         <a
                                                             href="/recruit/saveForm/${sessionScope.companyPrincipal.companyId}">
-                                                            <h1 style="text-align:center;" class="text-primary">+</h1>
+                                                            <h1 style="text-align:center;" class="text-primary">+
+                                                            </h1>
                                                         </a>
                                                     </div>
                                                 </c:otherwise>
@@ -103,22 +119,51 @@
                                         </div>
                                     </div>
                                 </c:if>
-
-                                <div class="my-5">
-                                    <h4 class="m-3 text-primary">추천</h4>
-                                    <div class="row d-flex justify-content-center">
-                                        <div class="m-3 p-3 col-2 border">기업</div>
-                                        <div class="m-3 p-3 col-2 border">기업</div>
-                                        <div class="m-3 p-3 col-2 border">기업</div>
-                                        <div class="m-3 p-3 col-2 border">기업</div>
+                                <c:if
+                                    test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
+                                    <div class="my-5">
+                                        <h4 class="m-3 text-primary">추천</h4>
+                                        <div class="row d-flex justify-content-center">
+                                            <c:forEach var="company" items="${companyList}" begin="0" end="2">
+                                                <div class="m-3 p-3 col-2 border rounded">
+                                                    <div class="card row">
+                                                        <div class="card-people d-flex justify-content-center"
+                                                            style="padding: 0 0 0 0; margin: 0 0.1px 0 0.1px;">
+                                                            <img src="/img/${company.logo}"
+                                                                style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; width: 110px; height: 30px;">
+                                                        </div>
+                                                        <p>
+                                                            <i class="fa-solid fa-heart"
+                                                                style="color:red;"></i><span>좋아요
+                                                                수 :
+                                                                ${company.likes}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </c:forEach>
+                                        </div>
                                     </div>
-                                </div>
+                                </c:if>
                             </div>
                         </div>
                     </div>
 
                     <script>
                         function viewResume(id) {
+                            $.ajax({
+                                type: "GET",
+                                // url: 여기다가 이력서 상세보기 연결 (매개변수 id 있음),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                            }).done((res) => {
+                                location.href = "#";
+                            }).fail(function (error) {
+                                console.log(error);
+                                alert("오류");
+                            });
+                        }
+
+                        function viewRecruit(id) {
                             $.ajax({
                                 type: "GET",
                                 // url: 여기다가 이력서 상세보기 연결 (매개변수 id 있음),

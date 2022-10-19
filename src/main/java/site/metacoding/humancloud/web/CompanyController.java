@@ -158,6 +158,7 @@ public class CompanyController {
 	@GetMapping("/company/mypage")
 	public String viewMypage(@RequestParam Integer id, Model model) {
 		model.addAttribute("company", companyService.getCompanyDetail(id));
+		model.addAttribute("recruitList", companyService.채용공고리스트불러오기(id));
 		return "page/user/mypage";
 	}
 
