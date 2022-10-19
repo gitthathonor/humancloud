@@ -8,9 +8,11 @@
 						<div class="card-body row">
 							<div class="col-10 row ">
 								<img class="col-2" src="/img/${company.companyLogo}"
-									style="width: 100px; height:100px; " alt="${company.companyName}">
-								<p class="col-2 text-primary display-4 py-4 font-weight-bold">${company.companyName}</p>
-								<p class=" col-2 m-5"><span class=" text-primary">현재 채용중</span></p>
+									style="width: 100px; height:40px; margin: auto 0;" alt="${company.companyName}">
+								<p class="col-3 text-primary display-4 py-4 font-weight-bold" style="margin: auto 0;">
+									${company.companyName}</p>
+								<p class=" col-2 m-5"><span class=" text-primary" style="margin: auto 0;">현재 채용중</span>
+								</p>
 							</div>
 							<div class="col-2 d-flex flex-wrap align-content-center">
 								<a href="/company/${company.companyId}">
