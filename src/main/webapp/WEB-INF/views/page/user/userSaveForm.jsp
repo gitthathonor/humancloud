@@ -16,7 +16,7 @@
                             <div class="form-group row">
                                 <div class="col-9"><input type="text" class="form-control" id="username"
                                         placeholder="Username"></div>
-                                <div class="col-3"><button onclick="checkUsername()" class="btn btn-light"
+                                <div class="col-3"><button onclick="checkUsername()" class="btn btn-outline-primary"
                                         type="button">중복확인</button></div>
                             </div>
                             <div class="form-group">

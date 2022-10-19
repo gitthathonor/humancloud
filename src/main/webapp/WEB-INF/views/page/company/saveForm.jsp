@@ -17,7 +17,7 @@
 								<div class="col-9"><input type="text" class="form-control" id="companyUsername"
 										placeholder="companyUsername" name="companyUsername"></div>
 								<div class="col-3"><button id="btnCheckSameUsername" type="button"
-										class="btn btn-light">중복확인</button></div>
+										class="btn btn-outline-primary">중복확인</button></div>
 							</div>
 							<div class="form-group">
 								<label for="companyPassword">Password</label>
@@ -48,7 +48,7 @@
 								<label for="companyAddress">Address</label>
 								<input type="text" class="form-control" id="companyAddress" placeholder="companyAddress"
 									name="companyAddress">
-								<button type="button" class="btn btn-primary mr-2"
+								<button type="button" class="btn btn-outline-primary mr-2 my-2"
 									onclick="sample6_execDaumPostcode()">주소입력</button>
 							</div>
 							<div class="form-group">

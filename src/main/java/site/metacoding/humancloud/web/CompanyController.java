@@ -17,8 +17,10 @@ import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.humancloud.domain.company.Company;
+import site.metacoding.humancloud.domain.user.User;
 import site.metacoding.humancloud.service.CompanyService;
 import site.metacoding.humancloud.service.RecruitService;
+import site.metacoding.humancloud.service.SubscribeService;
 import site.metacoding.humancloud.web.dto.CMRespDto;
 import site.metacoding.humancloud.web.dto.request.company.LoginDto;
 import site.metacoding.humancloud.web.dto.request.company.SaveDto;
@@ -33,12 +35,7 @@ import javax.servlet.http.HttpSession;
 public class CompanyController {
 
 	private final CompanyService companyService;
-
-	// main
-	@GetMapping("/")
-	public String main(Model model) {
-		return "page/main";
-	}
+	private final HttpSession session;
 
 	// 기업 회원가입 페이지
 	@GetMapping("/company/saveForm")
@@ -87,6 +84,8 @@ public class CompanyController {
 	// 기업 정보 상세보기
 	@GetMapping("/company/{id}")
 	public String getCompanyDetail(@PathVariable Integer id, Model model) {
+
+		User userSession = (User) session.getAttribute("principal");
 		model.addAttribute("company", companyService.getCompanyDetail(id));
 		return "page/company/detail";
 	}

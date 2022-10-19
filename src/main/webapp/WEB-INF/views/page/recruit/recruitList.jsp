@@ -45,9 +45,18 @@
                             <p class=""><span class=" text-primary"> 공고 일 : </span>${recruit.recruitStartDay}</p>
                         </div>
                         <div class="col-2 d-flex flex-wrap align-content-center">
-                            <a href="/recruit/detail/${recruit.recruitId}/${sessionScope.principal.userId}">
-                                <button type="button" class="btn btn-outline-primary    ">상세보기</button>
+                            <c:choose>
+                            <c:when test="${empty sessionScope.principal.userId}">
+                            <a href="/recruit/detail/${recruit.recruitId}/0">
+                                <button type="button" class="btn btn-outline-primary">상세보기</button>
                             </a>
+                            </c:when>
+                            <c:otherwise>
+                            <a href="/recruit/detail/${recruit.recruitId}/${sessionScope.principal.userId}">
+                                <button type="button" class="btn btn-outline-primary">상세보기</button>
+                            </a>
+                            </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                 </div>
@@ -96,6 +105,7 @@
             }
 
             function orderDo(listOption, userId) {
+                let checkUser = userId;
                 let data = {
                     userId: userId,
                 };
@@ -118,7 +128,12 @@
             }
 
 
-            function makeList(x) {
+            function makeList(x, checkUser) {
+                let pathDetail = checkUser;
+                if(checkUser==null){
+                    pathDetail=0;
+                }
+
                 let item = ``;
                 for (let list of x) {
                     item += `<div class="card mb-3 mt-3"> <div class="card-body row"> <div class="col-10 px-5">`;
@@ -128,9 +143,9 @@
                     item += `<p class=""><span class="text-primary"> 근무지 : </span>` + list.recruitLocation + `</p>`;
                     item += `<p class=""><span class=" text-primary"> 공고 일 : </span>` + list.recruitStartDay + `</p></div>`;
                     item += `<div class="col-2 d-flex flex-wrap align-content-center">`;
-                    item += `<a href="/recruit/detail/` + list.recruitId + `/` + ${ sessionScope.principal.userId } +`">`
-                    item += ` <button type="button" class="btn btn-outline-primary ">상세보기</button>`
-                    item += `</a></div></div></div>`
+                    item += `<a href="/recruit/detail/` + list.recruitId + `/` + pathDetail +`">`;
+                    item += ` <button type="button" class="btn btn-outline-primary ">상세보기</button>`;
+                    item += `</a></div></div></div>`;
                 }
                 return item;
             }

@@ -3,6 +3,7 @@
 
 		<input id="id" type="hidden" value="${company.companyId}">
 		<input id="address" type="hidden" value="${company.companyAddress}">
+		<input id="subcribeCheck" type="hidden" value="${isSubcribe}">
 		<div>
 			<div class="row">
 				<div class="col-sm-12">
@@ -14,7 +15,7 @@
 									<div></div>
 									<button class="btn btn-primary"
 										onclick='subscribeCompany("${sessionScope.principal.userId}"), sendData()'>
-										<i class="fa-regular fa-heart"></i> <span>관심기업등록</span>
+										<i id="iconHeart" class="fa-regular fa-heart"></i> <span>관심기업등록</span>
 									</button>
 								</div>
 								<div style="margin: 20px 0 0 0;"></div>
@@ -98,6 +99,20 @@
 		<script src="/socket/webSocket.js"></script>
 
 		<script>
+			
+
+			window.onload = function(){
+				let subcribeCheck = $("#subcribeCheck").val();
+				if(subcribeCheck ==true){
+					$("#iconHeart").removeClass("fa-regular");
+					$("#iconHeart").addClass("fa-solid");
+				}else{
+					$("#iconHeart").removeClass("fa-solid");
+					$("#iconHeart").addClass("fa-regular");
+				}
+			}
+
+
 			function subscribeCompany(userId) {
 
 				let subscribeCompanyId = $("#id").val();

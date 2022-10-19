@@ -20,16 +20,25 @@ public class SubscribeService {
         subscribeDao.deleteByUserCompany(userId, companyId);
     }
 
-    public boolean 구독확인(Subscribe subscribe){
-        if(subscribeDao.findById(subscribe.getSubscribeUserId(), subscribe.getSubscribeCompanyId())==null){
-            구독하기(subscribe);
+    public boolean 구독확인( Integer userId, Integer companyId){
+        if(subscribeDao.findById(userId, companyId)==null){
+            System.out.println("==========================");
+            System.out.println("구독안함");
+            System.out.println("==========================");
+            return false;
+        }
+        System.out.println("==========================");
+        System.out.println("구독함");
+        System.out.println("==========================");
+        return true;
+    }
+
+    public boolean 구독하기(Subscribe subscribe){
+        if(구독확인(subscribe.getSubscribeUserId(), subscribe.getSubscribeCompanyId())==false){
+            subscribeDao.save(subscribe);
             return true;
         }
         return false;
-    }
-
-    public void 구독하기(Subscribe subscribe){
-            subscribeDao.save(subscribe);
     }
 
     public List<Company> 구독기업보기(Integer userId){
