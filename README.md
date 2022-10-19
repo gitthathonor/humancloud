@@ -284,6 +284,79 @@ INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,r
 VALUES("이력서19", "4년제대학졸업", "신입", "defaultProfile.jpeg","https://github.com/yujin9907",  10,0, NOW());
 INSERT INTO resume(resume_title, resume_education, resume_career, resume_photo,resume_link, resume_user_id, resume_read_count, resume_created_at)
 VALUES("이력서20", "2년제대학졸업", "1년이상 ~ 3년미만", "defaultProfile.jpeg","https://github.com/yujin9907",  10,0, NOW());
+
+--resume용 category
+insert into category(category_resume_id, category_recruit_id, category_name) values (1, NULL, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) values (1, NULL, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) values (1, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) values (1, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) values (1, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (2, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (2, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (2, null, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (3, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (3, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (3, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (4, NULL, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (5, null, 'Python');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (5, NULL, 'Flutter');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (6, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (6, NULL, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (7, NULL, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (7, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (7, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (7, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (8, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (8, NULL, 'Java');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (9, null, 'Flutter');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (10, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (10, null, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (11, NULL, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (11, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (11, NULL, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (12, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (12, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (12, null, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (13, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (13, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (13, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (14, null, 'JavaScript');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (15, null, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (15, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (15, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (15, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (15, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (16, null, 'Java');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (17, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (17, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (17, NULL, 'Python');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (18, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (18, NULL, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (19, null, 'HTML&CSS');
+
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (20, NULL, 'Flutter');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (20, null, 'Java');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (20, NULL, 'HTML&CSS');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (20, null, 'JavaScript');
+insert into category(category_resume_id, category_recruit_id, category_name) VALUES (20, NULL, 'Python');
 ```
 
 
