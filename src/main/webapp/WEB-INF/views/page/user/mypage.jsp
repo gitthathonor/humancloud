@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ include file="../../layout/header.jsp" %>
         <%@ include file="subscribeModal.jsp" %>
-
             <div class="row">
                 <%@ include file="profile.jsp" %>
                     <div class="col-md-9 grid-margin stretch-card">
@@ -24,7 +23,7 @@
                                         </c:when>
                                         <c:otherwise>
                                             <div class="col border-right">
-                                                <div class="display-2">0</div>
+                                                <a href="/company/${sessionScope.companyPrincipal.companyId}/applyList"><div class="display-2 text-black">${countApply}</div></a>
                                                 <div>지원 이력서</div>
                                             </div>
                                         </c:otherwise>

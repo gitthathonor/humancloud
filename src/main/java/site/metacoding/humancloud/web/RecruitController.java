@@ -34,23 +34,12 @@ public class RecruitController {
   private final CompanyService companyService;
   private final ApplyService applyService;
 
-<<<<<<< HEAD
-
-
-  	// main
-	@GetMapping("/")
-	public String main(Model model) {
-    model.addAttribute("list", recruitService.메인공고목록보기());
-		return "page/main";
-	}
-=======
   // main
   @GetMapping("/")
   public String main(Model model) {
     model.addAttribute("list", recruitService.메인공고목록보기());
     return "page/main";
   }
->>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
 
   @GetMapping("recruit/update/{id}")
   public String updateFrom(@PathVariable(required = false) Integer id, Model model) {
@@ -70,11 +59,6 @@ public class RecruitController {
   @GetMapping("/recruit/detail/{id}/{userId}")
   public String recruit_Detail(@PathVariable("id") Integer id, @PathVariable("userId") Integer userId, Model model) {
     Recruit recruitPS = recruitService.공고상세페이지(id);
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
     model.addAttribute("Recruit", recruitPS);
     model.addAttribute("company", companyService.getCompanyDetail(recruitPS.getRecruitCompanyId()));
     model.addAttribute("apply", applyService.이력서목록보기(userId));

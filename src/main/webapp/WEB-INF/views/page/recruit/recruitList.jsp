@@ -46,18 +46,6 @@
                         </div>
                         <div class="col-2 d-flex flex-wrap align-content-center">
                             <c:choose>
-<<<<<<< HEAD
-                            <c:when test="${empty sessionScope.principal.userId}">
-                            <a href="/recruit/detail/${recruit.recruitId}/0">
-                                <button type="button" class="btn btn-outline-primary">상세보기</button>
-                            </a>
-                            </c:when>
-                            <c:otherwise>
-                            <a href="/recruit/detail/${recruit.recruitId}/${sessionScope.principal.userId}">
-                                <button type="button" class="btn btn-outline-primary">상세보기</button>
-                            </a>
-                            </c:otherwise>
-=======
                                 <c:when test="${empty sessionScope.principal.userId}">
                                     <a href="/recruit/detail/${recruit.recruitId}/0">
                                         <button type="button" class="btn btn-outline-primary">상세보기</button>
@@ -68,25 +56,12 @@
                                         <button type="button" class="btn btn-outline-primary">상세보기</button>
                                     </a>
                                 </c:otherwise>
->>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
                             </c:choose>
                         </div>
                     </div>
                 </div>
             </c:forEach>
             <div class="d-flex justify-content-center">
-<<<<<<< HEAD
-	            <ul class="pagination">
-	            	<li class='page-item'><a class="page-link text-black"
-	            		href="/recruit/list?page=${recruits.paging.currentPage -1}">previous</a></li>
-	            		 <c:forEach var="num" begin="${recruits.paging.startPageNum}" end="${recruits.paging.lastPageNum}" step="1">
-                        <a class="page-link text-black" href='/recruit/list?page=${num-1}'>${num}</a>
-                        </c:forEach>
-	            		<li class='page-item'><a class="page-link text-black"
-	            		href="/recruit/list?page=${recruits.paging.currentPage+1}">Next</a></li>
-	            </ul>
-	        </div>
-=======
                 <ul class="pagination">
                     <li class='page-item'><a class="page-link text-black"
                             href="/recruit/list?page=${recruits.paging.currentPage -1}">previous</a></li>
@@ -98,7 +73,6 @@
                             href="/recruit/list?page=${recruits.paging.currentPage+1}">Next</a></li>
                 </ul>
             </div>
->>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
         </div>
         <input hidden value="${sessionScope.companyPrincipal.companyId}" id="companyId" />
         <script>
@@ -157,13 +131,8 @@
 
             function makeList(x, checkUser) {
                 let pathDetail = checkUser;
-<<<<<<< HEAD
-                if(checkUser==null){
-                    pathDetail=0;
-=======
                 if (checkUser == null) {
                     pathDetail = 0;
->>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
                 }
 
                 let item = ``;
@@ -175,11 +144,7 @@
                     item += `<p class=""><span class="text-primary"> 근무지 : </span>` + list.recruitLocation + `</p>`;
                     item += `<p class=""><span class=" text-primary"> 공고 일 : </span>` + list.recruitStartDay + `</p></div>`;
                     item += `<div class="col-2 d-flex flex-wrap align-content-center">`;
-<<<<<<< HEAD
-                    item += `<a href="/recruit/detail/` + list.recruitId + `/` + pathDetail +`">`;
-=======
                     item += `<a href="/recruit/detail/` + list.recruitId + `/` + pathDetail + `">`;
->>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
                     item += ` <button type="button" class="btn btn-outline-primary ">상세보기</button>`;
                     item += `</a></div></div></div>`;
                 }

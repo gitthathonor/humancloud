@@ -47,19 +47,6 @@
                     </div>
                 </div>
             </c:forEach>
-<<<<<<< HEAD
-            	<div class="d-flex justify-content-center">
-	                <ul class="pagination">
-	                	<li class='page-item'><a class="page-link text-black"
-	                		href="/resume?page=${resumeData.paging.currentPage -1}">previous</a></li>
-	                		 <c:forEach var="num" begin="${resumeData.paging.startPageNum}" end="${resumeData.paging.lastPageNum}" step="1">
-                            <a class="page-link text-black" href='/resume?page=${num-1}'>${num}</a>
-                            </c:forEach>
-	                		<li class='page-item'><a class="page-link text-black"
-	                		href="/resume?page=${resumeData.paging.currentPage+1}">Next</a></li>
-	                </ul>
-	            </div>
-=======
             <div class="d-flex justify-content-center">
                 <ul class="pagination">
                     <li class='page-item'><a class="page-link text-black"
@@ -72,7 +59,6 @@
                             href="/resume?page=${resumeData.paging.currentPage+1}">Next</a></li>
                 </ul>
             </div>
->>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
         </div>
 
 
@@ -132,11 +118,7 @@
                     item += `<p>경력 : ` + list.resumeCareer + `</p>`;
                     item += `<p class="">` + list.resumeCreatedAt + `</p>`;
                     item += `</div><div class="col-2 d-flex flex-wrap align-content-center">`;
-<<<<<<< HEAD
-                    item += `<a href="resume/detail/`+list.resumeId+`/`+list.resumeUserId+`">`;
-=======
                     item += `<a href="resume/detail/` + list.resumeId + `/` + list.resumeUserId + `">`;
->>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
                     item += `<button type="button" class="btn btn-outline-primary">` + `상세보기` + `</button></a>`
                     item += `</div></div></div>`
                 }

@@ -77,19 +77,6 @@ public class RecruitService {
         return;
     }
 
-<<<<<<< HEAD
-    public List<CompanyRecruitDto> 메인공고목록보기(){
-        List<CompanyRecruitDto> recruitPS = recruitDao.joinCompanyRecruit(0);
-        List<CompanyRecruitDto> result = new ArrayList<>();
-        int endFor;
-        if(recruitPS.size()<5){
-            endFor=recruitPS.size();
-        } else {
-            endFor=6;
-        }
-
-        for(int i = 0; i<endFor; i++){
-=======
     public List<CompanyRecruitDto> 메인공고목록보기() {
         List<CompanyRecruitDto> recruitPS = recruitDao.joinCompanyRecruit(0);
         List<CompanyRecruitDto> result = new ArrayList<>();
@@ -101,7 +88,6 @@ public class RecruitService {
         }
 
         for (int i = 0; i < endFor; i++) {
->>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
             result.add(recruitPS.get(i));
         }
 
@@ -110,19 +96,11 @@ public class RecruitService {
 
     public Map<String, Object> 채용공고목록보기(Integer page) {
         if (page == null) {
-<<<<<<< HEAD
-			page = 0;
-		}
-		int startNum = page * 20;
-		PagingDto paging = recruitDao.paging(page);
-		paging.dopaging();
-=======
             page = 0;
         }
         int startNum = page * 20;
         PagingDto paging = recruitDao.paging(page);
         paging.dopaging();
->>>>>>> cb2e57364b0aefbfe22d29a19dcbc72c3a30a319
 
         Map<String, Object> recruitList = new HashMap<>();
         recruitList.put("paging", paging);

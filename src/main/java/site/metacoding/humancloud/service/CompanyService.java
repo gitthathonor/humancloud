@@ -12,6 +12,8 @@ import site.metacoding.humancloud.domain.company.Company;
 import site.metacoding.humancloud.domain.company.CompanyDao;
 import site.metacoding.humancloud.domain.recruit.Recruit;
 import site.metacoding.humancloud.domain.recruit.RecruitDao;
+import site.metacoding.humancloud.domain.resume.Resume;
+import site.metacoding.humancloud.domain.resume.ResumeDao;
 import site.metacoding.humancloud.domain.subscribe.SubscribeDao;
 import site.metacoding.humancloud.web.dto.request.company.LoginDto;
 import site.metacoding.humancloud.web.dto.request.company.UpdateDto;
@@ -25,6 +27,7 @@ public class CompanyService {
 	private final CompanyDao companyDao;
 	private final SubscribeDao subscribeDao;
 	private final RecruitDao recruitDao;
+	private final ResumeDao resumeDao;
 
 	// 회원 username 중복체크
 	public boolean checkSameUsername(String companyUsername) {
@@ -103,5 +106,9 @@ public class CompanyService {
 			System.out.println(recruitDao.findByCompanyId(id).get(i).getRecruitTitle());
 		}
 		return recruitDao.findByCompanyId(id);
+	}
+
+	public List<Resume> 지원목록보기(Integer companyId){
+		return resumeDao.applyResumeList(companyId);
 	}
 }
