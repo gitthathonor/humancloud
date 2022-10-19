@@ -9,13 +9,14 @@
                             <div class="card-body my-5">
                                 <h4 class="m-3 text-primary font-weight-bold">지원 현황</h4>
                                 <div class="row rounded m-2 p-5 text-center  border">
-                                    <div class="col border-right">
-                                        <div class="display-2">0</div>
-                                        <div>지원 완료</div>
-                                    </div>
+                                
                                     <c:choose>
                                         <c:when
                                             test="${!empty sessionScope.principal.userId && empty sessionScope.companyPrincipal.companyId}">
+                                            <div class="col border-right">
+                                                <div class="display-2">0</div>
+                                                <div>지원 완료</div>
+                                            </div>
                                             <div class="col border-right">
                                                 <div class="display-2">${resume.readCount}</div>
                                                 <div>이력서 열람</div>
@@ -24,7 +25,7 @@
                                         <c:otherwise>
                                             <div class="col border-right">
                                                 <div class="display-2">0</div>
-                                                <div>이력서 열람</div>
+                                                <div>지원 이력서</div>
                                             </div>
                                         </c:otherwise>
                                     </c:choose>
