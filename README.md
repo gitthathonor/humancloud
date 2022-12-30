@@ -1,13 +1,28 @@
-# 미니프로젝트 humancloud - 이력서 관리 웹 사이트
+# :dart: 구인 구직 매칭 플랫폼 humancloud 
 
-### DB - user생성 및 권한 부여
+***"자신에게 맞는 일자리를 찾아드립니다!"*** </br>
+들어가는 실업률, 계속되는 구인, 구직에 지치신 당신! </br>
+저희 humancloud에서는 회원들에게 적절한 공고 및 이력서를 추천해서 구인, 구직 기간을 줄이고 필요한 공고 및 이력서들에만 집중할 수 있게 만들어드립니다!
+</br></br>
+
+## :triangular_flag_on_post: 프로젝트 개요
+### 레퍼런스 사이트(사람인, 원티드)
+![image](https://user-images.githubusercontent.com/95184357/210056914-00ec8963-1462-4f87-8ee4-eb8af0faa176.png)
+![image](https://user-images.githubusercontent.com/95184357/210056897-aa5ea6b9-e5e0-489f-8f54-3ae3fd670455.png)
+
+### 개발 이유
+구인, 구직 추천 플랫폼을 통해서 서비스 로직에 대한 이해와 spring기반 MVC 패턴 개발을 익히기 위해서 선택
+
+### 테이블 구성
+
+#### DB - user생성 및 권한 부여
 ```sql
 CREATE USER 'human'@'%' IDENTIFIED BY 'human1234';
 CREATE database humandb;
 GRANT ALL PRIVILEGES ON *.* TO 'human'@'%';
 ```
 
-### 테이블 생성
+#### 테이블 생성 - create 구문
 ```sql
 -- 구직자(유저) 
 CREATE TABLE user (
