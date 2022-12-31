@@ -518,7 +518,7 @@ insert into category(category_resume_id, category_recruit_id, category_name) VAL
 * 2022년 10월 05일 ~ 2022년 10월 19일
 
 | 이름 | 깃허브 링크 |
-| ----- | --- | --- |
+| ----- | --- |
 | 김민철 | Sylar0012(https://github.com/Sylar0012) |
 | 장성운 | Goldfish808(https://github.com/Goldfish808) |
 | 허유진 | yujin9907(https://github.com/yujin9907) |
@@ -560,11 +560,11 @@ insert into category(category_resume_id, category_recruit_id, category_name) VAL
 <br/>
 
 ## :triangular_ruler: 2. 화면 설계
-![humancloud](https://www.figma.com/file/qNC1LJR8I5G3b5o3rzLwLo/humancloud?node-id=0%3A1)
+[humancloud 화면설계](https://www.figma.com/file/qNC1LJR8I5G3b5o3rzLwLo/humancloud?node-id=0%3A1)
 </br></br>
 
 ## :video_camera: 3. 시연영상
-humancloud(https://www.youtube.com/watch?v=YQcnzzxjVC0)
+[humancloud 시연영상](https://www.youtube.com/watch?v=YQcnzzxjVC0)
 </br></br>
 
 ## :bulb: 4. 사용자 시나리오
@@ -860,7 +860,7 @@ function sendRecruitAlarm(){
 ## :bomb: 7. trouble shooting 
 
 ### github issues
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5fc1668b-2266-4928-a258-30095c95b20b/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/95184357/210123546-c298d19b-71df-47ac-8d34-1de09ddc9715.png)
 
 ### recruit-detail 수정사항 메모
 PathVarilable 이 해당 프로젝트에서는 동작하지않아, 쿼리스트릥으로
